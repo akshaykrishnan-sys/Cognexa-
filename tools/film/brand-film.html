@@ -12,7 +12,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#07090f}
 .duo2{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.35}
 .tile{position:absolute;overflow:hidden}
 .blk{position:absolute}
-.T{position:absolute;left:0;right:0;text-align:center;font-weight:900;letter-spacing:-.01em;line-height:.9;text-transform:uppercase;white-space:nowrap}
+.T{text-shadow:0 8px 40px rgba(0,0,0,.35);position:absolute;left:0;right:0;text-align:center;font-weight:900;letter-spacing:-.01em;line-height:.9;text-transform:uppercase;white-space:nowrap}
 .T .c{position:absolute;left:0;right:0;mix-blend-mode:screen}
 .sub{position:absolute;left:0;right:0;text-align:center;font-weight:700;text-transform:uppercase;white-space:nowrap}
 .tr{font-family:"JetBrains Mono",monospace;font-weight:500;text-transform:uppercase}
@@ -23,10 +23,10 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#07090f}
 <div class="flash" id="flash"></div>
 </div>
 <script>
-const IMG=n=>`http://localhost:8095/assets/img/n${n.replace(':','-')}.webp`;
+const IMG=n=>n.includes('.')?n:`${n}.jpg`;
 const C={ink:'#07090f',cobalt:'#2f5bea',amber:'#f5a624',copper:'#ff6a3d',violet:'#5b2bd6',teal:'#3fc1c9',paper:'#f3eee6'};
 const G={ // duotone gradients: [shadow, highlight]
- cv:['#2b1aa8','#ff5a36'], ca:['#1b2f9a','#f5a624'], vt:['#3a137a','#3fc1c9'], am:['#7a2a00','#ffb84d'], mono:['#111','#fff']};
+ cv:['#2b1aa8','#ff5a36'], ca:['#1b2f9a','#f5a624'], vt:['#3a137a','#3fc1c9'], am:['#7a2a00','#ffb84d'], mono:['#111','#fff'], pk:['#3b0a5e','#ff4fa3'], none:null};
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), seg=(t,a,b)=>cl((t-a)/(b-a));
 const eo=x=>1-Math.pow(1-cl(x),4), ei=x=>Math.pow(cl(x),3), eio=x=>(x=cl(x),x<.5?8*x**4:1-Math.pow(-2*x+2,4)/2);
 const hash=(n)=>{const x=Math.sin(n*127.1)*43758.5453;return x-Math.floor(x)};
@@ -34,20 +34,65 @@ const B=0.5; // one beat at 120 BPM
 const root=document.getElementById('root');
 const el=(tag,cls,css,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(css)e.style.cssText=css;if(html!=null)e.innerHTML=html;return e;};
 // photo with duotone grade
-function photo(parent,im,g,css='',pos='center'){const w=el('div','tile',css);const p=el('div','ph',`background-image:url(${IMG(im)});background-position:${pos}`);w.appendChild(p);
- const d=el('div','duo',`background:linear-gradient(135deg,${G[g][0]},${G[g][1]})`);const d2=el('div','duo2',`background:${G[g][0]}`);if(g!=='mono'){w.appendChild(d);w.appendChild(d2);}parent.appendChild(w);w._p=p;return w;}
+function photo(parent,im,g,css='',pos='center'){if(typeof im==='object')return shaderTile(parent,im,css);const w=el('div','tile',css);const p=el('div','ph',`background-image:url(${IMG(im)});background-position:${pos}`);w.appendChild(p);
+ const gg=G[g]||G.mono;const d=el('div','duo',`background:linear-gradient(135deg,${gg[0]},${gg[1]})`);const d2=el('div','duo2',`background:${gg[0]}`);if(g==='none'){p.style.filter='saturate(1.15) contrast(1.05)';}else if(g!=='mono'){w.appendChild(d);w.appendChild(d2);}parent.appendChild(w);w._p=p;return w;}
 // glitch title: white text + red/cyan copies that separate on entry
 function title(parent,txt,css){const w=el('div','T',css);const r=el('div','c',`color:#ff2a5f;top:0`,txt),b=el('div','c',`color:#22d3ff;top:0`,txt),m=el('div','',`position:relative;color:#fff`,txt);w.append(r,b,m);parent.appendChild(w);w._r=r;w._b=b;w._m=m;return w;}
 function glitch(w,t,t0,{dur=.45,amp=34,track=0}={}){const k=seg(t,t0,t0+dur),inn=eo(seg(t,t0,t0+.18));const a=(1-k)*amp*(hash(Math.floor(t*30))*.6+.4);
  w.style.opacity=t<t0?0:1;w._r.style.transform=`translate(${-a}px,${a*.15}px)`;w._b.style.transform=`translate(${a}px,${-a*.15}px)`;w._r.style.opacity=w._b.style.opacity=1-k*.85;
  const sl=(1-k)>.15&&hash(Math.floor(t*25)+3)>.45;const y=hash(Math.floor(t*25)+7)*80;w._m.style.clipPath=sl?`polygon(0 0,100% 0,100% ${y}%,0 ${y}%,0 ${y+10}%,100% ${y+10}%,100% 100%,0 100%)`:'none';
  w.style.transform=`scale(${1.25-.25*inn})`;if(track)w.style.letterSpacing=`${-.01+track*seg(t,t0,t0+2.2)}em`;}
+
+/* ---------- live shader art: blooming flowers, liquid marble, kaleidoscopes of the photos ---------- */
+const glc=document.createElement('canvas');const gl=glc.getContext('webgl',{preserveDrawingBuffer:true,premultipliedAlpha:false});
+const VS='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+const FS=`precision highp float;uniform vec2 res;uniform float t;uniform int mode;uniform sampler2D tex;uniform vec3 pd;uniform float seed;uniform float seg_;uniform float sat;uniform float bri;
+vec3 pal(float x){return .5+.5*cos(6.2832*(vec3(1.)*x+pd));}
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
+mat2 rot(float a){return mat2(cos(a),-sin(a),sin(a),cos(a));}
+void main(){vec2 uv=(gl_FragCoord.xy-.5*res)/res.y;vec3 col;
+ if(mode==0){ // bloom: layered flowers with domain-warped light
+  vec2 q=uv;float w=fbm(q*2.2+t*.15+seed);q+=.08*vec2(w-.5);
+  col=pal(fbm(q*1.6-t*.08+seed)+.15)*.55;
+  for(int k=0;k<3;k++){float fk=float(k);vec2 c=vec2(sin(seed*3.+fk*2.1)*.45,cos(seed*2.+fk*1.7)*.22);vec2 d=(q-c)*rot(t*(.25+.1*fk)*(mod(fk,2.)*2.-1.));
+   float r=length(d),a=atan(d.y,d.x);float pet=5.+fk*2.;float sh=.32-.06*fk+.11*cos(pet*a+t*.8+fk)+.03*sin(3.*a-t);
+   float f=smoothstep(sh,sh-.06,r);float core=smoothstep(.07,.0,r);float rim=smoothstep(.02,0.,abs(r-sh))*.8;
+   vec3 pc=pal(a/6.2832+r*1.4+t*.05+fk*.33);col=mix(col,pc*(.75+.5*r/sh),f);col+=rim*pal(fk*.2+.6)+core*vec3(1.,.85,.4);}
+  col+=.12*pal(uv.x+t*.1)*smoothstep(.4,1.,fbm(uv*6.+t*.4));
+ } else if(mode==1){ // liquid iridescent marble
+  vec2 p=uv*1.6;vec2 q=vec2(fbm(p+t*.12+seed),fbm(p+vec2(5.2,1.3)-t*.1));vec2 r=vec2(fbm(p+4.*q+vec2(1.7,9.2)+t*.15),fbm(p+4.*q+vec2(8.3,2.8)));
+  float f=fbm(p+4.*r);col=pal(f*1.4+length(q)*.6+t*.03);col*=.6+.7*f;col+=pow(smoothstep(.55,.95,f),3.)*.6;
+ } else { // kaleidoscope of a photo
+  vec2 p=uv*rot(t*.18);float r=length(p),a=atan(p.y,p.x);float N=seg_;float s=6.2832/N;a=mod(a,s);a=abs(a-s*.5);
+  vec2 k=vec2(cos(a),sin(a))*r;k=k*(.9+.15*sin(t*.6))+vec2(.5+.08*sin(t*.3+seed),.5+.06*cos(t*.27));
+  col=texture2D(tex,fract(k)).rgb;float l=dot(col,vec3(.33));col=mix(vec3(l),col,1.45);col*=1.-.35*r;
+ }
+ col=mix(vec3(dot(col,vec3(.299,.587,.114))),col,sat)*bri;
+ gl_FragColor=vec4(clamp(col,0.,1.),1.);}`;
+function sh(type,src){const o=gl.createShader(type);gl.shaderSource(o,src);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
+const prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,VS));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(prog);gl.useProgram(prog);
+const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+const ap=gl.getAttribLocation(prog,'p');gl.enableVertexAttribArray(ap);gl.vertexAttribPointer(ap,2,gl.FLOAT,false,0,0);
+const U=n=>gl.getUniformLocation(prog,n);const TEX={};
+function loadTex(src){return new Promise(r=>{const im=new Image();im.onload=()=>{const tx=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tx);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im);TEX[src]=tx;r();};im.src=src;});}
+const PAL={sunset:[.8,.9,.3],orchid:[.65,.15,.35],lagoon:[.5,.2,.25],candy:[.0,.33,.67],ember:[.0,.1,.2]};
+const SH=[];
+function shaderTile(parent,o,css){const w=el('div','tile',css);const c=document.createElement('canvas');c.style.cssText='position:absolute;inset:0;width:100%;height:100%';w.appendChild(c);parent.appendChild(w);w._p=c;w._sh=o;SH.push(w);return w;}
+function drawShaders(t){for(const w of SH){if(!w.offsetParent&&w.offsetWidth===0)continue;const W=Math.max(2,Math.round(w.offsetWidth/2)),H=Math.max(2,Math.round(w.offsetHeight/2));const o=w._sh;
+ if(w._p.width!==W){w._p.width=W;w._p.height=H;}glc.width=W;glc.height=H;gl.viewport(0,0,W,H);
+ gl.uniform2f(U('res'),W,H);gl.uniform1f(U('t'),t*(o.speed||.5)+(o.seed||0)*3.);gl.uniform1i(U('mode'),o.mode);gl.uniform3fv(U('pd'),PAL[o.pal||'sunset']);gl.uniform1f(U('seed'),o.seed||0);gl.uniform1f(U('seg_'),o.seg||8);gl.uniform1f(U('sat'),o.sat??.62);gl.uniform1f(U('bri'),o.bri??.86);
+ if(o.tex){gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,TEX[o.tex]);gl.uniform1i(U('tex'),0);}
+ gl.drawArrays(gl.TRIANGLE_STRIP,0,4);w._p.getContext('2d').drawImage(glc,0,0);}}
+window.READY=Promise.all(['studio.jpg','couch.jpg','paint.jpg','velvet.jpg','room.jpg'].map(loadTex));
+
 const S=[]; // scenes: {a,b,node,fn}
 function scene(a,b,build){const n=el('div','sc');const cam=el('div','cam');n.appendChild(cam);root.appendChild(n);const fn=build(cam,n);S.push({a,b,n,cam,fn});}
 
 /* ---------- 1. Intro: light streaks, COGNEXA slams over a graded shot (0 - 4s) ---------- */
 scene(0,4.0,(cam)=>{
- const bg=photo(cam,'22:17','cv','inset:0');
+ const bg=photo(cam,'studio.jpg','none','inset:0','55% 40%');
  const st=[0,1,2].map(i=>{const s=el('div','streak',`top:${300+i*170}px;background:linear-gradient(90deg,transparent,${['#ff5a36','#2f5bea','#f5a624'][i]},transparent);opacity:0`);cam.appendChild(s);return s;});
  const t1=title(cam,'COGNEXA','top:390px;font-size:230px');
  const s1=el('div','sub tr','top:640px;font-size:34px;letter-spacing:.5em;opacity:0','Behavioural insights');cam.appendChild(s1);
@@ -58,7 +103,7 @@ scene(0,4.0,(cam)=>{
 
 /* ---------- 2. Mosaic of decisions; camera dives into one tile (4 - 8s) ---------- */
 scene(4.0,8.0,(cam)=>{
- const cells=[['362:285','cv','TRUST'],['26:139','mono',''],['203:67','ca',''],['26:141','vt','PRICE'],['22:17','am','',1],['362:292','cv',''],['26:143','mono',''],['362:299','ca','EFFORT'],['362:314','vt','RISK']];
+ const cells=[['couch.jpg','none','TRUST'],[{mode:0,pal:'orchid',seed:1.3},null,''],['plant.jpg','mono',''],['paint.jpg','none','PRICE'],[{mode:0,pal:'sunset',seed:2.1},null,'',1],['gold.jpg','pk',''],['floor.jpg','mono',''],['bottles.jpg','none','EFFORT'],['velvet.jpg','none','RISK']];
  const W=640,H=360,tiles=[];
  cells.forEach(([im,g,w,key],i)=>{const x=(i%3)*W,y=Math.floor(i/3)*H;const tl=photo(cam,im,g,`left:${x}px;top:${y}px;width:${W}px;height:${H}px`);
   if(w){const tt=title(tl,w,`top:${H/2-48}px;font-size:110px`);tl._t=tt;}tiles.push(tl);});
@@ -73,7 +118,7 @@ scene(4.0,8.0,(cam)=>{
 
 /* ---------- 3. DOUBT, full frame (8 - 10s) ---------- */
 scene(8.0,10.0,(cam)=>{
- photo(cam,'22:17','am','inset:0','60% 30%');
+ photo(cam,'couch.jpg','none','inset:0','60% 40%');
  const s=el('div','sub tr','top:330px;font-size:30px;letter-spacing:.45em;opacity:0','Every decision has a moment of');cam.appendChild(s);
  const t1=title(cam,'DOUBT','top:400px;font-size:300px');
  return t=>{const L=t-8;cam.firstChild._p.style.transform=`scale(${1.2-.12*seg(L,0,2)})`;cam.style.transform=`scale(${1+(1-eo(seg(L,0,.4)))*.35})`;
@@ -81,7 +126,7 @@ scene(8.0,10.0,(cam)=>{
 
 /* ---------- 4. Method on the beat: OBSERVE / DIAGNOSE / DESIGN / MEASURE (10 - 14s) ---------- */
 scene(10.0,14.0,(cam)=>{
- const shots=[['26:141','cv','OBSERVE','How people really decide'],['23:1234','vt','DIAGNOSE','The doubt that stops them'],['25:49','ca','DESIGN','The fix, not the feature'],['26:144','am','MEASURE','What actually moved']];
+ const shots=[['room.jpg','none','OBSERVE','How people really decide'],['velvet.jpg','none','DIAGNOSE','The doubt that stops them'],['studio.jpg','none','DESIGN','The fix, not the feature'],[{mode:1,pal:'orchid',seed:2.2,sat:.5,bri:.72},null,'MEASURE','What actually moved']];
  const ps=shots.map(([im,g,w,sub],i)=>{const half=i%2===0;const box=el('div','tile',`inset:0`);cam.appendChild(box);
   const ph=photo(box,im,g,'inset:0');const colr=[C.copper,C.cobalt,C.amber,C.violet][i];
   const side=el('div','blk',`top:0;bottom:0;${half?'left:0':'right:0'};width:38%;background:${colr}`);box.appendChild(side);
@@ -94,7 +139,7 @@ scene(10.0,14.0,(cam)=>{
 
 /* ---------- 5. Five industries: grid of blocks and shots, then pull back (14 - 18s) ---------- */
 scene(14.0,18.0,(cam)=>{
- const W=480,H=360;const items=[['362:285','cv','RETAIL',0,0],['362:292','vt','SOFTWARE',2,0],['362:299','ca','HEALTHCARE',1,1],['362:307','am','EDUCATION',3,1],['362:314','cv','FINANCE',0,2]];
+ const W=480,H=360;const items=[['gold.jpg','none','RETAIL',0,0],['room.jpg','vt','SOFTWARE',2,0],[{mode:0,pal:'lagoon',seed:3.1},null,'HEALTHCARE',1,1],['paint.jpg','none','EDUCATION',3,1],[{mode:1,pal:'ember',seed:1.1},null,'FINANCE',0,2]];
  const fill=[[1,0,C.copper],[3,0,C.cobalt],[0,1,C.paper],[2,1,C.violet],[1,2,C.amber],[2,2,'#111'],[3,2,C.teal]];
  const blks=fill.map(([x,y,c])=>{const b=el('div','blk',`left:${x*W}px;top:${y*H}px;width:${W}px;height:${H}px;background:${c}`);cam.appendChild(b);return b;});
  const tl=items.map(([im,g,w,x,y])=>{const t=photo(cam,im,g,`left:${x*W}px;top:${y*H}px;width:${W}px;height:${H}px`);t._t=title(t,w,`top:${H/2-34}px;font-size:${w.length>8?68:84}px`);return t;});
@@ -116,7 +161,7 @@ scene(18.0,20.5,(cam)=>{
 
 /* ---------- 7. Call to action over a graded shot (20.5 - 23.5s) ---------- */
 scene(20.5,23.5,(cam)=>{
- photo(cam,'26:253','cv','inset:0');
+ photo(cam,{mode:0,pal:'orchid',seed:4.2,speed:.35,sat:.5,bri:.6},null,'inset:0');
  const t1=title(cam,'BOOK A DISCOVERY CALL','top:420px;font-size:128px');
  const s=el('div','sub','top:570px;font-size:46px;letter-spacing:.06em;opacity:0','with the founders of Cognexa');cam.appendChild(s);
  return t=>{const L=t-20.5;cam.firstChild._p.style.transform=`scale(${1.08+.08*seg(L,0,3)})`;const r=eio(seg(L,0,.5));cam.firstChild.style.clipPath=`circle(${r*120}% at 50% 50%)`;
@@ -126,7 +171,7 @@ scene(20.5,23.5,(cam)=>{
 /* ---------- 8. Logo end card (23.5 - 27s) ---------- */
 scene(23.5,27.0,(cam)=>{
  const card=el('div','blk','left:50%;top:50%;width:760px;height:300px;margin:-190px 0 0 -380px;background:#f3eee6;display:flex;align-items:center;justify-content:center');cam.appendChild(card);
- const lg=el('img','',`width:600px`);lg.src=IMG('28:32');card.appendChild(lg);
+ const lg=el('img','',`width:600px`);lg.src='logo.webp';card.appendChild(lg);
  const dot=el('div','blk','width:26px;height:26px;border-radius:50%;background:#f5a624;left:calc(50% + 395px);top:calc(50% + 95px)');cam.appendChild(dot);
  const u=el('div','sub tr','top:760px;font-size:26px;letter-spacing:.3em;opacity:0','cognexadigital.com');cam.appendChild(u);
  return t=>{const L=t-23.5;const k=eio(seg(L,0,.5));card.style.clipPath=`inset(${(1-k)*50}% 0 ${(1-k)*50}% 0)`;lg.style.opacity=eo(seg(L,.35,.8));lg.style.transform=`scale(${1.08-.08*eo(seg(L,.35,1.2))})`;
@@ -138,6 +183,7 @@ window.render=function(t){flashV=0;
  // short white flash on each hard scene change
  for(const s of S){if(Math.abs(t-s.a)<0.06&&s.a>0)flashV=Math.max(flashV,.55*(1-Math.abs(t-s.a)/0.06));}
  for(const s of S){const on=t>=s.a&&t<s.b;s.n.style.display=on?'block':'none';if(on)s.fn(t);}
+ drawShaders(t);
  document.getElementById('flash').style.opacity=flashV;};
 render(0);
 </script></body></html>
