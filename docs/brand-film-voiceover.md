@@ -1,23 +1,21 @@
-# Cognexa brand film: voice-over script (30 seconds)
+# Cognexa brand film: voice-over script (42 seconds)
 
-**Voice:** calm, warm, confident, mid-paced. A thoughtful strategist, not an advertiser. British or neutral English.
-**Delivery:** short pauses between lines. Slightly faster and lighter on the opening quotes, slower and lower from "A number tells you…".
-**Format:** WAV or high-quality MP3, 48 kHz, no music, no effects, quiet room. Start the first word 0.3 s into the file.
+**Voice:** calm, warm, confident, unhurried. A thoughtful strategist, not an advertiser.
+**Current track:** Kokoro (open-source, Apache 2.0), voice "af_heart", speed 0.92. Replace any time with a human read of the same lines.
+**Format for a human read:** WAV, 48 kHz, quiet room, no music.
 
-| Time | Line | On screen |
-|---|---|---|
-| 0:00.3 | We need more leads. We need AI. A new website. | The four quote chips pop in |
-| 0:02.7 | Those sound like solutions. So, what's the problem? | "What's the problem?" headline |
-| 0:05.4 | A shopper doubts the returns. | E-commerce scene |
-| 0:07.4 | A committee fears the wrong pick. | B2B and SaaS scene |
-| 0:09.4 | A patient isn't sure what's next. | Healthcare scene |
-| 0:11.4 | A learner wonders if they'll belong. | Education scene |
-| 0:13.4 | A customer doesn't feel safe. | Fintech scene |
-| 0:15.4 | A number tells you where it's happening. Not why. | 2.8% conversion counter |
-| 0:19.5 | So we observe. Diagnose. Design. Build. And measure. | One word per beat on the photo grid |
-| 0:24.4 | Find the doubt. Remove it. | Payoff line |
-| 0:27.4 | Cognexa. Book a fifteen-minute fit call. | End card |
+| Starts | Line |
+|---|---|
+| 0:00.6 | Every business has a number it wants to move. |
+| 0:03.6 | So the brief says: more leads. More traffic. A new website. |
+| 0:08.4 | But behind every number are real people, making real decisions. |
+| 0:13.1 | And somewhere along the way, they hesitate. |
+| 0:16.3 | Cognexa finds that moment, and why it happens. |
+| 0:19.9 | We observe how people really decide. |
+| 0:22.7 | We find the doubt that stops them. |
+| 0:25.1 | Then we design the fix, and measure what moves. |
+| 0:28.5 | For e-commerce, B2B and SaaS, healthcare, education, and fintech. |
+| 0:34.2 | Find the doubt. Remove it. |
+| 0:36.9 | Cognexa. Book a fifteen-minute fit call. |
 
-About 68 words. The same text is on the site as captions (`public/assets/video/cognexa-brand-reel.en.vtt`), so keep the read word for word, or tell us what changed.
-
-**Current track:** generated with Kokoro (open-source, Apache 2.0), British female voice "bf_emma". Replace any time with a human read: `tools/add-voiceover.sh voice.wav [music.mp3]` (run it on the silent master `cognexa-brand-reel` from the render), then rebuild.
+To swap the voice: `tools/add-voiceover.sh voice.wav [music.mp3]` on the silent master, then rebuild.
