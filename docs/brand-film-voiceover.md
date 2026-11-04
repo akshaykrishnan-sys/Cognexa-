@@ -16,6 +16,6 @@
 | 0:25.1 | Then we design the fix, and measure what moves. |
 | 0:28.5 | For e-commerce, B2B and SaaS, healthcare, education, and fintech. |
 | 0:34.2 | Find the doubt. Remove it. |
-| 0:36.9 | Cognexa. Book a fifteen-minute fit call. |
+| 0:36.9 | Book a discovery call with the founders of Cognexa today. |
 
 To swap the voice: `tools/add-voiceover.sh voice.wav [music.mp3]` on the silent master, then rebuild.
