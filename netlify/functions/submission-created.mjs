@@ -36,6 +36,11 @@ export const handler = async (event) => {
   if (payload.data?.['bot-field']) return { statusCode: 200, body: 'ignored' };
   const lead = toLead(payload);
   if (!isEmail(lead.email)) return { statusCode: 200, body: 'ignored: no valid email' };
+  if (lead.form === 'newsletter') {
+    // subscribers are kept apart from leads; the same address is stored once
+    await store('subscribers').set(lead.email, { email: lead.email, at: lead.createdAt, source: lead.source });
+    return { statusCode: 200, body: JSON.stringify({ ok: true, subscriber: lead.email }) };
+  }
   await store('leads').set(lead.id, lead);
   const sent = await notifyTeam(lead, process.env.URL).catch(e => ({ error: e.message }));
   await store('leads').set(lead.id, { ...lead, history: [...lead.history, { at: new Date().toISOString(), event: 'notified', detail: sent }] });

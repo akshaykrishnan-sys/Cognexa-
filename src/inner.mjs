@@ -1,4 +1,4 @@
-import { img, esc, arr, withArr, page, SERVICES, CTA, CTA_SUB, IND } from './lib.mjs';
+import { img, esc, arr, withArr, page, SERVICES, CTA, CTA_SUB, IND, videoBlock } from './lib.mjs';
 import { VERTS } from './data-verticals.mjs';
 import { SVCS } from './data-services.mjs';
 import { collection, readJSON } from './content.mjs';
@@ -103,6 +103,7 @@ export function service(s) {
   const ctaTxt = CTA;
   const body = `
 ${oHero({ crumb: `SERVICES&nbsp;&nbsp;/&nbsp;&nbsp;${esc(s.crumb)}`, h: { ...s.hero, cta: ctaTxt }, ctaHref: `/contact/?service=${encodeURIComponent(s.name)}`, pathNodes: nodes, legend: false, foot: '8 SERVICES. ONE BEHAVIOURAL BACKBONE.', pw: '1204px', ink: true, secondary: ['See how we work', '#approach'] })}
+${s.video?.url ? `<section class="sec-m bg-ink vreel"><div class="wrap"><p class="mono c-grey2 rv">${esc(s.video.title || 'Showreel')}</p>${videoBlock(s.video, { label: 'Play the reel' })}</div></section>` : ''}
 <section class="sec-m bg-paper"><div class="wrap">
   ${secHead('02&nbsp;&nbsp;/&nbsp;&nbsp;THE PROBLEM', s.problemH)}
   <div class="pains">${s.pains.map(([h, p], i) => `<article class="pain rv" style="--d:${i}"><p class="k">PROBLEM ${pad2(i + 1)}</p><h3>${esc(h)}</h3><p>${esc(p)}</p></article>`).join('')}</div>
@@ -229,7 +230,7 @@ export function industriesLanding() {
 ${oHero({ crumb: 'INDUSTRIES', h, pathNodes: nodes, secondary: ['Explore the five industries', '#five'] })}
 <section class="sec-m bg-paper" id="five" style="scroll-margin-top:80px"><div class="wrap">
   ${secHead('02&nbsp;&nbsp;/&nbsp;&nbsp;FIVE INDUSTRIES', 'Where do your buyers hesitate?')}
-  <div class="ind-cards">${cards.map(([im, slug, k, t, p, n], i) => `<a class="ind-card rv" style="--d:${i % 3}" href="/industries/${slug}/"><div class="im"><img src="${img(im)}" alt="" loading="lazy"></div><div class="bd"><p class="k">${pad2(i + 1)}&nbsp;&nbsp;/&nbsp;&nbsp;${k}</p><h3>${esc(t)}</h3><p>${esc(p)}</p><span class="link">Explore ${esc(n)} ${arr}</span></div></a>`).join('')}</div>
+  <div class="ind-cards mscroll">${cards.map(([im, slug, k, t, p, n], i) => `<a class="ind-card rv" style="--d:${i % 3}" href="/industries/${slug}/"><div class="im"><img src="${img(im)}" alt="" loading="lazy"></div><div class="bd"><p class="k">${pad2(i + 1)}&nbsp;&nbsp;/&nbsp;&nbsp;${k}</p><h3>${esc(t)}</h3><p>${esc(p)}</p><span class="link">Explore ${esc(n)} ${arr}</span></div></a>`).join('')}</div>
 </div></section>
 <section class="sec-m bg-ink"><div class="wrap">
   ${secHead('03&nbsp;&nbsp;/&nbsp;&nbsp;HOW DECISIONS DIFFER', 'Same method, different pause.', true)}

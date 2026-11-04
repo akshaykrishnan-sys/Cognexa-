@@ -8,5 +8,16 @@
   "cta": "Book a 15-min fit call",
   "ctaSub": "We reply within one working day. You speak with a founder.",
   "tagline": "Behavioural Science × AI × Digital Transformation",
-  "domainLabel": "cognexadigital.com"
+  "domainLabel": "cognexadigital.com",
+  "bookingUrl": "",
+  "foundersVideo": {
+    "url": "",
+    "poster": "/assets/img/n238-41.webp",
+    "caption": "Meet the founders"
+  },
+  "analytics": {
+    "plausibleDomain": "",
+    "ga4Id": ""
+  },
+  "newsletter": true
 }

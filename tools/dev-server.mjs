@@ -13,6 +13,7 @@ const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 
 
 const leads = (await import('../netlify/functions/leads.mjs')).default;
 const check = (await import('../netlify/functions/check.mjs')).default;
+const subs = (await import('../netlify/functions/subscribers.mjs')).default;
 const { handler: submission } = await import('../netlify/functions/submission-created.mjs');
 
 async function body(req) { const c = []; for await (const x of req) c.push(x); return Buffer.concat(c); }
@@ -25,12 +26,13 @@ createServer(async (req, res) => {
     const request = () => new Request(u, { method: req.method, headers: req.headers, body: raw });
     let m;
     if ((m = u.pathname.match(/^\/api\/leads(?:\/([^/]+))?\/?$/))) return send(res, await leads(request(), { params: m[1] ? { id: decodeURIComponent(m[1]) } : {} }));
+    if ((m = u.pathname.match(/^\/api\/subscribers(?:\/([^/]+))?\/?$/))) return send(res, await subs(request(), { params: m[1] ? { email: m[1] } : {} }));
     if (u.pathname.startsWith('/api/check')) return send(res, await check(request(), {}));
     if (req.method === 'POST' && String(req.headers['content-type']).includes('application/x-www-form-urlencoded')) {
       const data = Object.fromEntries(new URLSearchParams(raw.toString()));
       const r = await submission({ body: JSON.stringify({ payload: { form_name: data['form-name'], data, created_at: new Date().toISOString(), id: Math.random().toString(36).slice(2, 10) } }) });
       console.log('form', data['form-name'], '→', r.body);
-      res.writeHead(303, { location: '/thanks/' }); return res.end();
+      res.writeHead(200, { 'content-type': 'text/plain' }); return res.end('ok');
     }
     let p = normalize(decodeURIComponent(u.pathname)).replace(/^(\.\.[/\\])+/, '');
     let f = join(ROOT, p);

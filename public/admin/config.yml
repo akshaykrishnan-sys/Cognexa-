@@ -153,6 +153,17 @@ collections:
           - { label: 'Supporting line', name: s, widget: text }
           - *tags
           - { label: 'Method steps (labels)', name: path, widget: list, summary: '{{fields.text}}', fields: [ { label: Step, name: text, widget: string } ] }
+      - label: 'Showreel video (optional)'
+        name: video
+        widget: object
+        required: false
+        collapsed: true
+        hint: 'Paste a YouTube or Vimeo link, or upload an MP4 (under 20 MB). Nothing shows until a link is set.'
+        fields:
+          - { label: 'Video link or MP4', name: url, widget: string, required: false }
+          - { label: 'Poster image', name: poster, widget: image, required: false }
+          - { label: Title, name: title, widget: string, required: false, default: Showreel }
+          - { label: Caption, name: caption, widget: string, required: false }
       - { label: 'Problem heading', name: problemH, widget: string }
       - { label: 'Problems', name: pains, widget: list, summary: '{{fields.title}}', fields: [ { label: Title, name: title, widget: string }, { label: Text, name: text, widget: text } ] }
       - { label: 'How we investigate (5 steps)', name: steps, widget: list, max: 5, summary: '{{fields.text}}', fields: [ { label: Step, name: text, widget: string } ] }
@@ -302,6 +313,25 @@ collections:
           - { label: 'Reassurance line', name: ctaSub, widget: string }
           - { label: 'Footer tagline', name: tagline, widget: string }
           - { label: 'Domain shown in footer', name: domainLabel, widget: string }
+          - { label: 'Booking calendar link (Cal.com, Calendly or HubSpot)', name: bookingUrl, widget: string, required: false, hint: 'When set, the contact and thank-you pages offer instant booking.' }
+          - label: 'Founders film (About page)'
+            name: foundersVideo
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - { label: 'Video link or MP4', name: url, widget: string, required: false, hint: 'YouTube, Vimeo or an uploaded MP4. Hidden until set.' }
+              - { label: 'Poster image', name: poster, widget: image, required: false }
+              - { label: Caption, name: caption, widget: string, required: false }
+          - label: Analytics
+            name: analytics
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - { label: 'Plausible domain (cookie-free)', name: plausibleDomain, widget: string, required: false, hint: 'e.g. cognexadigital.com' }
+              - { label: 'Google Analytics 4 ID', name: ga4Id, widget: string, required: false, hint: 'e.g. G-XXXXXXX. GA4 needs a cookie banner in the UK and EU.' }
+          - { label: 'Show the newsletter sign-up in the footer', name: newsletter, widget: boolean, default: true }
           - { label: 'UK phone (as shown)', name: phoneUK, widget: string }
           - { label: 'UK phone (dialling, +44…)', name: telUK, widget: string }
           - { label: 'India phone (as shown)', name: phoneIN, widget: string }

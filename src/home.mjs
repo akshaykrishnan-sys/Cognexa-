@@ -131,7 +131,7 @@ export function home() {
   <div class="wrap">
     <p class="mono c-muted rv">Worked with</p>
     <h2 id="cl-h" class="rv" style="--d:1">Organisations our team<br><span style="color:var(--muted-2)">has worked with.</span></h2>
-    <div class="cgrid">
+    <div class="cgrid" data-mcollapse="6">
       ${clients.map(([id, n, ctx], i) => `<div class="client rv" style="--d:${i % 4}"><span class="n">${String(i + 1).padStart(2, '0')}</span><div class="lh"><img src="${img(id)}" alt="${esc(n)} logo" loading="lazy"></div><span class="nm">${esc(n.toUpperCase())}</span>${ctx ? `<span class="ctx">${esc(ctx)}</span>` : ''}</div>`).join('')}
     </div>
     <p class="fine">${esc(CL.note)}</p>
@@ -144,7 +144,7 @@ export function home() {
     <div class="it-head"><div><p class="mono c-muted rv">Start with your industry</p>
     <h2 id="it-h" class="rv" style="--d:1">Same behavioural science.<br><span style="color:var(--muted-2)">Different pause.</span></h2></div>
     <a class="link rv" href="/industries/">Compare all five industries ${arr}</a></div>
-    <div class="it-grid">
+    <div class="it-grid mscroll">
       ${IND.map(([s, n, im, , q, pause, change], i) => `<a class="itile rv" style="--d:${i}" href="/industries/${s}/"><div class="im"><img src="${img(im)}" alt="" loading="lazy"></div><div class="bd"><p class="k">${esc(n)}</p><h3>${esc(q)}</h3><dl><dt>Typical pause</dt><dd>${esc(pause)}</dd><dt>What we change</dt><dd>${esc(change)}</dd></dl><span class="go">See the playbook ${arr}</span></div></a>`).join('')}
     </div>
   </div>
@@ -178,7 +178,7 @@ export function home() {
         <p class="serif rv" style="--d:1">we investigate what’s driving the outcome.</p>
         <div class="audit-meter" data-meter="#stages" aria-hidden="true"><span></span></div>
       </div>
-      <div id="stages">
+      <div id="stages" data-mcollapse="2" data-mc-sel=".stage">
         ${stages.map(([id, k, h, ps, on], i) => `${i ? '<p class="flow" aria-hidden="true">↓</p>' : ''}<article class="stage rv"><div class="crop rv-img"><img src="${img(id)}" alt="" loading="lazy"></div><div><span class="lbl${on ? ' on' : ''}">${k.toUpperCase()}</span><h3>${esc(h)}</h3>${ps.map(p => `<p>${esc(p)}</p>`).join('')}</div></article>`).join('\n        ')}
       </div>
     </div>
@@ -193,11 +193,11 @@ export function home() {
 <section class="sec systems bg-paper" aria-labelledby="sy-h">
   <div class="wrap">
     <h2 id="sy-h"><span class="a rv">One diagnostic layer.</span><span class="b rv" style="--d:1">Three intervention systems.</span></h2>
-    <div class="panels">
+    <div class="panels mscroll">
       ${systems.map(([id, t, p, , href], i) => `<a class="panel rv" style="--d:${i}" href="${href}"><img class="par" data-par="0.05" src="${img(id)}" alt="" loading="lazy"><div class="cap"><h3>${t.toUpperCase()}</h3><p>${esc(p)}</p></div></a>`).join('')}
     </div>
     <div class="layer rv"><i></i>Behavioural science runs across all three as an additional way of seeing the problem.</div>
-    <div class="caps">
+    <div class="caps mobile-hide">
       ${systems.map(([, t, , list, href], i) => `<div class="rv" style="--d:${i}"><ul>${list.map(l => `<li>${esc(l)}</li>`).join('')}</ul><a class="link" href="${href}">Explore ${t} ${arr}</a></div>`).join('')}
     </div>
   </div>
@@ -208,7 +208,7 @@ export function home() {
   <div class="wrap">
     <h2 id="ad-h" class="rv">We ask different questions before we build the answer.</h2>
     <div class="adv-grid">
-      <div class="pairs">
+      <div class="pairs" data-mcollapse="2" data-mc-sel=".pair">
         ${pairs.map(([q, a], i) => `${i ? '<div class="sep" aria-hidden="true">/</div>' : ''}<div class="pair rv"><p class="q">${esc(q)}</p><span class="chip">We also ask:</span><p class="a">${esc(a)}</p></div>`).join('')}
       </div>
       <div class="observer rv-img"><img src="${img('25:155')}" alt="A man looking thoughtfully out of a window, with an eye-tracking cue" loading="lazy"></div>
@@ -224,7 +224,7 @@ export function home() {
       <h2 id="rc-h" class="rv">Sometimes the right answer is <span class="c-amberl">smaller than the brief.</span></h2>
       <div class="scope io">${scope}</div>
     </div>
-    <div class="recon">
+    <div class="recon mscroll">
       <div class="rv"><h3>You may not need more leads.</h3><p>The opportunity may sit after acquisition.</p></div>
       <div class="rv" style="--d:1"><h3>You may not need another platform.</h3><p>The constraint may sit in the process around it.</p></div>
       <div class="rv" style="--d:2"><h3>You may not need more automation.</h3><p>The workflow itself may need reconsidering first.</p></div>
@@ -265,7 +265,7 @@ export function home() {
   <div class="wrap">
     <p class="mono c-grey2 rv">What we measure</p>
     <h2 id="oc-h" class="rv" style="--d:1">Outcomes over outputs.<br><span class="c-grey2">Measured where behaviour shows up.</span></h2>
-    <div class="ogrid">
+    <div class="ogrid" data-mcollapse="3">
       ${outcomes.map(([n, t, p], i) => `<div class="ocell rv" style="--d:${i % 3}"><div><p class="num-w">${t}</p></div><div><h3>${p.split('. ')[1].replace('.', '')}</h3><p>${p.split('. ')[0]}</p></div></div>`).join('')}
     </div>
     <p class="fine2">One behaviour, one baseline, agreed before any work starts. <a href="/case-studies/checkout-trust-gap-closed/">See how it works in a full case ${arr}</a></p>

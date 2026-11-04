@@ -79,6 +79,8 @@ input[type=password],input[type=search],input[type=text],select,textarea{width:1
   <h2 style="margin:40px 0 0;font-weight:500">Hesitation check</h2>
   <p style="color:var(--muted);margin:4px 0 0">Anonymous results from <a href="/check/">/check/</a>. No personal data is stored.</p>
   <div class="stats" id="stats"></div>
+  <h2 style="margin:40px 0 0;font-weight:500">Newsletter</h2>
+  <div class="bar"><span id="subs" style="font-size:18px">Loading subscribers…</span><button class="btn ghost" id="subcsv" type="button">Export subscribers CSV</button></div>
 </main>
 
 <script>
@@ -110,11 +112,16 @@ input[type=password],input[type=search],input[type=text],select,textarea{width:1
     a.href = url; a.download = 'cognexa-leads-' + new Date().toISOString().slice(0, 10) + '.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 
+  $('#subcsv').addEventListener('click', async () => {
+    const r = await api('/api/subscribers?format=csv'); const url = URL.createObjectURL(await r.blob()); const a = document.createElement('a');
+    a.href = url; a.download = 'cognexa-subscribers.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
   async function load() {
     const d = await (await api('/api/leads')).json();
     Object.assign(state, d);
     $('#login').hidden = true; $('#app').hidden = false; $('#logout').hidden = false;
     renderTiles(); renderList(); renderDetail();
+    api('/api/subscribers').then(r => r.json()).then(d => { $('#subs').textContent = d.total + (d.total === 1 ? ' subscriber' : ' subscribers'); }).catch(() => { $('#subs').textContent = 'No subscribers yet.'; });
     api('/api/check/stats').then(r => r.json()).then(renderStats).catch(() => { $('#stats').innerHTML = '<p class="empty">No hesitation-check data yet.</p>'; });
   }
   function renderTiles() {

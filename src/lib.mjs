@@ -11,6 +11,7 @@ export const arr = '<span class="arr" aria-hidden="true">→</span>';
 export const withArr = (s) => esc(s.replace(/\s*→\s*$/, '')) + ' ' + arr;
 
 const S = readJSON('settings/site.json');
+export const SETTINGS = S;
 export const SITE = { name: S.name, url: S.url, phoneUK: S.phoneUK, telUK: S.telUK, phoneIN: S.phoneIN, telIN: S.telIN, tagline: S.tagline, domainLabel: S.domainLabel };
 
 export const SERVICES = [
@@ -88,6 +89,7 @@ export function footer({ fit = false } = {}) {
       <div><p class="mono-s">Company</p><a href="/about/">About us</a><a href="/case-studies/">Case studies</a><a href="/thinking/">Thinking</a><a href="/contact/">Contact</a></div>
       <div><p class="mono-s">Start here</p><a href="/contact/">${CTA}</a><a href="/check/">2-minute hesitation check</a><a href="/thinking/why-shoppers-hesitate/">Read: Why shoppers hesitate</a><p class="ftr-note">${CTA_SUB}</p></div>
     </nav>
+    ${S.newsletter ? `<div class="ftr-news-w"><form class="ftr-news" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/?n=1"><input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave empty <input name="bot-field"></label></p><div><p class="mono-s">Thinking, by email</p><p class="ftr-note">One short note a month on how people decide. No spam, unsubscribe any time.</p></div><label class="sr" for="nl-email">Work email</label><input id="nl-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email"><button class="btn" type="submit">Subscribe</button></form><p class="form-ok ftr-ok" role="status">You are subscribed. The next note arrives at the start of the month.</p></div>` : ''}
     <div class="ftr-base">
       <p class="tl">${SITE.tagline}</p>
       <p class="of"><span>London, UK&nbsp; <a href="tel:${SITE.telUK}">${SITE.phoneUK}</a></span><span>Bangalore, India&nbsp; <a href="tel:${SITE.telIN}">${SITE.phoneIN}</a></span><span><a href="/">${SITE.domainLabel}</a></span><span><a href="/privacy/">Privacy policy</a></span></p>
@@ -123,9 +125,10 @@ ${ldTag}<meta name="theme-color" content="#f3eee6">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css?v=${V_CSS}">
 <script defer src="/assets/js/site.js?v=${V_JS}"></script>
+${S.analytics?.plausibleDomain ? `<script defer data-domain="${esc(S.analytics.plausibleDomain)}" src="https://plausible.io/js/script.outbound-links.js"></script>` : ''}${S.analytics?.ga4Id ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(S.analytics.ga4Id)}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${esc(S.analytics.ga4Id)}',{anonymize_ip:true});</script>` : ''}
 </head>
 <body>
 ${header(active)}
@@ -133,7 +136,23 @@ ${header(active)}
 ${body}
 </main>
 ${footer({ fit: fitFooter })}
+${path === '/contact/' ? '' : `<a class="mcta" href="/contact/">${esc(S.cta)} ${arr}</a>`}
 </body>
 </html>
 `;
+}
+
+/** Video slot: a self-hosted MP4, or a YouTube/Vimeo link loaded only when the visitor presses play. Renders nothing until a URL is set in the CMS. */
+export function videoBlock(v, { label = 'Watch', dark = true } = {}) {
+  if (!v || !v.url) return '';
+  const u = String(v.url).trim();
+  const yt = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+  const vm = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  const poster = v.poster ? img(v.poster) : '';
+  const cap = v.caption ? `<figcaption>${esc(v.caption)}</figcaption>` : '';
+  if (yt || vm) {
+    const src = yt ? `https://www.youtube-nocookie.com/embed/${yt[1]}?autoplay=1&rel=0` : `https://player.vimeo.com/video/${vm[1]}?autoplay=1&dnt=1`;
+    return `<figure class="vblock${dark ? ' on-dark' : ''}"><button class="vfacade" type="button" data-embed="${esc(src)}" aria-label="${esc(label)}: ${esc(v.title || 'video')}">${poster ? `<img src="${poster}" alt="" loading="lazy">` : ''}<span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span><span class="vlabel">${esc(label)}${v.title ? ` · ${esc(v.title)}` : ''}</span></button>${cap}</figure>`;
+  }
+  return `<figure class="vblock${dark ? ' on-dark' : ''}"><video controls playsinline preload="none"${poster ? ` poster="${poster}"` : ''}><source src="${esc(u)}" type="video/mp4">${v.captions ? `<track kind="captions" src="${esc(v.captions)}" srclang="en" label="English" default>` : ''}</video>${cap}</figure>`;
 }

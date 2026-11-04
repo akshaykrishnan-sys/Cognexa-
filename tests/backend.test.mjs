@@ -68,3 +68,13 @@ test('lead fields are trimmed and length-limited', () => {
   const l = toLead({ form_name: 'fit-call', data: { name: '  A  ', email: 'x@y.co', brief: 'b'.repeat(9000) } });
   assert.equal(l.name, 'A'); assert.equal(l.brief.length, 6000);
 });
+
+test('newsletter sign-ups go to subscribers, not leads, and are de-duplicated', async () => {
+  const subs = (await import('../netlify/functions/subscribers.mjs')).default;
+  await handler(event({ email: 'Reader@Example.com' }, 'newsletter'));
+  await handler(event({ email: 'reader@example.com' }, 'newsletter'));
+  const s = await (await subs(req('/api/subscribers', { headers: AUTH }), {})).json();
+  assert.equal(s.total, 1); assert.equal(s.subscribers[0].email, 'reader@example.com');
+  assert.ok(!(await (await leads(req('/api/leads', { headers: AUTH }), {})).json()).leads.some(l => l.form === 'newsletter'));
+  assert.equal((await subs(req('/api/subscribers'), {})).status, 401);
+});

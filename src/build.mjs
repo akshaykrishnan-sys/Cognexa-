@@ -8,6 +8,7 @@ import { hub, about, contact, thinking, article, thanks, notFound } from './page
 import { SITE } from './lib.mjs';
 import { check } from './check.mjs';
 import { markItalics, unmatched } from './italics.mjs';
+import { sizeImages } from './imgsize.mjs';
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'public');
 const routes = {};
@@ -30,9 +31,9 @@ routes['/thanks/'] = thanks();
 for (const [r, html] of Object.entries(routes)) {
   const f = join(OUT, r, 'index.html');
   mkdirSync(dirname(f), { recursive: true });
-  writeFileSync(f, markItalics(html));
+  writeFileSync(f, sizeImages(markItalics(html)));
 }
-writeFileSync(join(OUT, '404.html'), markItalics(notFound()));
+writeFileSync(join(OUT, '404.html'), sizeImages(markItalics(notFound())));
 writeFileSync(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${SITE.url}/sitemap.xml\n`);
 writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${Object.keys(routes).filter(r => r !== '/thanks/').map(r => `  <url><loc>${SITE.url}${r}</loc></url>`).join('\n')}\n</urlset>\n`);
 writeFileSync(join(OUT, 'favicon.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#14161a"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="40" fill="#f4a024">c</text></svg>`);

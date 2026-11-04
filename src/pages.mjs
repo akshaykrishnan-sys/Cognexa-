@@ -1,4 +1,4 @@
-import { img, esc, arr, withArr, page, SITE , CTA, CTA_SUB, IND } from './lib.mjs';
+import { img, esc, arr, withArr, page, SITE , CTA, CTA_SUB, IND, SETTINGS, videoBlock } from './lib.mjs';
 import { ARTICLES, relatedCards } from './articles.mjs';
 
 const pad2 = (n) => String(n).padStart(2, '0');
@@ -151,6 +151,7 @@ export function about() {
        ['238:54', 'Akshay Krishnan', '02  /  NARRATIVE', 'NARRATIVE, CONTENT & GROWTH', 'tag-paper', 'c-paper', 'Leads narrative, content and growth: brand strategy, narrative systems, content ecosystems and growth campaigns.'],
        ['238:67', 'Hari Krishnan', '03  /  TECHNOLOGY', 'TECHNOLOGY & DIGITAL SYSTEMS', 'tag-grey', 'c-grey', 'Leads technology and digital systems: web platforms, product engineering, AI automation and systems integration.']].map(([im, n, t, r, tc, rc, p], i) => `<article class="founder rv" style="--d:${i}"><div class="pt"><img src="${img(im)}" alt="Portrait of ${esc(n)}" loading="lazy"><div class="ov"><span class="tag ${tc}" style="font-size:11px">${t}</span><h3>${esc(n)}</h3><p class="r ${rc}">${esc(r)}</p></div></div><p>${esc(p)}</p></article>`).join('')}
   </div>
+  ${videoBlock(SETTINGS.foundersVideo, { label: 'Meet the founders' })}
   <div class="band rv"><div><h3>Behaviour. Narrative.<br><span class="c-amber">Technology.</span></h3><p>Cognexa lives where they meet.</p></div>
     <svg width="320" height="262" viewBox="0 0 320 262" fill="none" aria-hidden="true" style="max-width:100%"><circle cx="110" cy="90" r="80" fill="rgba(245,166,36,.07)" stroke="rgba(245,166,36,.8)"/><circle cx="210" cy="90" r="80" fill="rgba(243,238,230,.07)" stroke="rgba(243,238,230,.8)"/><circle cx="160" cy="172" r="80" fill="rgba(179,181,190,.07)" stroke="rgba(179,181,190,.8)"/><circle cx="160" cy="118" r="20" stroke="#f5a624"/><circle cx="160" cy="118" r="3" fill="#f5a624"/></svg>
   </div>
@@ -219,7 +220,7 @@ export function contact() {
   <p class="secl rv" style="color:#595957">01&nbsp;&nbsp;/&nbsp;&nbsp;BOOK</p><h2 class="h-sec-s rv" style="--d:1;margin-top:12px">Pick a time. Tell us the brief.</h2>
   <div class="bcols" style="margin-top:48px">
     <div class="bcard rv">
-      <p class="k">STEP 1&nbsp;&nbsp;/&nbsp;&nbsp;CHOOSE A TIME</p>
+      <p class="k">STEP 1&nbsp;&nbsp;/&nbsp;&nbsp;CHOOSE A TIME</p>${SETTINGS.bookingUrl ? `<a class="live-cal" href="${esc(SETTINGS.bookingUrl)}" target="_blank" rel="noopener">See live availability and book instantly ${arr}</a>` : ''}
       <div class="tgl" data-group data-target="#f-office" data-tz="#tz" role="group" aria-label="Office">
         <button aria-pressed="true" data-value="London, UK" data-tz="Times shown in UK time (GMT)">London, UK</button>
         <button aria-pressed="false" data-value="Bangalore, India" data-tz="Times shown in India time (IST)">Bangalore, India</button>
@@ -242,7 +243,7 @@ export function contact() {
         <input type="hidden" name="service" id="f-service" value="">
         <div class="two"><label>Name<input name="name" required autocomplete="name"></label><label>Work email<input name="email" type="email" required autocomplete="email"></label></div>
         <label>Organisation (optional)<input name="organisation" autocomplete="organization"></label>
-        <label>The brief, as you see it<textarea name="brief" required placeholder="What is happening, what you have tried, and what would count as a win."></textarea></label>
+        <label>The brief, as you see it <span style="font-weight:400;opacity:.7">(optional)</span><textarea name="brief" placeholder="What is happening, what you have tried, and what would count as a win."></textarea></label>
         <div class="bprompts" aria-label="Start from an example"><span class="mono-s">Start from an example</span>${['Traffic is steady but checkout completion is flat.', 'Demos happen, but deals stall at the committee.', 'We launched a new tool and teams are not using it.'].map(t => `<button type="button" data-prompt="${esc(t)}">${esc(t)}</button>`).join('')}</div>
         <div><span class="mono-s" style="color:#595957">Which area is closest?</span><div class="achips" data-group data-target="#f-area" role="group" aria-label="Area">${['Growth', 'Experience', 'Transformation', 'Not sure'].map(t => `<button type="button" aria-pressed="${t === 'Not sure'}">${t}</button>`).join('')}</div></div>
         <p class="fn">By booking, you agree to us contacting you about this call. See our <a href="/privacy/">privacy policy</a>.</p>
@@ -342,7 +343,8 @@ ${relatedCards(['what-should-ai-speed-up', 'five-second-rule-homepage'])}
 }
 
 export function thanks() {
-  const body = `<section class="sec bg-ink" style="min-height:70vh"><div class="wrap"><p class="mono c-amber rv">Received</p><h1 class="t-display rv" style="--d:1;font-size:clamp(60px,7vw,104px);margin-top:24px">Thank you.<br><span class="c-amber">We’ll be in touch.</span></h1><p class="rv" style="--d:2;font-size:20px;color:var(--grey);margin-top:28px;max-width:560px">We read every brief before we reply. Expect a note from us within one working day.</p><a class="btn rv" style="--d:3;margin-top:36px" href="/">Back to home ${arr}</a></div></section>`;
+  const body = `<section class="sec bg-ink" style="min-height:70vh"><div class="wrap"><p class="mono c-amber rv">Received</p><h1 class="t-display rv" style="--d:1;font-size:clamp(60px,7vw,104px);margin-top:24px">Thank you.<br><span class="c-amber">We’ll be in touch.</span></h1><p class="rv" style="--d:2;font-size:20px;color:var(--grey);margin-top:28px;max-width:560px">We read every brief before we reply. Expect a note from us within one working day.</p>${SETTINGS.bookingUrl ? `<a class="btn rv" style="--d:3;margin-top:36px" href="${esc(SETTINGS.bookingUrl)}" target="_blank" rel="noopener">Pick your slot now ${arr}</a> ` : ''}<a class="${SETTINGS.bookingUrl ? 'link' : 'btn'} rv" style="--d:3;margin-top:36px;margin-left:${SETTINGS.bookingUrl ? '24px' : '0'}" href="/">Back to home ${arr}</a></div></section>
+<script>if(/[?&]n=1/.test(location.search)){var h=document.querySelector('h1');if(h)h.innerHTML='You are subscribed.';}</script>`;
   return page({ title: 'Thank you', desc: 'Thanks for your brief.', path: '/thanks/', body });
 }
 
