@@ -8,14 +8,14 @@ export const subSlug = (n) => n.toLowerCase().replace(/&/g, 'and').replace(/[()]
 const faqLd = (items) => ({ '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
 const tagCls = ['tag-blue', 'tag-amber', 'tag-rust'];
 
-function oHero({ crumb, h, pathNodes, legend = true, foot = 'SAME DECISION. DIFFERENT CONTEXT.', pw, ink, ctaHref = '/contact/', secondary = ['See how we investigate', '/approach/'] }) {
+function oHero({ crumb, h, pathNodes, legend = true, foot = 'SAME DECISION. DIFFERENT CONTEXT.', pw, ink, ctaHref = '/contact/', secondary = null }) {
   return `<section class="ohero${ink ? ' ink' : ''}" aria-labelledby="hh">
   <div class="wrap">
     <p class="crumb mono">${crumb}</p>
     <div class="copy">
       <h1 id="hh"><span class="k rv" style="display:block">${esc(h.k)}</span><span class="t rv" style="--d:1"><span>${esc(h.t1)}</span><span class="c-amber">${esc(h.t2)}</span></span></h1>
       <p class="s rv" style="--d:2">${esc(h.s)}</p>
-      <div class="ctas rv" style="--d:3"><a class="btn" href="${ctaHref}">${withArr(CTA)}</a><a class="link" href="${secondary[1]}">${esc(secondary[0])}</a></div>
+      <div class="ctas rv" style="--d:3"><a class="btn" href="${ctaHref}">${withArr(CTA)}</a>${secondary ? `<a class="link" href="${secondary[1]}">${esc(secondary[0])}</a>` : ''}</div>
     </div>
     <div class="ophoto io">
       <img class="par" data-par="0.05" src="${img(h.img)}" alt="${esc(`A person mid-decision, annotated with the questions behind it: ${h.tags.join(', ')}`)}" fetchpriority="high">

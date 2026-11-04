@@ -58,13 +58,13 @@ export function hub() {
     <div class="bd"><p class="k">DISCIPLINE ${pad2(disc)}</p><h3>${esc(n)}</h3><p>${esc(d)}</p><hr><div><span class="chip">We also ask:</span><p class="aq">${esc(q)}</p></div>
     <div class="tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}<span class="more">+5</span></div>
     <a class="link" href="/services/${slug}/">Explore ${esc(n)} ${arr}</a></div></article>`; }).join('')}
-    ${S.sys === 'transformation' ? `<aside class="lnote rv" style="--d:2"><div><i></i><p class="k">ONE LAYER, EVERY SERVICE</p><p>Behavioural science runs across all three as an additional way of seeing the problem.</p></div><a class="link" href="/approach/">Explore our approach ${arr}</a></aside>` : ''}
+    ${S.sys === 'transformation' ? `<aside class="lnote rv" style="--d:2"><div><i></i><p class="k">ONE LAYER, EVERY SERVICE</p><p>Behavioural science runs across all three as an additional way of seeing the problem.</p></div></aside>` : ''}
   </div>
 </div></section>`).join('\n');
 
   const fq = [['140:46', 'SIGNAL', 'What changed, or isn’t changing?'], ['140:58', 'SYSTEM', 'Where is it happening?'], ['140:70', 'BEHAVIOUR', 'What are people actually doing?', 1], ['140:83', 'CONTEXT', 'What is shaping that behaviour?'], ['140:102', 'EVIDENCE', 'What supports the hypothesis?']];
   const questions = `<section class="sec bg-black" id="questions"><div class="wrap">
-  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap"><h2><span class="rv" style="display:block;font-size:clamp(36px,3.9vw,56px);line-height:1.1">Different services.</span><span class="rv t-display c-bluel" style="--d:1;display:block;font-size:clamp(56px,7.2vw,104px);line-height:1">The same first questions.</span></h2><a class="link rv" href="/approach/">See our approach ${arr}</a></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap"><h2><span class="rv" style="display:block;font-size:clamp(36px,3.9vw,56px);line-height:1.1">Different services.</span><span class="rv t-display c-bluel" style="--d:1;display:block;font-size:clamp(56px,7.2vw,104px);line-height:1">The same first questions.</span></h2></div>
   <div class="fq" style="margin-top:80px">${fq.map(([im, k, h, on], i) => `<div class="rv" style="--d:${i}"><div class="tl"><i${on ? ' class="on"' : ''}></i><s></s></div><div class="crop rv-img"><img src="${img(im)}" alt="" loading="lazy"></div><span class="lb${on ? ' on' : ''}">${pad2(i + 1)}  /  ${k}</span><h3>${esc(h)}</h3></div>`).join('')}</div>
 </div></section>`;
 
@@ -206,33 +206,6 @@ export function about() {
   return page({ title: 'About', desc: 'Cognexa Digital: strategy, design, growth and technology shaped by applied behavioural science. Meet the founders.', path: '/about/', active: 'about', body });
 }
 
-/* ======================= PRINCIPLES ======================= */
-export function principles() {
-  const P = [
-    ['272:68', 'The 5-second rule', 'Value and next step obvious immediately.', 'People decide whether to stay almost at once. If the point and the next move are not clear in five seconds, most never scroll.', ['The headline states the outcome in plain words.', 'One clear next step sits in view on every page.']],
-    ['272:84', 'Cognitive load', 'Minimal choices above the fold. One dominant action.', 'Every extra option costs attention. A tired mind facing many choices usually does the easiest thing, which is nothing.', ['No more than two actions above the fold.', 'One button always dominates the rest.']],
-    ['272:100', 'Anchoring', 'Show outcome ranges early.', 'The first number people see frames everything after it. A realistic range, shown early, sets honest expectations before any conversation.', ['Outcome and price ranges appear early on the page.', 'Ranges replace vague promises.']],
-    ['272:116', 'Loss aversion', 'Frame delay as missed growth.', 'A loss weighs more than an equal gain. We use that with care: the cost of waiting is shown as growth missed, never as a threat.', ['Language names the growth left on the table.', 'No alarm, no false urgency.']],
-    ['272:132', 'Foot-in-the-door', 'A low-friction ask before a call or a budget talk.', 'A small first yes makes a bigger one easier. We offer a light step first, so the person chooses to go further.', ['A short brief chooser comes before any form.', 'A 15-minute fit call comes before a proposal.']],
-    ['272:148', 'Implementation intention', '“When should we contact you?” time selectors.', 'People follow through when they decide when and how. Naming a time turns a vague wish into a plan.', ['Forms ask for a time, not just details.', 'Booking lets people pick a slot at once.']],
-  ];
-  const body = `
-<section class="sec bg-ink"><div class="wrap" style="display:grid;grid-template-columns:minmax(0,680px) minmax(0,560px);justify-content:space-between;gap:48px 72px;align-items:center" data-grid="prh">
-  <div><p class="mono c-grey2 rv">The six principles</p><h1 class="t-display rv" style="--d:1;font-size:clamp(64px,7.2vw,104px);margin-top:22px">Six principles.<br><span class="c-grey2">Running through every page.</span></h1><p class="rv" style="--d:2;font-size:21px;line-height:1.48;color:var(--grey-2);margin-top:22px">Every page we design follows the same six rules of behaviour, so the next step always feels obvious and nothing asks for more effort than it should.</p></div>
-  <div class="prin-im rv-img" style="border-radius:16px;overflow:hidden"><img src="${img('272:52')}" alt="A tangled 3D knot — the problem before it is untangled" fetchpriority="high"></div>
-</div></section>
-${P.map(([im, h, l, d, how], i) => { const dark = i % 2 === 1; return `<section class="sec ${dark ? 'bg-ink' : 'bg-paper'}"><div class="wrap prin${dark ? ' rev' : ''}">
-  ${dark ? `<div class="im rv-img"><img src="${img(im)}" alt="${esc(`Illustration for the principle: ${h}`)}" loading="lazy"></div>` : ''}
-  <div><p class="mono rv ${dark ? 'c-grey2' : 'c-muted'}">${pad2(i + 1)}&nbsp;&nbsp;/&nbsp;&nbsp;06</p><h2 class="rv" style="--d:1">${esc(h)}</h2><p class="l rv" style="--d:2">${esc(l)}</p><p class="d rv ${dark ? 'c-grey2' : 'c-muted'}" style="--d:3">${esc(d)}</p>
-  <div class="how rv" style="--d:4"><p class="mono-s c-amber">How we apply it</p><ul>${how.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></div>
-  ${dark ? '' : `<div class="im rv-img"><img src="${img(im)}" alt="${esc(`Illustration for the principle: ${h}`)}" loading="lazy"></div>`}
-</div></section>`; }).join('\n')}
-<section class="sec bg-paper"><div class="wrap">
-  <p class="mono c-muted rv">At a glance</p><h2 class="h-sec rv" style="--d:1;margin-top:16px;font-size:clamp(48px,5vw,72px)">One rule per page, every page.</h2>
-  <div class="glance" style="margin-top:56px">${P.map(([, h, l], i) => `<div class="rv" style="--d:${i % 3}"><p class="mono-s c-muted">${pad2(i + 1)}</p><h3>${esc(h)}</h3><p>${esc(l)}</p></div>`).join('')}</div>
-</div></section>`;
-  return page({ title: 'Behavioural principles', desc: 'Six principles of behaviour that run through every page we design: the 5-second rule, cognitive load, anchoring, loss aversion, foot-in-the-door and implementation intention.', path: '/approach/', active: 'approach', body });
-}
 
 /* ======================= CONTACT ======================= */
 export function contact() {

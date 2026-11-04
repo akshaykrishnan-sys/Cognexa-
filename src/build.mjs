@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { home } from './home.mjs';
 import { vertical, service, VERTS, SVCS, industriesLanding, caseStudies, caseStudy, privacy, CASES } from './inner.mjs';
 import { ARTICLES, articlePage } from './articles.mjs';
-import { hub, about, principles, contact, thinking, article, thanks, notFound } from './pages.mjs';
+import { hub, about, contact, thinking, article, thanks, notFound } from './pages.mjs';
 import { SITE } from './lib.mjs';
 import { check } from './check.mjs';
 import { markItalics, unmatched } from './italics.mjs';
@@ -21,7 +21,6 @@ for (const c of CASES.filter(x => x.full)) routes[`/case-studies/${c.slug}/`] = 
 routes['/privacy/'] = privacy();
 for (const a of ARTICLES) routes[`/thinking/${a.slug}/`] = articlePage(a);
 routes['/about/'] = about();
-routes['/approach/'] = principles();
 routes['/contact/'] = contact();
 routes['/thinking/'] = thinking();
 routes['/thinking/why-shoppers-hesitate/'] = article();

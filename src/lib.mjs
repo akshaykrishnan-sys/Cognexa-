@@ -53,7 +53,7 @@ function header(active) {
       <div class="ddw" data-dd><a href="/industries/" class="ddt"${cur('industries')} aria-haspopup="true" aria-expanded="false" aria-controls="dd-ind">Industries ${chev}</a>${indPanel}</div>
       <div class="ddw" data-dd><a href="/services/" class="ddt"${cur('services')} aria-haspopup="true" aria-expanded="false" aria-controls="dd-svc">Services ${chev}</a>${svcPanel}</div>
       <a href="/about/"${cur('about')}>About us</a>
-      <a href="/approach/"${cur('approach')}>Behavioural principles</a>
+      
       <a href="/contact/"${cur('contact')}>Contact</a>
       <a href="/thinking/"${cur('thinking')}>Thinking</a>
     </nav>
@@ -66,7 +66,6 @@ function header(active) {
   ${mrow('Industries', '/industries/', 'industries', IND_DD.map(([s, n], i) => `<a href="/industries/${s}/"><small>${String(i + 1).padStart(2, '0')}</small>${n}</a>`).join(''))}
   ${mrow('Services', '/services/', 'services', SVC_DD.flatMap(([, items]) => items).map(([s, n], i) => `<a href="/services/${s}/"><small>${String(i + 1).padStart(2, '0')}</small>${n}</a>`).join(''))}
   ${mrow('About us', '/about/', 'about')}
-  ${mrow('Behavioural principles', '/approach/', 'approach')}
   ${mrow('Contact', '/contact/', 'contact')}
   ${mrow('Thinking', '/thinking/', 'thinking')}
   <div class="mm-act"><a class="btn" href="/contact/">${CTA} ${arr}</a><a class="mm-chk" href="/check/">Take the 2-minute hesitation check ${arr}</a><p class="mono-s c-grey2">London, UK&nbsp;&nbsp; Bangalore, India</p><a class="mm-priv" href="/privacy/">Privacy policy</a></div>
@@ -86,7 +85,7 @@ export function footer({ fit = false } = {}) {
     <nav class="ftr-map" aria-label="Site map">
       <div><p class="mono-s">Industries</p>${IND.map(([s, n]) => `<a href="/industries/${s}/">${n}</a>`).join('')}<a href="/industries/">All industries</a></div>
       <div><p class="mono-s">Services</p>${SVC_DD.flatMap(([, items]) => items).map(([s, n]) => `<a href="/services/${s}/">${n}</a>`).join('')}</div>
-      <div><p class="mono-s">Company</p><a href="/about/">About us</a><a href="/approach/">Behavioural principles</a><a href="/case-studies/">Case studies</a><a href="/thinking/">Thinking</a><a href="/contact/">Contact</a></div>
+      <div><p class="mono-s">Company</p><a href="/about/">About us</a><a href="/case-studies/">Case studies</a><a href="/thinking/">Thinking</a><a href="/contact/">Contact</a></div>
       <div><p class="mono-s">Start here</p><a href="/contact/">${CTA}</a><a href="/check/">2-minute hesitation check</a><a href="/thinking/why-shoppers-hesitate/">Read: Why shoppers hesitate</a><p class="ftr-note">${CTA_SUB}</p></div>
     </nav>
     <div class="ftr-base">

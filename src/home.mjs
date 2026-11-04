@@ -184,7 +184,7 @@ export function home() {
     </div>
     <div class="principle">
       <div class="rv"><p>The goal is a clear diagnosis.</p><p class="serif">Understanding what’s actually driving the outcome.</p></div>
-      <a class="link rv" style="--d:1;flex:none" href="/approach/">Explore our approach ${arr}</a>
+      
     </div>
   </div>
 </section>
