@@ -1,178 +1,143 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0b1020;--cobalt:#2f5bea;--deep:#13204d;--amber:#f5a624;--copper:#e0743a;--paper:#f3eee6}
 *{box-sizing:border-box;margin:0}
-html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink)}
-#s{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:Outfit,sans-serif;color:#fff;background:var(--ink)}
-.L{position:absolute;inset:0;opacity:0;overflow:hidden}
-.ph{position:absolute;inset:0;background-size:cover;background-position:center}
-.serif{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400}
-.mono{font-family:"JetBrains Mono",monospace;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
-.line{display:block;overflow:hidden;padding-bottom:.08em}
-.line>span{display:inline-block;will-change:transform}
-.ch{display:inline-block;will-change:transform,opacity}
-.tag{position:absolute;font-family:"JetBrains Mono",monospace;font-weight:500;font-size:34px;padding:12px 20px;white-space:nowrap}
-.panel{position:absolute;top:0;height:100%;width:640px;display:flex;align-items:center;justify-content:center}
-.panel p{font-size:96px;font-weight:500;letter-spacing:-.03em;line-height:1;text-align:center}
-.strip{position:absolute;top:0;width:384px;height:100%;overflow:hidden}
-.strip .ph{inset:-8% 0}
-.strip .tint{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.42}
-.strip .lab{position:absolute;left:34px;bottom:70px;font-size:64px;font-weight:500;letter-spacing:-.02em;text-shadow:0 6px 30px rgba(0,0,0,.45)}
-.strip .num{position:absolute;left:36px;top:64px;font-size:22px;color:rgba(255,255,255,.85)}
-canvas{position:absolute;inset:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#07090f}
+#s{position:relative;width:1920px;height:1080px;overflow:hidden;background:#07090f;font-family:Outfit,sans-serif;color:#fff}
+.sc{position:absolute;inset:0;overflow:hidden;display:none}
+.cam{position:absolute;inset:0;transform-origin:50% 50%}
+.ph{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.15)}
+.duo{position:absolute;inset:0;mix-blend-mode:color}
+.duo2{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.35}
+.tile{position:absolute;overflow:hidden}
+.blk{position:absolute}
+.T{position:absolute;left:0;right:0;text-align:center;font-weight:900;letter-spacing:-.01em;line-height:.9;text-transform:uppercase;white-space:nowrap}
+.T .c{position:absolute;left:0;right:0;mix-blend-mode:screen}
+.sub{position:absolute;left:0;right:0;text-align:center;font-weight:700;text-transform:uppercase;white-space:nowrap}
+.tr{font-family:"JetBrains Mono",monospace;font-weight:500;text-transform:uppercase}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.streak{position:absolute;left:0;right:0;height:120px}
 </style></head><body><div id="s">
-
-<!-- 1 moment -->
-<div class="L" id="moment" style="background:var(--ink)">
-  <div id="dot1" style="position:absolute;left:960px;top:300px;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--amber);box-shadow:0 0 80px 10px rgba(245,166,36,.45)"></div>
-  <div style="position:absolute;left:0;right:0;top:420px;text-align:center">
-    <span class="line" style="font-size:132px;font-weight:300;letter-spacing:-.03em;line-height:1.05" id="m1">Every decision has a</span>
-    <span class="line serif" style="font-size:260px;line-height:.95;color:var(--amber)" id="m2">moment.</span>
-  </div>
-</div>
-
-<!-- 2 pause / doubt / second thought: three colour panels -->
-<div class="L" id="pause" style="background:var(--ink)">
-  <div class="panel" id="pa" style="left:0;background:var(--amber);color:var(--ink)"><p>A pause.</p></div>
-  <div class="panel" id="pb" style="left:640px;background:var(--cobalt)"><p>A doubt.</p></div>
-  <div class="panel" id="pc" style="left:1280px;background:var(--copper)"><p>A second<br>thought.</p></div>
-</div>
-
-<!-- 3 never: a crowd of dots, one of them hesitates -->
-<div class="L" id="never" style="background:var(--ink)">
-  <canvas id="cv" width="1920" height="1080"></canvas>
-  <div style="position:absolute;left:120px;bottom:120px"><span class="line" style="font-size:104px;font-weight:300;letter-spacing:-.03em" id="n1">Most businesses never see it.</span></div>
-</div>
-
-<!-- 4 we do -->
-<div class="L" id="wedo" style="background:var(--cobalt)">
-  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span class="line serif" style="font-size:460px;line-height:1" id="wd">We do<span style="color:var(--amber)">.</span></span></div>
-</div>
-
-<!-- 5-6 read + find: one continuous shot -->
-<div class="L" id="read" style="background:var(--ink)">
-  <div id="rclip" style="position:absolute;inset:0"><div class="ph" id="rph" style="background-image:url(http://localhost:8095/assets/img/n22-17.webp);background-position:62% 35%"></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,16,32,.88) 0%,rgba(11,16,32,.5) 38%,rgba(11,16,32,0) 62%)"></div>
-    <svg id="gz" viewBox="0 0 1920 1080" style="position:absolute;inset:0" fill="none">
-      <path id="gp" d="M1180 360 C 1100 470, 1040 560, 1010 650 S 1250 520, 1560 470" stroke="#f5a624" stroke-width="4" stroke-dasharray="1 0"/>
-      <circle id="g1" cx="1180" cy="360" r="14" fill="#f5a624"/><circle id="g2" cx="1010" cy="650" r="14" fill="#f5a624"/><circle id="g3" cx="1560" cy="470" r="14" fill="#f5a624"/>
-      <g id="lock" opacity="0"><circle cx="1010" cy="650" r="210" stroke="#f5a624" stroke-width="5"/><circle cx="1010" cy="650" r="120" stroke="#f5a624" stroke-width="3"/><line x1="0" y1="650" x2="1920" y2="650" stroke="rgba(245,166,36,.6)" stroke-width="2"/><line x1="1010" y1="0" x2="1010" y2="1080" stroke="rgba(245,166,36,.6)" stroke-width="2"/></g>
-    </svg>
-    <div class="tag" id="ta" style="left:1210px;top:290px;background:var(--copper);color:#fff">Decision effort?</div>
-    <div class="tag" id="tb" style="left:780px;top:700px;background:var(--cobalt);color:#fff">Trust?</div>
-    <div class="tag" id="tc" style="left:1590px;top:410px;background:var(--amber);color:var(--ink)">Price?</div>
-    <div class="tag" id="th" style="left:1250px;top:590px;background:var(--amber);color:var(--ink);font-size:46px;padding:16px 26px">Hesitation.</div>
-  </div>
-  <div style="position:absolute;left:120px;top:300px;width:780px">
-    <p class="mono" id="rk" style="font-size:24px;color:rgba(255,255,255,.7)">What we do</p>
-    <span class="line" style="font-size:84px;font-weight:300;letter-spacing:-.025em;line-height:1.06;margin-top:22px" id="r1">We read the behaviour behind the numbers,</span>
-    <span class="line" style="font-size:84px;font-weight:300;letter-spacing:-.025em;line-height:1.06;color:var(--amber)" id="r2">find the moment people hesitate,</span>
-  </div>
-</div>
-
-<!-- 7 design it away: before / after wipe -->
-<div class="L" id="design" style="background:var(--ink)">
-  <div class="ph" id="dB" style="background-image:url(http://localhost:8095/assets/img/n362-285.webp);filter:grayscale(1) brightness(.55)"></div>
-  <div id="dAw" style="position:absolute;inset:0;clip-path:inset(0 100% 0 0)"><div class="ph" id="dA" style="background-image:url(http://localhost:8095/assets/img/n362-285.webp);filter:saturate(1.15) brightness(1.02)"></div></div>
-  <div id="dl" style="position:absolute;top:0;bottom:0;width:6px;background:var(--amber);box-shadow:0 0 40px 6px rgba(245,166,36,.6)"></div>
-  <div class="tag" id="dt1" style="left:1180px;top:330px;background:var(--copper);color:#fff">Doubt? returns</div>
-  <div class="tag" id="dt2" style="left:1320px;top:520px;background:var(--cobalt);color:#fff">Risk? delivery</div>
-  <div style="position:absolute;left:120px;bottom:130px"><span class="line serif" style="font-size:180px;line-height:1;text-shadow:0 10px 60px rgba(0,0,0,.5)" id="d1">and design it away.</span></div>
-</div>
-
-<!-- 8 across five industries -->
-<div class="L" id="across" style="background:var(--ink)"><div id="strips"></div></div>
-
-<!-- 9 payoff -->
-<div class="L" id="payoff" style="background:var(--ink)">
-  <canvas id="pv" width="1920" height="1080"></canvas>
-  <div style="position:absolute;left:160px;top:250px">
-    <span class="line" style="font-size:190px;font-weight:300;letter-spacing:-.035em;line-height:1" id="f1">Find the <span class="serif" id="fdoubt" style="color:var(--amber);font-size:230px">doubt.</span></span>
-    <span class="line serif" style="font-size:230px;line-height:1.05;margin-top:30px" id="f2">Remove it.</span>
-  </div>
-</div>
-
-<!-- 10 end card -->
-<div class="L" id="end" style="background:var(--paper)">
-  <div id="ecob" style="position:absolute;left:0;top:0;bottom:0;width:62%;background:var(--cobalt)"></div>
-  <div style="position:absolute;left:120px;top:0;bottom:0;width:1000px;display:flex;flex-direction:column;justify-content:center">
-    <span class="line" style="font-size:100px;font-weight:500;letter-spacing:-.035em;line-height:1.05;white-space:nowrap" id="e1">Book a discovery call</span>
-    <span class="line" style="font-size:100px;font-weight:300;letter-spacing:-.035em;line-height:1.05;white-space:nowrap" id="e2">with the founders.</span>
-    <p class="mono" id="e3" style="font-size:24px;margin-top:48px;color:rgba(255,255,255,.85)">cognexadigital.com · London · Bangalore</p>
-  </div>
-  <img id="elogo" src="http://localhost:8095/assets/img/n28-32.webp" style="position:absolute;left:calc(62% + 70px);top:50%;width:520px;transform:translateY(-50%)">
-  <div id="edot" style="position:absolute;right:110px;bottom:110px;width:30px;height:30px;border-radius:50%;background:var(--amber)"></div>
-</div>
+<div id="root"></div>
+<div class="flash" id="flash"></div>
 </div>
 <script>
-const TL = /*TIMELINE*/null;
-const $ = id => document.getElementById(id);
-const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), seg=(t,a,b)=>cl((t-a)/(b-a));
-const eo=x=>1-Math.pow(1-cl(x),4), eio=x=>(x=cl(x),x<.5?8*x**4:1-Math.pow(-2*x+2,4)/2), back=x=>{x=cl(x);const c=1.5;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
-const L=Object.fromEntries(TL.lines.map(l=>[l.key,l])), at=(k,f=0)=>L[k].start+L[k].dur*f;
 const IMG=n=>`http://localhost:8095/assets/img/n${n.replace(':','-')}.webp`;
-// split text lines into characters for kinetic reveals
-function split(id){const el=$(id);const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(' '));return;}const wd=document.createElement('span');wd.style.whiteSpace='nowrap';wd.style.display='inline-block';[...w].forEach(ch=>{const s=document.createElement('span');s.className='ch';s.textContent=ch;wd.appendChild(s)});f.appendChild(wd)});c.replaceWith(f)}else walk(c)})};walk(el);el._ch=[...el.querySelectorAll('.ch')];}
-['m1','m2','n1','wd','r1','r2','d1','f1','f2','e1','e2'].forEach(split);
-function reveal(id,t0,t,{dur=.55,stag=.022,dy=110}={}){const cs=$(id)._ch;cs.forEach((c,i)=>{const p=eo(seg(t,t0+i*stag,t0+i*stag+dur));c.style.transform=`translateY(${(1-p)*dy}%)`;c.style.opacity=p>0?1:0;});}
-function hide(id,t0,t,{dur=.35,stag=.012}={}){const cs=$(id)._ch;cs.forEach((c,i)=>{const p=eio(seg(t,t0+i*stag,t0+i*stag+dur));if(p>0){c.style.transform=`translateY(${-p*105}%)`;}});}
-// strips
-const STR=[['362:285','Retail','#2f5bea'],['362:292','Software','#e0743a'],['362:299','Healthcare','#2f5bea'],['362:307','Education','#f5a624'],['362:314','Finance','#e0743a']];
-$('strips').innerHTML=STR.map(([im,n,c],i)=>`<div class="strip" id="st${i}" style="left:${i*384}px"><div class="ph" id="sp${i}" style="background-image:url(${IMG(im)})"></div><div class="tint" style="background:${c}"></div><p class="num mono">0${i+1}</p><p class="lab" id="sl${i}">${n}</p></div>`).join('');
-// dot crowd
-const cv=$('cv'),cx=cv.getContext('2d');const COLS=64,ROWS=36,GX=1920/COLS,GY=1080/ROWS;const TX=41,TY=13;
-function crowd(t){const a=L.never.start-.5,b=L.wedo.start-.2;const p=eio(seg(t,a+.2,b));const z=1+5.2*p;const fx=(TX+.5)*GX,fy=(TY+.5)*GY;
- cx.setTransform(1,0,0,1,0,0);cx.fillStyle='#0b1020';cx.fillRect(0,0,1920,1080);cx.setTransform(z,0,0,z,960-fx*z+ (fx-960)*(1-p),540-fy*z+(fy-540)*(1-p));
- for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++){const tg=x===TX&&y===TY;const w=Math.sin(x*1.7+y*2.3+t*2.2)*.5+.5;
-  cx.beginPath();cx.arc((x+.5)*GX,(y+.5)*GY,tg?5.5+1.5*Math.sin(t*6):3.2,0,7);cx.fillStyle=tg?'#f5a624':`rgba(243,238,230,${.14+.12*w})`;cx.fill();
-  if(tg){cx.beginPath();cx.arc((x+.5)*GX,(y+.5)*GY,12+6*(t*1.4%1),0,7);cx.strokeStyle=`rgba(245,166,36,${.8-.8*(t*1.4%1)})`;cx.lineWidth=1.2;cx.stroke();}}}
-// particles for "doubt." dissolving
-const pv=$('pv'),px=pv.getContext('2d');let P=null;
-function particles(t){px.clearRect(0,0,1920,1080);const t0=at('payoff',.62);if(t<t0)return;if(!P){const r=$('fdoubt').getBoundingClientRect();P=[];let s=11;const rnd=()=>(s=(s*9301+49297)%233280)/233280;for(let i=0;i<900;i++)P.push([r.left+rnd()*r.width,r.top+r.height*.25+rnd()*r.height*.6,(rnd()-.3)*900,(rnd()-.7)*500,rnd()*3+1.5]);}
- const k=t-t0;for(const [x,y,vx,vy,sz] of P){const a=cl(1-k/1.6);if(a<=0)continue;px.globalAlpha=a;px.fillStyle='#f5a624';px.fillRect(x+vx*k*(.6+k),y+vy*k+260*k*k,sz,sz);}px.globalAlpha=1;}
-const SC=[['moment','moment'],['pause','pause'],['never','never'],['wedo','wedo'],['read','read'],['design','design'],['across','across'],['payoff','payoff'],['end','end']];
-const W=SC.map(([id,k],i)=>[id,i?L[k].start-.45:0,i<SC.length-1?L[SC[i+1][1]].start-.45:TL.total]);
-window.render=function(t){
- for(const [id,a,b] of W){$(id).style.opacity=(t>=a&&t<b)?1:0;}
- // 1
- {const d=back(seg(t,.15,.75));$('dot1').style.transform=`scale(${d*(1+.08*Math.sin(t*5))})`;reveal('m1',.55,t);reveal('m2',1.25,t,{stag:.05,dur:.7});
-  const e=L.pause.start-.45;hide('m1',e-.5,t);hide('m2',e-.45,t);$('dot1').style.opacity=1-seg(t,e-.4,e-.05);}
- // 2 panels slide in on each phrase, then sweep out upward
- {[['pa',.02],['pb',.33],['pc',.62]].forEach(([id,f],i)=>{const s=at('pause',f)-.18;const p=eio(seg(t,s,s+.5));const o=eio(seg(t,L.never.start-.75+i*.06,L.never.start-.35+i*.06));const el=$(id);
-   el.style.clipPath=`inset(${o*100}% 0 ${(1-p)*100}% 0)`;const q=el.querySelector('p');q.style.transform=`translateY(${(1-eo(seg(t,s+.12,s+.6)))*60}px)`;q.style.opacity=eo(seg(t,s+.12,s+.5));});}
- // 3
- if(t>=W[2][1]-.1&&t<W[2][2]+.1)crowd(t);
- reveal('n1',at('never',0)-.1,t,{stag:.018});
- // 4
- {const s=L.wedo.start-.45;reveal('wd',s+.05,t,{stag:.07,dur:.6,dy:100});$('wd').style.transform=`scale(${1.12-.12*eo(seg(t,s,s+1.4))})`;}
- // 5-6 one shot: circle reveal, gaze line, tags, then lock onto the hesitation
- {const s=L.read.start-.45,e=L.design.start-.45;const c=eio(seg(t,s,s+.9));$('rclip').style.clipPath=`circle(${c*150}% at 1010px 650px)`;
-  const zin=eio(seg(t,at('find',0)-.2,at('find',.9)));$('rph').style.transform=`scale(${1.06+.06*seg(t,s,e)+.28*zin})`;$('rph').style.transformOrigin='54% 60%';
-  $('rk').style.opacity=eo(seg(t,s+.3,s+.8));reveal('r1',at('read',0)-.15,t,{stag:.014});reveal('r2',at('find',0)-.15,t,{stag:.016});
-  const gp=$('gp'),len=gp.getTotalLength(),g=eio(seg(t,at('read',.1),at('read',.95)));gp.style.strokeDasharray=len;gp.style.strokeDashoffset=len*(1-g);
-  [['g1',.08],['g2',.45],['g3',.9]].forEach(([id,f])=>{$(id).setAttribute('r',14*back(seg(t,at('read',f),at('read',f)+.35)));});
-  [['ta',.2],['tb',.55],['tc',.95]].forEach(([id,f])=>{const p=back(seg(t,at('read',f),at('read',f)+.4));const out=seg(t,at('find',0),at('find',.3));$(id).style.opacity=cl(p)*(1-out);$(id).style.transform=`translateY(${(1-cl(p))*18}px) scale(${.9+.1*cl(p)})`;});
-  const lk=eo(seg(t,at('find',.15),at('find',.6)));$('lock').setAttribute('opacity',lk);$('lock').setAttribute('transform',`translate(1010 650) scale(${1.8-.8*lk}) translate(-1010 -650)`);
-  const h=back(seg(t,at('find',.5),at('find',.85)));$('th').style.opacity=cl(h);$('th').style.transform=`scale(${.85+.15*cl(h)})`;}
- // 7 before/after wipe as the voice says "design it away"
- {const s=L.design.start-.45;const w=eio(seg(t,at('design',0)-.1,at('design',1)+.5));$('dAw').style.clipPath=`inset(0 ${100-w*100}% 0 0)`;$('dl').style.left=`calc(${w*100}% - 3px)`;$('dl').style.opacity=w>0&&w<1?1:0;
-  $('dB').style.transform=$('dA').style.transform=`scale(${1.04+.05*seg(t,s,L.across.start)})`;
-  [['dt1',1180],['dt2',1320]].forEach(([id,x])=>{const appear=eo(seg(t,s+.15,s+.55));const gone=x/1920<w?1:0;$(id).style.opacity=appear*(1-gone);$(id).style.transform=`scale(${gone?0.6:1})`;});
-  reveal('d1',at('design',0),t,{stag:.03,dur:.6});}
- // 8 strips rise in, one per named industry, with parallax
- {const s=L.across.start-.45,e=L.payoff.start-.45;STR.forEach((_,i)=>{const f=[.05,.22,.42,.62,.82][i];const p=eio(seg(t,at('across',f)-.35,at('across',f)+.25));
-   $('st'+i).style.clipPath=`inset(${(1-p)*100}% 0 0 0)`;$('sp'+i).style.transform=`translateY(${(1-p)*12 - 6*seg(t,s,e)}%) scale(1.08)`;
-   const lp=eo(seg(t,at('across',f),at('across',f)+.45));$('sl'+i).style.opacity=lp;$('sl'+i).style.transform=`translateY(${(1-lp)*40}px)`;
-   const out=eio(seg(t,e-.45+i*.05,e+i*.05));if(out>0)$('st'+i).style.clipPath=`inset(0 0 ${out*100}% 0)`;});}
- // 9 payoff: "doubt." dissolves into particles, "Remove it." arrives
- {reveal('f1',at('payoff',0)-.2,t,{stag:.025});const dz=seg(t,at('payoff',.62),at('payoff',.62)+.35);$('fdoubt').style.opacity=1-dz;
-  if(t>=W[7][1]-.1&&t<W[7][2]+.1)particles(t);reveal('f2',at('payoff',.6),t,{stag:.045,dur:.6});}
- // 10 end card: cobalt field slides in, lines reveal, logo settles
- {const s=L.end.start-.45;const c=eio(seg(t,s,s+.8));$('ecob').style.clipPath=`inset(0 ${(1-c)*100}% 0 0)`;reveal('e1',at('end',0),t,{stag:.02});reveal('e2',at('end',.45),t,{stag:.02});
-  $('e3').style.opacity=eo(seg(t,at('end',.8),at('end',1)));const lg=eo(seg(t,s+.6,s+1.3));$('elogo').style.opacity=lg;$('elogo').style.transform=`translateY(-50%) translateX(${(1-lg)*40}px)`;
-  $('edot').style.transform=`scale(${back(seg(t,at('end',1),at('end',1)+.5))})`;}
-};
+const C={ink:'#07090f',cobalt:'#2f5bea',amber:'#f5a624',copper:'#ff6a3d',violet:'#5b2bd6',teal:'#3fc1c9',paper:'#f3eee6'};
+const G={ // duotone gradients: [shadow, highlight]
+ cv:['#2b1aa8','#ff5a36'], ca:['#1b2f9a','#f5a624'], vt:['#3a137a','#3fc1c9'], am:['#7a2a00','#ffb84d'], mono:['#111','#fff']};
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), seg=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-cl(x),4), ei=x=>Math.pow(cl(x),3), eio=x=>(x=cl(x),x<.5?8*x**4:1-Math.pow(-2*x+2,4)/2);
+const hash=(n)=>{const x=Math.sin(n*127.1)*43758.5453;return x-Math.floor(x)};
+const B=0.5; // one beat at 120 BPM
+const root=document.getElementById('root');
+const el=(tag,cls,css,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(css)e.style.cssText=css;if(html!=null)e.innerHTML=html;return e;};
+// photo with duotone grade
+function photo(parent,im,g,css='',pos='center'){const w=el('div','tile',css);const p=el('div','ph',`background-image:url(${IMG(im)});background-position:${pos}`);w.appendChild(p);
+ const d=el('div','duo',`background:linear-gradient(135deg,${G[g][0]},${G[g][1]})`);const d2=el('div','duo2',`background:${G[g][0]}`);if(g!=='mono'){w.appendChild(d);w.appendChild(d2);}parent.appendChild(w);w._p=p;return w;}
+// glitch title: white text + red/cyan copies that separate on entry
+function title(parent,txt,css){const w=el('div','T',css);const r=el('div','c',`color:#ff2a5f;top:0`,txt),b=el('div','c',`color:#22d3ff;top:0`,txt),m=el('div','',`position:relative;color:#fff`,txt);w.append(r,b,m);parent.appendChild(w);w._r=r;w._b=b;w._m=m;return w;}
+function glitch(w,t,t0,{dur=.45,amp=34,track=0}={}){const k=seg(t,t0,t0+dur),inn=eo(seg(t,t0,t0+.18));const a=(1-k)*amp*(hash(Math.floor(t*30))*.6+.4);
+ w.style.opacity=t<t0?0:1;w._r.style.transform=`translate(${-a}px,${a*.15}px)`;w._b.style.transform=`translate(${a}px,${-a*.15}px)`;w._r.style.opacity=w._b.style.opacity=1-k*.85;
+ const sl=(1-k)>.15&&hash(Math.floor(t*25)+3)>.45;const y=hash(Math.floor(t*25)+7)*80;w._m.style.clipPath=sl?`polygon(0 0,100% 0,100% ${y}%,0 ${y}%,0 ${y+10}%,100% ${y+10}%,100% 100%,0 100%)`:'none';
+ w.style.transform=`scale(${1.25-.25*inn})`;if(track)w.style.letterSpacing=`${-.01+track*seg(t,t0,t0+2.2)}em`;}
+const S=[]; // scenes: {a,b,node,fn}
+function scene(a,b,build){const n=el('div','sc');const cam=el('div','cam');n.appendChild(cam);root.appendChild(n);const fn=build(cam,n);S.push({a,b,n,cam,fn});}
+
+/* ---------- 1. Intro: light streaks, COGNEXA slams over a graded shot (0 - 4s) ---------- */
+scene(0,4.0,(cam)=>{
+ const bg=photo(cam,'22:17','cv','inset:0');
+ const st=[0,1,2].map(i=>{const s=el('div','streak',`top:${300+i*170}px;background:linear-gradient(90deg,transparent,${['#ff5a36','#2f5bea','#f5a624'][i]},transparent);opacity:0`);cam.appendChild(s);return s;});
+ const t1=title(cam,'COGNEXA','top:390px;font-size:230px');
+ const s1=el('div','sub tr','top:640px;font-size:34px;letter-spacing:.5em;opacity:0','Behavioural insights');cam.appendChild(s1);
+ return t=>{const rev=eio(seg(t,.1,1.0));bg.style.clipPath=`inset(${(1-rev)*46}% 0 ${(1-rev)*46}% 0)`;bg._p.style.transform=`scale(${1.25-.15*seg(t,0,4)})`;
+  st.forEach((s,i)=>{const k=seg(t,.05+i*.08,.6+i*.08);s.style.opacity=Math.sin(k*Math.PI)*.9;s.style.transform=`translateX(${(k*2-1)*1400}px) scaleY(${.3+.7*(1-k)})`;});
+  glitch(t1,t,1.0,{track:.06});const k=eo(seg(t,1.5,2.3));s1.style.opacity=k;s1.style.letterSpacing=`${.9-.4*k}em`;
+  cam.style.transform=`scale(${1+ei(seg(t,3.45,4.0))*2.2})`;};});
+
+/* ---------- 2. Mosaic of decisions; camera dives into one tile (4 - 8s) ---------- */
+scene(4.0,8.0,(cam)=>{
+ const cells=[['362:285','cv','TRUST'],['26:139','mono',''],['203:67','ca',''],['26:141','vt','PRICE'],['22:17','am','',1],['362:292','cv',''],['26:143','mono',''],['362:299','ca','EFFORT'],['362:314','vt','RISK']];
+ const W=640,H=360,tiles=[];
+ cells.forEach(([im,g,w,key],i)=>{const x=(i%3)*W,y=Math.floor(i/3)*H;const tl=photo(cam,im,g,`left:${x}px;top:${y}px;width:${W}px;height:${H}px`);
+  if(w){const tt=title(tl,w,`top:${H/2-48}px;font-size:110px`);tl._t=tt;}tiles.push(tl);});
+ const sub=el('div','tr',`position:absolute;left:${640+60}px;top:${360+150}px;font-size:22px;letter-spacing:.32em;line-height:1.5;opacity:0;z-index:3`,'Where<br>people<br>pause');cam.appendChild(sub);
+ const blk=[[0,0,'#ff5a36'],[2,1,'#2f5bea'],[1,2,'#f5a624']].map(([cx,cy,c])=>{const b=el('div','blk',`left:${cx*W}px;top:${cy*H}px;width:${W}px;height:${H}px;background:${c}`);cam.appendChild(b);return b;});
+ return t=>{const L=t-4;tiles.forEach((tl,i)=>{const d=[0,2,1,3,4,5,7,6,8][i]*.11;const k=eo(seg(L,d,d+.35));tl.style.clipPath=`inset(0 ${(1-k)*100}% 0 0)`;tl._p.style.transform=`scale(${1.12-.08*seg(L,0,4)})`;if(tl._t)glitch(tl._t,L,d+.3+i*.02,{amp:22});});
+  blk.forEach((b,i)=>{const s=.2+i*.5,k=seg(L,s,s+.5);b.style.clipPath=`inset(0 ${k*100}% 0 0)`;b.style.opacity=k<1?1:0;});
+  sub.style.opacity=eo(seg(L,1.2,1.6));
+  // dive into the centre tile (key) on beat 7-8
+  const z=ei(seg(L,3.2,4.0));cam.style.transformOrigin='50% 50%';cam.style.transform=`scale(${1+z*2.1})`;
+  const k2=seg(L,3.0,3.4);cam.style.transform=`scale(${1-.08*eo(k2)+z*2.1})`;};});
+
+/* ---------- 3. DOUBT, full frame (8 - 10s) ---------- */
+scene(8.0,10.0,(cam)=>{
+ photo(cam,'22:17','am','inset:0','60% 30%');
+ const s=el('div','sub tr','top:330px;font-size:30px;letter-spacing:.45em;opacity:0','Every decision has a moment of');cam.appendChild(s);
+ const t1=title(cam,'DOUBT','top:400px;font-size:300px');
+ return t=>{const L=t-8;cam.firstChild._p.style.transform=`scale(${1.2-.12*seg(L,0,2)})`;cam.style.transform=`scale(${1+(1-eo(seg(L,0,.4)))*.35})`;
+  s.style.opacity=eo(seg(L,.15,.5));glitch(t1,L,.35,{amp:44,track:.08});};});
+
+/* ---------- 4. Method on the beat: OBSERVE / DIAGNOSE / DESIGN / MEASURE (10 - 14s) ---------- */
+scene(10.0,14.0,(cam)=>{
+ const shots=[['26:141','cv','OBSERVE','How people really decide'],['23:1234','vt','DIAGNOSE','The doubt that stops them'],['25:49','ca','DESIGN','The fix, not the feature'],['26:144','am','MEASURE','What actually moved']];
+ const ps=shots.map(([im,g,w,sub],i)=>{const half=i%2===0;const box=el('div','tile',`inset:0`);cam.appendChild(box);
+  const ph=photo(box,im,g,'inset:0');const colr=[C.copper,C.cobalt,C.amber,C.violet][i];
+  const side=el('div','blk',`top:0;bottom:0;${half?'left:0':'right:0'};width:38%;background:${colr}`);box.appendChild(side);
+  const tt=title(box,w,`top:430px;font-size:190px`);const sb=el('div','sub tr',`top:640px;font-size:28px;letter-spacing:.35em`,sub);box.appendChild(sb);box._t=tt;box._s=sb;box._side=side;box._ph=ph;return box;});
+ return t=>{const L=t-10;const i=Math.min(3,Math.floor(L/1.0));ps.forEach((b,k)=>{b.style.visibility=k===i?'visible':'hidden';});
+  const b=ps[i],l=L-i;const w=eo(seg(l,0,.25));b.style.clipPath=`inset(0 0 0 ${(1-w)*100}%)`;b._ph._p.style.transform=`scale(${1.18-.1*l})`;
+  b._side.style.transform=`scaleX(${1-eo(seg(l,.05,.4))})`;b._side.style.transformOrigin=i%2?'right':'left';
+  glitch(b._t,l,.08,{amp:30,track:.05});b._s.style.opacity=eo(seg(l,.25,.5));b._s.style.letterSpacing=`${.55-.2*eo(seg(l,.25,.9))}em`;
+  if(L>13.75-10)$flash(seg(L,3.75,4)*.8);};});
+
+/* ---------- 5. Five industries: grid of blocks and shots, then pull back (14 - 18s) ---------- */
+scene(14.0,18.0,(cam)=>{
+ const W=480,H=360;const items=[['362:285','cv','RETAIL',0,0],['362:292','vt','SOFTWARE',2,0],['362:299','ca','HEALTHCARE',1,1],['362:307','am','EDUCATION',3,1],['362:314','cv','FINANCE',0,2]];
+ const fill=[[1,0,C.copper],[3,0,C.cobalt],[0,1,C.paper],[2,1,C.violet],[1,2,C.amber],[2,2,'#111'],[3,2,C.teal]];
+ const blks=fill.map(([x,y,c])=>{const b=el('div','blk',`left:${x*W}px;top:${y*H}px;width:${W}px;height:${H}px;background:${c}`);cam.appendChild(b);return b;});
+ const tl=items.map(([im,g,w,x,y])=>{const t=photo(cam,im,g,`left:${x*W}px;top:${y*H}px;width:${W}px;height:${H}px`);t._t=title(t,w,`top:${H/2-34}px;font-size:${w.length>8?68:84}px`);return t;});
+ const cap=el('div','tr',`position:absolute;left:${2*W+40}px;top:${2*H+40}px;font-size:22px;letter-spacing:.32em;line-height:1.5;color:#fff`,'Five<br>industries.<br>One method.');cam.appendChild(cap);
+ return t=>{const L=t-14;cam.style.transform=`scale(${1.6-.6*eio(seg(L,0,1.2))}) rotate(${(1-eio(seg(L,0,1.2)))*-3}deg)`;
+  blks.forEach((b,i)=>{const k=eo(seg(L,i*.07,i*.07+.3));b.style.clipPath=`inset(${(1-k)*100}% 0 0 0)`;});
+  tl.forEach((x,i)=>{const s=.25+i*.5,k=eo(seg(L,s,s+.28));x.style.clipPath=`inset(0 0 ${(1-k)*100}% 0)`;x._p.style.transform=`scale(${1.15-.1*seg(L,s,4)})`;glitch(x._t,L,s+.12,{amp:20});});
+  cap.style.opacity=eo(seg(L,2.8,3.2));
+  const z=ei(seg(L,3.5,4.0));if(z>0)cam.style.transform=`scale(${1+z*2.6})`;};});
+
+/* ---------- 6. FIND THE DOUBT. / REMOVE IT. (18 - 20.5s) ---------- */
+scene(18.0,20.5,(cam)=>{
+ const a=el('div','blk','inset:0;background:#f5a624');cam.appendChild(a);
+ const t1=title(cam,'FIND THE DOUBT.','top:300px;font-size:170px');t1._m.style.color='#07090f';
+ const ink=el('div','blk','inset:0;background:#07090f');cam.appendChild(ink);
+ const t2=title(cam,'REMOVE IT.','top:430px;font-size:240px');
+ return t=>{const L=t-18;glitch(t1,L,.05,{amp:26});const k=eio(seg(L,1.0,1.35));ink.style.clipPath=`inset(0 0 0 ${(1-k)*100}%)`;t1.style.opacity=k<1?1:0;
+  glitch(t2,L,1.25,{amp:46,track:.07});t2.style.visibility=L>=1.2?'visible':'hidden';cam.style.transform=`scale(${1+.04*seg(L,0,2.5)})`;};});
+
+/* ---------- 7. Call to action over a graded shot (20.5 - 23.5s) ---------- */
+scene(20.5,23.5,(cam)=>{
+ photo(cam,'26:253','cv','inset:0');
+ const t1=title(cam,'BOOK A DISCOVERY CALL','top:420px;font-size:128px');
+ const s=el('div','sub','top:570px;font-size:46px;letter-spacing:.06em;opacity:0','with the founders of Cognexa');cam.appendChild(s);
+ return t=>{const L=t-20.5;cam.firstChild._p.style.transform=`scale(${1.08+.08*seg(L,0,3)})`;const r=eio(seg(L,0,.5));cam.firstChild.style.clipPath=`circle(${r*120}% at 50% 50%)`;
+  glitch(t1,L,.3,{amp:32,track:.02});s.style.opacity=eo(seg(L,.8,1.2));s.style.transform=`translateY(${(1-eo(seg(L,.8,1.2)))*20}px)`;
+  cam.style.transform=`scale(${1+ei(seg(L,2.6,3.0))*.5})`;cam.style.opacity=1-seg(L,2.75,3.0);};});
+
+/* ---------- 8. Logo end card (23.5 - 27s) ---------- */
+scene(23.5,27.0,(cam)=>{
+ const card=el('div','blk','left:50%;top:50%;width:760px;height:300px;margin:-190px 0 0 -380px;background:#f3eee6;display:flex;align-items:center;justify-content:center');cam.appendChild(card);
+ const lg=el('img','',`width:600px`);lg.src=IMG('28:32');card.appendChild(lg);
+ const dot=el('div','blk','width:26px;height:26px;border-radius:50%;background:#f5a624;left:calc(50% + 395px);top:calc(50% + 95px)');cam.appendChild(dot);
+ const u=el('div','sub tr','top:760px;font-size:26px;letter-spacing:.3em;opacity:0','cognexadigital.com');cam.appendChild(u);
+ return t=>{const L=t-23.5;const k=eio(seg(L,0,.5));card.style.clipPath=`inset(${(1-k)*50}% 0 ${(1-k)*50}% 0)`;lg.style.opacity=eo(seg(L,.35,.8));lg.style.transform=`scale(${1.08-.08*eo(seg(L,.35,1.2))})`;
+  dot.style.transform=`scale(${eo(seg(L,.9,1.2))})`;u.style.opacity=eo(seg(L,1.1,1.6));};});
+
+let flashV=0;function $flash(v){flashV=Math.max(flashV,v);}
+window.TOTAL=27.0;
+window.render=function(t){flashV=0;
+ // short white flash on each hard scene change
+ for(const s of S){if(Math.abs(t-s.a)<0.06&&s.a>0)flashV=Math.max(flashV,.55*(1-Math.abs(t-s.a)/0.06));}
+ for(const s of S){const on=t>=s.a&&t<s.b;s.n.style.display=on?'block':'none';if(on)s.fn(t);}
+ document.getElementById('flash').style.opacity=flashV;};
 render(0);
 </script></body></html>
