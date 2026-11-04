@@ -1,6 +1,6 @@
 {
   "order": 1,
-  "date": "2026-10-01",
+  "date": "2026-10-19",
   "author": "Cognexa team",
   "draft": false,
   "slug": "trust-signals-that-cost-nothing",
@@ -44,5 +44,6 @@
       "text": "loss-aversion-pricing-page"
     }
   ],
-  "image": "/assets/img/ig-trust.webp"
+  "image": "/assets/img/ig-trust.webp",
+  "sample": true
 }

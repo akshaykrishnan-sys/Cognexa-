@@ -1,6 +1,6 @@
 {
   "order": 2,
-  "date": "2026-10-02",
+  "date": "2026-10-18",
   "author": "Cognexa team",
   "draft": false,
   "slug": "what-should-ai-speed-up",
@@ -44,5 +44,6 @@
       "text": "trust-signals-that-cost-nothing"
     }
   ],
-  "image": "/assets/img/ig-ai.webp"
+  "image": "/assets/img/ig-ai.webp",
+  "sample": true
 }

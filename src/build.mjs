@@ -17,7 +17,7 @@ for (const s of SVCS) routes[`/services/${s.slug}/`] = service(s);
 for (const v of VERTS) routes[`/industries/${v.slug}/`] = vertical(v);
 routes['/industries/'] = industriesLanding();
 routes['/case-studies/'] = caseStudies();
-routes[`/case-studies/${CASES[0].slug}/`] = caseStudy();
+for (const c of CASES.filter(x => x.full)) routes[`/case-studies/${c.slug}/`] = caseStudy(c);
 routes['/privacy/'] = privacy();
 for (const a of ARTICLES) routes[`/thinking/${a.slug}/`] = articlePage(a);
 routes['/about/'] = about();

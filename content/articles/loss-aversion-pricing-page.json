@@ -1,6 +1,6 @@
 {
   "order": 4,
-  "date": "2026-10-04",
+  "date": "2026-10-16",
   "author": "Cognexa team",
   "draft": false,
   "slug": "loss-aversion-pricing-page",
@@ -44,5 +44,6 @@
       "text": "five-second-rule-homepage"
     }
   ],
-  "image": "/assets/img/ig-loss.webp"
+  "image": "/assets/img/ig-loss.webp",
+  "sample": true
 }

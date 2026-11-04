@@ -205,5 +205,9 @@
     "a": "Find the story.",
     "b": "Show it.",
     "p": "A 15 minute fit call. We bring a first read of where your message loses viewers."
+  },
+  "nav": {
+    "label": "Video Creation",
+    "tagline": "Stories that move decisions"
   }
 }

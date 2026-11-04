@@ -1,6 +1,6 @@
 {
   "order": 5,
-  "date": "2026-10-05",
+  "date": "2026-10-15",
   "author": "Cognexa team",
   "draft": false,
   "slug": "adoption-is-a-behaviour-problem",
@@ -44,5 +44,6 @@
       "text": "when-channels-tell-different-stories"
     }
   ],
-  "image": "/assets/img/ig-adopt.webp"
+  "image": "/assets/img/ig-adopt.webp",
+  "sample": true
 }

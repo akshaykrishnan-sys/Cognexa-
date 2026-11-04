@@ -5,7 +5,7 @@
   "industry": "E-commerce",
   "kicker": "E-COMMERCE  /  FASHION AND D2C",
   "title": "Checkout trust gap closed",
-  "measure": "conversion",
+  "measure": "checkout completion",
   "lever": "trust",
   "chart": {
     "before": 106,

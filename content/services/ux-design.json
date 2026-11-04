@@ -205,5 +205,9 @@
     "a": "Find the friction.",
     "b": "Design it out.",
     "p": "A 15 minute fit call. We bring a first read of where your interface loses people."
+  },
+  "nav": {
+    "label": "Web Design and UX",
+    "tagline": "Interfaces shaped around choice"
   }
 }

@@ -205,5 +205,9 @@
     "a": "Find the stall.",
     "b": "Ship the fix.",
     "p": "A 15 minute fit call. We bring a first read of where your product loses users."
+  },
+  "nav": {
+    "label": "Software Development",
+    "tagline": "Tools built around decisions"
   }
 }

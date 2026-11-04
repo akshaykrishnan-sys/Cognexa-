@@ -205,5 +205,9 @@
     "a": "Find the delay.",
     "b": "Remove it.",
     "p": "A 15 minute fit call. We bring a first read of where your site slows people down."
+  },
+  "nav": {
+    "label": "Web Development",
+    "tagline": "Fast builds for real decisions"
   }
 }

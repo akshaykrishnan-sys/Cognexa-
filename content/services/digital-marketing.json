@@ -205,5 +205,9 @@
     "a": "Find the leak.",
     "b": "Fix it.",
     "p": "A 15 minute fit call. We bring a first read of where your channels lose people."
+  },
+  "nav": {
+    "label": "Digital Marketing",
+    "tagline": "Every channel, in sequence"
   }
 }

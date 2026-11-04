@@ -1,6 +1,6 @@
 {
   "order": 6,
-  "date": "2026-10-06",
+  "date": "2026-10-14",
   "author": "Cognexa team",
   "draft": false,
   "slug": "when-channels-tell-different-stories",
@@ -44,5 +44,6 @@
       "text": "loss-aversion-pricing-page"
     }
   ],
-  "image": "/assets/img/ig-channels.webp"
+  "image": "/assets/img/ig-channels.webp",
+  "sample": true
 }

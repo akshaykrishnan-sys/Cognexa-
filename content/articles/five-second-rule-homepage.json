@@ -1,6 +1,6 @@
 {
   "order": 3,
-  "date": "2026-10-03",
+  "date": "2026-10-17",
   "author": "Cognexa team",
   "draft": false,
   "slug": "five-second-rule-homepage",
@@ -44,5 +44,6 @@
       "text": "when-channels-tell-different-stories"
     }
   ],
-  "image": "/assets/img/ig-five.webp"
+  "image": "/assets/img/ig-five.webp",
+  "sample": true
 }

@@ -1,6 +1,7 @@
 import { img, esc, arr, withArr, page, SERVICES, CTA, CTA_SUB, IND } from './lib.mjs';
 import { VERTS } from './data-verticals.mjs';
 import { SVCS } from './data-services.mjs';
+import { collection, readJSON } from './content.mjs';
 
 const pad2 = (n) => String(n).padStart(2, '0');
 export const subSlug = (n) => n.toLowerCase().replace(/&/g, 'and').replace(/[()]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -246,14 +247,10 @@ ${closingCta({ a: 'Find the pause.', b: 'Ease it.', p: 'A 15-minute fit call. We
 }
 
 /* ================= CASE STUDIES (Figma 371:2, 372:2) ================= */
-export const CASES = [
-  { slug: 'checkout-trust-gap-closed', ind: 'E-commerce', k: 'E-COMMERCE  /  FASHION AND D2C', h: 'Checkout trust gap closed', n: '+23%', m: 'conversion', lv: 'trust', b: 106, a: 130, full: true },
-  { ind: 'B2B and SaaS', k: 'B2B AND SAAS  /  PLATFORM', h: 'Buying committee stall cleared', n: '+31%', m: 'demo to proposal', lv: 'safety', b: 100, a: 130 },
-  { ind: 'Healthcare', k: 'HEALTHCARE  /  CLINIC NETWORK', h: 'Missed appointments reduced', n: '18%', m: 'fewer missed bookings', lv: 'clarity', b: 130, a: 107 },
-  { ind: 'Education', k: 'EDUCATION  /  ONLINE COLLEGE', h: 'Enquiry to application lifted', n: '+19%', m: 'applications', lv: 'belonging', b: 110, a: 130 },
-  { ind: 'Fintech', k: 'FINTECH  /  MONEY APP', h: 'Sign-up regret designed out', n: '22%', m: 'fewer abandoned sign-ups', lv: 'control', b: 130, a: 102 },
-  { ind: 'E-commerce', k: 'E-COMMERCE  /  HOME AND MARKETPLACE', h: 'Choice overload simplified', n: '+17%', m: 'add-to-cart', lv: 'choice', b: 111, a: 130 },
-];
+// Case studies: /content/cases/*.json (edited in the CMS). published=true gets a full page.
+const CASE_DATA = collection('cases');
+export const CASES = CASE_DATA.map(c => ({ ...c, ind: c.industry, k: c.kicker, h: c.title, m: c.measure, lv: c.lever, b: c.chart?.before ?? 110, a: c.chart?.after ?? 130, full: !!c.published }))
+  .sort((x, y) => Number(y.full) - Number(x.full));
 const caseCard = (c, i) => {
   const inner = `<div class="dtile io"><div class="bars"><div class="bar"><i style="height:${c.b}px"></i>BEFORE</div><div class="bar after"><i style="height:${c.a}px"></i>AFTER</div></div><span class="il">ILLUSTRATIVE</span></div>
   <div class="bd"><p class="k">${esc(c.k)}</p><h3>${esc(c.h)}</h3><div class="m"><b>${c.n}</b><span>${esc(c.m)}</span></div><span class="lever lv-${c.lv}">LEVER: ${c.lv.toUpperCase()}</span>${c.full ? `<span class="link">Read the case ${arr}</span>` : `<span class="mono-s c-muted">Full case to follow</span>`}</div>`;
@@ -262,8 +259,9 @@ const caseCard = (c, i) => {
 const caseCta = () => closingCta({ a: 'Bring us the brief.', b: 'See what moves.', p: 'A 15-minute fit call. We bring a first read of where your buyers hesitate.' }, 'Book your review');
 
 export function caseStudies() {
-  const f = CASES[0];
-  const next = CASES.slice(1);
+  const pub = CASES.filter(c => c.full);
+  const f = pub[0];
+  const next = CASES.filter(c => !c.full);
   const body = `
 <section class="bg-ink" style="padding:96px 0 80px"><div class="wrap">
   <p class="mono c-grey2 rv">Case studies</p>
@@ -272,77 +270,69 @@ export function caseStudies() {
 </div></section>
 <section class="bg-paper" style="padding:80px 0 40px"><div class="wrap">
   <a class="cfeat rv" href="/case-studies/${f.slug}/">
-    <div class="im"><img src="${img('191:39')}" alt="A shopper reviewing an order on a laptop at home" loading="lazy"></div>
+    <div class="im"><img src="${img(f.image)}" alt="${esc(f.imageAlt || '')}" loading="lazy"></div>
     <div class="bd"><p class="k">${esc(f.k)}</p><h2>${esc(f.h)}</h2>
-      <ol class="steps4"><li><b>The brief</b>Steady traffic, flat checkout</li><li><b>What we saw</b>Doubt at three points</li><li><b>What we changed</b>Three small, tested changes</li><li><b>Measured by</b>Checkout completion</li></ol>
+      <ol class="steps4">${(f.story || []).slice(0, 3).map(x => `<li><b>${esc(x.label[0] + x.label.slice(1).toLowerCase())}</b>${esc(x.title)}</li>`).join('')}<li><b>Measured by</b>${esc(f.measure)}</li></ol>
       <span class="btn">Read the case ${arr}</span></div>
   </a>
+  ${pub.slice(1).map(c => `<a class="cfeat rv" style="margin-top:24px" href="/case-studies/${c.slug}/"><div class="im"><img src="${img(c.image)}" alt="${esc(c.imageAlt || '')}" loading="lazy"></div><div class="bd"><p class="k">${esc(c.k)}</p><h2>${esc(c.h)}</h2><p>${esc(c.summary || '')}</p><span class="btn">Read the case ${arr}</span></div></a>`).join('')}
 </div></section>
-<section class="bg-paper" style="padding:40px 0 104px"><div class="wrap">
+${next.length ? `<section class="bg-paper" style="padding:40px 0 104px"><div class="wrap">
   <p class="mono c-muted rv">Being written up now</p>
-  <h2 class="h-sec-s rv" style="--d:1;margin-top:12px">Five more cases, one per industry.</h2>
+  <h2 class="h-sec-s rv" style="--d:1;margin-top:12px">More cases on the way.</h2>
   <ul class="cnext">${next.map((c, i) => `<li class="rv" style="--d:${i}"><span class="k">${esc(c.ind)}</span><b>${esc(c.h)}</b><span class="lever lv-${c.lv}">LEVER: ${c.lv.toUpperCase()}</span></li>`).join('')}</ul>
   <p class="note2">Want the case closest to your industry? Ask on your fit call and we will walk you through it.</p>
-</div></section>
+</div></section>` : ''}
 ${caseCta()}`;
   return page({ title: 'Case studies', desc: 'Selected projects, the behaviour behind each one and what moved. Case studies from Cognexa across five industries.', path: '/case-studies/', active: '', body, crumbs: [['Case studies', '/case-studies/']] });
 }
 
-export function caseStudy() {
-  const c = CASES[0];
-  const story = [['THE BRIEF', 'Steady traffic, flat checkout', 'A fashion and D2C brand had steady traffic and a healthy basket, yet checkout completion stayed flat. The team assumed the payment form was too long.'],
-    ['WHAT WE SAW', 'Doubt sat at three points', 'Observation and shopper interviews showed people pausing at the total, the return terms and the payment step. Each pause came from a quiet question about what happens if something goes wrong.'],
-    ['WHAT WE CHANGED', 'Three small, tested changes', 'We showed the total earlier, placed the return terms beside the button and kept the payment step familiar. Each change was tested against one agreed behaviour.'],
-    ['WHAT MOVED', 'Completion rose, questions fell', 'Checkout completion rose by 23% over the test period and support questions about returns fell. The team kept the changes and applied the same method to the product page.']];
+export function caseStudy(c = CASES.find(x => x.full)) {
+  const others = CASES.filter(x => x.slug !== c.slug);
+  const fig = c.figure || {};
+  const pct = (v) => parseFloat(String(v).replace(/[^0-9.]/g, '')) || 0;
+  const mx = Math.max(pct(fig.before), pct(fig.after), 1);
   const body = `
 <section class="bg-ink" style="padding:88px 0"><div class="wrap">
-  <p class="mono c-grey2 rv"><a href="/case-studies/" style="text-decoration:none">Case studies</a>&nbsp;&nbsp;/&nbsp;&nbsp;E-commerce</p>
-  <h1 class="t-display rv" style="--d:1;font-size:clamp(56px,6.7vw,96px);margin-top:24px">Checkout trust gap closed</h1>
-  <p class="rv" style="--d:2;font-size:20px;line-height:1.5;max-width:720px;margin-top:24px">A fashion and D2C brand saw shoppers reach checkout and stop. We found the doubt and made the last step feel safe.</p>
-  <div class="cs-meta rv" style="--d:3">${[['INDUSTRY', 'E-commerce'], ['SERVICES', 'Consulting, Web Design and UX'], ['TIMELINE', '8 weeks (sample)'], ['LEVER', 'Trust']].map(([k, v]) => `<div><small>${k}</small><span>${v}</span></div>`).join('')}</div>
+  <p class="mono c-grey2 rv"><a href="/case-studies/" style="text-decoration:none">Case studies</a>&nbsp;&nbsp;/&nbsp;&nbsp;${esc(c.industry)}</p>
+  <h1 class="t-display rv" style="--d:1;font-size:clamp(56px,6.7vw,96px);margin-top:24px">${esc(c.title)}</h1>
+  <p class="rv" style="--d:2;font-size:20px;line-height:1.5;max-width:720px;margin-top:24px">${esc(c.summary || '')}</p>
+  <div class="cs-meta rv" style="--d:3">${[['INDUSTRY', c.industry], ['SERVICES', c.services], ['TIMELINE', c.timeline], ['LEVER', c.lever ? c.lever[0].toUpperCase() + c.lever.slice(1) : '']].filter(([, v]) => v).map(([k, v]) => `<div><small>${k}</small><span>${esc(v)}</span></div>`).join('')}</div>
 </div></section>
-<section class="bg-paper" style="padding:88px 0"><div class="wrap">
+${c.results?.length ? `<section class="bg-paper" style="padding:88px 0"><div class="wrap">
   <p class="secl c-muted rv">02&nbsp;&nbsp;/&nbsp;&nbsp;WHAT MOVED</p>
-  <div class="grid-3" style="margin-top:40px">${[['23', '+', '%', 'checkout conversion'], ['17', '', '%', 'fewer returns questions to support'], ['8', '', ' weeks', 'to first measurable result']].map(([n, pre, suf, l], i) => `<div class="res rv" style="--d:${i}"><b data-count="${n}" data-pre="${pre}" data-suf="${suf}">${pre}${n}${suf}</b><span>${l}</span></div>`).join('')}</div>
-  <p class="note2" style="margin-top:40px">Illustrative figures. Replace with approved client results before publishing.</p>
-</div></section>
-<section class="bg-paper3" style="padding:88px 0"><div class="wrap">
-  ${story.map(([k, h, p], i) => `<div class="story rv"><p class="k">${pad2(i + 1)}&nbsp;&nbsp;/&nbsp;&nbsp;${k}</p><div><h3>${h}</h3><p>${p}</p></div></div>`).join('')}
-</div></section>
-<section class="bg-paper" style="padding:88px 0"><div class="wrap">
-  <figure><div class="fig1 io"><span class="t">CHECKOUT COMPLETION</span><div class="bars"><div class="bar"><b>2.6%</b><i style="height:217px"></i>BEFORE</div><div class="bar after"><b>3.2%</b><i style="height:267px"></i>AFTER</div></div><span class="il">ILLUSTRATIVE</span></div>
-  <figcaption class="mono-s c-muted" style="margin-top:16px;text-transform:none;letter-spacing:.02em">Figure 1. Checkout completion before and after the changes (illustrative).</figcaption></figure>
-</div></section>
+  <div class="grid-3" style="margin-top:40px">${c.results.map(({ value: n, prefix: pre = '', suffix: suf = '', label: l }, i) => `<div class="res rv" style="--d:${i}"><b data-count="${esc(n)}" data-pre="${esc(pre)}" data-suf="${esc(suf)}">${esc(pre)}${esc(n)}${esc(suf)}</b><span>${esc(l)}</span></div>`).join('')}</div>
+  ${c.note ? `<p class="note2" style="margin-top:40px">${esc(c.note)}</p>` : ''}
+</div></section>` : ''}
+${c.story?.length ? `<section class="bg-paper3" style="padding:88px 0"><div class="wrap">
+  ${c.story.map(({ label: k, title: h, text: p }, i) => `<div class="story rv"><p class="k">${pad2(i + 1)}&nbsp;&nbsp;/&nbsp;&nbsp;${esc(k)}</p><div><h3>${esc(h)}</h3><p>${esc(p)}</p></div></div>`).join('')}
+</div></section>` : ''}
+${fig.before ? `<section class="bg-paper" style="padding:88px 0"><div class="wrap">
+  <figure><div class="fig1 io"><span class="t">${esc(fig.title || '')}</span><div class="bars"><div class="bar"><b>${esc(fig.before)}</b><i style="height:${Math.round(267 * pct(fig.before) / mx)}px"></i>BEFORE</div><div class="bar after"><b>${esc(fig.after)}</b><i style="height:${Math.round(267 * pct(fig.after) / mx)}px"></i>AFTER</div></div></div>
+  <figcaption class="mono-s c-muted" style="margin-top:16px;text-transform:none;letter-spacing:.02em">${esc(fig.caption || '')}</figcaption></figure>
+</div></section>` : ''}
 <section class="bg-paper" style="padding:8px 0 88px"><div class="wrap">
   <p class="secl c-muted rv">More cases</p><h2 class="serif rv" style="--d:1;font-size:48px;line-height:64px;margin:16px 0 40px">Other places people pause</h2>
-  <ul class="cnext">${CASES.slice(1).map((c, i) => `<li class="rv" style="--d:${i}"><span class="k">${esc(c.ind)}</span><b>${esc(c.h)}</b><span class="lever lv-${c.lv}">LEVER: ${c.lv.toUpperCase()}</span></li>`).join('')}</ul>
-  <p class="note2">These cases are being written up. Ask on your fit call for the one closest to your industry.</p>
+  <ul class="cnext">${others.map((o, i) => `<li class="rv" style="--d:${i}"><span class="k">${esc(o.industry)}</span><b>${o.full ? `<a href="/case-studies/${o.slug}/">${esc(o.title)}</a>` : esc(o.title)}</b><span class="lever lv-${o.lever}">LEVER: ${String(o.lever).toUpperCase()}</span></li>`).join('')}</ul>
+  ${others.some(o => !o.full) ? '<p class="note2">Some cases are still being written up. Ask on your fit call for the one closest to your industry.</p>' : ''}
 </div></section>
 ${caseCta()}`;
-  return page({ title: 'Checkout trust gap closed - Case study', desc: 'A fashion and D2C brand saw shoppers reach checkout and stop. We found the doubt and made the last step feel safe.', path: `/case-studies/${c.slug}/`, body, crumbs: [['Case studies', '/case-studies/'], [c.h, `/case-studies/${c.slug}/`]] });
+  return page({ title: `${c.title} - Case study`, desc: c.summary || c.title, path: `/case-studies/${c.slug}/`, body, crumbs: [['Case studies', '/case-studies/'], [c.title, `/case-studies/${c.slug}/`]] });
 }
 
 /* ================= PRIVACY (Figma 366:2) ================= */
 export function privacy() {
-  const S = [['Who we are', 'Cognexa is a behavioural-science and consumer-insights agency with offices in London, UK and Bangalore, India. This section will name the legal entities that control information and how to reach them.'],
-    ['What we collect', 'This section will list the information collected through this site: contact and booking details, messages sent through the form, and analytics data about how pages are used.'],
-    ['How we use it', 'This section will explain each purpose, such as replying to briefs, scheduling calls, improving the site, and the lawful basis that applies to each.'],
-    ['Cookies and analytics', 'This section will describe the cookies and measurement tools in use, what each does, and how a visitor can accept, decline or change their choice.'],
-    ['Sharing and processors', 'This section will name the categories of service providers that handle information on our behalf and the conditions that apply to them.'],
-    ['How long we keep it', 'This section will state the retention period for each type of information and what happens when it expires.'],
-    ['Your rights', 'This section will set out the rights available to visitors in the UK, EU, India, the US and Canada, and how to exercise them.'],
-    ['International transfers', 'This section will explain how information moves between our offices and providers, and the safeguards that apply.'],
-    ['Security', 'This section will summarise the measures used to protect information. It will describe practice only as confirmed by Cognexa.'],
-    ['Contact and complaints', 'This section will give the contact route for privacy questions and the regulators a visitor can approach.']];
+  const PV = readJSON('pages/privacy.json');
+  const S = PV.sections.map(x => [x.heading, x.body]);
   const body = `
 <section class="bg-ink" style="padding:96px 0"><div class="wrap">
   <p class="mono c-grey2 rv">Legal</p>
   <h1 class="t-display rv" style="--d:1;font-size:clamp(64px,7.2vw,104px);margin-top:24px">Privacy policy</h1>
-  <p class="rv" style="--d:2;font-size:20px;line-height:30px;max-width:640px;margin-top:24px">How Cognexa handles information about the people who visit this site and the teams we work with.</p>
-  <p class="mono rv" style="--d:3;font-size:12px;color:#b2b5bf;margin-top:24px">Last updated: to be supplied</p>
+  <p class="rv" style="--d:2;font-size:20px;line-height:30px;max-width:640px;margin-top:24px">${esc(PV.intro)}</p>
+  <p class="mono rv" style="--d:3;font-size:12px;color:#b2b5bf;margin-top:24px">Last updated: ${esc(PV.updated)}</p>
 </div></section>
 <section class="bg-paper" style="padding:96px 0"><div class="wrap">
-  <p class="draft">DRAFT STRUCTURE. LEGAL COPY TO BE SUPPLIED BY COGNEXA AND REVIEWED BEFORE PUBLISHING.</p>
+  ${PV.draftNotice ? `<p class="draft">${esc(PV.draftNotice)}</p>` : ''}
   <div class="pcols">
     <nav class="ptoc" aria-label="Contents"><p class="mono-s c-muted">Contents</p>${S.map(([h], i) => `<a href="#pp${i + 1}">${pad2(i + 1)}&nbsp;&nbsp; ${h}</a>`).join('')}</nav>
     <div>${S.map(([h, p], i) => `<section class="psec" id="pp${i + 1}"><p class="mono-s c-muted">${pad2(i + 1)}</p><h2>${h}</h2><p>${p}</p></section>`).join('')}</div>

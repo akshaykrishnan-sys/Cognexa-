@@ -1,15 +1,12 @@
 import { SEO } from './seo.mjs';
-export const img = (id) => `/assets/img/n${id.replace(':', '-')}.webp`;
+import { readJSON, collection } from './content.mjs';
+export const img = (id) => (String(id).startsWith('/') || /^https?:/.test(id) ? id : `/assets/img/n${id.replace(':', '-')}.webp`);
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const arr = '<span class="arr" aria-hidden="true">→</span>';
 export const withArr = (s) => esc(s.replace(/\s*→\s*$/, '')) + ' ' + arr;
 
-export const SITE = {
-  name: 'Cognexa',
-  url: 'https://cognexa-digital.netlify.app',
-  phoneUK: '(+44) 7546 872154', telUK: '+447546872154',
-  phoneIN: '(+91) 80959 03024', telIN: '+918095903024',
-};
+const S = readJSON('settings/site.json');
+export const SITE = { name: S.name, url: S.url, phoneUK: S.phoneUK, telUK: S.telUK, phoneIN: S.phoneIN, telIN: S.telIN, tagline: S.tagline, domainLabel: S.domainLabel };
 
 export const SERVICES = [
   ['digital-marketing', 'Digital Marketing'], ['paid-media', 'Ads (Paid Media)'], ['video-creation', 'Video Creation'],
@@ -20,22 +17,13 @@ export const VERTICALS = [
   ['e-commerce', 'E-commerce'], ['b2b-saas', 'B2B & SaaS'], ['healthcare', 'Healthcare'], ['education', 'Education'], ['fintech', 'Fintech'],
 ];
 
-export const CTA = 'Book a 15-min fit call';
-export const CTA_SUB = 'We reply within one working day. You speak with a founder.';
-// slug, name, card image, headline, question, typical pause, what we change
-export const IND = [
-  ['e-commerce', 'E-commerce', '362:285', 'Shoppers pause on trust.', 'Why do shoppers hesitate at the last step?', 'Doubt at checkout', 'Trust cues, clear totals, easier returns'],
-  ['b2b-saas', 'B2B and SaaS', '362:292', 'Buying committees choose safety.', 'Why do buying committees stall?', 'Fear of a poor choice', 'Proof a champion can reuse internally'],
-  ['healthcare', 'Healthcare', '362:299', 'Patients act when they feel sure.', 'Why do patients delay the next step?', 'Uncertainty about the next step', 'Plain language and safer first actions'],
-  ['education', 'Education', '362:307', 'Learners choose where they belong.', 'Why do learners drop off?', 'The risk of choosing wrong', 'Visible belonging and clear outcomes'],
-  ['fintech', 'Fintech', '362:314', 'Money decisions carry regret.', 'Why does a good product still not feel trusted?', 'Fear of regret', 'Visible safeguards and real control'],
-];
+export const CTA = S.cta;
+export const CTA_SUB = S.ctaSub;
+// slug, name, card image, headline, question, typical pause, what we change (from each industry's "card" fields)
+export const IND = collection('industries').map(v => [v.slug, v.name.replace('&', 'and'), v.card.image, v.card.headline, v.card.question, v.card.pause, v.card.change]);
 const IND_DD = IND.map(([s, n, , d]) => [s, n, d]);
-const SVC_DD = [
-  ['GROWTH', [['digital-marketing', 'Digital Marketing', 'Every channel, in sequence'], ['paid-media', 'Ads (Paid Media)', 'Spend that follows evidence'], ['video-creation', 'Video Creation', 'Stories that move decisions']]],
-  ['EXPERIENCE', [['ux-design', 'Web Design and UX', 'Interfaces shaped around choice'], ['web-development', 'Web Development', 'Fast builds for real decisions'], ['corporate-films', 'Corporate Films', 'Films that earn authority']]],
-  ['TRANSFORMATION', [['consulting', 'Consulting', 'Insight turned into a plan'], ['software-development', 'Software Development', 'Tools built around decisions']]],
-];
+const SYS = [['growth', 'GROWTH'], ['experience', 'EXPERIENCE'], ['transformation', 'TRANSFORMATION']];
+const SVC_DD = SYS.map(([k, g]) => [g, collection('services').filter(x => x.sys === k).map(x => [x.slug, x.nav?.label || x.name, x.nav?.tagline || ''])]);
 const chev = '<svg class="chev" width="9" height="5" viewBox="0 0 9 5" fill="none" aria-hidden="true"><path d="M.5.5l4 4 4-4" stroke="currentColor"/></svg>';
 
 function header(active) {
@@ -97,8 +85,8 @@ export function footer({ fit = false } = {}) {
       <div><p class="mono-s">Start here</p><a href="/contact/">${CTA}</a><a href="/check/">2-minute hesitation check</a><a href="/thinking/why-shoppers-hesitate/">Read: Why shoppers hesitate</a><p class="ftr-note">${CTA_SUB}</p></div>
     </nav>
     <div class="ftr-base">
-      <p class="tl">Behavioural Science × AI × Digital Transformation</p>
-      <p class="of"><span>London, UK&nbsp; <a href="tel:${SITE.telUK}">${SITE.phoneUK}</a></span><span>Bangalore, India&nbsp; <a href="tel:${SITE.telIN}">${SITE.phoneIN}</a></span><span><a href="/">cognexadigital.com</a></span><span><a href="/privacy/">Privacy policy</a></span></p>
+      <p class="tl">${SITE.tagline}</p>
+      <p class="of"><span>London, UK&nbsp; <a href="tel:${SITE.telUK}">${SITE.phoneUK}</a></span><span>Bangalore, India&nbsp; <a href="tel:${SITE.telIN}">${SITE.phoneIN}</a></span><span><a href="/">${SITE.domainLabel}</a></span><span><a href="/privacy/">Privacy policy</a></span></p>
     </div>
   </div>
 </footer>`;

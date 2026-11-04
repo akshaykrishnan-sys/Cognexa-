@@ -1,5 +1,6 @@
 import { img, esc, arr, page , CTA, CTA_SUB, IND } from './lib.mjs';
 import { readFileSync } from 'node:fs';
+import { readJSON } from './content.mjs';
 
 const gaze = readFileSync(new URL('../public/assets/svg/gaze-hero.svg', import.meta.url), 'utf8')
   .replace('<svg ', '<svg class="h-hero-motif" aria-hidden="true" preserveAspectRatio="xMidYMid slice" ');
@@ -13,7 +14,8 @@ const briefs = [
   { tab: '“We need automation.”', q: 'What should become automatic?', opts: ['And what should not?'], a: 'Faster isn’t always better.', b: 'Better is better.' },
 ];
 
-const clients = [['250:43', 'TVS'], ['250:48', 'Trust Capital'], ['250:53', 'GMR'], ['250:58', 'SharpEagle'], ['250:64', 'Film Permit'], ['250:69', 'BD'], ['250:74', 'Murugappa'], ['250:79', 'Switch'], ['250:85', 'Eurogrip'], ['250:90', 'OptioR'], ['250:95', 'Studio 52'], ['250:100', 'BraveLabs']];
+const CL = readJSON('settings/clients.json');
+const clients = CL.logos.map(l => [l.logo, l.name, l.context]);
 
 const lenses = [['24:43', 'Technology', 'What becomes possible?'], ['24:47', 'Experience', 'What does someone encounter?'], ['24:51', 'Context', 'What shapes the decision?'], ['24:55', 'Behaviour', 'What happens in practice?', true], ['24:59', 'Business', 'What outcome follows?']];
 
@@ -130,9 +132,9 @@ export function home() {
     <p class="mono c-muted rv">Worked with</p>
     <h2 id="cl-h" class="rv" style="--d:1">Organisations our team<br><span style="color:var(--muted-2)">has worked with.</span></h2>
     <div class="cgrid">
-      ${clients.map(([id, n], i) => `<div class="client rv" style="--d:${i % 4}"><span class="n">${String(i + 1).padStart(2, '0')}</span><div class="lh"><img src="${img(id)}" alt="${esc(n)} logo" loading="lazy"></div><span class="nm">${esc(n.toUpperCase())}</span></div>`).join('')}
+      ${clients.map(([id, n, ctx], i) => `<div class="client rv" style="--d:${i % 4}"><span class="n">${String(i + 1).padStart(2, '0')}</span><div class="lh"><img src="${img(id)}" alt="${esc(n)} logo" loading="lazy"></div><span class="nm">${esc(n.toUpperCase())}</span>${ctx ? `<span class="ctx">${esc(ctx)}</span>` : ''}</div>`).join('')}
     </div>
-    <p class="fine">Our team has worked with these organisations. Logos are trademarks of their respective owners and do not imply endorsement.</p>
+    <p class="fine">${esc(CL.note)}</p>
   </div>
 </section>
 

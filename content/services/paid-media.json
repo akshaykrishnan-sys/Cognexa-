@@ -206,5 +206,9 @@
     "a": "Find the mismatch.",
     "b": "Close it.",
     "p": "A 15 minute fit call. We bring a first read of where your ads lose people."
+  },
+  "nav": {
+    "label": "Ads (Paid Media)",
+    "tagline": "Spend that follows evidence"
   }
 }

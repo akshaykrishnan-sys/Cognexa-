@@ -306,14 +306,6 @@ document.querySelectorAll('[data-prompt]').forEach(function(x){x.addEventListene
 }
 
 /* ======================= THINKING ======================= */
-const ARTS = [
-  ['ig-trust', 'Consumer Decision-Making', 'Trust signals that cost nothing', 'Small reassurances at the right moment often do more than a discount.', 4],
-  ['ig-ai', 'AI and Transformation', 'What should AI be allowed to speed up?', 'Speed needs direction. Start with the decision.', 5],
-  ['ig-five', 'Digital Experience', 'The five-second rule, applied to a homepage', 'What a first-time visitor can understand before they decide to stay.', 4],
-  ['ig-loss', 'Behavioural Science', 'Loss aversion on a pricing page', 'Why the same price reads differently depending on what sits beside it.', 5],
-  ['ig-adopt', 'Technology Adoption', 'Adoption is a behaviour problem', 'Teams rarely reject a system. They reject the effort of changing how they work.', 7],
-  ['ig-channels', 'Growth and Marketing', 'When channels tell different stories', 'Search, social and email each make a promise. People notice when they disagree.', 4],
-];
 const ART_HREF = '/thinking/why-shoppers-hesitate/';
 
 export function thinking() {
@@ -333,8 +325,7 @@ export function thinking() {
   <div class="tfil" data-group data-filter=".art" data-mode="hide" role="group" aria-label="Filter by topic" id="tfil">${filters.map((f, i) => `<button aria-pressed="${i === 0}">${f}</button>`).join('')}</div>
 </div></section>
 <section class="bg-paper" style="padding:24px 0 96px"><div class="wrap">
-  <div class="arts">${ARTS.map(([ig, k, h, p, m], i) => `<a class="art rv" style="--d:${i % 3}" href="/thinking/${ARTICLES[i].slug}/" data-tags="${k}"><div class="im"><img src="/assets/img/${ig}.webp" alt="" loading="lazy"></div><p class="k">${k.toUpperCase()}</p><h3>${esc(h)}</h3><p>${esc(p)}</p><p class="m">Cognexa team&nbsp;&nbsp;/&nbsp;&nbsp;${m} min read</p></a>`).join('')}</div>
-  <p class="mono-s" style="color:#595957;margin-top:56px;text-transform:none;letter-spacing:.02em">Sample titles and summaries. Replace with published articles.</p>
+  <div class="arts">${ARTICLES.map(({ image: ig, topic: k, title: h, lede: p, read: m, slug }, i) => `<a class="art rv" style="--d:${i % 3}" href="/thinking/${slug}/" data-tags="${k}"><div class="im"><img src="${ig}" alt="" loading="lazy"></div><p class="k">${k.toUpperCase()}</p><h3>${esc(h)}</h3><p>${esc(p)}</p><p class="m">Cognexa team&nbsp;&nbsp;/&nbsp;&nbsp;${m} min read</p></a>`).join('')}</div>
 </div></section>
 <section class="tcta"><div class="wrap"><p class="mono rv" style="color:#9ea1ad">Fit call</p><h2 class="rv" style="--d:1">Reading is a start. The brief is the conversation.</h2><a class="btn rv" style="--d:2" href="/contact/">Book a 15-min fit call ${arr}</a></div></section>
 <script>
