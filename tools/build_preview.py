@@ -1,3 +1,4 @@
+import re
 """Build a single-entry preview of the site for the Claude artifact viewer.
 Each page's <body> is stored as p/<route-id>.html and loaded by hash (#p-<route-id>)."""
 import os, re, shutil, json, sys
@@ -52,7 +53,8 @@ home = open(os.path.join(SRC, 'index.html')).read()
 head = re.search(r'<head>(.*?)</head>', home, re.S).group(1)
 head = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', '', head, flags=re.S)
 head = re.sub(r'(href|src)="/(assets/[^"]*|favicon\.svg)"', r'\1="\2"', head)
-head = head.replace('<script defer src="assets/js/site.js"></script>', '').replace('assets/css/site.css', 'assets/css/site-desktop.css')
+head = re.sub(r'<script defer src="assets/js/site\.js(\?v=\w+)?"></script>', '', head)
+head = re.sub(r'assets/css/site\.css(\?v=\w+)?', 'assets/css/site-desktop.css', head)
 shell = f'''<!doctype html>
 <html lang="en">
 <head>{head}

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cognexa leads</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#14161a;--paper:#f3eee6;--card:#fffcf7;--line:#ddd3c4;--muted:#5b5e66;--blue:#2f5bea;--amber:#b36b00;--green:#1f7a4d;--red:#b3361f;
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans)}
+button,input,select,textarea{font:inherit;color:inherit}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px max(16px,3vw);background:var(--ink);color:var(--paper)}
+.top b{font-weight:600;font-size:17px}.top nav{display:flex;gap:16px;align-items:center;font-size:14px}.top a{color:var(--paper)}
+.wrap{padding:24px max(16px,3vw) 64px;max-width:1440px;margin:0 auto}
+.lbl{font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.login{max-width:440px;margin:12vh auto;background:var(--card);border:1px solid var(--line);padding:32px}
+.login h1{margin:8px 0 6px;font-size:28px;font-weight:500}
+.login p{color:var(--muted);margin:0 0 20px}
+input[type=password],input[type=search],input[type=text],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);background:#fff;border-radius:3px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:0;border-radius:3px;background:var(--blue);color:#fff;cursor:pointer;font-weight:500;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn.red{background:transparent;color:var(--red);border:1px solid #e3b6ad}
+.btn:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.err{color:var(--red);margin-top:12px;min-height:1.5em}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.tile{background:var(--card);padding:14px 16px;cursor:pointer;text-align:left;border:0}
+.tile.on{box-shadow:inset 0 -3px 0 var(--blue)}
+.tile .n{font:500 28px/1.1 var(--sans);font-variant-numeric:tabular-nums;margin-top:4px}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0 12px}
+.bar input{max-width:360px}
+.grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:start}
+.list{background:var(--card);border:1px solid var(--line)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;width:100%;background:none;border-left:3px solid transparent}
+.row:hover{background:#f8f3ea}.row.on{border-left-color:var(--blue);background:#f6f1e7}
+.row b{font-weight:600}.row .meta{font-size:13px;color:var(--muted)}.row .brief{grid-column:1/-1;color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 7px;border-radius:3px;background:#e8e1d4;white-space:nowrap}
+.pill.new{background:#dfe6fb;color:var(--blue)}.pill.won{background:#dff0e6;color:var(--green)}.pill.lost,.pill.spam{background:#f3e0dc;color:var(--red)}.pill.call-booked,.pill.proposal-sent{background:#f6ead3;color:var(--amber)}
+.detail{background:var(--card);border:1px solid var(--line);padding:24px;position:sticky;top:16px}
+.detail h2{margin:4px 0 2px;font-size:24px;font-weight:500}
+.detail dl{display:grid;grid-template-columns:140px minmax(0,1fr);gap:6px 12px;margin:18px 0}
+.detail dt{color:var(--muted);font-size:13px}.detail dd{margin:0;overflow-wrap:anywhere}
+.brief-box{white-space:pre-wrap;background:#fff;border:1px solid var(--line);padding:14px;border-radius:3px;margin-top:8px}
+.ctl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.ctl label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted)}
+.notes{margin-top:18px}.notes li{margin:8px 0;font-size:14px}.notes small{color:var(--muted)}
+.hist{font:12px/1.6 var(--mono);color:var(--muted);margin-top:16px;padding-left:18px}
+.empty{padding:40px 16px;color:var(--muted);text-align:center}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:28px}
+.stat{background:var(--card);border:1px solid var(--line);padding:18px}
+.stat ul{list-style:none;padding:0;margin:10px 0 0}.stat li{display:grid;grid-template-columns:110px 1fr 36px;gap:10px;align-items:center;font-size:14px;margin:6px 0}
+.stat i{display:block;height:8px;background:var(--blue);border-radius:2px}.stat span.v{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.detail{position:static}.ctl{grid-template-columns:1fr}.detail dl{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><b>Cognexa leads</b><nav><a href="/admin/">Content manager</a><a href="/" target="_blank" rel="noopener">View site</a><button class="btn ghost" id="logout" hidden style="color:var(--paper);border-color:#444">Sign out</button></nav></header>
+
+<section class="login" id="login">
+  <p class="lbl">Leads dashboard</p>
+  <h1>Sign in</h1>
+  <p>Enter the access token set as <code>ADMIN_TOKEN</code> in Netlify. It stays in this browser tab only.</p>
+  <form id="lf"><label for="tok" class="lbl">Access token</label><input type="password" id="tok" autocomplete="current-password" required style="margin:8px 0 16px"><button class="btn" type="submit">Open dashboard</button><p class="err" id="lerr" role="alert"></p></form>
+</section>
+
+<main class="wrap" id="app" hidden>
+  <div class="tiles" id="tiles"></div>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Search name, email, organisation or brief" aria-label="Search leads">
+    <button class="btn ghost" id="refresh" type="button">Refresh</button>
+    <button class="btn ghost" id="csv" type="button">Export CSV</button>
+    <span class="lbl" id="count"></span>
+  </div>
+  <div class="grid">
+    <div class="list" id="list" aria-live="polite"></div>
+    <aside class="detail" id="detail"><p class="empty">Choose a lead to see the brief, change its status and add notes.</p></aside>
+  </div>
+  <h2 style="margin:40px 0 0;font-weight:500">Hesitation check</h2>
+  <p style="color:var(--muted);margin:4px 0 0">Anonymous results from <a href="/check/">/check/</a>. No personal data is stored.</p>
+  <div class="stats" id="stats"></div>
+</main>
+
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const fmt = (d) => d ? new Date(d).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+  let token = ''; try { token = sessionStorage.getItem('cx-admin') || ''; } catch (e) {}
+  let state = { leads: [], counts: {}, statuses: [], filter: '', q: '', sel: decodeURIComponent(location.hash.slice(1)) };
+
+  async function api(path, opts = {}) {
+    const r = await fetch(path, { ...opts, headers: { authorization: 'Bearer ' + token, 'content-type': 'application/json', ...(opts.headers || {}) } });
+    if (r.status === 401) { signOut('That token was not accepted.'); throw new Error('unauthorised'); }
+    if (!r.ok) { const b = await r.json().catch(() => ({})); throw new Error(b.error || 'Request failed (' + r.status + ')'); }
+    return r;
+  }
+  function signOut(msg) { token = ''; try { sessionStorage.removeItem('cx-admin'); } catch (e) {} $('#app').hidden = true; $('#login').hidden = false; $('#logout').hidden = true; $('#lerr').textContent = msg || ''; }
+
+  $('#lf').addEventListener('submit', async (e) => {
+    e.preventDefault(); token = $('#tok').value.trim(); $('#lerr').textContent = '';
+    try { await load(); try { sessionStorage.setItem('cx-admin', token); } catch (e) {} } catch (err) { if (err.message !== 'unauthorised') $('#lerr').textContent = err.message; }
+  });
+  $('#logout').addEventListener('click', () => signOut());
+  $('#refresh').addEventListener('click', () => load());
+  $('#q').addEventListener('input', (e) => { state.q = e.target.value.toLowerCase(); renderList(); });
+  $('#csv').addEventListener('click', async () => {
+    const r = await api('/api/leads?format=csv' + (state.filter ? '&status=' + encodeURIComponent(state.filter) : ''));
+    const url = URL.createObjectURL(await r.blob()); const a = document.createElement('a');
+    a.href = url; a.download = 'cognexa-leads-' + new Date().toISOString().slice(0, 10) + '.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+
+  async function load() {
+    const d = await (await api('/api/leads')).json();
+    Object.assign(state, d);
+    $('#login').hidden = true; $('#app').hidden = false; $('#logout').hidden = false;
+    renderTiles(); renderList(); renderDetail();
+    api('/api/check/stats').then(r => r.json()).then(renderStats).catch(() => { $('#stats').innerHTML = '<p class="empty">No hesitation-check data yet.</p>'; });
+  }
+  function renderTiles() {
+    const total = state.leads.length;
+    const t = [['', 'All leads', total], ...state.statuses.map(s => [s, s, state.counts[s] || 0])];
+    $('#tiles').innerHTML = t.map(([k, l, n]) => `<button class="tile${state.filter === k ? ' on' : ''}" data-f="${esc(k)}" aria-pressed="${state.filter === k}"><span class="lbl">${esc(l)}</span><div class="n">${n}</div></button>`).join('');
+    $('#tiles').querySelectorAll('.tile').forEach(b => b.addEventListener('click', () => { state.filter = b.dataset.f; renderTiles(); renderList(); }));
+  }
+  const visible = () => state.leads.filter(l => (!state.filter || l.status === state.filter) && (!state.q || [l.name, l.email, l.organisation, l.brief, l.service].join(' ').toLowerCase().includes(state.q)));
+  function renderList() {
+    const rows = visible();
+    $('#count').textContent = rows.length + ' shown';
+    $('#list').innerHTML = rows.length ? rows.map(l => `<button class="row${state.sel === l.id ? ' on' : ''}" data-id="${esc(l.id)}"><span><b>${esc(l.name || l.email)}</b>${l.organisation ? ' · ' + esc(l.organisation) : ''}<br><span class="meta">${fmt(l.createdAt)} · ${esc(l.form)}${l.service ? ' · ' + esc(l.service) : ''}</span></span><span class="pill ${esc(l.status).replace(/ /g, '-')}">${esc(l.status)}</span><span class="brief">${esc((l.brief || '').replace(/\s+/g, ' '))}</span></button>`).join('')
+      : '<p class="empty">No leads match. New form submissions appear here within a few seconds.</p>';
+    $('#list').querySelectorAll('.row').forEach(b => b.addEventListener('click', () => { state.sel = b.dataset.id; history.replaceState(null, '', '#' + encodeURIComponent(state.sel)); renderList(); renderDetail(); }));
+  }
+  function renderDetail() {
+    const l = state.leads.find(x => x.id === state.sel);
+    if (!l) { $('#detail').innerHTML = '<p class="empty">Choose a lead to see the brief, change its status and add notes.</p>'; return; }
+    const rows = [['Email', `<a href="mailto:${esc(l.email)}">${esc(l.email)}</a>`], ['Organisation', esc(l.organisation)], ['Received', fmt(l.createdAt)], ['Form', esc(l.form)], ['Area', esc(l.area)], ['Service', esc(l.service)], ['Preferred slot', esc([l.day, l.time, l.office].filter(Boolean).join(' · '))], ['Came from', esc(l.source)]].filter(([, v]) => v);
+    $('#detail').innerHTML = `<p class="lbl">Lead</p><h2>${esc(l.name || l.email)}</h2>
+      <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+      <p class="lbl">The brief</p><div class="brief-box">${esc(l.brief || '(no brief)')}</div>
+      <div class="ctl"><label>Status<select id="st">${state.statuses.map(s => `<option${s === l.status ? ' selected' : ''}>${esc(s)}</option>`).join('')}</select></label>
+      <label>Owner<input type="text" id="ow" value="${esc(l.owner || '')}" placeholder="Who is following up"></label></div>
+      <div class="notes"><p class="lbl">Notes</p><ul>${(l.notes || []).map(n => `<li>${esc(n.text)} <small>· ${fmt(n.at)}</small></li>`).join('') || '<li style="color:var(--muted)">No notes yet.</li>'}</ul>
+      <textarea id="nt" rows="3" placeholder="Add a note, e.g. call booked for Thursday"></textarea>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><button class="btn" id="save">Save changes</button><a class="btn ghost" href="mailto:${esc(l.email)}?subject=${encodeURIComponent('Your Cognexa fit call')}">Reply by email</a><button class="btn red" id="del">Delete lead</button></div>
+      <p class="err" id="derr" role="alert"></p></div>
+      <ol class="hist">${(l.history || []).map(h => `<li>${fmt(h.at)} · ${esc(h.event)}</li>`).join('')}</ol>`;
+    $('#save').addEventListener('click', async () => {
+      const body = { status: $('#st').value, owner: $('#ow').value }; const note = $('#nt').value.trim(); if (note) body.note = note;
+      try { const d = await (await api('/api/leads/' + encodeURIComponent(l.id), { method: 'PATCH', body: JSON.stringify(body) })).json(); Object.assign(l, d.lead); recount(); renderTiles(); renderList(); renderDetail(); } catch (e) { $('#derr').textContent = e.message; }
+    });
+    let armed = false;
+    $('#del').addEventListener('click', async (e) => {
+      if (!armed) { armed = true; e.target.textContent = 'Click again to delete for good'; return; }
+      try { await api('/api/leads/' + encodeURIComponent(l.id), { method: 'DELETE' }); state.leads = state.leads.filter(x => x.id !== l.id); state.sel = ''; recount(); renderTiles(); renderList(); renderDetail(); } catch (err) { $('#derr').textContent = err.message; }
+    });
+  }
+  function recount() { state.counts = {}; state.leads.forEach(l => { state.counts[l.status] = (state.counts[l.status] || 0) + 1; }); }
+  function renderStats(s) {
+    const block = (title, obj) => { const e = Object.entries(obj || {}).sort((a, b) => b[1] - a[1]); const mx = Math.max(1, ...e.map(x => x[1]));
+      return `<div class="stat"><p class="lbl">${title}</p><ul>${e.map(([k, v]) => `<li><span>${esc(k)}</span><i style="width:${(v / mx) * 100}%"></i><span class="v">${v}</span></li>`).join('') || '<li>No data yet</li>'}</ul></div>`; };
+    $('#stats').innerHTML = `<div class="stat"><p class="lbl">Checks completed</p><div style="font-size:40px;font-weight:500;margin-top:6px">${s.total}</div><p style="color:var(--muted);margin:4px 0 0">${Object.values(s.last30Days || {}).reduce((a, b) => a + b, 0)} in the last 30 days</p></div>`
+      + block('Most likely lever', s.byLever) + block('Industry', s.byIndustry) + block('Pace', s.byPace);
+  }
+  if (token) load().catch(() => {});
+})();
+</script>
+</body>
+</html>

@@ -1,5 +1,10 @@
 import { SEO } from './seo.mjs';
-import { readJSON, collection } from './content.mjs';
+import { readJSON, collection, ROOT } from './content.mjs';
+import { readFileSync as _rf } from 'node:fs';
+import { createHash } from 'node:crypto';
+// cache-busting version for CSS and JS, so a new deploy is picked up straight away
+const ver = (f) => createHash('sha1').update(_rf(`${ROOT}/public/assets/${f}`)).digest('hex').slice(0, 8);
+const V_CSS = ver('css/site.css'), V_JS = ver('js/site.js');
 export const img = (id) => (String(id).startsWith('/') || /^https?:/.test(id) ? id : `/assets/img/n${id.replace(':', '-')}.webp`);
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const arr = '<span class="arr" aria-hidden="true">→</span>';
@@ -120,8 +125,8 @@ ${ldTag}<meta name="theme-color" content="#f3eee6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css">
-<script defer src="/assets/js/site.js"></script>
+<link rel="stylesheet" href="/assets/css/site.css?v=${V_CSS}">
+<script defer src="/assets/js/site.js?v=${V_JS}"></script>
 </head>
 <body>
 ${header(active)}

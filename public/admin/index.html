@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cognexa content manager</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="cms-config-url" type="text/yaml" href="/admin/config.yml">
+<style>
+  .cx-bar{position:fixed;right:16px;bottom:16px;z-index:9999;display:flex;gap:8px;font:500 13px/1 system-ui,sans-serif}
+  .cx-bar a{background:#14161a;color:#f3eee6;text-decoration:none;padding:10px 14px;border-radius:4px}
+  .cx-bar a:hover{background:#2f5bea}
+</style>
+</head>
+<body>
+<div class="cx-bar"><a href="/admin/leads/">Leads dashboard</a><a href="/" target="_blank" rel="noopener">View site</a></div>
+<!-- Decap CMS 3.17.1, self-hosted so the editor does not depend on a CDN -->
+<script src="/admin/decap/decap-cms.js"></script>
+<script>
+  // Show the live site styles in the editor preview pane.
+  window.CMS && CMS.registerPreviewStyle('/assets/css/site.css');
+</script>
+</body>
+</html>

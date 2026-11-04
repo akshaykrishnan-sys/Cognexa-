@@ -275,6 +275,7 @@
       $('links').innerHTML = (ind ? `<a href="/industries/${ind}/">The ${C.I[ind]} playbook →</a>` : '') + `<a href="/services/${L[3][0]}/">${L[3][1]} →</a><a href="/services/${L[4][0]}/">${L[4][1]} →</a>`;
       const brief = `Hesitation check result: ${L[0]}.\n` + ans.map(a => '- ' + a).join('\n');
       $('cta').href = '/contact/?brief=' + encodeURIComponent(brief);
+      try { fetch('/api/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ lever: top, industry: ind, pace }), keepalive: true }).catch(() => {}); } catch (e) { /* analytics only */ }
       show(qs.length);
       res.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -282,4 +283,15 @@
   const orig = w.CX && w.CX.init;
   if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();
+
+/* ---------- remember where a visitor came from, for the lead record ---------- */
+(function () {
+  try {
+    const k = 'cx-src';
+    if (!sessionStorage.getItem(k)) sessionStorage.setItem(k, JSON.stringify({ landing: location.pathname + location.search, ref: document.referrer || '' }));
+    const fill = () => document.querySelectorAll('input[name=referrer]').forEach(i => { const v = JSON.parse(sessionStorage.getItem(k) || '{}'); i.value = `landing: ${v.landing || ''} · referrer: ${v.ref || 'direct'} · form page: ${location.pathname}`; });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fill); else fill();
+    const orig = window.CX && window.CX.init; if (window.CX) window.CX.init = function () { orig && orig(); fill(); };
+  } catch (e) { /* storage blocked: the lead is still sent */ }
 })();

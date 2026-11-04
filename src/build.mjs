@@ -34,7 +34,7 @@ for (const [r, html] of Object.entries(routes)) {
   writeFileSync(f, markItalics(html));
 }
 writeFileSync(join(OUT, '404.html'), markItalics(notFound()));
-writeFileSync(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`);
+writeFileSync(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${SITE.url}/sitemap.xml\n`);
 writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${Object.keys(routes).filter(r => r !== '/thanks/').map(r => `  <url><loc>${SITE.url}${r}</loc></url>`).join('\n')}\n</urlset>\n`);
 writeFileSync(join(OUT, 'favicon.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#14161a"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="40" fill="#f4a024">c</text></svg>`);
 if (process.env.ITDEBUG) console.log('unmatched italics:', unmatched());

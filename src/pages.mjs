@@ -192,7 +192,7 @@ export function about() {
   <h2 class="rv t-display" style="font-size:clamp(44px,5vw,72px);line-height:1.05"><span class="c-grey">You probably don’t need better strategy.</span><br><span class="c-amber">You need a strategy that drives behaviour.</span></h2>
   <p class="rv" style="font-weight:500;font-size:24px;margin-top:24px">Bring us the problem.</p>
   <form class="aform rv" style="margin-top:24px" name="about-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/">
-    <input type="hidden" name="form-name" value="about-contact"><p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
+    <input type="hidden" name="form-name" value="about-contact"><input type="hidden" name="referrer" value=""><p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
     <label class="sr-only" for="a-n">Name</label><input id="a-n" name="name" placeholder="Name" required autocomplete="name">
     <label class="sr-only" for="a-e">Email</label><input id="a-e" name="email" type="email" placeholder="Email" required autocomplete="email">
     <label class="sr-only" for="a-o">Organisation</label><input id="a-o" name="organisation" placeholder="Organisation (optional)" autocomplete="organization">
@@ -260,6 +260,7 @@ export function contact() {
       <p class="k">STEP 2&nbsp;&nbsp;/&nbsp;&nbsp;TELL US THE BRIEF</p>
       <form class="bform" name="fit-call" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/">
         <input type="hidden" name="form-name" value="fit-call">
+        <input type="hidden" name="referrer" value="">
         <p hidden><label>Don’t fill this out: <input name="bot-field"></label></p>
         <input type="hidden" name="office" id="f-office" value="London, UK">
         <input type="hidden" name="day" id="f-day" value="">
