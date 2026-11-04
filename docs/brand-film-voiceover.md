@@ -1,21 +1,19 @@
-# Cognexa brand film: voice-over script (42 seconds)
+# Cognexa brand film: "The moment before a decision" (32 seconds)
 
-**Voice:** calm, warm, confident, unhurried. A thoughtful strategist, not an advertiser.
-**Current track:** Kokoro (open-source, Apache 2.0), voice "af_heart", speed 0.92. Replace any time with a human read of the same lines.
-**Format for a human read:** WAV, 48 kHz, quiet room, no music.
+**Voice:** calm, warm, unhurried. **Current track:** Kokoro (open-source, Apache 2.0), voice "af_heart", speed 0.9.
+**Human read:** WAV, 48 kHz, quiet room, no music. Keep roughly a second of quiet between lines.
 
 | Starts | Line |
 |---|---|
-| 0:00.6 | Every business has a number it wants to move. |
-| 0:03.6 | So the brief says: more leads. More traffic. A new website. |
-| 0:08.4 | But behind every number are real people, making real decisions. |
-| 0:13.1 | And somewhere along the way, they hesitate. |
-| 0:16.3 | Cognexa finds that moment, and why it happens. |
-| 0:19.9 | We observe how people really decide. |
-| 0:22.7 | We find the doubt that stops them. |
-| 0:25.1 | Then we design the fix, and measure what moves. |
-| 0:28.5 | For e-commerce, B2B and SaaS, healthcare, education, and fintech. |
-| 0:34.2 | Find the doubt. Remove it. |
-| 0:36.9 | Book a discovery call with the founders of Cognexa today. |
+| 0:00.8 | Every decision has a moment. |
+| 0:03.4 | A pause. A doubt. A second thought. |
+| 0:06.7 | Most businesses never see it. |
+| 0:09.0 | We do. |
+| 0:10.7 | We read the behaviour behind the numbers, |
+| 0:13.3 | find the moment people hesitate, |
+| 0:15.6 | and design it away. |
+| 0:17.9 | In retail, software, healthcare, education, and finance. |
+| 0:22.6 | Find the doubt. Remove it. |
+| 0:25.5 | Book a discovery call with the founders of Cognexa today. |
 
 To swap the voice: `tools/add-voiceover.sh voice.wav [music.mp3]` on the silent master, then rebuild.

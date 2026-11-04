@@ -1,0 +1,65 @@
+{
+ "lines": [
+  {
+   "key": "moment",
+   "text": "Every decision has a moment.",
+   "start": 0.8,
+   "dur": 1.71
+  },
+  {
+   "key": "pause",
+   "text": "A pause. A doubt. A second thought.",
+   "start": 3.41,
+   "dur": 2.4
+  },
+  {
+   "key": "never",
+   "text": "Most businesses never see it.",
+   "start": 6.7,
+   "dur": 1.68
+  },
+  {
+   "key": "wedo",
+   "text": "We do.",
+   "start": 8.98,
+   "dur": 0.72
+  },
+  {
+   "key": "read",
+   "text": "We read the behaviour behind the numbers,",
+   "start": 10.7,
+   "dur": 2.26
+  },
+  {
+   "key": "find",
+   "text": "find the moment people hesitate,",
+   "start": 13.31,
+   "dur": 1.95
+  },
+  {
+   "key": "design",
+   "text": "and design it away.",
+   "start": 15.61,
+   "dur": 1.27
+  },
+  {
+   "key": "across",
+   "text": "In retail, software, healthcare, education, and finance.",
+   "start": 17.88,
+   "dur": 3.71
+  },
+  {
+   "key": "payoff",
+   "text": "Find the doubt. Remove it.",
+   "start": 22.59,
+   "dur": 1.78
+  },
+  {
+   "key": "end",
+   "text": "Book a discovery call with the founders of Cognexa today.",
+   "start": 25.47,
+   "dur": 3.58
+  }
+ ],
+ "total": 31.66
+}
