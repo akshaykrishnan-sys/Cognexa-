@@ -4,3 +4,5 @@ node_modules/
 preview/
 cognexa-site-deploy.zip
 .DS_Store
+*.zip
+/cognexa-brand-reel-1080p.mp4
