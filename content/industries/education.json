@@ -1,0 +1,226 @@
+{
+  "order": 4,
+  "slug": "education",
+  "modsH": "Six ways we lift enrolments",
+  "name": "Education",
+  "crumb": "EDUCATION",
+  "who": "learners",
+  "hero": {
+    "img": "/assets/img/n203-1045.webp",
+    "k": "Learners follow their people.",
+    "t1": "Show them",
+    "t2": "belonging.",
+    "s": "Behavioural insights for education. We study how learners decide, then remove what feels risky.",
+    "cta": "Get an Education growth plan",
+    "tags": [
+      {
+        "text": "Trust? alumni proof"
+      },
+      {
+        "text": "Effort? application steps"
+      },
+      {
+        "text": "Risk? wrong choice"
+      }
+    ],
+    "path": [
+      {
+        "label": "01 - DISCOVER",
+        "sub": "what sparks interest"
+      },
+      {
+        "label": "02 - SHORTLIST",
+        "sub": "who makes the list"
+      },
+      {
+        "label": "03 - COMPARE",
+        "sub": "what they weigh"
+      },
+      {
+        "label": "04 - DOUBT",
+        "sub": "what stops them"
+      },
+      {
+        "label": "05 - ENROL",
+        "sub": "what finally tips it"
+      }
+    ]
+  },
+  "insightsH": "What learners are really doing",
+  "insights": [
+    {
+      "tag": "TRUST",
+      "title": "Peers beat brochures",
+      "text": "Learners trust people like them. Real student voices outweigh polished claims."
+    },
+    {
+      "tag": "CHOICE",
+      "title": "Too many courses, no pick",
+      "text": "Endless programmes cause delay. Guide each learner to one fitting path."
+    },
+    {
+      "tag": "LOSS",
+      "title": "A wrong choice feels costly",
+      "text": "Fees and years feel at stake. Reduce the sense of risk with clear outcomes."
+    },
+    {
+      "tag": "HABIT",
+      "title": "Deadlines slip quietly",
+      "text": "Intent fades without a nudge. Small prompts keep applications moving."
+    }
+  ],
+  "mapL": "WHERE LEARNERS STALL",
+  "mapH": "Where learners stall, and what we change",
+  "map": [
+    {
+      "symptom": "Enquiries rise, few apply",
+      "change": "Answer the first question",
+      "services": [
+        {
+          "text": "BRAND POSITIONING"
+        },
+        {
+          "text": "LANDING PAGE DESIGN"
+        }
+      ]
+    },
+    {
+      "symptom": "Applications go unfinished",
+      "change": "Shorten the climb to apply",
+      "services": [
+        {
+          "text": "UX AUDITS"
+        },
+        {
+          "text": "CRO"
+        },
+        {
+          "text": "APPLICATION FLOW"
+        }
+      ]
+    },
+    {
+      "symptom": "Open days draw, few follow",
+      "change": "Turn interest into intent",
+      "services": [
+        {
+          "text": "EVENT FUNNELS"
+        },
+        {
+          "text": "RETARGETING"
+        },
+        {
+          "text": "ANALYTICS"
+        }
+      ]
+    },
+    {
+      "symptom": "Parents stay unconvinced",
+      "change": "Speak to the real decider",
+      "services": [
+        {
+          "text": "PARENT JOURNEYS"
+        },
+        {
+          "text": "EMAIL & AUTOMATION"
+        }
+      ]
+    },
+    {
+      "symptom": "Programmes look the same",
+      "change": "Make your difference visible",
+      "services": [
+        {
+          "text": "PROGRAMME FILMS"
+        },
+        {
+          "text": "STUDENT STORIES"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "image": "/assets/img/n203-1193.webp",
+      "kicker": "UNIVERSITY  /  UNDERGRADUATE",
+      "title": "Parent doubt reduced",
+      "number": "+22%",
+      "measure": "applications",
+      "lever": "trust"
+    },
+    {
+      "image": "/assets/img/n203-1203.webp",
+      "kicker": "EDTECH  /  ONLINE COURSES",
+      "title": "Course choice simplified",
+      "number": "+28%",
+      "measure": "enrolments",
+      "lever": "choice"
+    },
+    {
+      "image": "/assets/img/n203-1213.webp",
+      "kicker": "BUSINESS SCHOOL  /  MBA",
+      "title": "Form drop-off cut",
+      "number": "+37%",
+      "measure": "completed forms",
+      "lever": "friction"
+    }
+  ],
+  "mods": [
+    {
+      "title": "Learner insight sprint",
+      "text": "Interviews with learners and parents find the real doubt."
+    },
+    {
+      "title": "Behavioural audit",
+      "text": "We score each step for trust, effort and risk."
+    },
+    {
+      "title": "Application redesign",
+      "text": "Pages and forms rebuilt to lower the climb."
+    },
+    {
+      "title": "Intent-led media",
+      "text": "Campaigns matched to why learners search."
+    },
+    {
+      "title": "Nurture and retention",
+      "text": "Messages that keep intent alive until enrolment."
+    },
+    {
+      "title": "Campus storytelling",
+      "text": "Student films that make belonging visible."
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does a behavioural insight engagement take in education?",
+      "answer": "An insight sprint runs 4 to 6 weeks. Redesign and media work follow in phases, each focused on one step from interest to application."
+    },
+    {
+      "question": "Do you work with university and school admissions cycles?",
+      "answer": "Yes. We plan around intakes, deadlines and open days, so changes land when learners and parents are actually deciding."
+    },
+    {
+      "question": "How do you measure impact on enrolment behaviour?",
+      "answer": "Against one agreed behaviour per phase, such as an enquiry made or an application finished. The baseline is agreed before work starts."
+    },
+    {
+      "question": "Is learner data kept safe?",
+      "answer": "We sign an NDA before any data is shared and work within your security and privacy policies."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n203-1280.webp",
+    "a": "Find the hurdle.",
+    "b": "Remove it.",
+    "p": "A 15-minute fit call. We bring a first read of where your learners hesitate.",
+    "btn": "Book your Education review"
+  },
+  "card": {
+    "image": "/assets/img/n362-307.webp",
+    "headline": "Learners choose where they belong.",
+    "question": "Why do learners drop off?",
+    "pause": "The risk of choosing wrong",
+    "change": "Visible belonging and clear outcomes"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "order": 3,
+  "date": "2026-10-03",
+  "author": "Cognexa team",
+  "draft": false,
+  "slug": "five-second-rule-homepage",
+  "topic": "Digital Experience",
+  "title": "The five-second rule, applied to a homepage",
+  "lede": "What a first-time visitor can understand before they decide to stay.",
+  "read": 4,
+  "intro": "A first-time visitor gives a homepage a few seconds before deciding whether to stay. In that time they are trying to answer three things: what is this, why should I trust it, and what happens next.",
+  "s": [
+    {
+      "heading": "Say what it is, plainly",
+      "text": "The first screen should name the offer in words a visitor would use. Clever phrasing asks people to work. Plain phrasing lets them move straight on to the next question."
+    },
+    {
+      "heading": "Give a reason to trust it",
+      "text": "Proof near the top, such as who the business has worked with or what it has measured, shortens the distance to trust. Placement matters more than volume. One clear signal beats a wall of logos."
+    },
+    {
+      "heading": "Make the next step obvious",
+      "text": "Once the visitor understands, the page should offer one clear action. Several equal choices slow people down. We test the first five seconds with a few real visitors and ask them to explain the page back."
+    }
+  ],
+  "quote": "A visitor who understands quickly has attention left to decide.",
+  "callT": "What a visitor should know",
+  "call": [
+    {
+      "text": "What you offer."
+    },
+    {
+      "text": "Who it is for."
+    },
+    {
+      "text": "What to do next."
+    }
+  ],
+  "rel": [
+    {
+      "text": "trust-signals-that-cost-nothing"
+    },
+    {
+      "text": "when-channels-tell-different-stories"
+    }
+  ],
+  "image": "/assets/img/ig-five.webp"
+}

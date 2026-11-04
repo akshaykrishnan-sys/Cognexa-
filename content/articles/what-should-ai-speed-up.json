@@ -1,0 +1,48 @@
+{
+  "order": 2,
+  "date": "2026-10-02",
+  "author": "Cognexa team",
+  "draft": false,
+  "slug": "what-should-ai-speed-up",
+  "topic": "AI and Transformation",
+  "title": "What should AI be allowed to speed up?",
+  "lede": "Speed needs direction. Start with the decision.",
+  "read": 5,
+  "intro": "Most teams ask what AI can do. A more useful question is which decisions are safe to hand over, which need a check, and which should stay with a person. The answer depends on the cost of a wrong call.",
+  "s": [
+    {
+      "heading": "Sort work by the cost of being wrong",
+      "text": "Drafting a summary and approving a refund are very different tasks. We map each task by how reversible its outcome is and how much judgement it needs. Low-risk, reversible work is where speed pays first."
+    },
+    {
+      "heading": "Add a review where judgement matters",
+      "text": "Some work can be sped up and then checked. The check should be designed in advance: who looks, what they look for, and what they can change. Without it, people either trust the output too much or redo it from scratch."
+    },
+    {
+      "heading": "Keep some decisions human",
+      "text": "Choices that affect trust, safety or fairness deserve a named person. AI can prepare the evidence. The call stays with someone who can explain it to the customer."
+    }
+  ],
+  "quote": "Speed is a gain only when someone still owns the decision.",
+  "callT": "Three questions to ask",
+  "call": [
+    {
+      "text": "What happens if this output is wrong?"
+    },
+    {
+      "text": "Who reviews it, and how quickly?"
+    },
+    {
+      "text": "What does the reviewer lose by skipping the check?"
+    }
+  ],
+  "rel": [
+    {
+      "text": "adoption-is-a-behaviour-problem"
+    },
+    {
+      "text": "trust-signals-that-cost-nothing"
+    }
+  ],
+  "image": "/assets/img/ig-ai.webp"
+}

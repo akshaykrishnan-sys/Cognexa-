@@ -1,0 +1,48 @@
+{
+  "order": 4,
+  "date": "2026-10-04",
+  "author": "Cognexa team",
+  "draft": false,
+  "slug": "loss-aversion-pricing-page",
+  "topic": "Behavioural Science",
+  "title": "Loss aversion on a pricing page",
+  "lede": "Why the same price reads differently depending on what sits beside it.",
+  "read": 5,
+  "intro": "People weigh losses more heavily than equal gains. On a pricing page, that means the same number can feel fair or painful depending on how it is framed and what appears next to it.",
+  "s": [
+    {
+      "heading": "Frame the price against the cost of waiting",
+      "text": "A price shown alone invites the question of whether it is worth it. Shown beside what the problem already costs, it becomes a comparison. The frame has to be true and easy to check."
+    },
+    {
+      "heading": "Show what the plan protects",
+      "text": "Plans described by features read as a list of costs. Plans described by what they protect, such as time, revenue or peace of mind, are easier to weigh. We test both framings with the buyers who decide."
+    },
+    {
+      "heading": "Use the reference honestly",
+      "text": "Reference points guide choice, so they must be real. An inflated anchor may win a click and lose the relationship. Use comparisons a buyer can verify for themselves."
+    }
+  ],
+  "quote": "The same price feels different next to a different reference.",
+  "callT": "Framing checks",
+  "call": [
+    {
+      "text": "What sits next to the price?"
+    },
+    {
+      "text": "Is the cost of waiting visible?"
+    },
+    {
+      "text": "Does each tier say what it protects?"
+    }
+  ],
+  "rel": [
+    {
+      "text": "trust-signals-that-cost-nothing"
+    },
+    {
+      "text": "five-second-rule-homepage"
+    }
+  ],
+  "image": "/assets/img/ig-loss.webp"
+}

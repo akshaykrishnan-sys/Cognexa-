@@ -1,0 +1,209 @@
+{
+  "order": 3,
+  "slug": "video-creation",
+  "name": "Video Creation",
+  "crumb": "VIDEO CREATION",
+  "sys": "growth",
+  "hero": {
+    "img": "/assets/img/n218-3027.webp",
+    "k": "People forget facts.",
+    "t1": "They keep",
+    "t2": "stories.",
+    "s": "Behavioural video production built around emotional arc.",
+    "tags": [
+      {
+        "text": "Trust? real voices"
+      },
+      {
+        "text": "Effort? seconds to value"
+      },
+      {
+        "text": "Risk? skipped in 3s"
+      }
+    ],
+    "path": [
+      {
+        "text": "BRAND FILMS"
+      },
+      {
+        "text": "DEMOS"
+      },
+      {
+        "text": "EXPLAINERS"
+      },
+      {
+        "text": "REELS"
+      },
+      {
+        "text": "TESTIMONIALS"
+      },
+      {
+        "text": "MOTION"
+      },
+      {
+        "text": "TRAINING"
+      },
+      {
+        "text": "EVENTS"
+      }
+    ]
+  },
+  "problemH": "Most videos struggle to hold people",
+  "pains": [
+    {
+      "title": "Beautiful but forgettable",
+      "text": "High production value does not mean the message sticks."
+    },
+    {
+      "title": "Videos with no job",
+      "text": "Content gets made for the channel, not for a decision in the journey."
+    },
+    {
+      "title": "Drop-off in the first seconds",
+      "text": "Slow openings lose people before the point lands."
+    }
+  ],
+  "steps": [
+    {
+      "text": "What audiences watch and finish."
+    },
+    {
+      "text": "Where video sits in the journey."
+    },
+    {
+      "text": "Where attention drops off."
+    },
+    {
+      "text": "Script for tension, resolution, action."
+    },
+    {
+      "text": "Watch time, shares and conversions."
+    }
+  ],
+  "views": [
+    {
+      "text": "Retention curves and click data show exactly where viewers leave and what makes them act."
+    },
+    {
+      "text": "A consistent voice and visual world make every video feel unmistakably yours."
+    }
+  ],
+  "lens": "Every story is sequenced for emotional arc: tension, resolution, action.",
+  "svcs": [
+    {
+      "name": "Brand Films",
+      "description": "Origin story, mission and brand identity on screen",
+      "insight": "People join stories.",
+      "outcome": "A brand people remember."
+    },
+    {
+      "name": "Product Demos",
+      "description": "Show the value of a product in motion",
+      "insight": "Seeing lowers perceived risk.",
+      "outcome": "Faster understanding."
+    },
+    {
+      "name": "Explainer Videos",
+      "description": "Simplify complex ideas quickly and clearly",
+      "insight": "Clarity reduces effort.",
+      "outcome": "Ideas that land first time."
+    },
+    {
+      "name": "Social Video (Reels)",
+      "description": "Native, fast, platform-fit short-form content",
+      "insight": "Attention is won in seconds.",
+      "outcome": "Reach that holds."
+    },
+    {
+      "name": "Testimonial Videos",
+      "description": "Proof told in the customer’s own words",
+      "insight": "Peers are the best proof.",
+      "outcome": "Trust at the point of doubt."
+    },
+    {
+      "name": "Motion Graphics",
+      "description": "2D/3D animation and data visualised",
+      "insight": "Motion guides the eye.",
+      "outcome": "Complex data made clear."
+    },
+    {
+      "name": "Training Videos",
+      "description": "Internal knowledge, captured and scaled",
+      "insight": "Short lessons get used.",
+      "outcome": "Skills that spread."
+    },
+    {
+      "name": "Event Coverage",
+      "description": "Capture and repurpose the moments that matter",
+      "insight": "Moments fade fast.",
+      "outcome": "Events that keep working."
+    }
+  ],
+  "deliv": [
+    {
+      "text": "Story and script"
+    },
+    {
+      "text": "Storyboard and shot list"
+    },
+    {
+      "text": "Final cut and cutdowns"
+    },
+    {
+      "text": "Platform-ready versions"
+    },
+    {
+      "text": "Captions and thumbnails"
+    },
+    {
+      "text": "Performance report"
+    }
+  ],
+  "cases": [
+    {
+      "kicker": "D2C  /  BEAUTY",
+      "title": "Testimonial series launched",
+      "number": "+22%",
+      "measure": "conversion lift",
+      "lever": "trust"
+    },
+    {
+      "kicker": "SAAS  /  B2B",
+      "title": "Explainer shortened",
+      "number": "+29%",
+      "measure": "demo requests",
+      "lever": "friction"
+    }
+  ],
+  "prices": [
+    {
+      "text": "$6k to $15k"
+    },
+    {
+      "text": "$15k to $80k"
+    },
+    {
+      "text": "$5k to $12k a month"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does video production take?",
+      "answer": "Most videos take 3 to 6 weeks from script to final cut."
+    },
+    {
+      "question": "Do you handle video production end to end?",
+      "answer": "Yes. Script, shoot, edit and delivery, with one point of contact."
+    },
+    {
+      "question": "What does a video production scope look like?",
+      "answer": "One clear story per phase, with outcomes agreed before we start."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n218-3283.webp",
+    "a": "Find the story.",
+    "b": "Show it.",
+    "p": "A 15 minute fit call. We bring a first read of where your message loses viewers."
+  }
+}

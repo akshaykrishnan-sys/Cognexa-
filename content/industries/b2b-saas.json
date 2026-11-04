@@ -1,0 +1,226 @@
+{
+  "order": 2,
+  "slug": "b2b-saas",
+  "modsH": "Six ways we move the deal",
+  "name": "B2B & SaaS",
+  "crumb": "B2B AND SAAS",
+  "who": "buyers",
+  "hero": {
+    "img": "/assets/img/n203-67.webp",
+    "k": "Buying committees choose safety.",
+    "t1": "Be the",
+    "t2": "safe pick.",
+    "s": "Behavioural insights for B2B: we study how buying committees decide, then remove what stalls deals.",
+    "cta": "Get a B2B growth plan",
+    "tags": [
+      {
+        "text": "Trust? case proof"
+      },
+      {
+        "text": "Effort? demo to trial"
+      },
+      {
+        "text": "Risk? internal blame"
+      }
+    ],
+    "path": [
+      {
+        "label": "01 - NOTICE",
+        "sub": "what they search"
+      },
+      {
+        "label": "02 - SHORTLIST",
+        "sub": "who makes the list"
+      },
+      {
+        "label": "03 - EVALUATE",
+        "sub": "what they weigh"
+      },
+      {
+        "label": "04 - DOUBT",
+        "sub": "what stops them"
+      },
+      {
+        "label": "05 - SIGN",
+        "sub": "what finally tips it"
+      }
+    ]
+  },
+  "insightsH": "What buyers are really doing",
+  "insights": [
+    {
+      "tag": "TRUST",
+      "title": "Nobody gets fired for safe",
+      "text": "Committees choose what they can defend. Proof of safety beats proof of power."
+    },
+    {
+      "tag": "CHOICE",
+      "title": "Too many plans, no plan",
+      "text": "Crowded tiers and feature lists stall the room. One clear default moves it."
+    },
+    {
+      "tag": "LOSS",
+      "title": "Switching feels like losing",
+      "text": "Migration risk looms larger than new gains. Make the move feel small and reversible."
+    },
+    {
+      "tag": "HABIT",
+      "title": "The status quo is the rival",
+      "text": "Teams stick with what they know. Your real competitor is doing nothing."
+    }
+  ],
+  "mapL": "WHERE DEALS STALL",
+  "mapH": "Where deals stall, and what we change",
+  "map": [
+    {
+      "symptom": "Leads arrive, few qualify",
+      "change": "Speak to the real problem",
+      "services": [
+        {
+          "text": "BRAND POSITIONING"
+        },
+        {
+          "text": "LANDING PAGE DESIGN"
+        }
+      ]
+    },
+    {
+      "symptom": "Demos end in silence",
+      "change": "Remove the fear of switching",
+      "services": [
+        {
+          "text": "PRODUCT DEMOS"
+        },
+        {
+          "text": "UX AUDITS"
+        },
+        {
+          "text": "CRO"
+        }
+      ]
+    },
+    {
+      "symptom": "Sales cycles keep stretching",
+      "change": "Arm every buyer in the room",
+      "services": [
+        {
+          "text": "SALES ENABLEMENT"
+        },
+        {
+          "text": "CASE FILMS"
+        },
+        {
+          "text": "ANALYTICS"
+        }
+      ]
+    },
+    {
+      "symptom": "Trials start, few convert",
+      "change": "Show value on day one",
+      "services": [
+        {
+          "text": "ONBOARDING DESIGN"
+        },
+        {
+          "text": "EMAIL & AUTOMATION"
+        }
+      ]
+    },
+    {
+      "symptom": "Pricing page loses the room",
+      "change": "Make the default feel safe",
+      "services": [
+        {
+          "text": "PRICING PAGE DESIGN"
+        },
+        {
+          "text": "TESTING"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "image": "/assets/img/n203-215.webp",
+      "kicker": "SAAS  /  MID-MARKET",
+      "title": "Demo-to-trial friction removed",
+      "number": "+31%",
+      "measure": "demo bookings",
+      "lever": "trust"
+    },
+    {
+      "image": "/assets/img/n203-225.webp",
+      "kicker": "B2B PLATFORM  /  ENTERPRISE",
+      "title": "Buying committee aligned",
+      "number": "+12%",
+      "measure": "win rate",
+      "lever": "choice"
+    },
+    {
+      "image": "/assets/img/n203-235.webp",
+      "kicker": "DEVTOOLS  /  PRODUCT-LED",
+      "title": "Trial habit built",
+      "number": "+19%",
+      "measure": "activation",
+      "lever": "friction"
+    }
+  ],
+  "mods": [
+    {
+      "title": "Buyer insight sprint",
+      "text": "Interviews with buyers and blockers find the real risk."
+    },
+    {
+      "title": "Behavioural audit",
+      "text": "We score the journey for trust, effort and risk."
+    },
+    {
+      "title": "Positioning and messaging",
+      "text": "Words that make the safe choice feel obvious."
+    },
+    {
+      "title": "Site and demo redesign",
+      "text": "Pages and demos rebuilt around the committee."
+    },
+    {
+      "title": "Demand with intent",
+      "text": "Media matched to the problem buyers search for."
+    },
+    {
+      "title": "Onboarding and retention",
+      "text": "First sessions that make staying the default."
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does a behavioural insight engagement take for B2B?",
+      "answer": "An insight sprint runs 4 to 6 weeks. Design and demand work follow in phases, each aimed at one behaviour in the buying process."
+    },
+    {
+      "question": "Do you work with long B2B sales cycles?",
+      "answer": "Yes. We map every stakeholder in the buying committee and test messages for each role, so the work fits how deals are really decided."
+    },
+    {
+      "question": "How do you measure impact in B2B?",
+      "answer": "Against one agreed behaviour per phase, such as a demo booked or a trial activated. The baseline is agreed before work starts."
+    },
+    {
+      "question": "Is buyer data kept safe?",
+      "answer": "We sign an NDA before any data is shared and work within your security and privacy policies."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n203-302.webp",
+    "a": "Find the risk.",
+    "b": "Remove it.",
+    "p": "A 15-minute fit call. We bring a first read of where your buyers hesitate.",
+    "btn": "Book your B2B review"
+  },
+  "card": {
+    "image": "/assets/img/n362-292.webp",
+    "headline": "Buying committees choose safety.",
+    "question": "Why do buying committees stall?",
+    "pause": "Fear of a poor choice",
+    "change": "Proof a champion can reuse internally"
+  }
+}

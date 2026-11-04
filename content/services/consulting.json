@@ -1,0 +1,209 @@
+{
+  "order": 7,
+  "slug": "consulting",
+  "name": "Consulting",
+  "crumb": "CONSULTING",
+  "sys": "transformation",
+  "hero": {
+    "img": "/assets/img/n218-659.webp",
+    "k": "Strategy should end in a choice.",
+    "t1": "Make the",
+    "t2": "decision.",
+    "s": "Behavioural consulting that turns insight into a prioritised growth plan.",
+    "tags": [
+      {
+        "text": "Anchor? first number seen"
+      },
+      {
+        "text": "Effort? change to adopt"
+      },
+      {
+        "text": "Risk? loss if wrong"
+      }
+    ],
+    "path": [
+      {
+        "text": "GROWTH"
+      },
+      {
+        "text": "BEHAVIOUR"
+      },
+      {
+        "text": "POSITIONING"
+      },
+      {
+        "text": "RESEARCH"
+      },
+      {
+        "text": "GTM"
+      },
+      {
+        "text": "JOURNEYS"
+      },
+      {
+        "text": "PRICING"
+      },
+      {
+        "text": "TRANSFORM"
+      }
+    ]
+  },
+  "problemH": "Most leaders struggle to choose",
+  "pains": [
+    {
+      "title": "Too many priorities",
+      "text": "Every idea looks urgent, so nothing gets the focus it needs to work."
+    },
+    {
+      "title": "Plans that ignore people",
+      "text": "Strategy assumes rational users. Real customers and teams decide differently."
+    },
+    {
+      "title": "Insight stuck in slides",
+      "text": "Findings get presented, then filed. Nobody owns what changes next."
+    }
+  ],
+  "steps": [
+    {
+      "text": "What the numbers and people say."
+    },
+    {
+      "text": "Where decisions really get made."
+    },
+    {
+      "text": "What blocks the highest-value move."
+    },
+    {
+      "text": "Prioritise moves by impact and effort."
+    },
+    {
+      "text": "Agree the metrics that prove it worked."
+    }
+  ],
+  "views": [
+    {
+      "text": "Qual and quant research sizes each opportunity, so priorities rest on evidence, not opinion."
+    },
+    {
+      "text": "Positioning and narrative give every decision a story the whole organisation can repeat."
+    }
+  ],
+  "lens": "Recommendations are framed with anchoring, framing and loss aversion in mind.",
+  "svcs": [
+    {
+      "name": "Growth Strategy",
+      "description": "Diagnose bottlenecks, prioritise the highest-impact moves",
+      "insight": "Focus beats activity.",
+      "outcome": "A ranked growth plan."
+    },
+    {
+      "name": "Behavioural Consulting",
+      "description": "Apply nudges and psychology to every touchpoint",
+      "insight": "Small cues shift big choices.",
+      "outcome": "Higher completion rates."
+    },
+    {
+      "name": "Brand Positioning",
+      "description": "Category definition, narrative and differentiation",
+      "insight": "Clear brands are easier to pick.",
+      "outcome": "A position you can own."
+    },
+    {
+      "name": "Market Research",
+      "description": "Qual and quant research into buyer psychology",
+      "insight": "Stated and real motives differ.",
+      "outcome": "Evidence behind each call."
+    },
+    {
+      "name": "GTM Strategy",
+      "description": "Launch plans, channel mix and sequencing",
+      "insight": "Order shapes momentum.",
+      "outcome": "A launch with a clear path."
+    },
+    {
+      "name": "Journey Mapping",
+      "description": "End-to-end friction and moment-of-truth audits",
+      "insight": "Drop-off hides in handoffs.",
+      "outcome": "Fixes ranked by impact."
+    },
+    {
+      "name": "Pricing Strategy",
+      "description": "Anchoring-aware pricing and packaging design",
+      "insight": "Price is read in context.",
+      "outcome": "Plans people understand."
+    },
+    {
+      "name": "Digital Transformation",
+      "description": "Process, tooling and change management",
+      "insight": "Tools fail without adoption.",
+      "outcome": "Change that sticks."
+    }
+  ],
+  "deliv": [
+    {
+      "text": "Prioritised growth roadmap"
+    },
+    {
+      "text": "Buyer psychology report"
+    },
+    {
+      "text": "Positioning and narrative doc"
+    },
+    {
+      "text": "Journey and friction map"
+    },
+    {
+      "text": "Pricing and packaging model"
+    },
+    {
+      "text": "Executive readout"
+    }
+  ],
+  "cases": [
+    {
+      "kicker": "B2B  /  SERVICES",
+      "title": "Growth plan prioritised",
+      "number": "+27%",
+      "measure": "qualified pipeline",
+      "lever": "trust"
+    },
+    {
+      "kicker": "RETAIL  /  OMNICHANNEL",
+      "title": "Pricing tiers reframed",
+      "number": "+11%",
+      "measure": "average order value",
+      "lever": "friction"
+    }
+  ],
+  "prices": [
+    {
+      "text": "$15k to $30k"
+    },
+    {
+      "text": "$40k to $120k"
+    },
+    {
+      "text": "$10k to $25k a month"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How soon does behavioural consulting show results?",
+      "answer": "Strategy sprints run 4 to 6 weeks, with a prioritised roadmap at the end."
+    },
+    {
+      "question": "Will you work with our leadership team?",
+      "answer": "Yes. We run workshops with decision makers, so every part of the plan has an owner before the work ends."
+    },
+    {
+      "question": "What does a consulting scope look like?",
+      "answer": "One clear decision per phase, with outcomes agreed before we start. Each phase ends with a choice."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n218-915.webp",
+    "a": "Find the priority.",
+    "b": "Commit.",
+    "p": "A 15 minute fit call. We bring a first read of where your plan loses focus."
+  }
+}

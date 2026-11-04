@@ -1,0 +1,209 @@
+{
+  "order": 8,
+  "slug": "software-development",
+  "name": "Software Development",
+  "crumb": "SOFTWARE DEVELOPMENT",
+  "sys": "transformation",
+  "hero": {
+    "img": "/assets/img/n218-1843.webp",
+    "k": "Software ships features.",
+    "t1": "People make",
+    "t2": "choices.",
+    "s": "Custom software development engineered around how people really make decisions.",
+    "tags": [
+      {
+        "text": "Trust? clear status"
+      },
+      {
+        "text": "Effort? steps per task"
+      },
+      {
+        "text": "Risk? costly mistakes"
+      }
+    ],
+    "path": [
+      {
+        "text": "SAAS"
+      },
+      {
+        "text": "MOBILE"
+      },
+      {
+        "text": "CRM / ERP"
+      },
+      {
+        "text": "AI / ML"
+      },
+      {
+        "text": "TOOLS"
+      },
+      {
+        "text": "CLOUD"
+      },
+      {
+        "text": "CHATBOTS"
+      },
+      {
+        "text": "QA"
+      }
+    ]
+  },
+  "problemH": "Most products struggle with adoption",
+  "pains": [
+    {
+      "title": "Features nobody uses",
+      "text": "Roadmaps follow requests, not real decisions, so adoption stays low."
+    },
+    {
+      "title": "Tools staff avoid",
+      "text": "Internal systems add steps, so teams build workarounds in spreadsheets."
+    },
+    {
+      "title": "Old systems slow every change",
+      "text": "Legacy code makes each release risky, slow and expensive."
+    }
+  ],
+  "steps": [
+    {
+      "text": "How users decide inside the product."
+    },
+    {
+      "text": "Workflows, data and dependencies."
+    },
+    {
+      "text": "Where tasks stall or get abandoned."
+    },
+    {
+      "text": "Ship small, test with real users."
+    },
+    {
+      "text": "Adoption, task time and error rates."
+    }
+  ],
+  "views": [
+    {
+      "text": "Usage analytics and task timing show where people hesitate, repeat or give up."
+    },
+    {
+      "text": "A product that feels coherent builds trust, so users stay and recommend it."
+    }
+  ],
+  "lens": "Workflows are designed around real user decisions.",
+  "svcs": [
+    {
+      "name": "Custom SaaS Dev",
+      "description": "Full product build, from zero to one and beyond",
+      "insight": "Fit beats feature count.",
+      "outcome": "A product people adopt."
+    },
+    {
+      "name": "Mobile App Dev",
+      "description": "iOS, Android and cross-platform native experiences",
+      "insight": "Mobile moments are short.",
+      "outcome": "Fast, familiar apps."
+    },
+    {
+      "name": "CRM / ERP Integration",
+      "description": "Connect systems, automate handoffs and workflows",
+      "insight": "Manual handoffs breed errors.",
+      "outcome": "Fewer steps, fewer mistakes."
+    },
+    {
+      "name": "AI/ML & Automation",
+      "description": "Predictive models and agentic workflow automation",
+      "insight": "Automation should remove effort.",
+      "outcome": "Time back to your team."
+    },
+    {
+      "name": "Internal Tools",
+      "description": "Ops visibility dashboards and admin panels",
+      "insight": "Clear views speed decisions.",
+      "outcome": "Faster, surer operations."
+    },
+    {
+      "name": "Cloud & DevOps",
+      "description": "Infrastructure, CI/CD pipelines and reliability",
+      "insight": "Reliability earns trust.",
+      "outcome": "Safer, quicker releases."
+    },
+    {
+      "name": "Conversational AI",
+      "description": "Support, sales and onboarding chatbots",
+      "insight": "People want answers now.",
+      "outcome": "Help at the moment of need."
+    },
+    {
+      "name": "QA & Modernization",
+      "description": "Testing, refactors and legacy system upgrades",
+      "insight": "Quality is something users feel.",
+      "outcome": "Stable, modern systems."
+    }
+  ],
+  "deliv": [
+    {
+      "text": "Product discovery brief"
+    },
+    {
+      "text": "Prototype and user tests"
+    },
+    {
+      "text": "Architecture and roadmap"
+    },
+    {
+      "text": "Working releases"
+    },
+    {
+      "text": "Test and QA reports"
+    },
+    {
+      "text": "Adoption dashboard"
+    }
+  ],
+  "cases": [
+    {
+      "kicker": "SAAS  /  B2B",
+      "title": "Onboarding steps halved",
+      "number": "+19%",
+      "measure": "activation",
+      "lever": "trust"
+    },
+    {
+      "kicker": "LOGISTICS  /  OPERATIONS",
+      "title": "Admin workflow rebuilt",
+      "number": "+33%",
+      "measure": "tasks per hour",
+      "lever": "friction"
+    }
+  ],
+  "prices": [
+    {
+      "text": "$15k to $30k"
+    },
+    {
+      "text": "$60k to $250k"
+    },
+    {
+      "text": "$10k to $30k a month"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does custom software development take?",
+      "answer": "Discovery takes 2 to 4 weeks. Builds ship in phases after that, each built around one real workflow."
+    },
+    {
+      "question": "Can you extend our existing software product?",
+      "answer": "Yes. We audit the codebase first, then plan safe, staged changes so nothing breaks while it improves."
+    },
+    {
+      "question": "What does a software development scope look like?",
+      "answer": "One clear workflow per phase, with outcomes agreed before we start."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n218-2099.webp",
+    "a": "Find the stall.",
+    "b": "Ship the fix.",
+    "p": "A 15 minute fit call. We bring a first read of where your product loses users."
+  }
+}

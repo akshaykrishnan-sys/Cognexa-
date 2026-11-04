@@ -1,0 +1,109 @@
+{
+  "pages": [
+    {
+      "path": "/industries/",
+      "title": "Behavioural Insights by Industry - Cognexa",
+      "description": "Behavioural insights for e-commerce, B2B and SaaS, healthcare, education and fintech. See how people decide in your industry."
+    },
+    {
+      "path": "/",
+      "title": "Cognexa: Behavioural Consumer Insights Agency",
+      "description": "Behavioural science and consumer insights for brands that want to understand why people decide. Offices in London and Bangalore."
+    },
+    {
+      "path": "/services/",
+      "title": "Behavioural Services Across 8 Disciplines - Cognexa",
+      "description": "Eight disciplines and 64 services, one behavioural method: marketing, consulting, web, software, UX, video, ads and film."
+    },
+    {
+      "path": "/industries/e-commerce/",
+      "title": "Behavioural Insights for E-commerce - Cognexa",
+      "description": "How e-commerce shoppers decide, where they stall and what to change. Behavioural research and design from Cognexa."
+    },
+    {
+      "path": "/industries/b2b-saas/",
+      "title": "Behavioural Insights for B2B and SaaS - Cognexa",
+      "description": "How B2B buying committees decide, where deals stall and what to change. Research and design from Cognexa."
+    },
+    {
+      "path": "/industries/healthcare/",
+      "title": "Behavioural Insights for Healthcare - Cognexa",
+      "description": "How patients decide to seek care, where they hesitate and what to change. Research and design from Cognexa."
+    },
+    {
+      "path": "/industries/education/",
+      "title": "Behavioural Insights for Education - Cognexa",
+      "description": "How learners and parents decide, where they stall and what to change. Research and design from Cognexa."
+    },
+    {
+      "path": "/industries/fintech/",
+      "title": "Behavioural Insights for Fintech - Cognexa",
+      "description": "How people decide with money, where trust breaks and what to change. Research and design from Cognexa."
+    },
+    {
+      "path": "/services/digital-marketing/",
+      "title": "Behavioural Digital Marketing Agency - Cognexa",
+      "description": "Eight digital marketing services on one behavioural backbone: SEO, GEO and AEO, content, social, email, CRO, analytics and reputation."
+    },
+    {
+      "path": "/services/consulting/",
+      "title": "Behavioural Consulting and Growth Strategy - Cognexa",
+      "description": "Behavioural consulting that turns insight into a prioritised growth plan, with decisions owned by your leadership team."
+    },
+    {
+      "path": "/services/web-development/",
+      "title": "Web Development Built for Behaviour - Cognexa",
+      "description": "Fast, reliable websites that remove friction between intent and action. Platforms include Shopify, WooCommerce, WordPress and Webflow."
+    },
+    {
+      "path": "/services/software-development/",
+      "title": "Custom Software Development - Cognexa",
+      "description": "Custom products and internal tools engineered around how people really make decisions. Discovery takes 2 to 4 weeks."
+    },
+    {
+      "path": "/services/ux-design/",
+      "title": "UX Research and Design Agency - Cognexa",
+      "description": "Research-led UX design built around attention, memory and choice architecture. Audits take 2 to 3 weeks."
+    },
+    {
+      "path": "/services/video-creation/",
+      "title": "Behavioural Video Production - Cognexa",
+      "description": "Story-led video built around emotional arc. Script, shoot, edit and delivery with one point of contact."
+    },
+    {
+      "path": "/services/paid-media/",
+      "title": "Paid Advertising Agency - Cognexa",
+      "description": "Paid advertising across every channel, backed by message-match and proof. Early signals in 2 to 4 weeks."
+    },
+    {
+      "path": "/services/corporate-films/",
+      "title": "Corporate Film Production - Cognexa",
+      "description": "Long-form brand narrative that builds authority and trust. Crews and schedules planned around your sites."
+    },
+    {
+      "path": "/about/",
+      "title": "About Cognexa: Behavioural Intelligence Agency",
+      "description": "Meet the team behind Cognexa, a behavioural consumer insights agency with offices in London and Bangalore."
+    },
+    {
+      "path": "/approach/",
+      "title": "Six Behavioural Principles - Our Approach - Cognexa",
+      "description": "Six behavioural principles that run through every Cognexa page and project, from the five-second rule to implementation intention."
+    },
+    {
+      "path": "/contact/",
+      "title": "Book a Call - Cognexa, London and Bangalore",
+      "description": "Pick a time and tell us the brief. Offices in London, UK and Bangalore, India."
+    },
+    {
+      "path": "/thinking/",
+      "title": "Thinking: Behavioural Insight Articles - Cognexa",
+      "description": "Research and articles on how people decide, from checkout hesitation to technology adoption."
+    },
+    {
+      "path": "/thinking/why-shoppers-hesitate/",
+      "title": "Why Shoppers Hesitate at the Last Click - Cognexa",
+      "description": "The brief says conversion. The behaviour says doubt. How a smaller, safer last step can reduce hesitation."
+    }
+  ]
+}

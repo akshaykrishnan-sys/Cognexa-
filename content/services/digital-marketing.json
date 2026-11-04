@@ -1,0 +1,209 @@
+{
+  "order": 1,
+  "slug": "digital-marketing",
+  "name": "Digital Marketing",
+  "crumb": "DIGITAL MARKETING",
+  "sys": "growth",
+  "hero": {
+    "img": "/assets/img/n218-67.webp",
+    "k": "Attention is only the start.",
+    "t1": "Get",
+    "t2": "chosen.",
+    "s": "Behavioural digital marketing: every channel engineered for organic and paid discovery.",
+    "tags": [
+      {
+        "text": "Intent? search query"
+      },
+      {
+        "text": "Effort? clicks to convert"
+      },
+      {
+        "text": "Risk? unknown brand"
+      }
+    ],
+    "path": [
+      {
+        "text": "SEO"
+      },
+      {
+        "text": "GEO & AEO"
+      },
+      {
+        "text": "CONTENT"
+      },
+      {
+        "text": "SOCIAL"
+      },
+      {
+        "text": "EMAIL"
+      },
+      {
+        "text": "CRO"
+      },
+      {
+        "text": "ANALYTICS"
+      },
+      {
+        "text": "ORM"
+      }
+    ]
+  },
+  "problemH": "Most brands struggle to be chosen",
+  "pains": [
+    {
+      "title": "Traffic without intent",
+      "text": "Visits arrive, but few come ready to act. Channels chase reach, not readiness."
+    },
+    {
+      "title": "Channels that never connect",
+      "text": "Search, social and email run alone, so people meet a different story each time."
+    },
+    {
+      "title": "Reports without reasons",
+      "text": "Dashboards show what happened, not why people clicked, waited or left."
+    }
+  ],
+  "steps": [
+    {
+      "text": "Which queries, channels and audiences move."
+    },
+    {
+      "text": "How people find, compare and return."
+    },
+    {
+      "text": "Where attention leaks before the ask."
+    },
+    {
+      "text": "Sequence channels to build trust first."
+    },
+    {
+      "text": "Track what changes in revenue."
+    }
+  ],
+  "views": [
+    {
+      "text": "Attribution, cohorts and funnel data show which touchpoints actually move people to act."
+    },
+    {
+      "text": "A consistent story and proof across channels makes the brand feel familiar before the first click."
+    }
+  ],
+  "lens": "Every channel is sequenced to reduce friction and build trust before the ask.",
+  "svcs": [
+    {
+      "name": "SEO",
+      "description": "Technical, on-page and authority building for durable rankings",
+      "insight": "People trust what ranks.",
+      "outcome": "Steady organic demand."
+    },
+    {
+      "name": "GEO & AEO",
+      "description": "Win visibility inside AI answers and generative search",
+      "insight": "Answers now replace clicks.",
+      "outcome": "Presence where people ask."
+    },
+    {
+      "name": "Content Marketing",
+      "description": "Editorial calendars, pillar content and SEO-led copy",
+      "insight": "Useful content builds trust early.",
+      "outcome": "Authority and inbound leads."
+    },
+    {
+      "name": "Social Media Marketing",
+      "description": "Organic strategy, community and channel growth",
+      "insight": "People follow people like them.",
+      "outcome": "An engaged, growing community."
+    },
+    {
+      "name": "Email & Automation",
+      "description": "Lifecycle flows, nurture sequences and retention",
+      "insight": "Timely nudges beat one-off blasts.",
+      "outcome": "Repeat action, less churn."
+    },
+    {
+      "name": "CRO",
+      "description": "Test, learn and lift on-site conversion rates",
+      "insight": "Small frictions cost big.",
+      "outcome": "More conversions per visit."
+    },
+    {
+      "name": "Analytics & Attribution",
+      "description": "Dashboards, media-mix models and true ROI",
+      "insight": "You cannot fix what you misread.",
+      "outcome": "A clear view of what pays."
+    },
+    {
+      "name": "ORM & Influencer",
+      "description": "Reputation management and creator partnerships",
+      "insight": "Peers persuade more than brands.",
+      "outcome": "Trust at the moment of choice."
+    }
+  ],
+  "deliv": [
+    {
+      "text": "Channel and audience map"
+    },
+    {
+      "text": "Search and content roadmap"
+    },
+    {
+      "text": "Lifecycle flow blueprint"
+    },
+    {
+      "text": "Testing backlog and calendar"
+    },
+    {
+      "text": "Attribution dashboard"
+    },
+    {
+      "text": "Monthly insight readout"
+    }
+  ],
+  "cases": [
+    {
+      "kicker": "D2C  /  RETAIL",
+      "title": "Intent-led search rebuilt",
+      "number": "+41%",
+      "measure": "organic leads",
+      "lever": "trust"
+    },
+    {
+      "kicker": "SAAS  /  B2B",
+      "title": "Lifecycle flows rebuilt",
+      "number": "+20%",
+      "measure": "repeat usage",
+      "lever": "friction"
+    }
+  ],
+  "prices": [
+    {
+      "text": "$8k to $15k"
+    },
+    {
+      "text": "$20k to $60k"
+    },
+    {
+      "text": "$6k to $15k a month"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How soon does digital marketing show results?",
+      "answer": "Early signals show in 4 to 8 weeks. Compounding gains follow as each channel is tuned against the behaviour it is meant to change."
+    },
+    {
+      "question": "Can you work with our marketing team and tools?",
+      "answer": "Yes. We fit into your stack and reporting rhythm, so insights reach the people who run the channels day to day."
+    },
+    {
+      "question": "What does a digital marketing scope look like?",
+      "answer": "One clear behaviour per phase, such as a search query turning into an enquiry, with outcomes agreed before we start."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n218-323.webp",
+    "a": "Find the leak.",
+    "b": "Fix it.",
+    "p": "A 15 minute fit call. We bring a first read of where your channels lose people."
+  }
+}

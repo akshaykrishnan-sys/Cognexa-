@@ -1,0 +1,226 @@
+{
+  "order": 1,
+  "slug": "e-commerce",
+  "modsH": "Six ways we move the sale",
+  "name": "E-commerce",
+  "crumb": "E-COMMERCE",
+  "who": "shoppers",
+  "hero": {
+    "img": "/assets/img/n190-67.webp",
+    "k": "Every abandoned cart has a reason.",
+    "t1": "Find the",
+    "t2": "doubt.",
+    "s": "E-commerce behavioural insights: we study how shoppers decide, then remove what slows them.",
+    "cta": "Get an E-commerce growth plan",
+    "tags": [
+      {
+        "text": "Trust? reviews"
+      },
+      {
+        "text": "Effort? checkout steps"
+      },
+      {
+        "text": "Risk? returns"
+      }
+    ],
+    "path": [
+      {
+        "label": "01 - LAND",
+        "sub": "what brought them"
+      },
+      {
+        "label": "02 - BROWSE",
+        "sub": "what they scan"
+      },
+      {
+        "label": "03 - COMPARE",
+        "sub": "what they weigh"
+      },
+      {
+        "label": "04 - DOUBT",
+        "sub": "what stops them"
+      },
+      {
+        "label": "05 - BUY",
+        "sub": "what finally tips it"
+      }
+    ]
+  },
+  "insightsH": "What shoppers are really doing",
+  "insights": [
+    {
+      "tag": "TRUST",
+      "title": "Doubt beats price",
+      "text": "Shoppers pause on trust, not cost. Reviews, returns and delivery promises settle it."
+    },
+    {
+      "tag": "CHOICE",
+      "title": "Too many choices, no choice",
+      "text": "Wide ranges stall decisions. A clear default keeps people moving."
+    },
+    {
+      "tag": "LOSS",
+      "title": "Extra costs feel like losses",
+      "text": "Surprise fees and extra steps make shoppers feel they are giving something up."
+    },
+    {
+      "tag": "HABIT",
+      "title": "Habit is your real competitor",
+      "text": "People reorder what they know. New brands must make switching feel safe."
+    }
+  ],
+  "mapL": "WHERE SALES STALL",
+  "mapH": "Where sales stall, and what we change",
+  "map": [
+    {
+      "symptom": "Traffic arrives, few buy",
+      "change": "Fix the first five seconds",
+      "services": [
+        {
+          "text": "LANDING PAGE DESIGN"
+        },
+        {
+          "text": "CRO"
+        }
+      ]
+    },
+    {
+      "symptom": "Carts get abandoned",
+      "change": "Remove checkout friction",
+      "services": [
+        {
+          "text": "UX AUDITS"
+        },
+        {
+          "text": "CRO"
+        },
+        {
+          "text": "E-COMMERCE DEV"
+        }
+      ]
+    },
+    {
+      "symptom": "Ads cost more every month",
+      "change": "Match message to intent",
+      "services": [
+        {
+          "text": "SEARCH ADS"
+        },
+        {
+          "text": "RETARGETING"
+        },
+        {
+          "text": "CREATIVE TESTING"
+        }
+      ]
+    },
+    {
+      "symptom": "Buyers don’t come back",
+      "change": "Build the repeat habit",
+      "services": [
+        {
+          "text": "EMAIL & AUTOMATION"
+        },
+        {
+          "text": "ANALYTICS"
+        }
+      ]
+    },
+    {
+      "symptom": "Product pages don’t persuade",
+      "change": "Place proof where doubt peaks",
+      "services": [
+        {
+          "text": "PRODUCT DEMOS"
+        },
+        {
+          "text": "TESTIMONIAL VIDEOS"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "image": "/assets/img/n191-39.webp",
+      "kicker": "FASHION  /  D2C",
+      "title": "Checkout trust gap closed",
+      "number": "+23%",
+      "measure": "conversion",
+      "lever": "trust"
+    },
+    {
+      "image": "/assets/img/n191-49.webp",
+      "kicker": "HOME  /  MARKETPLACE",
+      "title": "Choice overload simplified",
+      "number": "+17%",
+      "measure": "add-to-cart",
+      "lever": "choice"
+    },
+    {
+      "image": "/assets/img/n191-59.webp",
+      "kicker": "BEAUTY  /  SUBSCRIPTION",
+      "title": "Repeat habit rebuilt",
+      "number": "+14%",
+      "measure": "reorder rate",
+      "lever": "friction"
+    }
+  ],
+  "mods": [
+    {
+      "title": "Consumer insight sprint",
+      "text": "Interviews and shopper diaries find the real doubt."
+    },
+    {
+      "title": "Behavioural audit",
+      "text": "We score every step for trust, effort and risk."
+    },
+    {
+      "title": "Conversion redesign",
+      "text": "Pages, product and checkout rebuilt around the audit."
+    },
+    {
+      "title": "Performance media",
+      "text": "Message matched to intent, tested against behaviour."
+    },
+    {
+      "title": "Retention and habit",
+      "text": "Email and automation that make reorder the default."
+    },
+    {
+      "title": "Product storytelling",
+      "text": "Demos and film that answer doubt before it is asked."
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does a behavioural insight engagement take for e-commerce?",
+      "answer": "An insight sprint runs 4 to 6 weeks. We study how shoppers decide, then redesign and media work follow in phases, each tied to one agreed behaviour."
+    },
+    {
+      "question": "Do you work with our existing e-commerce platform?",
+      "answer": "Yes. We work inside Shopify, Magento and custom stacks, so findings become changes on the platform you already run, without a rebuild."
+    },
+    {
+      "question": "How do you measure the impact of behavioural changes?",
+      "answer": "Against one agreed behaviour per phase, such as add-to-cart or reorder. We agree the measure and the baseline before any work starts."
+    },
+    {
+      "question": "Is shopper data kept safe?",
+      "answer": "We sign an NDA before any data is shared and work within your security and privacy policies."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n191-126.webp",
+    "a": "Find the doubt.",
+    "b": "Remove it.",
+    "p": "A 15-minute fit call. We bring a first read of where your shoppers hesitate.",
+    "btn": "Book your E-commerce review"
+  },
+  "card": {
+    "image": "/assets/img/n362-285.webp",
+    "headline": "Shoppers pause on trust.",
+    "question": "Why do shoppers hesitate at the last step?",
+    "pause": "Doubt at checkout",
+    "change": "Trust cues, clear totals, easier returns"
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "order": 5,
+  "slug": "web-development",
+  "name": "Web Development",
+  "crumb": "WEB DEVELOPMENT",
+  "sys": "experience",
+  "hero": {
+    "img": "/assets/img/n218-1251.webp",
+    "k": "Speed is a feeling.",
+    "t1": "Build for",
+    "t2": "flow.",
+    "s": "Web development that removes friction between intent and action, built fast and reliable.",
+    "tags": [
+      {
+        "text": "Trust? pages load fast"
+      },
+      {
+        "text": "Effort? taps to checkout"
+      },
+      {
+        "text": "Risk? errors mid-flow"
+      }
+    ],
+    "path": [
+      {
+        "text": "WEBSITES"
+      },
+      {
+        "text": "E-COMMERCE"
+      },
+      {
+        "text": "CMS"
+      },
+      {
+        "text": "WEB APPS"
+      },
+      {
+        "text": "API"
+      },
+      {
+        "text": "PERFORMANCE"
+      },
+      {
+        "text": "MIGRATION"
+      },
+      {
+        "text": "PWA"
+      }
+    ]
+  },
+  "problemH": "Most sites struggle to stay fast",
+  "pains": [
+    {
+      "title": "Slow, heavy pages",
+      "text": "Every extra second loses people before they see a single benefit."
+    },
+    {
+      "title": "Stacks that fight each other",
+      "text": "Plugins, tools and data sources clash, so small changes take weeks."
+    },
+    {
+      "title": "Redesigns that cost rankings",
+      "text": "Moves and rebuilds break links and speed, and traffic quietly drops."
+    }
+  ],
+  "steps": [
+    {
+      "text": "Speed, errors and drop-off data."
+    },
+    {
+      "text": "Stack, content and integrations."
+    },
+    {
+      "text": "Slow pages and broken handoffs."
+    },
+    {
+      "text": "Build lean, test on real devices."
+    },
+    {
+      "text": "Faster pages, fewer abandoned tasks."
+    }
+  ],
+  "views": [
+    {
+      "text": "Core Web Vitals, error logs and funnel data show where the build costs people effort."
+    },
+    {
+      "text": "Consistent behaviour across pages makes the brand feel dependable on every device."
+    }
+  ],
+  "lens": "Built for speed and clarity, reducing the cognitive cost of every click.",
+  "svcs": [
+    {
+      "name": "Custom Websites",
+      "description": "Bespoke builds on any stack, framework-agnostic",
+      "insight": "Built around your flow.",
+      "outcome": "A site shaped to decisions."
+    },
+    {
+      "name": "E-commerce Dev",
+      "description": "Shopify, WooCommerce and headless commerce builds",
+      "insight": "Checkout is where trust breaks.",
+      "outcome": "A smoother path to purchase."
+    },
+    {
+      "name": "CMS Development",
+      "description": "WordPress, Webflow and headless CMS implementations",
+      "insight": "Teams need to publish fast.",
+      "outcome": "Content without dev tickets."
+    },
+    {
+      "name": "Web App Development",
+      "description": "Client portals, dashboards and internal web tools",
+      "insight": "Complex tasks need clear steps.",
+      "outcome": "Tools people actually use."
+    },
+    {
+      "name": "API Integration",
+      "description": "Connect CRM, payments, data and third-party systems",
+      "insight": "Handoffs hide friction.",
+      "outcome": "One connected system."
+    },
+    {
+      "name": "Performance Optimization",
+      "description": "Core Web Vitals, speed and technical health",
+      "insight": "Delay erodes trust.",
+      "outcome": "Faster, steadier pages."
+    },
+    {
+      "name": "Website Migration",
+      "description": "Replatform or redesign without losing rankings",
+      "insight": "Change should not cost demand.",
+      "outcome": "A safe, clean move."
+    },
+    {
+      "name": "Progressive Web Apps",
+      "description": "App-like speed, offline support, installable web",
+      "insight": "Reliability builds habit.",
+      "outcome": "App feel, no download."
+    }
+  ],
+  "deliv": [
+    {
+      "text": "Technical audit"
+    },
+    {
+      "text": "Architecture and stack plan"
+    },
+    {
+      "text": "Staging and test builds"
+    },
+    {
+      "text": "Performance scorecard"
+    },
+    {
+      "text": "Launch and migration plan"
+    },
+    {
+      "text": "Handover documentation"
+    }
+  ],
+  "cases": [
+    {
+      "kicker": "RETAIL  /  E-COMMERCE",
+      "title": "Checkout speed doubled",
+      "number": "+19%",
+      "measure": "completed checkouts",
+      "lever": "trust"
+    },
+    {
+      "kicker": "MEDIA  /  PUBLISHER",
+      "title": "Migration without ranking loss",
+      "number": "+38%",
+      "measure": "organic sessions",
+      "lever": "friction"
+    }
+  ],
+  "prices": [
+    {
+      "text": "$10k to $20k"
+    },
+    {
+      "text": "$40k to $150k"
+    },
+    {
+      "text": "$5k to $12k a month"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does a website build take?",
+      "answer": "First builds ship in 6 to 10 weeks, depending on scope. We design for speed and clarity from the first sprint."
+    },
+    {
+      "question": "Which platforms do you build websites on?",
+      "answer": "Shopify, WooCommerce, WordPress, Webflow and custom stacks. We choose the platform that fits your team, not the other way round."
+    },
+    {
+      "question": "What does a web development scope look like?",
+      "answer": "One clear flow per phase, such as search to enquiry, with outcomes agreed before we start."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n218-1507.webp",
+    "a": "Find the delay.",
+    "b": "Remove it.",
+    "p": "A 15 minute fit call. We bring a first read of where your site slows people down."
+  }
+}

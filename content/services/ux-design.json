@@ -1,0 +1,209 @@
+{
+  "order": 4,
+  "slug": "ux-design",
+  "name": "Web Design & UX",
+  "crumb": "WEB DESIGN & UX",
+  "sys": "experience",
+  "hero": {
+    "img": "/assets/img/n218-2435.webp",
+    "k": "Users scan before they read.",
+    "t1": "Design for",
+    "t2": "scanning.",
+    "s": "UX research and design built around attention, memory and choice architecture.",
+    "tags": [
+      {
+        "text": "Attention? first glance"
+      },
+      {
+        "text": "Effort? choices on screen"
+      },
+      {
+        "text": "Risk? unclear next step"
+      }
+    ],
+    "path": [
+      {
+        "text": "UX AUDITS"
+      },
+      {
+        "text": "UI DESIGN"
+      },
+      {
+        "text": "PROTOTYPES"
+      },
+      {
+        "text": "SYSTEMS"
+      },
+      {
+        "text": "LANDING PAGES"
+      },
+      {
+        "text": "TESTING"
+      },
+      {
+        "text": "IA"
+      },
+      {
+        "text": "WCAG"
+      }
+    ]
+  },
+  "problemH": "Most interfaces struggle to guide",
+  "pains": [
+    {
+      "title": "Pages with too many asks",
+      "text": "Competing buttons split attention, so people pick none."
+    },
+    {
+      "title": "Navigation that hides things",
+      "text": "Labels follow the org chart, not how people think."
+    },
+    {
+      "title": "Pretty screens that convert poorly",
+      "text": "Beautiful layouts ignore friction, bias and memory limits."
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heatmaps, recordings and analytics."
+    },
+    {
+      "text": "How people read and navigate."
+    },
+    {
+      "text": "Where attention or memory fails."
+    },
+    {
+      "text": "Design one decision per screen."
+    },
+    {
+      "text": "Conversion, task success and ease."
+    }
+  ],
+  "views": [
+    {
+      "text": "Usability tests and behaviour data show where real users hesitate, miss or misread."
+    },
+    {
+      "text": "A consistent visual language builds recognition, so every screen feels familiar and safe."
+    }
+  ],
+  "lens": "Every layout is engineered around attention, memory and choice architecture.",
+  "svcs": [
+    {
+      "name": "UX Research & Audits",
+      "description": "Heuristic reviews, friction and bias audits",
+      "insight": "Fix what users feel first.",
+      "outcome": "A ranked fix list."
+    },
+    {
+      "name": "UI & Visual Design",
+      "description": "Interfaces designed to convert and delight",
+      "insight": "Looks shape trust fast.",
+      "outcome": "A clear, confident interface."
+    },
+    {
+      "name": "Wireframing & Prototyping",
+      "description": "Rapid, testable design iterations",
+      "insight": "Cheap tests beat costly rebuilds.",
+      "outcome": "Decisions before development."
+    },
+    {
+      "name": "Design Systems",
+      "description": "Consistent, scalable component libraries",
+      "insight": "Consistency lowers effort.",
+      "outcome": "Faster, coherent releases."
+    },
+    {
+      "name": "Landing Page Design",
+      "description": "Pages built around a single decision",
+      "insight": "One ask beats five.",
+      "outcome": "Higher page conversion."
+    },
+    {
+      "name": "Usability Testing",
+      "description": "Real users, real friction, real fixes",
+      "insight": "Blind spots hide in plain sight.",
+      "outcome": "Evidence for every change."
+    },
+    {
+      "name": "Information Architecture",
+      "description": "Structure that matches mental models",
+      "insight": "People find what they expect.",
+      "outcome": "Easier navigation."
+    },
+    {
+      "name": "Accessibility (WCAG)",
+      "description": "Inclusive by default",
+      "insight": "Barriers cost customers.",
+      "outcome": "A site everyone can use."
+    }
+  ],
+  "deliv": [
+    {
+      "text": "UX audit and fix list"
+    },
+    {
+      "text": "Wireframes and prototypes"
+    },
+    {
+      "text": "UI kit and design system"
+    },
+    {
+      "text": "Landing page templates"
+    },
+    {
+      "text": "Usability test report"
+    },
+    {
+      "text": "Accessibility checklist"
+    }
+  ],
+  "cases": [
+    {
+      "kicker": "FINTECH  /  APP",
+      "title": "Onboarding flow redesigned",
+      "number": "+21%",
+      "measure": "sign-up completion",
+      "lever": "trust"
+    },
+    {
+      "kicker": "RETAIL  /  E-COMMERCE",
+      "title": "Landing page refocused",
+      "number": "+24%",
+      "measure": "page conversion",
+      "lever": "friction"
+    }
+  ],
+  "prices": [
+    {
+      "text": "$8k to $18k"
+    },
+    {
+      "text": "$25k to $90k"
+    },
+    {
+      "text": "$6k to $14k a month"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does a UX audit and redesign take?",
+      "answer": "Audits take 2 to 3 weeks. Redesigns follow in sprints, each focused on one decision."
+    },
+    {
+      "question": "Do you test UX designs with real users?",
+      "answer": "Yes. Every key flow is tested before it reaches development."
+    },
+    {
+      "question": "What does a UX design scope look like?",
+      "answer": "One clear decision per screen set, with outcomes agreed up front."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n218-2691.webp",
+    "a": "Find the friction.",
+    "b": "Design it out.",
+    "p": "A 15 minute fit call. We bring a first read of where your interface loses people."
+  }
+}

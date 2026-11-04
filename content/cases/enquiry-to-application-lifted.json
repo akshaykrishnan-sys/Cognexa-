@@ -1,0 +1,14 @@
+{
+  "order": 4,
+  "slug": "enquiry-to-application-lifted",
+  "published": false,
+  "industry": "Education",
+  "kicker": "EDUCATION  /  ONLINE COLLEGE",
+  "title": "Enquiry to application lifted",
+  "measure": "applications",
+  "lever": "belonging",
+  "chart": {
+    "before": 110,
+    "after": 130
+  }
+}

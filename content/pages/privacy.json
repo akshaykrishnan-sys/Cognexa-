@@ -1,0 +1,48 @@
+{
+  "title": "Privacy policy",
+  "intro": "How Cognexa handles information about the people who visit this site and the teams we work with.",
+  "updated": "to be supplied",
+  "draftNotice": "DRAFT STRUCTURE. LEGAL COPY TO BE SUPPLIED BY COGNEXA AND REVIEWED BEFORE PUBLISHING.",
+  "sections": [
+    {
+      "heading": "Who we are",
+      "body": "Cognexa is a behavioural-science and consumer-insights agency with offices in London, UK and Bangalore, India. This section will name the legal entities that control information and how to reach them."
+    },
+    {
+      "heading": "What we collect",
+      "body": "This section will list the information collected through this site: contact and booking details, messages sent through the form, and analytics data about how pages are used."
+    },
+    {
+      "heading": "How we use it",
+      "body": "This section will explain each purpose, such as replying to briefs, scheduling calls, improving the site, and the lawful basis that applies to each."
+    },
+    {
+      "heading": "Cookies and analytics",
+      "body": "This section will describe the cookies and measurement tools in use, what each does, and how a visitor can accept, decline or change their choice."
+    },
+    {
+      "heading": "Sharing and processors",
+      "body": "This section will name the categories of service providers that handle information on our behalf and the conditions that apply to them."
+    },
+    {
+      "heading": "How long we keep it",
+      "body": "This section will state the retention period for each type of information and what happens when it expires."
+    },
+    {
+      "heading": "Your rights",
+      "body": "This section will set out the rights available to visitors in the UK, EU, India, the US and Canada, and how to exercise them."
+    },
+    {
+      "heading": "International transfers",
+      "body": "This section will explain how information moves between our offices and providers, and the safeguards that apply."
+    },
+    {
+      "heading": "Security",
+      "body": "This section will summarise the measures used to protect information. It will describe practice only as confirmed by Cognexa."
+    },
+    {
+      "heading": "Contact and complaints",
+      "body": "This section will give the contact route for privacy questions and the regulators a visitor can approach."
+    }
+  ]
+}

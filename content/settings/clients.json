@@ -1,0 +1,65 @@
+{
+  "note": "Our team has worked with these organisations. Logos are trademarks of their respective owners and do not imply endorsement.",
+  "logos": [
+    {
+      "name": "TVS",
+      "logo": "/assets/img/n250-43.webp",
+      "context": ""
+    },
+    {
+      "name": "Trust Capital",
+      "logo": "/assets/img/n250-48.webp",
+      "context": ""
+    },
+    {
+      "name": "GMR",
+      "logo": "/assets/img/n250-53.webp",
+      "context": ""
+    },
+    {
+      "name": "SharpEagle",
+      "logo": "/assets/img/n250-58.webp",
+      "context": ""
+    },
+    {
+      "name": "Film Permit",
+      "logo": "/assets/img/n250-64.webp",
+      "context": ""
+    },
+    {
+      "name": "BD",
+      "logo": "/assets/img/n250-69.webp",
+      "context": ""
+    },
+    {
+      "name": "Murugappa",
+      "logo": "/assets/img/n250-74.webp",
+      "context": ""
+    },
+    {
+      "name": "Switch",
+      "logo": "/assets/img/n250-79.webp",
+      "context": ""
+    },
+    {
+      "name": "Eurogrip",
+      "logo": "/assets/img/n250-85.webp",
+      "context": ""
+    },
+    {
+      "name": "OptioR",
+      "logo": "/assets/img/n250-90.webp",
+      "context": ""
+    },
+    {
+      "name": "Studio 52",
+      "logo": "/assets/img/n250-95.webp",
+      "context": ""
+    },
+    {
+      "name": "BraveLabs",
+      "logo": "/assets/img/n250-100.webp",
+      "context": ""
+    }
+  ]
+}

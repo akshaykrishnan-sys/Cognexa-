@@ -1,0 +1,14 @@
+{
+  "order": 3,
+  "slug": "missed-appointments-reduced",
+  "published": false,
+  "industry": "Healthcare",
+  "kicker": "HEALTHCARE  /  CLINIC NETWORK",
+  "title": "Missed appointments reduced",
+  "measure": "fewer missed bookings",
+  "lever": "clarity",
+  "chart": {
+    "before": 130,
+    "after": 107
+  }
+}

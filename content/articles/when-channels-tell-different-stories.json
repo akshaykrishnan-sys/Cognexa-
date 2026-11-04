@@ -1,0 +1,48 @@
+{
+  "order": 6,
+  "date": "2026-10-06",
+  "author": "Cognexa team",
+  "draft": false,
+  "slug": "when-channels-tell-different-stories",
+  "topic": "Growth and Marketing",
+  "title": "When channels tell different stories",
+  "lede": "Search, social and email each make a promise. People notice when they disagree.",
+  "read": 4,
+  "intro": "A customer meets a business in several places. Search may promise the fastest delivery, social the lowest price and email premium quality. When the promises differ, the customer has to decide which one is true.",
+  "s": [
+    {
+      "heading": "Read the journey as one conversation",
+      "text": "Each channel is a turn in the same conversation. We line up what every channel says about the offer and look for gaps a customer would notice."
+    },
+    {
+      "heading": "Choose one promise to keep",
+      "text": "The strongest message is the one the business can deliver every time. We pick a single lead promise, then shape each channel to support it in its own style."
+    },
+    {
+      "heading": "Test the handover between channels",
+      "text": "The moment a customer moves from an ad to a page is where mismatches show. We follow real journeys across channels and fix the handover before adding more reach."
+    }
+  ],
+  "quote": "A customer remembers the promise and checks it at checkout.",
+  "callT": "Channel checks",
+  "call": [
+    {
+      "text": "What does each channel promise?"
+    },
+    {
+      "text": "Which promise can we always keep?"
+    },
+    {
+      "text": "Where do the stories first disagree?"
+    }
+  ],
+  "rel": [
+    {
+      "text": "five-second-rule-homepage"
+    },
+    {
+      "text": "loss-aversion-pricing-page"
+    }
+  ],
+  "image": "/assets/img/ig-channels.webp"
+}

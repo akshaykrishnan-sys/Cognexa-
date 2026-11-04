@@ -1,0 +1,6 @@
+node_modules/
+.netlify/
+.data/
+preview/
+cognexa-site-deploy.zip
+.DS_Store

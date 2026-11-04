@@ -1,0 +1,210 @@
+{
+  "order": 2,
+  "slug": "paid-media",
+  "name": "Ads (Paid Media)",
+  "short": "Ads",
+  "crumb": "ADS (PAID MEDIA)",
+  "sys": "growth",
+  "hero": {
+    "img": "/assets/img/n218-3619.webp",
+    "k": "Every ad makes a promise.",
+    "t1": "Message",
+    "t2": "match.",
+    "s": "Paid advertising across every channel, backed by message-match and proof.",
+    "tags": [
+      {
+        "text": "Trust? social proof"
+      },
+      {
+        "text": "Effort? one click away"
+      },
+      {
+        "text": "Risk? wasted spend"
+      }
+    ],
+    "path": [
+      {
+        "text": "SEARCH"
+      },
+      {
+        "text": "SOCIAL"
+      },
+      {
+        "text": "PROGRAMMATIC"
+      },
+      {
+        "text": "RETARGETING"
+      },
+      {
+        "text": "VIDEO & CTV"
+      },
+      {
+        "text": "SHOPPING"
+      },
+      {
+        "text": "CREATIVE"
+      },
+      {
+        "text": "MEDIA BUYING"
+      }
+    ]
+  },
+  "problemH": "Most ad spend struggles to convert",
+  "pains": [
+    {
+      "title": "Clicks that never convert",
+      "text": "The ad promises one thing and the page says another."
+    },
+    {
+      "title": "Creative that tires fast",
+      "text": "Audiences see the same ad again and again, and tune it out."
+    },
+    {
+      "title": "Budget spread too thin",
+      "text": "Spend follows habit, not evidence of which channel pays."
+    }
+  ],
+  "steps": [
+    {
+      "text": "Cost, click and conversion data."
+    },
+    {
+      "text": "Channels, audiences and offers."
+    },
+    {
+      "text": "Where message and landing page split."
+    },
+    {
+      "text": "Match the ad to the intent."
+    },
+    {
+      "text": "Measured in cost per customer."
+    }
+  ],
+  "views": [
+    {
+      "text": "Incrementality, cohort and creative data show which spend really changes behaviour."
+    },
+    {
+      "text": "Proof and a consistent promise across every ad make people trust before they click."
+    }
+  ],
+  "lens": "Creative and targeting are built on message-match and visible social proof.",
+  "svcs": [
+    {
+      "name": "Search Ads",
+      "description": "Google and Bing intent capture at the moment of need",
+      "insight": "Intent is the strongest signal.",
+      "outcome": "Buyers at peak readiness."
+    },
+    {
+      "name": "Social Ads",
+      "description": "Meta, LinkedIn, X and TikTok campaign management",
+      "insight": "Feeds interrupt, so relevance matters.",
+      "outcome": "Scroll-stopping reach."
+    },
+    {
+      "name": "Programmatic & Display",
+      "description": "Scaled reach with smart, data-led targeting",
+      "insight": "Repetition builds familiarity.",
+      "outcome": "Efficient, wider reach."
+    },
+    {
+      "name": "Retargeting",
+      "description": "Bring back near-converters with sequenced messaging",
+      "insight": "Doubt needs a second answer.",
+      "outcome": "Lost visitors, won back."
+    },
+    {
+      "name": "Video & CTV Ads",
+      "description": "YouTube and streaming, built for attention",
+      "insight": "Stories hold attention longer.",
+      "outcome": "Memorable brand reach."
+    },
+    {
+      "name": "Shopping Ads",
+      "description": "Product feeds optimised for purchase intent",
+      "insight": "Shoppers compare visually.",
+      "outcome": "Products seen at decision time."
+    },
+    {
+      "name": "Creative Testing",
+      "description": "Iterate fast, kill underperformers early",
+      "insight": "Creative fatigue is predictable.",
+      "outcome": "Winning ads, faster."
+    },
+    {
+      "name": "Media Buying",
+      "description": "Budget allocation, bidding and channel mix",
+      "insight": "The mix drives marginal return.",
+      "outcome": "Every dollar working harder."
+    }
+  ],
+  "deliv": [
+    {
+      "text": "Channel and budget plan"
+    },
+    {
+      "text": "Audience and offer map"
+    },
+    {
+      "text": "Creative concepts and variants"
+    },
+    {
+      "text": "Landing page match review"
+    },
+    {
+      "text": "Testing calendar"
+    },
+    {
+      "text": "Weekly performance report"
+    }
+  ],
+  "cases": [
+    {
+      "kicker": "D2C  /  FASHION",
+      "title": "Message-match rebuilt",
+      "number": "+35%",
+      "measure": "return on ad spend",
+      "lever": "trust"
+    },
+    {
+      "kicker": "SAAS  /  B2B",
+      "title": "Retargeting sequenced",
+      "number": "+31%",
+      "measure": "demo bookings",
+      "lever": "friction"
+    }
+  ],
+  "prices": [
+    {
+      "text": "$5k to $10k"
+    },
+    {
+      "text": "$15k to $40k"
+    },
+    {
+      "text": "$5k to $20k a month"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How soon do paid ads show results?",
+      "answer": "Early signals appear in 2 to 4 weeks. Optimisation compounds after, as messages are matched to what each audience needs to believe."
+    },
+    {
+      "question": "What ad budget do we need?",
+      "answer": "We size spend to your goals and test small before scaling."
+    },
+    {
+      "question": "What does a paid media scope look like?",
+      "answer": "One clear audience per phase, with outcomes agreed before we start."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n218-3875.webp",
+    "a": "Find the mismatch.",
+    "b": "Close it.",
+    "p": "A 15 minute fit call. We bring a first read of where your ads lose people."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "order": 6,
+  "slug": "choice-overload-simplified",
+  "published": false,
+  "industry": "E-commerce",
+  "kicker": "E-COMMERCE  /  HOME AND MARKETPLACE",
+  "title": "Choice overload simplified",
+  "measure": "add-to-cart",
+  "lever": "choice",
+  "chart": {
+    "before": 111,
+    "after": 130
+  }
+}

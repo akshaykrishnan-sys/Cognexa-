@@ -1,0 +1,226 @@
+{
+  "order": 3,
+  "slug": "healthcare",
+  "modsH": "Six ways we help patients act",
+  "name": "Healthcare",
+  "crumb": "HEALTHCARE",
+  "who": "patients",
+  "hero": {
+    "img": "/assets/img/n203-556.webp",
+    "k": "Patients act when they feel sure.",
+    "t1": "Build",
+    "t2": "certainty.",
+    "s": "Behavioural insights for healthcare. We study how patients decide, then make the next step feel safe.",
+    "cta": "Get a Healthcare growth plan",
+    "tags": [
+      {
+        "text": "Trust? clinical proof"
+      },
+      {
+        "text": "Effort? booking steps"
+      },
+      {
+        "text": "Risk? fear of results"
+      }
+    ],
+    "path": [
+      {
+        "label": "01 - SYMPTOM",
+        "sub": "what prompts them"
+      },
+      {
+        "label": "02 - SEARCH",
+        "sub": "what they read"
+      },
+      {
+        "label": "03 - COMPARE",
+        "sub": "who they weigh"
+      },
+      {
+        "label": "04 - DOUBT",
+        "sub": "what stops them"
+      },
+      {
+        "label": "05 - BOOK",
+        "sub": "what finally tips it"
+      }
+    ]
+  },
+  "insightsH": "What patients are really doing",
+  "insights": [
+    {
+      "tag": "TRUST",
+      "title": "Reassurance beats facts",
+      "text": "Patients need to feel safe first. Clear, human proof of care settles the first doubt."
+    },
+    {
+      "tag": "CHOICE",
+      "title": "Too many options, no action",
+      "text": "Long lists of doctors and services stall action. Guide them to one clear next step."
+    },
+    {
+      "tag": "LOSS",
+      "title": "Fear of bad news is a cost",
+      "text": "People avoid care when the answer might hurt. Frame the visit as gaining control."
+    },
+    {
+      "tag": "HABIT",
+      "title": "Waiting feels easier",
+      "text": "Delay is the default. Make booking small, quick and the easy thing to do."
+    }
+  ],
+  "mapL": "WHERE CARE STALLS",
+  "mapH": "Where care stalls, and what we change",
+  "map": [
+    {
+      "symptom": "Searches rise, few book",
+      "change": "Make the first step feel safe",
+      "services": [
+        {
+          "text": "BRAND POSITIONING"
+        },
+        {
+          "text": "LANDING PAGE DESIGN"
+        }
+      ]
+    },
+    {
+      "symptom": "Booking forms get dropped",
+      "change": "Cut steps and calm the nerves",
+      "services": [
+        {
+          "text": "UX AUDITS"
+        },
+        {
+          "text": "CRO"
+        },
+        {
+          "text": "HEALTHCARE WEB DEV"
+        }
+      ]
+    },
+    {
+      "symptom": "Follow-ups are missed",
+      "change": "Nudge the next right step",
+      "services": [
+        {
+          "text": "REMINDERS"
+        },
+        {
+          "text": "EMAIL & AUTOMATION"
+        },
+        {
+          "text": "ANALYTICS"
+        }
+      ]
+    },
+    {
+      "symptom": "Profiles do not reassure",
+      "change": "Show the human behind care",
+      "services": [
+        {
+          "text": "DOCTOR FILMS"
+        },
+        {
+          "text": "TESTIMONIAL VIDEOS"
+        }
+      ]
+    },
+    {
+      "symptom": "Content informs, never moves",
+      "change": "Turn knowing into doing",
+      "services": [
+        {
+          "text": "PATIENT EDUCATION"
+        },
+        {
+          "text": "CONTENT STRATEGY"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "image": "/assets/img/n203-704.webp",
+      "kicker": "HOSPITAL GROUP  /  MULTI-CITY",
+      "title": "Booking fear reduced",
+      "number": "+26%",
+      "measure": "appointments",
+      "lever": "trust"
+    },
+    {
+      "image": "/assets/img/n203-714.webp",
+      "kicker": "DIAGNOSTICS  /  D2C",
+      "title": "Test choice simplified",
+      "number": "+34%",
+      "measure": "test bookings",
+      "lever": "choice"
+    },
+    {
+      "image": "/assets/img/n203-724.webp",
+      "kicker": "CLINIC NETWORK  /  OUTPATIENT",
+      "title": "Return habit rebuilt",
+      "number": "+18%",
+      "measure": "return visits",
+      "lever": "friction"
+    }
+  ],
+  "mods": [
+    {
+      "title": "Patient insight sprint",
+      "text": "Interviews and journeys find the real worry."
+    },
+    {
+      "title": "Behavioural audit",
+      "text": "We score each step for trust, effort and fear."
+    },
+    {
+      "title": "Booking redesign",
+      "text": "Pages and forms rebuilt to lower the stakes."
+    },
+    {
+      "title": "Reputation and reach",
+      "text": "Search and media that answer the worry first."
+    },
+    {
+      "title": "Follow-up and retention",
+      "text": "Reminders that make returning the default."
+    },
+    {
+      "title": "Care storytelling",
+      "text": "Doctor films and guides that earn trust early."
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does a behavioural insight engagement take in healthcare?",
+      "answer": "An insight sprint runs 4 to 6 weeks. Redesign and media work follow in phases, each focused on one step in the patient journey."
+    },
+    {
+      "question": "Do you follow healthcare regulations?",
+      "answer": "Yes. Claims and creative follow medical advertising rules."
+    },
+    {
+      "question": "How do you measure impact on patient behaviour?",
+      "answer": "Against one agreed behaviour per phase, such as a booking made or a follow-up kept. The baseline is agreed before work starts."
+    },
+    {
+      "question": "Is patient data kept safe?",
+      "answer": "We sign an NDA before any data is shared and work within your security and privacy policies."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n203-791.webp",
+    "a": "Find the worry.",
+    "b": "Remove it.",
+    "p": "A 15-minute fit call. We bring a first read of where your patients hesitate.",
+    "btn": "Book your Healthcare review"
+  },
+  "card": {
+    "image": "/assets/img/n362-299.webp",
+    "headline": "Patients act when they feel sure.",
+    "question": "Why do patients delay the next step?",
+    "pause": "Uncertainty about the next step",
+    "change": "Plain language and safer first actions"
+  }
+}

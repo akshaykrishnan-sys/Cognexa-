@@ -1,0 +1,209 @@
+{
+  "order": 6,
+  "slug": "corporate-films",
+  "name": "Corporate Films",
+  "crumb": "CORPORATE FILM PRODUCTION",
+  "sys": "experience",
+  "hero": {
+    "img": "/assets/img/n218-4211.webp",
+    "k": "Audiences grant authority slowly.",
+    "t1": "It’s",
+    "t2": "earned.",
+    "s": "Corporate film that builds authority and trust through long-form brand narrative.",
+    "tags": [
+      {
+        "text": "Trust? leaders on screen"
+      },
+      {
+        "text": "Effort? time to watch"
+      },
+      {
+        "text": "Risk? sounding scripted"
+      }
+    ],
+    "path": [
+      {
+        "text": "DOCUMENTARIES"
+      },
+      {
+        "text": "CSR"
+      },
+      {
+        "text": "LEADERSHIP"
+      },
+      {
+        "text": "INVESTORS"
+      },
+      {
+        "text": "EMPLOYER"
+      },
+      {
+        "text": "LAUNCH"
+      },
+      {
+        "text": "EVENTS"
+      },
+      {
+        "text": "TRAINING"
+      }
+    ]
+  },
+  "problemH": "Most corporate films struggle to land",
+  "pains": [
+    {
+      "title": "Films nobody finishes",
+      "text": "Long cuts open with the company, not the viewer."
+    },
+    {
+      "title": "Leaders who feel scripted",
+      "text": "Stiff delivery erodes the trust the film was meant to build."
+    },
+    {
+      "title": "One film, one use",
+      "text": "Content is made once, then never reused across channels."
+    }
+  ],
+  "steps": [
+    {
+      "text": "What stakeholders need to believe."
+    },
+    {
+      "text": "Who watches, where and why."
+    },
+    {
+      "text": "What makes films feel scripted."
+    },
+    {
+      "text": "Structure story for trust and proof."
+    },
+    {
+      "text": "Credibility, reach and recruitment."
+    }
+  ],
+  "views": [
+    {
+      "text": "View-through and completion data show which scenes build belief and which lose it."
+    },
+    {
+      "text": "Narrative consistency across films turns separate stories into one credible voice."
+    }
+  ],
+  "lens": "Narrative is structured deliberately to build trust and authority at scale.",
+  "svcs": [
+    {
+      "name": "Documentaries",
+      "description": "Long-form corporate and brand storytelling",
+      "insight": "Depth earns belief.",
+      "outcome": "A story with weight."
+    },
+    {
+      "name": "CSR & Impact Films",
+      "description": "Purpose, sustainability and community stories",
+      "insight": "People back real purpose.",
+      "outcome": "Credible impact stories."
+    },
+    {
+      "name": "Leadership Interviews",
+      "description": "Vision and voice from the people at the top",
+      "insight": "Faces make strategy human.",
+      "outcome": "Trust in leadership."
+    },
+    {
+      "name": "Investor Reports",
+      "description": "Annual and investor updates, numbers made human",
+      "insight": "Numbers need a narrative.",
+      "outcome": "Clearer investor confidence."
+    },
+    {
+      "name": "Employer Branding",
+      "description": "Attract talent by showcasing culture",
+      "insight": "Candidates look for belonging.",
+      "outcome": "Stronger applicant pools."
+    },
+    {
+      "name": "Product Launch Films",
+      "description": "High production value for big moments",
+      "insight": "Launches are won in minutes.",
+      "outcome": "A launch people talk about."
+    },
+    {
+      "name": "Event Films",
+      "description": "Recap, highlight and amplify reach post-event",
+      "insight": "Events end, films continue.",
+      "outcome": "Reach beyond the room."
+    },
+    {
+      "name": "Training Films",
+      "description": "Consistent, scalable internal training content",
+      "insight": "Consistency aids recall.",
+      "outcome": "Skills that scale."
+    }
+  ],
+  "deliv": [
+    {
+      "text": "Narrative and interview plan"
+    },
+    {
+      "text": "Shoot schedule and crew"
+    },
+    {
+      "text": "Hero film and cutdowns"
+    },
+    {
+      "text": "Subtitles and versions"
+    },
+    {
+      "text": "Distribution plan"
+    },
+    {
+      "text": "Audience performance report"
+    }
+  ],
+  "cases": [
+    {
+      "kicker": "MANUFACTURING  /  ENTERPRISE",
+      "title": "Leadership film reworked",
+      "number": "+26%",
+      "measure": "completion rate",
+      "lever": "trust"
+    },
+    {
+      "kicker": "HEALTHCARE  /  NETWORK",
+      "title": "Employer film launched",
+      "number": "+31%",
+      "measure": "qualified applicants",
+      "lever": "friction"
+    }
+  ],
+  "prices": [
+    {
+      "text": "$10k to $25k"
+    },
+    {
+      "text": "$30k to $150k"
+    },
+    {
+      "text": "$8k to $20k a month"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does a corporate film take?",
+      "answer": "Films take 4 to 8 weeks from narrative to final delivery."
+    },
+    {
+      "question": "Can you film on location across cities?",
+      "answer": "Yes. We plan crews and schedules around your sites."
+    },
+    {
+      "question": "What does a corporate film scope look like?",
+      "answer": "One clear story per phase, with outcomes agreed before we start."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n218-4467.webp",
+    "a": "Find the proof.",
+    "b": "Film it.",
+    "p": "A 15 minute fit call. We bring a first read of where your story loses belief."
+  }
+}

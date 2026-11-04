@@ -1,0 +1,14 @@
+{
+  "order": 5,
+  "slug": "sign-up-regret-designed-out",
+  "published": false,
+  "industry": "Fintech",
+  "kicker": "FINTECH  /  MONEY APP",
+  "title": "Sign-up regret designed out",
+  "measure": "fewer abandoned sign-ups",
+  "lever": "control",
+  "chart": {
+    "before": 130,
+    "after": 102
+  }
+}

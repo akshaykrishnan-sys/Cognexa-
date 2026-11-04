@@ -1,0 +1,16 @@
+<svg width="840" height="1000" viewBox="0 0 840 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="gz-line" d="M237.491 500L285.491 522L255.491 556L297.491 560L464.717 310L822.453 300" stroke="#2F5BEA" stroke-width="1.5" stroke-dasharray="4 4"/>
+<circle cx="237.491" cy="500" r="18" fill="#2F5BEA" fill-opacity="0.12" stroke="#2F5BEA" stroke-width="2"/>
+<circle cx="285.491" cy="522" r="13" fill="#2F5BEA" fill-opacity="0.12" stroke="#2F5BEA" stroke-width="2"/>
+<circle cx="255.491" cy="556" r="22" fill="#2F5BEA" fill-opacity="0.12" stroke="#2F5BEA" stroke-width="2"/>
+<circle cx="297.491" cy="560" r="11" fill="#2F5BEA" fill-opacity="0.12" stroke="#2F5BEA" stroke-width="2"/>
+<circle cx="464.717" cy="310" r="15" fill="#2F5BEA" fill-opacity="0.12" stroke="#2F5BEA" stroke-width="2"/>
+<circle cx="822.453" cy="300" r="10" fill="#2F5BEA" fill-opacity="0.12" stroke="#2F5BEA" stroke-width="2"/>
+<path d="M303.491 540L413.491 650" stroke="#2F5BEA" stroke-width="1.2"/>
+<circle cx="413.491" cy="650" r="3" fill="#F4A024"/>
+<path d="M478.717 296L584.717 200" stroke="#2F5BEA" stroke-width="1.2"/>
+<circle cx="584.717" cy="200" r="3" fill="#F4A024"/>
+<path d="M822.453 312L782.453 450" stroke="#2F5BEA" stroke-width="1.2"/>
+<circle cx="782.453" cy="450" r="3" fill="#F4A024"/>
+<path d="M28 50V28H50M812 50V28H790M28 950V972H50M812 950V972H790" stroke="#F3EEE6" stroke-width="1.5"/>
+</svg>

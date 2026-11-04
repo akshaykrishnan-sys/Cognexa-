@@ -1,0 +1,48 @@
+{
+  "order": 1,
+  "date": "2026-10-01",
+  "author": "Cognexa team",
+  "draft": false,
+  "slug": "trust-signals-that-cost-nothing",
+  "topic": "Consumer Decision-Making",
+  "title": "Trust signals that cost nothing",
+  "lede": "Small reassurances at the right moment often do more than a discount.",
+  "read": 4,
+  "intro": "A shopper rarely needs a bigger reason to buy. More often they need a smaller reason to stop worrying. Trust signals are the cheap, honest answers to the questions people ask silently before they commit.",
+  "s": [
+    {
+      "heading": "Name the worry before the shopper does",
+      "text": "Every purchase carries a quiet question: what if this goes wrong? Delivery dates, total costs and return terms answer it in advance. When they appear early, the shopper spends less effort checking and more attention on the choice itself."
+    },
+    {
+      "heading": "Place proof beside the decision",
+      "text": "A review is most useful next to the button it supports. The same sentence placed three screens earlier is easy to forget. We look at where people hesitate, then move the evidence to that exact point."
+    },
+    {
+      "heading": "Keep the signals honest",
+      "text": "A signal that overpromises costs more than it earns. Show only what the business can deliver every time, in words a customer would use themselves. Trust grows when the page and the parcel agree."
+    }
+  ],
+  "quote": "Reassurance works best when it arrives before the doubt does.",
+  "callT": "Signals worth checking",
+  "call": [
+    {
+      "text": "Is the delivery date visible before payment?"
+    },
+    {
+      "text": "Are returns described in plain words?"
+    },
+    {
+      "text": "Does the payment step look familiar?"
+    }
+  ],
+  "rel": [
+    {
+      "text": "five-second-rule-homepage"
+    },
+    {
+      "text": "loss-aversion-pricing-page"
+    }
+  ],
+  "image": "/assets/img/ig-trust.webp"
+}

@@ -1,0 +1,226 @@
+{
+  "order": 5,
+  "slug": "fintech",
+  "modsH": "Six ways we turn sign-ups into funded accounts",
+  "name": "Fintech",
+  "crumb": "FINTECH",
+  "who": "customers",
+  "hero": {
+    "img": "/assets/img/n203-1534.webp",
+    "k": "Money choices invite doubt.",
+    "t1": "Design out",
+    "t2": "regret.",
+    "s": "Fintech behavioural insights. We study how people decide with money, then make safety clear.",
+    "cta": "Get a Fintech growth plan",
+    "tags": [
+      {
+        "text": "Trust? security signals"
+      },
+      {
+        "text": "Effort? KYC steps"
+      },
+      {
+        "text": "Risk? losing money"
+      }
+    ],
+    "path": [
+      {
+        "label": "01 - AWARE",
+        "sub": "what they hear"
+      },
+      {
+        "label": "02 - COMPARE",
+        "sub": "what they weigh"
+      },
+      {
+        "label": "03 - SIGN UP",
+        "sub": "what they share"
+      },
+      {
+        "label": "04 - DOUBT",
+        "sub": "what stops them"
+      },
+      {
+        "label": "05 - FUND",
+        "sub": "what finally tips it"
+      }
+    ]
+  },
+  "insightsH": "What customers are really doing",
+  "insights": [
+    {
+      "tag": "TRUST",
+      "title": "Trust comes before features",
+      "text": "People hand over money only when they feel safe. Show safety before speed."
+    },
+    {
+      "tag": "CHOICE",
+      "title": "Too many products, no pick",
+      "text": "Crowded menus freeze decisions. A clear starter option gets people moving."
+    },
+    {
+      "tag": "LOSS",
+      "title": "Losses loom larger",
+      "text": "Fear of losing money outweighs the promise of earning it. Frame protection first."
+    },
+    {
+      "tag": "HABIT",
+      "title": "Old banks win on habit",
+      "text": "People keep the account they know. Make switching feel small and reversible."
+    }
+  ],
+  "mapL": "WHERE USERS STALL",
+  "mapH": "Where users stall, and what we change",
+  "map": [
+    {
+      "symptom": "Installs rise, few sign up",
+      "change": "Earn trust on screen one",
+      "services": [
+        {
+          "text": "APP STORE DESIGN"
+        },
+        {
+          "text": "LANDING PAGE DESIGN"
+        }
+      ]
+    },
+    {
+      "symptom": "KYC drop-off is high",
+      "change": "Make verification feel quick",
+      "services": [
+        {
+          "text": "UX AUDITS"
+        },
+        {
+          "text": "CRO"
+        },
+        {
+          "text": "ONBOARDING DESIGN"
+        }
+      ]
+    },
+    {
+      "symptom": "Users sign up, never fund",
+      "change": "Make the first deposit small",
+      "services": [
+        {
+          "text": "LIFECYCLE EMAIL"
+        },
+        {
+          "text": "RETARGETING"
+        },
+        {
+          "text": "ANALYTICS"
+        }
+      ]
+    },
+    {
+      "symptom": "Users leave after month one",
+      "change": "Build the saving habit",
+      "services": [
+        {
+          "text": "PUSH & EMAIL"
+        },
+        {
+          "text": "ANALYTICS"
+        }
+      ]
+    },
+    {
+      "symptom": "Products feel complex",
+      "change": "Explain in plain words",
+      "services": [
+        {
+          "text": "EXPLAINER FILMS"
+        },
+        {
+          "text": "CONTENT DESIGN"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "image": "/assets/img/n203-1682.webp",
+      "kicker": "NEOBANK  /  CONSUMER",
+      "title": "KYC fear reduced",
+      "number": "+24%",
+      "measure": "verified sign-ups",
+      "lever": "trust"
+    },
+    {
+      "image": "/assets/img/n203-1692.webp",
+      "kicker": "WEALTH APP  /  RETAIL",
+      "title": "First investment simplified",
+      "number": "+29%",
+      "measure": "first deposits",
+      "lever": "choice"
+    },
+    {
+      "image": "/assets/img/n203-1702.webp",
+      "kicker": "LENDING  /  SME",
+      "title": "Late repayments cut",
+      "number": "+16%",
+      "measure": "on-time repayments",
+      "lever": "friction"
+    }
+  ],
+  "mods": [
+    {
+      "title": "Customer insight sprint",
+      "text": "Interviews and money diaries find the real fear."
+    },
+    {
+      "title": "Behavioural audit",
+      "text": "We score each step for trust, effort and risk."
+    },
+    {
+      "title": "Onboarding redesign",
+      "text": "Flows rebuilt to lower fear and effort."
+    },
+    {
+      "title": "Trust-led acquisition",
+      "text": "Media that shows safety before speed."
+    },
+    {
+      "title": "Retention and habit",
+      "text": "Nudges that make saving and repaying automatic."
+    },
+    {
+      "title": "Product storytelling",
+      "text": "Films that explain money in plain words."
+    }
+  ],
+  "faq": [
+    {
+      "question": "How long does a behavioural insight engagement take in fintech?",
+      "answer": "An insight sprint runs 4 to 6 weeks. Redesign and media work follow in phases, each focused on one step from sign-up to first use."
+    },
+    {
+      "question": "Do you work with regulated financial products?",
+      "answer": "Yes. Creative and claims follow financial promotion rules, and we design for clarity so people can see the risks as well as the benefits."
+    },
+    {
+      "question": "How do you measure impact on user behaviour?",
+      "answer": "Against one agreed behaviour per phase, such as an account opened or a first deposit made. The baseline is agreed before work starts."
+    },
+    {
+      "question": "Is customer data kept safe?",
+      "answer": "We sign an NDA before any data is shared and work within your security and privacy policies."
+    }
+  ],
+  "cta": {
+    "img": "/assets/img/n203-1769.webp",
+    "a": "Find the friction.",
+    "b": "Remove it.",
+    "p": "A 15-minute fit call. We bring a first read of where your users hesitate.",
+    "btn": "Book your Fintech review"
+  },
+  "card": {
+    "image": "/assets/img/n362-314.webp",
+    "headline": "Money decisions carry regret.",
+    "question": "Why does a good product still not feel trusted?",
+    "pause": "Fear of regret",
+    "change": "Visible safeguards and real control"
+  }
+}

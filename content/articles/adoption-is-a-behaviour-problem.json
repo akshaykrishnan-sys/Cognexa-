@@ -1,0 +1,48 @@
+{
+  "order": 5,
+  "date": "2026-10-05",
+  "author": "Cognexa team",
+  "draft": false,
+  "slug": "adoption-is-a-behaviour-problem",
+  "topic": "Technology Adoption",
+  "title": "Adoption is a behaviour problem",
+  "lede": "Teams adopt a system when the effort of changing feels worth it.",
+  "read": 7,
+  "intro": "A new system can be the right choice and still go unused. Adoption depends on the effort people expect to spend and the value they expect to get back. When effort looks larger than value, work carries on the old way.",
+  "s": [
+    {
+      "heading": "Measure the effort people feel",
+      "text": "Effort is more than training time. It includes the cost of learning, the risk of looking slow and the pull of the old tool. We watch real tasks to find where the effort sits."
+    },
+    {
+      "heading": "Make value visible early",
+      "text": "A first win within the first week changes how a team feels about a tool. Design the first tasks so that value shows quickly and the effort stays small."
+    },
+    {
+      "heading": "Plan for the habit after launch",
+      "text": "Launch day is a moment. Habit is a pattern. We plan reminders, defaults and peer examples that carry the new way of working well past the first month."
+    }
+  ],
+  "quote": "People adopt what feels easier to do than to avoid.",
+  "callT": "First-week checks",
+  "call": [
+    {
+      "text": "Can a user finish one real task quickly?"
+    },
+    {
+      "text": "Is the old way still easier?"
+    },
+    {
+      "text": "Who can answer a question on the spot?"
+    }
+  ],
+  "rel": [
+    {
+      "text": "what-should-ai-speed-up"
+    },
+    {
+      "text": "when-channels-tell-different-stories"
+    }
+  ],
+  "image": "/assets/img/ig-adopt.webp"
+}
