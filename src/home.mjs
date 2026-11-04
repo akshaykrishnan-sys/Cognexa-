@@ -44,6 +44,8 @@ const pairs = [
 
 const outcomes = [[23, 'Revenue', 'E-commerce. Checkout conversion.'], [31, 'Conversion', 'B2B and SaaS. Demo bookings.'], [18, 'Customer value', 'Healthcare. Return visits.'], [37, 'Efficiency', 'Education. Forms completed.'], [19, 'Adoption', 'B2B and SaaS. Trial activation.'], [29, 'Decision quality', 'Fintech. First deposits.']];
 
+// hero slideshow: slug, name, photo, question, tag, tag colour, ring/tag position (% of the photo)
+const HS = IND.map(([slug, name, im, , q], i) => [slug, name, im, q, ['Doubt? returns', 'Risk? internal blame', 'Effort? next step', 'Belonging?', 'Trust? security signals'][i], ['tag-amber', 'tag-rust', 'tag-blue', 'tag-amber', 'tag-blue'][i], [52, 44, 56, 50, 46][i], [34, 30, 26, 34, 30][i]]);
 const verticals = [['e-commerce', 'E-commerce', 'Why do shoppers hesitate at the last step?'], ['b2b-saas', 'B2B & SaaS', 'Why do buying committees stall?'], ['healthcare', 'Healthcare', 'Why do patients delay the next step?'], ['education', 'Education', 'Why do learners drop off?'], ['fintech', 'Fintech', 'Why does a good product still not feel trusted?']];
 
 const topics = ['AI & Transformation', 'Growth & Marketing', 'Consumer Decision-Making', 'Digital Experience', 'Technology Adoption', 'Business Systems', 'Behavioural Science'];
@@ -65,7 +67,16 @@ export function home() {
       <span class="anno tag-rust" style="left:66%;top:16.6%;animation-delay:1.7s;color:var(--ink)">Decision effort?</span>
       <span class="anno tag-amber" style="left:86%;top:45.6%;animation-delay:2s">Price?</span>
     </div>
+    <div class="hs" data-hero-slides aria-roledescription="carousel" aria-label="Where people pause, by industry">
+      ${HS.map(([slug, name, im, q, tag, tc, x, y], i) => `<a class="hs-s" href="/industries/${slug}/" aria-hidden="true" tabindex="-1" style="--x:${x}%;--y:${y}%"><span class="hs-ph" style="background-image:url(${img(im)})"></span><span class="hs-tone"></span><span class="hs-ring"></span><span class="tag hs-tag ${tc}">${esc(tag)}</span><span class="hs-cap"><span class="mono-s">0${i + 1} / 05 · ${esc(name)}</span><b>${esc(q)}</b></span></a>`).join('')}
+      <div class="hs-ctl">
+        <div class="hs-dots" role="tablist" aria-label="Choose a slide">${['Opening', ...HS.map(h => h[1])].map((n, i) => `<button role="tab" aria-label="${esc(n)}" aria-selected="${i === 0}"><i></i></button>`).join('')}</div>
+        <button class="hs-pause" type="button" aria-label="Pause the slideshow" aria-pressed="false"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="pz" d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/><path class="pl" d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg></button>
+        <button class="hs-film" type="button" data-film="/assets/video/cognexa-brand-reel.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:30</span></button>
+      </div>
+    </div>
   </div>
+  <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/reel-poster.webp"><source src="/assets/video/cognexa-brand-reel.mp4" type="video/mp4"></video></dialog>
   <div class="wrap">
     <div class="h-hero-copy">
       <div class="briefs" aria-label="Typical briefs">

@@ -321,3 +321,45 @@
   if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* ---------- homepage hero sequence + film dialog ---------- */
+(function () {
+  const w = window, d = document;
+  function bind() {
+    const hs = d.querySelector('[data-hero-slides]:not([data-b])');
+    if (hs) {
+      hs.dataset.b = 1;
+      const slides = [...hs.querySelectorAll('.hs-s')], dots = [...hs.querySelectorAll('.hs-dots button')];
+      const reduce = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const DUR = (i) => (i === 0 ? 7000 : 5200);
+      let i = 0, timer = 0, paused = reduce, visible = true, left = DUR(0), started = Date.now();
+      const show = (n) => {
+        i = (n + dots.length) % dots.length;
+        slides.forEach((s, k) => { const on = k === i - 1; s.classList.toggle('on', on); s.setAttribute('aria-hidden', String(!on)); s.tabIndex = on ? 0 : -1; });
+        dots.forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.classList.toggle('done', k < i); const f = b.querySelector('i'); f.style.setProperty('--dur', DUR(k) + 'ms'); if (k === i) { f.style.animation = 'none'; void f.offsetWidth; f.style.animation = ''; } });
+        left = DUR(i); schedule();
+      };
+      const schedule = () => { clearTimeout(timer); if (paused || !visible) return; started = Date.now(); timer = setTimeout(() => show(i + 1), left); };
+      const pause = (p) => { if (p) { clearTimeout(timer); left = Math.max(400, left - (Date.now() - started)); } paused = p; hs.classList.toggle('paused', p); hs.querySelector('.hs-pause').setAttribute('aria-pressed', String(p)); hs.querySelector('.hs-pause').setAttribute('aria-label', p ? 'Play the slideshow' : 'Pause the slideshow'); if (!p) schedule(); };
+      dots.forEach((b, k) => b.addEventListener('click', () => show(k)));
+      hs.querySelector('.hs-pause').addEventListener('click', () => pause(!paused));
+      new IntersectionObserver(([e]) => { const v = e.isIntersecting; if (v === visible) return; if (!v) { clearTimeout(timer); left = Math.max(400, left - (Date.now() - started)); } visible = v; if (v) schedule(); }).observe(hs);
+      d.addEventListener('visibilitychange', () => { if (d.hidden) pause(true); });
+      if (reduce) hs.classList.add('paused');
+      show(0);
+    }
+    d.querySelectorAll('[data-film]:not([data-b])').forEach(btn => {
+      btn.dataset.b = 1;
+      const dlg = d.querySelector('.film-dlg'); if (!dlg) return;
+      const v = dlg.querySelector('video');
+      btn.addEventListener('click', () => { const hs = d.querySelector('[data-hero-slides]'); hs && hs.querySelector('.hs-pause') && !hs.classList.contains('paused') && hs.querySelector('.hs-pause').click(); dlg.showModal(); v.currentTime = 0; v.play().catch(() => {}); });
+      const close = () => { v.pause(); dlg.close(); };
+      dlg.querySelector('.film-x').addEventListener('click', close);
+      dlg.addEventListener('click', (e) => { if (e.target === dlg) close(); });
+      dlg.addEventListener('close', () => v.pause());
+    });
+  }
+  const orig = w.CX && w.CX.init;
+  if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();
