@@ -38,7 +38,7 @@ def fix_url(m):
 routes = {}
 for dp, _, fs in os.walk(SRC):
     for f in fs:
-        if f != 'index.html': continue
+        if f != 'index.html' or '/admin' in dp: continue
         full = os.path.join(dp, f)
         url = '/' + os.path.relpath(dp, SRC).replace('.', '') + '/'
         url = re.sub('/+', '/', url)
