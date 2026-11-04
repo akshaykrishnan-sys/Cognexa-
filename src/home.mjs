@@ -76,7 +76,7 @@ export function home() {
       </div>
     </div>
   </div>
-  <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/reel-poster.webp"><source src="/assets/video/cognexa-brand-reel.mp4" type="video/mp4"></video></dialog>
+  <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/reel-poster.webp"><source src="/assets/video/cognexa-brand-reel.mp4" type="video/mp4"><track kind="captions" src="/assets/video/cognexa-brand-reel.en.vtt" srclang="en" label="English" default></video></dialog>
   <div class="wrap">
     <div class="h-hero-copy">
       <div class="briefs" aria-label="Typical briefs">

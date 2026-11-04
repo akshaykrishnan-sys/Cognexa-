@@ -164,6 +164,7 @@ collections:
           - { label: 'Poster image', name: poster, widget: image, required: false }
           - { label: Title, name: title, widget: string, required: false, default: Showreel }
           - { label: Caption, name: caption, widget: string, required: false }
+          - { label: 'Captions file (.vtt)', name: captions, widget: file, required: false, hint: 'Subtitles shown on the video. Recommended for every film.' }
       - { label: 'Problem heading', name: problemH, widget: string }
       - { label: 'Problems', name: pains, widget: list, summary: '{{fields.title}}', fields: [ { label: Title, name: title, widget: string }, { label: Text, name: text, widget: text } ] }
       - { label: 'How we investigate (5 steps)', name: steps, widget: list, max: 5, summary: '{{fields.text}}', fields: [ { label: Step, name: text, widget: string } ] }

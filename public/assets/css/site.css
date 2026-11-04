@@ -1536,3 +1536,4 @@ body{font-size:17px;letter-spacing:.003em}
   .hs-cap{bottom:max(96px,calc(100% - 100svh + 107px + 96px))}
   .hs-s .hs-tone{background:linear-gradient(180deg,rgba(14,17,26,0) 30%,rgba(14,17,26,.7) calc(100svh - 107px),rgba(14,17,26,.7) 100%)}
 }
+.vblock video::cue,.film-dlg video::cue{font-family:Outfit,sans-serif;font-size:22px;background:rgba(14,17,26,.72);color:#f3eee6}
