@@ -76,7 +76,7 @@ export function home() {
       </div>
       <h1 id="h1" class="io"><span class="kicker rv" style="--d:6">Those sound like solutions.</span><span class="big rv" style="--d:7">What’s the <span class="hl">problem?</span></span></h1>
       <p class="sub rv" style="--d:8">Cognexa is a behavioural insights agency for e&#8209;commerce, B2B and SaaS, healthcare, education and fintech teams. We find what is really driving a business outcome, then design, build and market the change.</p>
-      <div class="ctas rv" style="--d:9"><a class="btn" href="/contact/">${CTA} ${arr}</a><a class="link cta2" href="/check/">Or take the 2-minute hesitation check</a></div>
+      <div class="ctas rv" style="--d:9"><a class="btn" href="/contact/">${CTA} ${arr}</a></div>
     </div>
   </div>
 </section>
@@ -297,7 +297,7 @@ export function home() {
     <h2 id="fc-h" class="rv">What are you really trying to <span class="c-bluel">change?</span></h2>
     <p class="s1 rv">Bring us the business problem as you currently see it.</p>
     <p class="s2 rv" style="--d:1">We’ll start with the questions the brief may have missed.</p>
-    <a class="btn rv" style="--d:2" href="/contact/">${CTA} ${arr}</a><a class="link cta2" href="/check/">Or take the 2-minute hesitation check</a>
+    <a class="btn rv" style="--d:2" href="/contact/">${CTA} ${arr}</a>
   </div>
 </section>
 `;

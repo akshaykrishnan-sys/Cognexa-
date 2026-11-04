@@ -28,7 +28,7 @@ export function hub() {
     <div class="copy">
       <h1 id="hh"><span class="k rv" style="display:block">The service comes second.</span><span class="t rv" style="--d:1"><span>We start with the</span><span class="c-amber">behaviour.</span></span></h1>
       <p class="s rv" style="--d:2">Strategy, design, technology and film, each shaped by how people actually decide.</p>
-      <div class="ctas rv" style="--d:3"><a class="btn" href="/contact/">${CTA} ${arr}</a><a class="link cta2" href="/check/">Or take the 2-minute hesitation check</a><a class="link" href="#questions">How we investigate</a></div>
+      <div class="ctas rv" style="--d:3"><a class="btn" href="/contact/">${CTA} ${arr}</a><a class="link" href="#questions">How we investigate</a></div>
     </div>
     <div class="ophoto io">
       <img class="par" data-par="0.05" src="${img('177:44')}" alt="A shopper with a trolley studying a supermarket shelf" fetchpriority="high">
@@ -105,7 +105,7 @@ export function hub() {
 </div></section>`;
 
   const cta = `<section class="empty-cta"><img class="par" data-par="0.06" src="${img('140:172')}" alt="" loading="lazy"><span class="heat"></span><span class="anno">Where do we start?</span>
-  <div class="wrap in"><p class="mono c-grey rv">Begin here</p><h2 class="rv" style="--d:1">Not sure what<br><span class="c-bluel">you need?</span></h2><p class="s1 rv" style="--d:2">Good. That usually means the brief needs a second look.</p><p class="s2 rv" style="--d:3">Bring us the problem as you see it. We’ll start with the questions it may have missed.</p><a class="btn rv" style="--d:4" href="/contact/">${CTA} ${arr}</a><a class="link cta2" href="/check/">Or take the 2-minute hesitation check</a></div></section>`;
+  <div class="wrap in"><p class="mono c-grey rv">Begin here</p><h2 class="rv" style="--d:1">Not sure what<br><span class="c-bluel">you need?</span></h2><p class="s1 rv" style="--d:2">Good. That usually means the brief needs a second look.</p><p class="s2 rv" style="--d:3">Bring us the problem as you see it. We’ll start with the questions it may have missed.</p><a class="btn rv" style="--d:4" href="/contact/">${CTA} ${arr}</a></div></section>`;
 
   return page({ title: 'Services', desc: 'Strategy, design, technology and film, each shaped by how people actually decide. Three systems, eight disciplines, 64 services.', path: '/services/', active: 'services', body: [hero, framing, systems, questions, scale, angles, cases, pricing, cta].join('\n') });
 }

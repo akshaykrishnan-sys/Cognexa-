@@ -43,7 +43,7 @@ function closingCta(c, btn, href = '/contact/') {
   <div class="wrap"><div class="in">
     <h2 id="cc-h" class="rv">${esc(c.a)}<br><span class="c-amber">${esc(c.b)}</span></h2>
     <p class="rv" style="--d:1">${esc(c.p)}</p>
-    <div class="ctas rv" style="--d:2"><a class="btn" href="${href}">${withArr(CTA)}</a><a class="link" href="/check/">Or take the 2-minute hesitation check</a></div>
+    <div class="ctas rv" style="--d:2"><a class="btn" href="${href}">${withArr(CTA)}</a></div>
     <p class="mc rv" style="--d:3">${CTA_SUB} No pitch deck.</p>
   </div></div>
 </section>`;
