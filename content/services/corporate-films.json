@@ -211,9 +211,9 @@
     "tagline": "Films that earn authority"
   },
   "video": {
-    "url": "",
-    "poster": "/assets/img/n218-4211.webp",
-    "title": "Showreel",
-    "caption": ""
+    "url": "/assets/video/cognexa-brand-reel.mp4",
+    "poster": "/assets/video/reel-poster.webp",
+    "title": "Brand film",
+    "caption": "A 30-second Cognexa brand film, made from our own design system. Client showreel coming soon."
   }
 }

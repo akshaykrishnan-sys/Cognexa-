@@ -20,6 +20,11 @@
     Cache-Control = "public, max-age=604800"
 
 [[headers]]
+  for = "/assets/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
   for = "/assets/svg/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"

@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 process.env.CX_LOCAL_STORE ??= '1';
 const ROOT = join(fileURLToPath(new URL('..', import.meta.url)), 'public');
 const PORT = Number(process.env.PORT || 8888);
-const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.yml': 'text/yaml', '.txt': 'text/plain', '.xml': 'application/xml', '.wasm': 'application/wasm' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.yml': 'text/yaml', '.txt': 'text/plain', '.xml': 'application/xml', '.wasm': 'application/wasm', '.mp4': 'video/mp4' };
 
 const leads = (await import('../netlify/functions/leads.mjs')).default;
 const check = (await import('../netlify/functions/check.mjs')).default;
