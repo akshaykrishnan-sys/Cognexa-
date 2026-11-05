@@ -57,6 +57,7 @@ export function home() {
   const body = `
 <!-- 01 HERO -->
 <section class="h-hero" aria-labelledby="h1">
+<div class="h-top">
   <div class="h-hero-photo">
     <div class="h-box">
       <img src="${img('22:17')}" alt="A shopper in a supermarket aisle weighing up a carton, annotated with an eye-tracking gaze path" width="840" height="1000" fetchpriority="high">
@@ -72,11 +73,11 @@ export function home() {
       <div class="hs-ctl">
         <div class="hs-dots" role="tablist" aria-label="Choose a slide">${['Opening', ...HS.map(h => h[1])].map((n, i) => `<button role="tab" aria-label="${esc(n)}" aria-selected="${i === 0}"><i></i></button>`).join('')}</div>
         <button class="hs-pause" type="button" aria-label="Pause the slideshow" aria-pressed="false"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="pz" d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/><path class="pl" d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg></button>
-        <button class="hs-film" type="button" data-film="/assets/video/cognexa-brand-reel.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:27</span></button>
+        <button class="hs-film" type="button" data-film="/assets/video/cognexa-film.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:33</span></button>
       </div>
     </div>
   </div>
-  <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/reel-poster.webp"><source src="/assets/video/cognexa-brand-reel.mp4" type="video/mp4"><track kind="captions" src="/assets/video/cognexa-brand-reel.en.vtt" srclang="en" label="English" default></video></dialog>
+  <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/film-poster.webp"><source src="/assets/video/cognexa-film.mp4" type="video/mp4"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video></dialog>
   <div class="wrap">
     <div class="h-hero-copy">
       <div class="briefs" aria-label="Typical briefs">
@@ -88,6 +89,21 @@ export function home() {
       <h1 id="h1" class="io"><span class="kicker rv" style="--d:6">Those sound like solutions.</span><span class="big rv" style="--d:7">What’s the <span class="hl">problem?</span></span></h1>
       <p class="sub rv" style="--d:8">Cognexa is a behavioural insights agency for e&#8209;commerce, B2B and SaaS, healthcare, education and fintech teams. We find what is really driving a business outcome, then design, build and market the change.</p>
       <div class="ctas rv" style="--d:9"><a class="btn" href="/contact/">${CTA} ${arr}</a></div>
+    </div>
+  </div>
+</div>
+  <div class="h-film" id="film">
+    <div class="wrap">
+      <div class="hf-head rv"><p class="mono-s">The Cognexa film · 0:33</p><p class="hf-t">How we work, in 33 seconds.</p></div>
+      <figure class="hf-frame rv" style="--d:1" data-hfilm>
+        <video muted loop playsinline preload="metadata" poster="/assets/video/film-poster.webp" aria-label="Cognexa brand film: how we work"><source src="/assets/video/cognexa-film.mp4" type="video/mp4"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video>
+        <div class="hf-ctl">
+          <button class="hf-snd" type="button" aria-pressed="false"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path class="w" d="M11 5.5c1 .8 1 4.2 0 5M12.8 4c1.8 1.6 1.8 6.4 0 8" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/><path class="x" d="M11 6l4 4M15 6l-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Play with sound</span></button>
+          <button class="hf-pp" type="button" aria-label="Pause the film"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="pz" d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/><path class="pl" d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg></button>
+          <button class="hf-fs" type="button" aria-label="Watch full screen"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></button>
+        </div>
+        <div class="hf-bar" aria-hidden="true"><i></i></div>
+      </figure>
     </div>
   </div>
 </section>
@@ -294,6 +310,25 @@ export function home() {
     <div>
       <nav class="topics" aria-label="Thinking topics">${topics.map((t, i) => `<a class="rv${i === 2 ? ' on' : ''}" style="--d:${i}" href="/thinking/?topic=${encodeURIComponent(t)}"><span>${esc(t)}</span><i></i></a>`).join('')}</nav>
       <a class="link rv" style="display:inline-block;margin-top:32px" href="/thinking/">Explore thinking ${arr}</a>
+    </div>
+  </div>
+</section>
+
+<!-- 11b COLOUR-BLOCK FILM -->
+<section class="cb-film" aria-labelledby="cbf-h">
+  <div class="wrap">
+    <div class="cbf-head">
+      <div><p class="mono-s c-amber rv">New brand film</p><h2 id="cbf-h" class="rv" style="--d:1">Typographic colour-block edit</h2></div>
+      <p class="cbf-meta rv" style="--d:2"><span>27s</span><span>1080p</span><span>Play with sound on</span></p>
+    </div>
+    <div class="cbf-stage rv" style="--d:2">
+      <button class="cbf-facade" type="button" data-cbfilm="/assets/video/cognexa-colour-block.mp4" aria-label="Play the new brand film, typographic colour-block edit, 27 seconds, with sound">
+        <img src="/assets/video/colour-block-thumb.webp" alt="" loading="lazy" width="1600" height="900">
+        <span class="cbf-shade"></span>
+        <span class="cbf-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+        <span class="cbf-lbl"><b>New brand film:</b> typographic colour-block edit, 27s, 1080p. Play with sound on.</span>
+        <span class="cbf-dur">0:27</span>
+      </button>
     </div>
   </div>
 </section>

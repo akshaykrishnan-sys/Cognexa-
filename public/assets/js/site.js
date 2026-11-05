@@ -363,3 +363,43 @@
   if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* ---------- hero film (muted autoplay, sound toggle) + colour-block film facade ---------- */
+(function () {
+  const w = window, d = document;
+  function bind() {
+    const f = d.querySelector('[data-hfilm]:not([data-b])');
+    if (f) {
+      f.dataset.b = 1;
+      const v = f.querySelector('video'), snd = f.querySelector('.hf-snd'), pp = f.querySelector('.hf-pp'), fs = f.querySelector('.hf-fs'), bar = f.querySelector('.hf-bar i');
+      const reduce = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let userPaused = reduce, heard = false, inView = false;
+      const setPaused = (p) => { f.classList.toggle('paused', p); pp.setAttribute('aria-label', p ? 'Play the film' : 'Pause the film'); };
+      const sync = () => { if (!userPaused && inView && !d.hidden) v.play().catch(() => {}); else v.pause(); };
+      v.addEventListener('play', () => setPaused(false)); v.addEventListener('pause', () => setPaused(true));
+      v.addEventListener('timeupdate', () => { if (v.duration) bar.style.width = (v.currentTime / v.duration * 100) + '%'; });
+      snd.addEventListener('click', () => {
+        const on = v.muted; v.muted = !on; snd.setAttribute('aria-pressed', String(on)); snd.querySelector('span').textContent = on ? 'Sound on' : 'Play with sound';
+        if (on && !heard) { heard = true; v.currentTime = 0; }
+        if (on) { userPaused = false; v.play().catch(() => {}); }
+      });
+      pp.addEventListener('click', () => { userPaused = !v.paused ? true : false; sync(); });
+      fs.addEventListener('click', () => { const r = f.requestFullscreen || f.webkitRequestFullscreen; if (r) r.call(f); else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen(); });
+      new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { threshold: .25 }).observe(f);
+      d.addEventListener('visibilitychange', sync);
+      setPaused(true);
+    }
+    d.querySelectorAll('[data-cbfilm]:not([data-b])').forEach(btn => {
+      btn.dataset.b = 1;
+      btn.addEventListener('click', () => {
+        const hv = d.querySelector('[data-hfilm] video'); if (hv) hv.pause();
+        const v = d.createElement('video'); v.controls = true; v.playsInline = true; v.preload = 'auto'; v.poster = btn.querySelector('img').src;
+        v.setAttribute('aria-label', 'New brand film: typographic colour-block edit'); v.src = btn.dataset.cbfilm;
+        btn.replaceWith(v); v.muted = false; v.play().catch(() => {}); v.focus();
+      });
+    });
+  }
+  const orig = w.CX && w.CX.init;
+  if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();
