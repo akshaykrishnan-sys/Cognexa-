@@ -161,14 +161,14 @@
   ],
   "cases": [
     {
-      "kicker": "SAAS  /  B2B",
+      "kicker": "ENGAGEMENT 01",
       "title": "Onboarding steps halved",
       "number": "+19%",
       "measure": "activation",
       "lever": "trust"
     },
     {
-      "kicker": "LOGISTICS  /  OPERATIONS",
+      "kicker": "ENGAGEMENT 02",
       "title": "Admin workflow rebuilt",
       "number": "+33%",
       "measure": "tasks per hour",

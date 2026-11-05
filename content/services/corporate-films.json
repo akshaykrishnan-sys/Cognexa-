@@ -161,14 +161,14 @@
   ],
   "cases": [
     {
-      "kicker": "MANUFACTURING  /  ENTERPRISE",
+      "kicker": "ENGAGEMENT 01",
       "title": "Leadership film reworked",
       "number": "+26%",
       "measure": "completion rate",
       "lever": "trust"
     },
     {
-      "kicker": "HEALTHCARE  /  NETWORK",
+      "kicker": "ENGAGEMENT 02",
       "title": "Employer film launched",
       "number": "+31%",
       "measure": "qualified applicants",
@@ -211,7 +211,7 @@
     "tagline": "Films that earn authority"
   },
   "video": {
-    "url": "/assets/video/cognexa-brand-reel.mp4",
+    "url": "",
     "poster": "/assets/video/reel-poster.webp",
     "title": "Brand film",
     "caption": "A 27-second Cognexa brand film, made from our own design system. Client showreel coming soon.",

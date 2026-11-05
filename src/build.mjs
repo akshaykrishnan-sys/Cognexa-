@@ -15,8 +15,6 @@ const routes = {};
 routes['/'] = home();
 routes['/services/'] = hub();
 for (const s of SVCS) routes[`/services/${s.slug}/`] = service(s);
-for (const v of VERTS) routes[`/industries/${v.slug}/`] = vertical(v);
-routes['/industries/'] = industriesLanding();
 routes['/case-studies/'] = caseStudies();
 for (const c of CASES.filter(x => x.full)) routes[`/case-studies/${c.slug}/`] = caseStudy(c);
 routes['/privacy/'] = privacy();

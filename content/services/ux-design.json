@@ -161,14 +161,14 @@
   ],
   "cases": [
     {
-      "kicker": "FINTECH  /  APP",
+      "kicker": "ENGAGEMENT 01",
       "title": "Onboarding flow redesigned",
       "number": "+21%",
       "measure": "sign-up completion",
       "lever": "trust"
     },
     {
-      "kicker": "RETAIL  /  E-COMMERCE",
+      "kicker": "ENGAGEMENT 02",
       "title": "Landing page refocused",
       "number": "+24%",
       "measure": "page conversion",

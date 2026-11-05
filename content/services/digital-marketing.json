@@ -161,14 +161,14 @@
   ],
   "cases": [
     {
-      "kicker": "D2C  /  RETAIL",
+      "kicker": "ENGAGEMENT 01",
       "title": "Intent-led search rebuilt",
       "number": "+41%",
       "measure": "organic leads",
       "lever": "trust"
     },
     {
-      "kicker": "SAAS  /  B2B",
+      "kicker": "ENGAGEMENT 02",
       "title": "Lifecycle flows rebuilt",
       "number": "+20%",
       "measure": "repeat usage",

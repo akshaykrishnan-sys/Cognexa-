@@ -161,14 +161,14 @@
   ],
   "cases": [
     {
-      "kicker": "D2C  /  BEAUTY",
+      "kicker": "ENGAGEMENT 01",
       "title": "Testimonial series launched",
       "number": "+22%",
       "measure": "conversion lift",
       "lever": "trust"
     },
     {
-      "kicker": "SAAS  /  B2B",
+      "kicker": "ENGAGEMENT 02",
       "title": "Explainer shortened",
       "number": "+29%",
       "measure": "demo requests",
@@ -211,7 +211,7 @@
     "tagline": "Stories that move decisions"
   },
   "video": {
-    "url": "/assets/video/cognexa-brand-reel.mp4",
+    "url": "",
     "poster": "/assets/video/reel-poster.webp",
     "title": "Brand film",
     "caption": "A 27-second Cognexa brand film, made from our own design system. Client showreel coming soon.",

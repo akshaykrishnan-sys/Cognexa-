@@ -42,11 +42,17 @@ const pairs = [
   ['“How should we communicate this?”', 'What must someone understand, believe or feel confident about before they act?'],
 ];
 
-const outcomes = [[23, 'Revenue', 'E-commerce. Checkout conversion.'], [31, 'Conversion', 'B2B and SaaS. Demo bookings.'], [18, 'Customer value', 'Healthcare. Return visits.'], [37, 'Efficiency', 'Education. Forms completed.'], [19, 'Adoption', 'B2B and SaaS. Trial activation.'], [29, 'Decision quality', 'Fintech. First deposits.']];
+const outcomes = [[0, 'Revenue', 'Sales and sign-ups. More people say yes.'], [0, 'Conversion', 'Every key step. Fewer people drop out.'], [0, 'Customer value', 'Repeat and referral. People come back.'], [0, 'Efficiency', 'Time and cost. Less effort to decide.'], [0, 'Adoption', 'New tools and products. Change that sticks.'], [0, 'Decision quality', 'Leadership choices. Clearer, faster calls.']];
 
 // hero slideshow: slug, name, photo, question, tag, tag colour, ring/tag position (% of the photo)
-const HS = IND.map(([slug, name, im, , q], i) => [slug, name, im, q, ['Doubt? returns', 'Risk? internal blame', 'Effort? next step', 'Belonging?', 'Trust? security signals'][i], ['tag-amber', 'tag-rust', 'tag-blue', 'tag-amber', 'tag-blue'][i], [52, 44, 56, 50, 46][i], [34, 30, 26, 34, 30][i]]);
-const verticals = [['e-commerce', 'E-commerce', 'Why do shoppers hesitate at the last step?'], ['b2b-saas', 'B2B & SaaS', 'Why do buying committees stall?'], ['healthcare', 'Healthcare', 'Why do patients delay the next step?'], ['education', 'Education', 'Why do learners drop off?'], ['fintech', 'Fintech', 'Why does a good product still not feel trusted?']];
+// hero sequence: how we work (link, step, image, question, tag, tag colour, ring/tag position %)
+const HS = [['/about/', 'Observe', IND[0][2], 'How do people really decide?', 'Observe', 'tag-amber', 52, 34], ['/about/', 'Diagnose', IND[1][2], 'Where does doubt creep in?', 'Doubt?', 'tag-rust', 44, 30],
+  ['/services/', 'Design', IND[2][2], 'What would make the next step easy?', 'Design', 'tag-blue', 56, 26], ['/services/', 'Build', IND[3][2], 'Strategy, design, technology and film, joined up.', 'Build', 'tag-amber', 50, 34],
+  ['/case-studies/', 'Measure', IND[4][2], 'What actually moved?', 'Measured', 'tag-blue', 46, 30]];
+// why Cognexa: what makes the approach different
+const WHY = [['Behaviour first', 'Starting from the brief', 'The real problem, named', '/about/'], ['Evidence, not opinion', 'Best guesses', 'Decisions you can defend', '/about/'],
+  ['Sized to the problem', 'Bigger projects by default', 'The smallest change that moves the number', '/services/'], ['One team, every discipline', 'Five agencies, five briefs', 'Strategy, design, technology and film, joined up', '/services/'],
+  ['Measured outcomes', 'Activity and outputs', 'One behaviour, one baseline, real movement', '/case-studies/']];
 
 const topics = ['AI & Transformation', 'Growth & Marketing', 'Consumer Decision-Making', 'Digital Experience', 'Technology Adoption', 'Business Systems', 'Behavioural Science'];
 
@@ -67,16 +73,14 @@ export function home() {
       <span class="anno tag-rust" style="left:66%;top:16.6%;animation-delay:1.7s;color:var(--ink)">Decision effort?</span>
       <span class="anno tag-amber" style="left:86%;top:45.6%;animation-delay:2s">Price?</span>
     </div>
-    <div class="hs" data-hero-slides aria-roledescription="carousel" aria-label="Where people pause, by industry">
-      ${HS.map(([slug, name, im, q, tag, tc, x, y], i) => `<a class="hs-s" href="/industries/${slug}/" aria-hidden="true" tabindex="-1" style="--x:${x}%;--y:${y}%"><span class="hs-ph" style="background-image:url(${img(im)})"></span><span class="hs-tone"></span><span class="hs-ring"></span><span class="tag hs-tag ${tc}">${esc(tag)}</span><span class="hs-cap"><span class="mono-s">0${i + 1} / 05 · ${esc(name)}</span><b>${esc(q)}</b></span></a>`).join('')}
+    <div class="hs" data-hero-slides aria-roledescription="carousel" aria-label="How we work">
+      ${HS.map(([href, name, im, q, tag, tc, x, y], i) => `<a class="hs-s" href="${href}" aria-hidden="true" tabindex="-1" style="--x:${x}%;--y:${y}%"><span class="hs-ph" style="background-image:url(${img(im)})"></span><span class="hs-tone"></span><span class="hs-ring"></span><span class="tag hs-tag ${tc}">${esc(tag)}</span><span class="hs-cap"><span class="mono-s">0${i + 1} / 05 · ${esc(name)}</span><b>${esc(q)}</b></span></a>`).join('')}
       <div class="hs-ctl">
         <div class="hs-dots" role="tablist" aria-label="Choose a slide">${['Opening', ...HS.map(h => h[1])].map((n, i) => `<button role="tab" aria-label="${esc(n)}" aria-selected="${i === 0}"><i></i></button>`).join('')}</div>
         <button class="hs-pause" type="button" aria-label="Pause the slideshow" aria-pressed="false"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="pz" d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/><path class="pl" d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg></button>
-        <button class="hs-film" type="button" data-film="/assets/video/cognexa-brand-reel.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:27</span></button>
       </div>
     </div>
   </div>
-  <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/reel-poster.webp"><source src="/assets/video/cognexa-brand-reel.mp4" type="video/mp4"><track kind="captions" src="/assets/video/cognexa-brand-reel.en.vtt" srclang="en" label="English" default></video></dialog>
   <div class="wrap">
     <div class="h-hero-copy">
       <div class="briefs" aria-label="Typical briefs">
@@ -86,7 +90,7 @@ export function home() {
         <p class="speech" style="margin-left:112px;animation-delay:.75s">“We need automation.”</p>
       </div>
       <h1 id="h1" class="io"><span class="kicker rv" style="--d:6">Those sound like solutions.</span><span class="big rv" style="--d:7">What’s the <span class="hl">problem?</span></span></h1>
-      <p class="sub rv" style="--d:8">Cognexa is a behavioural insights agency for e&#8209;commerce, B2B and SaaS, healthcare, education and fintech teams. We find what is really driving a business outcome, then design, build and market the change.</p>
+      <p class="sub rv" style="--d:8">Cognexa is a behavioural insights agency. We find what is really driving a business outcome, then design, build and market the change that moves it.</p>
       <div class="ctas rv" style="--d:9"><a class="btn" href="/contact/">${CTA} ${arr}</a></div>
     </div>
   </div>
@@ -149,14 +153,14 @@ export function home() {
   </div>
 </section>
 
-<!-- INDUSTRY TILES -->
+<!-- WHY COGNEXA -->
 <section class="itiles" aria-labelledby="it-h">
   <div class="wrap">
-    <div class="it-head"><div><p class="mono c-muted rv">Start with your industry</p>
-    <h2 id="it-h" class="rv" style="--d:1">Same behavioural science.<br><span style="color:var(--muted-2)">Different pause.</span></h2></div>
-    <a class="link rv" href="/industries/">Compare all five industries ${arr}</a></div>
+    <div class="it-head"><div><p class="mono c-muted rv">Why teams choose Cognexa</p>
+    <h2 id="it-h" class="rv" style="--d:1">Same budget.<br><span style="color:var(--muted-2)">Better questions.</span></h2></div>
+    <a class="link rv" href="/about/">How we work ${arr}</a></div>
     <div class="it-grid mscroll">
-      ${IND.map(([s, n, im, , q, pause, change], i) => `<a class="itile rv" style="--d:${i}" href="/industries/${s}/"><div class="im"><img src="${img(im)}" alt="" loading="lazy"></div><div class="bd"><p class="k">${esc(n)}</p><h3>${esc(q)}</h3><dl><dt>Typical pause</dt><dd>${esc(pause)}</dd><dt>What we change</dt><dd>${esc(change)}</dd></dl><span class="go">See the playbook ${arr}</span></div></a>`).join('')}
+      ${WHY.map(([h, was, get, href], i) => `<a class="itile rv" style="--d:${i}" href="${href}"><div class="im"><img src="${img(IND[i][2])}" alt="" loading="lazy" data-slot="why-${i + 1}"></div><div class="bd"><p class="k">0${i + 1}</p><h3>${esc(h)}</h3><dl><dt>Instead of</dt><dd>${esc(was)}</dd><dt>You get</dt><dd>${esc(get)}</dd></dl><span class="go">See how ${arr}</span></div></a>`).join('')}
     </div>
   </div>
 </section>
