@@ -368,14 +368,11 @@
 (function () {
   const w = window, d = document;
   function bind() {
-    d.querySelectorAll('[data-cbfilm]:not([data-b])').forEach(btn => {
-      btn.dataset.b = 1;
-      btn.addEventListener('click', () => {
-        
-        const v = d.createElement('video'); v.controls = true; v.playsInline = true; v.preload = 'auto'; v.poster = btn.querySelector('img').src;
-        v.setAttribute('aria-label', 'Brand film: Where people pause'); v.src = btn.dataset.cbfilm;
-        btn.replaceWith(v); v.muted = false; v.play().catch(() => {}); v.focus();
-      });
+    d.querySelectorAll('[data-cbf]:not([data-b])').forEach(st => {
+      st.dataset.b = 1;
+      const v = st.querySelector('video'), btn = st.querySelector('.cbf-facade');
+      btn.addEventListener('click', () => { st.classList.add('playing'); v.controls = true; v.muted = false; v.play().catch(() => { v.controls = true; }); });
+      v.addEventListener('ended', () => { st.classList.remove('playing'); v.controls = false; v.load(); });
     });
   }
   const orig = w.CX && w.CX.init;

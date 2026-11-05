@@ -307,9 +307,9 @@ export function home() {
       <div><p class="mono-s c-amber rv">Brand film</p><h2 id="cbf-h" class="rv" style="--d:1">Where people pause.</h2></div>
       <p class="cbf-meta rv" style="--d:2"><span>27s</span><span>1080p</span><span>Play with sound on</span></p>
     </div>
-    <div class="cbf-stage rv" style="--d:2">
-      <button class="cbf-facade" type="button" data-cbfilm="/assets/video/cognexa-colour-block.mp4" aria-label="Play the brand film, Where people pause, 27 seconds, with sound">
-        <img src="/assets/video/colour-block-thumb.webp" alt="" loading="lazy" width="1600" height="900">
+    <div class="cbf-stage rv" style="--d:2" data-cbf>
+      <video preload="metadata" playsinline poster="/assets/video/colour-block-thumb.webp" src="/assets/video/cognexa-colour-block.mp4" aria-label="Brand film: Where people pause"></video>
+      <button class="cbf-facade" type="button" aria-label="Play the brand film, Where people pause, 27 seconds, with sound">
         <span class="cbf-shade"></span>
         <span class="cbf-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
         <span class="cbf-lbl"><b>Brand film:</b> nine moments of doubt, and how we help people move past them. Play with sound on.</span>
