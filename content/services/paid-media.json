@@ -162,14 +162,14 @@
   ],
   "cases": [
     {
-      "kicker": "ENGAGEMENT 01",
+      "kicker": "D2C  /  FASHION",
       "title": "Message-match rebuilt",
       "number": "+35%",
       "measure": "return on ad spend",
       "lever": "trust"
     },
     {
-      "kicker": "ENGAGEMENT 02",
+      "kicker": "SAAS  /  B2B",
       "title": "Retargeting sequenced",
       "number": "+31%",
       "measure": "demo bookings",

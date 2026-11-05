@@ -13,10 +13,8 @@ test('content JSON converts to template tuples and back without loss', () => {
   }
 });
 
-test('no page links to the removed industry pages', () => {
-  let out = '';
-  try { out = execFileSync('grep', ['-rl', 'href="/industries/', `${ROOT}/public`, '--include=index.html'], { encoding: 'utf8' }).trim(); } catch { /* grep exits 1 when nothing matches */ }
-  assert.equal(out, '');
+test('every industry has the card fields the homepage and menu need', () => {
+  for (const v of collection('industries')) for (const k of ['image', 'headline', 'question', 'pause', 'change']) assert.ok(v.card?.[k], `${v.slug} card.${k}`);
 });
 
 test('related articles point at real articles', () => {
@@ -26,11 +24,11 @@ test('related articles point at real articles', () => {
 
 test('the CMS config names every content folder', () => {
   const cfg = readFileSync(`${ROOT}/public/admin/config.yml`, 'utf8');
-  for (const d of ['content/services', 'content/articles', 'content/cases', 'content/settings/site.json', 'content/settings/seo.json', 'content/settings/clients.json', 'content/pages/privacy.json']) assert.ok(cfg.includes(d), d);
+  for (const d of ['content/industries', 'content/services', 'content/articles', 'content/cases', 'content/settings/site.json', 'content/settings/seo.json', 'content/settings/clients.json', 'content/pages/privacy.json']) assert.ok(cfg.includes(d), d);
 });
 
 test('the site builds and every page exists', () => {
   const out = execFileSync('node', ['src/build.mjs'], { cwd: ROOT }).toString();
   assert.match(out, /Built \d+ pages/);
-  for (const p of ['index.html', 'services/ux-design/index.html', 'thinking/index.html', 'case-studies/checkout-trust-gap-closed/index.html', 'check/index.html', 'privacy/index.html']) assert.ok(existsSync(`${ROOT}/public/${p}`), p);
+  for (const p of ['index.html', 'industries/fintech/index.html', 'services/ux-design/index.html', 'thinking/index.html', 'case-studies/checkout-trust-gap-closed/index.html', 'check/index.html', 'privacy/index.html']) assert.ok(existsSync(`${ROOT}/public/${p}`), p);
 });

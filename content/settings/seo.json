@@ -1,14 +1,44 @@
 {
   "pages": [
     {
+      "path": "/industries/",
+      "title": "Behavioural Insights by Industry - Cognexa",
+      "description": "Behavioural insights for e-commerce, B2B and SaaS, healthcare, education and fintech. See how people decide in your industry."
+    },
+    {
       "path": "/",
       "title": "Cognexa: Behavioural Consumer Insights Agency",
-      "description": "Behavioural insight, strategy, design, technology and film. We find what really drives a business outcome, then design the change."
+      "description": "Behavioural science and consumer insights for brands that want to understand why people decide. Offices in London and Bangalore."
     },
     {
       "path": "/services/",
       "title": "Behavioural Services Across 8 Disciplines - Cognexa",
-      "description": "Eight disciplines, one behavioural method: marketing, consulting, web, software, UX, video, ads and film, shaped by how people decide."
+      "description": "Eight disciplines and 64 services, one behavioural method: marketing, consulting, web, software, UX, video, ads and film."
+    },
+    {
+      "path": "/industries/e-commerce/",
+      "title": "Behavioural Insights for E-commerce - Cognexa",
+      "description": "How e-commerce shoppers decide, where they stall and what to change. Behavioural research and design from Cognexa."
+    },
+    {
+      "path": "/industries/b2b-saas/",
+      "title": "Behavioural Insights for B2B and SaaS - Cognexa",
+      "description": "How B2B buying committees decide, where deals stall and what to change. Research and design from Cognexa."
+    },
+    {
+      "path": "/industries/healthcare/",
+      "title": "Behavioural Insights for Healthcare - Cognexa",
+      "description": "How patients decide to seek care, where they hesitate and what to change. Research and design from Cognexa."
+    },
+    {
+      "path": "/industries/education/",
+      "title": "Behavioural Insights for Education - Cognexa",
+      "description": "How learners and parents decide, where they stall and what to change. Research and design from Cognexa."
+    },
+    {
+      "path": "/industries/fintech/",
+      "title": "Behavioural Insights for Fintech - Cognexa",
+      "description": "How people decide with money, where trust breaks and what to change. Research and design from Cognexa."
     },
     {
       "path": "/services/digital-marketing/",

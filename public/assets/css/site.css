@@ -1325,7 +1325,7 @@ a.ccard:hover{transform:translateY(-6px);box-shadow:0 22px 48px -28px rgba(20,22
 .who p{font-size:14px;line-height:1.45;color:var(--muted)}
 .who b{color:var(--ink);font-weight:500}
 /* footer site map */
-.ftr-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;padding:64px 0 48px;border-bottom:1px solid rgba(255,255,255,.12)}
+.ftr-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding:64px 0 48px;border-bottom:1px solid rgba(255,255,255,.12)}
 .ftr-map div{display:flex;flex-direction:column;gap:10px;min-width:0}
 .ftr-map .mono-s{color:var(--grey);margin-bottom:6px}
 .ftr-map a{color:var(--paper);text-decoration:none;font-size:15px}
@@ -1537,12 +1537,3 @@ body{font-size:17px;letter-spacing:.003em}
   .hs-s .hs-tone{background:linear-gradient(180deg,rgba(14,17,26,0) 30%,rgba(14,17,26,.7) calc(100svh - 107px),rgba(14,17,26,.7) 100%)}
 }
 .vblock video::cue,.film-dlg video::cue{font-family:Outfit,sans-serif;font-size:22px;background:rgba(14,17,26,.72);color:#f3eee6}
-
-/* ===== Photo system: one grade, clean reveal, slow settle-in zoom (ready for the new stock imagery) ===== */
-.ph-anim{clip-path:inset(10% 0 0 0);opacity:.001;transition:clip-path 1.1s var(--ease),opacity .9s var(--ease)}
-.ph-anim.is-in{clip-path:inset(0 0 0 0);opacity:1}
-.ph-anim img:not([data-par]){transform:scale(1.08);transition:transform 2.4s var(--ease),filter .6s}
-.ph-anim.is-in img:not([data-par]){transform:scale(1)}
-.ph-anim img,.ph-grade img{filter:saturate(.94) contrast(1.03) brightness(1.01)}
-.itile:hover .ph-anim img:not([data-par]),.ind-card:hover .ph-anim img:not([data-par]),.cfeat:hover .ph-anim img:not([data-par]){transform:scale(1.04)}
-@media (prefers-reduced-motion:reduce){.ph-anim{clip-path:none;opacity:1;transition:none}.ph-anim img{transform:none!important;transition:none}}

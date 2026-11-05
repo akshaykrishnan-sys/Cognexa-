@@ -1,5 +1,5 @@
 /services/ads-paid-media/*   /services/paid-media/:splat   301
 /services/web-design-ux/*    /services/ux-design/:splat    301
-/industries/*                /                             301
+/industries/ecommerce/*      /industries/e-commerce/:splat 301
 /principles/*                /about/                       301
 /approach/*                  /about/                       301

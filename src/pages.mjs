@@ -86,7 +86,7 @@ export function hub() {
 </div></section>`;
 
   const chips = ['All', 'Digital Marketing', 'Consulting', 'Web Development', 'Software', 'Web Design & UX', 'Video', 'Ads', 'Corporate Films'];
-  const pcases = [['273:122', 'DIGITAL MARKETING', 'Intent-led search rebuilt', '+41%', 'organic leads', 'Digital Marketing|Ads'], ['273:130', 'WEB DESIGN AND UX', 'Sign-up flow redesigned', '+21%', 'sign-up completion', 'Web Design & UX|Web Development'], ['273:138', 'SOFTWARE DEVELOPMENT', 'Onboarding steps halved', '+26%', 'completion rate', 'Software|Consulting']];
+  const pcases = [['273:122', 'D2C RETAIL  /  DIGITAL MARKETING', 'Intent-led search rebuilt', '+41%', 'organic leads', 'Digital Marketing|Ads'], ['273:130', 'SAAS  /  WEB DESIGN AND UX', 'Sign-up flow redesigned', '+21%', 'sign-up completion', 'Web Design & UX|Web Development'], ['273:138', 'FINTECH  /  SOFTWARE DEVELOPMENT', 'Onboarding steps halved', '+26%', 'completion rate', 'Software|Consulting']];
   const cases = `<section class="sec-m bg-ink" id="cases"><div class="wrap">
   <p class="mono c-grey2 rv">Deliverables and case studies</p><h2 class="h-sec rv" style="--d:1;margin-top:16px;font-size:clamp(44px,5.3vw,76px)">What you receive.<br><span class="c-grey2">How it is measured.</span></h2>
   <div class="fchips rv" style="margin-top:56px" data-group data-filter=".pcase" role="group" aria-label="Filter proof by service">${chips.map((c, i) => `<button class="fchip" aria-pressed="${i === 0}">${esc(c)}</button>`).join('')}</div>

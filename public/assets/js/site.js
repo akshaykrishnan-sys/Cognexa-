@@ -363,17 +363,3 @@
   if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
-
-/* ---------- photo reveal: every content image container fades and settles in once ---------- */
-(function () {
-  const w = window, d = document;
-  const SEL = '.itile .im,.ind-card .im,.case .im,.cfeat .im,.art .im,.acover,.founder .pt,.stage .crop,.panel,.sd-photo,.cover,.observer,.machine,.prin-im,.im.rv-img';
-  function bind() {
-    if (!('IntersectionObserver' in w)) return;
-    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
-    d.querySelectorAll(SEL).forEach(el => { if (el.dataset.ph) return; el.dataset.ph = 1; el.classList.add('ph-anim'); io.observe(el); });
-  }
-  const orig = w.CX && w.CX.init;
-  if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
-  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
-})();

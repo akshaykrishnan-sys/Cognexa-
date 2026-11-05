@@ -2,6 +2,7 @@
 import { esc, arr, page, CTA, CTA_SUB, IND } from './lib.mjs';
 
 const Q = [
+  { q: 'Which industry are you in?', k: 'ind', o: [...IND.map(([s, n]) => [n, {}, s]), ['Something else', {}, '']] },
   { q: 'Where do people stop?', o: [['Before they enquire or sign up', { trust: 2 }], ['While comparing options or plans', { choice: 2 }], ['At the final step: checkout, booking or signing', { loss: 2, effort: 1 }], ['After they start: onboarding or first use', { effort: 2, habit: 1 }], ['They come once and do not come back', { habit: 2 }]] },
   { q: 'What do you hear most from customers?', o: [['“Is this safe? Can I trust it?”', { trust: 2 }], ['“Which one should I pick?”', { choice: 2 }], ['“This takes too long.”', { effort: 2 }], ['“What if it goes wrong?”', { loss: 2 }], ['“We will stick with what we have.”', { habit: 2 }]] },
   { q: 'What have you already tried?', o: [['More traffic or more ads', { trust: 1, choice: 1 }], ['A redesign', { effort: 1 }], ['Discounts or offers', { loss: 1 }], ['A new tool or automation', { habit: 1 }], ['Nothing yet', {}]] },
@@ -22,7 +23,7 @@ export function check() {
 <section class="bg-ink chk-hero"><div class="wrap">
   <p class="mono c-amber rv">Hesitation check</p>
   <h1 class="rv" style="--d:1"><span>Two minutes.</span><span class="c-amber">Find where people pause.</span></h1>
-  <p class="s rv" style="--d:2">Four questions. You get the behaviour most likely to be holding your results back, three first moves, and a brief you can bring to a fit call. Nothing is sent until you choose to.</p>
+  <p class="s rv" style="--d:2">Five questions. You get the behaviour most likely to be holding your results back, three first moves, and a brief you can bring to a fit call. Nothing is sent until you choose to.</p>
 </div></section>
 <section class="bg-paper chk-sec"><div class="wrap">
   <form class="chk" data-check novalidate>
@@ -44,6 +45,6 @@ export function check() {
     </div>
   </form>
 </div></section>
-<script>window.CX_CHECK=${JSON.stringify({ L: LEVERS, P: PACE, I: {} }).replace(/</g, '\\u003c')};</script>`;
+<script>window.CX_CHECK=${JSON.stringify({ L: LEVERS, P: PACE, I: Object.fromEntries(IND.map(([s, n]) => [s, n])) }).replace(/</g, '\\u003c')};</script>`;
   return page({ title: 'Hesitation check', desc: 'A 2-minute hesitation check from Cognexa. Five questions show the behaviour most likely holding your results back, with three first moves.', path: '/check/', active: '', body, crumbs: [['Hesitation check', '/check/']] });
 }

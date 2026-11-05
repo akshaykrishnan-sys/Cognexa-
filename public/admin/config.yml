@@ -47,6 +47,78 @@ _shared:
     { label: 'Photo annotations (3)', name: tags, widget: list, max: 3, summary: '{{fields.text}}', fields: [ { label: Annotation, name: text, widget: string, hint: 'e.g. "Trust? security signals"' } ] }
 
 collections:
+  # ======================= INDUSTRIES =======================
+  - name: industries
+    label: Industries
+    label_singular: Industry
+    description: The five industry pages, plus their tiles on the homepage, the Industries page and the menu.
+    folder: content/industries
+    editor: { preview: false }
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: name
+    slug: '{{fields.slug}}'
+    summary: '{{order}}. {{name}}'
+    sortable_fields: [order, name]
+    preview_path: 'industries/{{slug}}/'
+    fields:
+      - { label: 'Menu order', name: order, widget: number, value_type: int, default: 9 }
+      - { label: 'URL slug', name: slug, widget: string, pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'], hint: 'Page address: /industries/<slug>/' }
+      - { label: Name, name: name, widget: string }
+      - { label: 'Breadcrumb label', name: crumb, widget: string, hint: 'Upper case, e.g. FINTECH' }
+      - { label: 'Who decides (one word)', name: who, widget: string, hint: 'e.g. shoppers, buyers, patients' }
+      - label: 'Tile and menu card'
+        name: card
+        widget: object
+        hint: Used on the homepage tiles, the Industries page and the Industries dropdown.
+        fields:
+          - { label: Photo, name: image, widget: image }
+          - { label: 'Headline', name: headline, widget: string, hint: 'e.g. "Money decisions carry regret."' }
+          - { label: 'Question', name: question, widget: string, hint: 'The question a visitor recognises, e.g. "Why does a good product still not feel trusted?"' }
+          - { label: 'Typical pause', name: pause, widget: string }
+          - { label: 'What we change', name: change, widget: string }
+      - label: Hero
+        name: hero
+        widget: object
+        fields:
+          - { label: Photo, name: img, widget: image }
+          - { label: 'Kicker line', name: k, widget: string }
+          - { label: 'Headline, line 1 (italic)', name: t1, widget: string }
+          - { label: 'Headline, line 2 (italic, accent)', name: t2, widget: string }
+          - { label: 'Supporting line (carries the keyword)', name: s, widget: text }
+          - *tags
+          - { label: 'Decision path (5 steps)', name: path, widget: list, max: 5, summary: '{{fields.label}}', fields: [ { label: Step, name: label, widget: string, hint: 'e.g. 04 - DOUBT' }, { label: Caption, name: sub, widget: string } ] }
+      - { label: 'Symptoms section label', name: mapL, widget: string, hint: 'e.g. WHERE USERS STALL' }
+      - { label: 'Symptoms section heading', name: mapH, widget: string }
+      - label: 'Symptoms (ticked into the brief)'
+        name: map
+        widget: list
+        summary: '{{fields.symptom}} → {{fields.change}}'
+        fields:
+          - { label: 'What you see', name: symptom, widget: string }
+          - { label: 'What we change', name: change, widget: string }
+          - { label: Services, name: services, widget: list, summary: '{{fields.text}}', fields: [ { label: Service, name: text, widget: string } ] }
+      - { label: 'Insights heading', name: insightsH, widget: string }
+      - { label: 'Behavioural insights (4)', name: insights, widget: list, max: 4, summary: '{{fields.title}}', fields: [ { label: Tag, name: tag, widget: select, options: [TRUST, CHOICE, LOSS, HABIT] }, { label: Title, name: title, widget: string }, { label: Text, name: text, widget: text } ] }
+      - label: 'Example engagements (3)'
+        name: cases
+        widget: list
+        max: 3
+        summary: '{{fields.title}}'
+        fields:
+          - { label: Photo, name: image, widget: image }
+          - { label: 'Kicker', name: kicker, widget: string, hint: 'e.g. NEOBANK  /  CONSUMER' }
+          - { label: Title, name: title, widget: string }
+          - { label: 'Result (only shown once approved)', name: number, widget: string, required: false }
+          - { label: 'Measured by', name: measure, widget: string }
+          - *lever
+      - { label: '"What we build" heading', name: modsH, widget: string }
+      - { label: 'What we build (6)', name: mods, widget: list, max: 6, summary: '{{fields.title}}', fields: [ { label: Title, name: title, widget: string }, { label: Text, name: text, widget: text } ] }
+      - *faq
+      - *closing
+
   # ======================= SERVICES =======================
   - name: services
     label: Services
@@ -184,7 +256,7 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: 'URL slug', name: slug, widget: string, pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'] }
       - { label: 'Published (full page)', name: published, widget: boolean, default: false }
-      - { label: Industry, name: industry, widget: select, options: ['E-commerce', 'B2B and SaaS', 'Healthcare', 'Education', 'Fintech', 'General'], hint: 'Internal only. Not shown on the site.' }
+      - { label: Industry, name: industry, widget: select, options: ['E-commerce', 'B2B and SaaS', 'Healthcare', 'Education', 'Fintech'] }
       - { label: Kicker, name: kicker, widget: string, hint: 'e.g. E-COMMERCE  /  FASHION AND D2C' }
       - { label: 'Measured by', name: measure, widget: string }
       - *lever

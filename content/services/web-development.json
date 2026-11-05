@@ -161,14 +161,14 @@
   ],
   "cases": [
     {
-      "kicker": "ENGAGEMENT 01",
+      "kicker": "RETAIL  /  E-COMMERCE",
       "title": "Checkout speed doubled",
       "number": "+19%",
       "measure": "completed checkouts",
       "lever": "trust"
     },
     {
-      "kicker": "ENGAGEMENT 02",
+      "kicker": "MEDIA  /  PUBLISHER",
       "title": "Migration without ranking loss",
       "number": "+38%",
       "measure": "organic sessions",

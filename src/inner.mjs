@@ -191,7 +191,10 @@ export function serviceDetail(s, i) {
   <p class="note2">Example engagements. Each one agrees a single behaviour and its baseline before work starts.</p>
 </div></section>
 
-
+<section class="sec-m bg-paper"><div class="wrap">
+  <div class="sech"><p class="secl rv c-muted">04&nbsp;&nbsp;/&nbsp;&nbsp;WHERE IT HELPS MOST</p><h2 class="h-sec-s rv" style="--d:1">Industries we apply it in</h2></div>
+  <div class="grid-3">${RELATED[s.slug].map((v, j) => `<a class="icard rv sd-ind" style="--d:${j}" href="/industries/${v}/"><p class="tg">${esc(vmap[v].name.toUpperCase())}</p><h3>${esc(vmap[v].hero.k)}</h3><p>${esc(vmap[v].hero.s)}</p><span class="link">Explore ${esc(vmap[v].name)} ${arr}</span></a>`).join('')}</div>
+</div></section>
 
 <section class="sec-m bg-paper3"><div class="wrap">
   <div class="sech"><p class="secl rv c-muted">05&nbsp;&nbsp;/&nbsp;&nbsp;PRICING AND QUESTIONS</p><h2 class="h-sec-s rv" style="--d:1">Know the range before the call</h2></div>
@@ -278,11 +281,11 @@ export function caseStudies() {
 ${next.length ? `<section class="bg-paper" style="padding:40px 0 104px"><div class="wrap">
   <p class="mono c-muted rv">Being written up now</p>
   <h2 class="h-sec-s rv" style="--d:1;margin-top:12px">More cases on the way.</h2>
-  <ul class="cnext">${next.map((c, i) => `<li class="rv" style="--d:${i}"><span class="k">${esc(c.k)}</span><b>${esc(c.h)}</b><span class="lever lv-${c.lv}">LEVER: ${c.lv.toUpperCase()}</span></li>`).join('')}</ul>
-  <p class="note2">Want to see how a case like yours would run? Ask on your fit call and we will walk you through it.</p>
+  <ul class="cnext">${next.map((c, i) => `<li class="rv" style="--d:${i}"><span class="k">${esc(c.ind)}</span><b>${esc(c.h)}</b><span class="lever lv-${c.lv}">LEVER: ${c.lv.toUpperCase()}</span></li>`).join('')}</ul>
+  <p class="note2">Want the case closest to your industry? Ask on your fit call and we will walk you through it.</p>
 </div></section>` : ''}
 ${caseCta()}`;
-  return page({ title: 'Case studies', desc: 'Selected projects, the behaviour behind each one and what moved. Case studies from Cognexa.', path: '/case-studies/', active: '', body, crumbs: [['Case studies', '/case-studies/']] });
+  return page({ title: 'Case studies', desc: 'Selected projects, the behaviour behind each one and what moved. Case studies from Cognexa across five industries.', path: '/case-studies/', active: '', body, crumbs: [['Case studies', '/case-studies/']] });
 }
 
 export function caseStudy(c = CASES.find(x => x.full)) {
@@ -292,10 +295,10 @@ export function caseStudy(c = CASES.find(x => x.full)) {
   const mx = Math.max(pct(fig.before), pct(fig.after), 1);
   const body = `
 <section class="bg-ink" style="padding:88px 0"><div class="wrap">
-  <p class="mono c-grey2 rv"><a href="/case-studies/" style="text-decoration:none">Case studies</a></p>
+  <p class="mono c-grey2 rv"><a href="/case-studies/" style="text-decoration:none">Case studies</a>&nbsp;&nbsp;/&nbsp;&nbsp;${esc(c.industry)}</p>
   <h1 class="t-display rv" style="--d:1;font-size:clamp(56px,6.7vw,96px);margin-top:24px">${esc(c.title)}</h1>
   <p class="rv" style="--d:2;font-size:20px;line-height:1.5;max-width:720px;margin-top:24px">${esc(c.summary || '')}</p>
-  <div class="cs-meta rv" style="--d:3">${[['SERVICES', c.services], ['TIMELINE', c.timeline], ['LEVER', c.lever ? c.lever[0].toUpperCase() + c.lever.slice(1) : '']].filter(([, v]) => v).map(([k, v]) => `<div><small>${k}</small><span>${esc(v)}</span></div>`).join('')}</div>
+  <div class="cs-meta rv" style="--d:3">${[['INDUSTRY', c.industry], ['SERVICES', c.services], ['TIMELINE', c.timeline], ['LEVER', c.lever ? c.lever[0].toUpperCase() + c.lever.slice(1) : '']].filter(([, v]) => v).map(([k, v]) => `<div><small>${k}</small><span>${esc(v)}</span></div>`).join('')}</div>
 </div></section>
 ${c.results?.length ? `<section class="bg-paper" style="padding:88px 0"><div class="wrap">
   <p class="secl c-muted rv">02&nbsp;&nbsp;/&nbsp;&nbsp;WHAT MOVED</p>
@@ -311,8 +314,8 @@ ${fig.before ? `<section class="bg-paper" style="padding:88px 0"><div class="wra
 </div></section>` : ''}
 <section class="bg-paper" style="padding:8px 0 88px"><div class="wrap">
   <p class="secl c-muted rv">More cases</p><h2 class="serif rv" style="--d:1;font-size:48px;line-height:64px;margin:16px 0 40px">Other places people pause</h2>
-  <ul class="cnext">${others.map((o, i) => `<li class="rv" style="--d:${i}"><span class="k">${esc(o.kicker)}</span><b>${o.full ? `<a href="/case-studies/${o.slug}/">${esc(o.title)}</a>` : esc(o.title)}</b><span class="lever lv-${o.lever}">LEVER: ${String(o.lever).toUpperCase()}</span></li>`).join('')}</ul>
-  ${others.some(o => !o.full) ? '<p class="note2">Some cases are still being written up. Ask on your fit call and we will walk you through one.</p>' : ''}
+  <ul class="cnext">${others.map((o, i) => `<li class="rv" style="--d:${i}"><span class="k">${esc(o.industry)}</span><b>${o.full ? `<a href="/case-studies/${o.slug}/">${esc(o.title)}</a>` : esc(o.title)}</b><span class="lever lv-${o.lever}">LEVER: ${String(o.lever).toUpperCase()}</span></li>`).join('')}</ul>
+  ${others.some(o => !o.full) ? '<p class="note2">Some cases are still being written up. Ask on your fit call for the one closest to your industry.</p>' : ''}
 </div></section>
 ${caseCta()}`;
   return page({ title: `${c.title} - Case study`, desc: c.summary || c.title, path: `/case-studies/${c.slug}/`, body, crumbs: [['Case studies', '/case-studies/'], [c.title, `/case-studies/${c.slug}/`]] });
