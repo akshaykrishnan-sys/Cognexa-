@@ -58,8 +58,8 @@ export function home() {
 <div class="h-top">
   <div class="h-hero-photo">
     <div class="h-box">
-      <img src="${img('22:17')}" style="${fpos('22:17')}" alt="A shopper in a supermarket aisle reading the label on a bottle before choosing" width="840" height="1000" fetchpriority="high">
-      ${mark('22:17', 'Trust?', 'tag-blue')}
+      <img src="${img('22:17')}" style="${fpos('22:17')}" alt="A shopper in a boutique weighing two garments, her eyes on the orange top" width="840" height="1000" fetchpriority="high">
+      ${mark('22:17', 'Choice?', 'tag-blue')}
     </div>
     <div class="hs" data-hero-slides aria-roledescription="carousel" aria-label="Where people pause, by industry">
       ${HS.map(([slug, name, im, q, tag, tc, x, y], i) => `<a class="hs-s" href="/industries/${slug}/" aria-hidden="true" tabindex="-1" style="--x:${x}%;--y:${y}%"><span class="hs-ph" style="background-image:url(${img(im)})"></span><span class="hs-tone"></span><span class="hs-ring"></span><span class="tag hs-tag ${tc}">${esc(tag)}</span><span class="hs-cap"><span class="mono-s">0${i + 1} / 05 · ${esc(name)}</span><b>${esc(q)}</b></span></a>`).join('')}

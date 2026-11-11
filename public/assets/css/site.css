@@ -1596,3 +1596,4 @@ body{font-size:17px;letter-spacing:.003em}
 .h-box::before,.ophoto::before,.sd-photo::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
  background:radial-gradient(ellipse at 50% 40%,rgba(20,22,26,0) 55%,rgba(20,22,26,.28) 100%);mix-blend-mode:multiply}
 @media (max-width:760px){.crop-marks{inset:10px;background-size:14px 1.5px,1.5px 14px,14px 1.5px,1.5px 14px,14px 1.5px,1.5px 14px,14px 1.5px,1.5px 14px}}
+.h-box::before{inset:0;width:auto;mix-blend-mode:normal;background:linear-gradient(90deg,rgba(243,238,230,.35) 0%,rgba(243,238,230,0) 18%)}
