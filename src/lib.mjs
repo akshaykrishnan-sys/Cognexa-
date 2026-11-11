@@ -10,8 +10,9 @@ let _focus; const focusOf = (src) => { _focus ??= readJSON('settings/focus.json'
 /** object-position that keeps the marked point fixed whatever the crop (cover) */
 export const fpos = (src) => { const [x, y] = focusOf(img(src)); return `object-position:${x}% ${y}%`; };
 export function mark(src, tag, tagCls = 'tag-amber') {
-  const [x, y] = focusOf(img(src)); const left = x > 58;
-  return `<span class="mk${left ? ' mk-l' : ''}" style="--mx:${x}%;--my:${y}%" aria-hidden="true"><i class="mk-r"></i>${tag ? `<span class="tag mk-t ${tagCls}">${esc(tag)}</span>` : ''}</span>`;
+  const [x, y, ex, ey] = focusOf(img(src)); const left = x > 58;
+  const gaze = ex != null ? `<svg class="mk-g" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="${ex}" y1="${ey}" x2="${x}" y2="${y}" vector-effect="non-scaling-stroke"/></svg>` : '';
+  return `${gaze}<span class="mk${left ? ' mk-l' : ''}" style="--mx:${x}%;--my:${y}%" aria-hidden="true"><i class="mk-r"></i>${tag ? `<span class="tag mk-t ${tagCls}">${esc(tag)}</span>` : ''}</span><span class="crop-marks" aria-hidden="true"></span>`;
 }
 export const img = (id) => (String(id).startsWith('/') || /^https?:/.test(id) ? id : `/assets/img/n${id.replace(':', '-')}.webp`);
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

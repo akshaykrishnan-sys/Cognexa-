@@ -120,7 +120,7 @@ export function home() {
     </div>
   </div>
   <div class="wherewhy">
-    <img class="par" data-par="0.06" src="${img('23:1234')}" style="${fpos('23:1234')}" alt="A man reviewing an online checkout on a laptop at night" loading="lazy" width="1440" height="680">
+    <img class="par" data-par="0.06" src="${img('23:1234')}" alt="A man reviewing an online checkout on a laptop at night" loading="lazy" width="1440" height="680">
     <svg class="marks" viewBox="0 0 1440 680" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none"><path d="M28 54.8V30.5H50M1412 54.8V30.5H1390M28 650V672H50M1412 650V672H1390" stroke="#F3EEE6" stroke-opacity=".7" stroke-width="1.5"/></svg>
     ${mark('23:1234', 'Decision effort?', 'tag-blue')}
     <div class="stmt">
