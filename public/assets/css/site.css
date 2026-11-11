@@ -1891,3 +1891,8 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .hx::after{background:linear-gradient(90deg,rgba(8,10,16,.72) 0%,rgba(8,10,16,.38) 28%,rgba(8,10,16,0) 46%)}
 .hx-fx{fill:rgba(47,91,234,.2);stroke:#dfe7ff}.hx-scan,.hx-lead{stroke:#dfe7ff}
 @media (max-width:760px){.hx .sub{font-size:15px}}
+.vb-pause{position:absolute;right:14px;bottom:14px;z-index:5;width:40px;height:40px;border:1px solid rgba(243,238,230,.45);background:rgba(8,9,12,.45);color:#f3eee6;display:grid;place-items:center;cursor:pointer}
+.vb-pause:hover{border-color:#f3eee6}
+.vb-pause::before{content:"";width:10px;height:12px;border-left:3px solid currentColor;border-right:3px solid currentColor;box-sizing:border-box}
+.vb-pause[data-state="paused"]::before{width:0;height:0;border:0;border-left:11px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+@media (max-width:760px){.vb-pause{right:10px;bottom:10px}}

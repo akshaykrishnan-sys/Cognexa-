@@ -97,7 +97,7 @@ export function home() {
       </div>
       <div class="vb-row">
         ${briefs.map((b, i) => `<div class="vb-p${i === 0 ? ' is-on' : ''}" data-i="${i}">
-          <video class="vb-v" muted loop playsinline preload="none" poster="/assets/img/brief-${i + 1}.webp" data-src="/assets/video/brief-${i + 1}.mp4" data-src-sm="/assets/video/brief-${i + 1}-sm.mp4" aria-hidden="true"></video>
+          <video class="vb-v" muted autoplay loop playsinline preload="none" poster="/assets/img/brief-${i + 1}.webp" data-src="/assets/video/brief-${i + 1}.mp4" data-src-sm="/assets/video/brief-${i + 1}-sm.mp4" aria-hidden="true"></video>
           <div class="vb-body" role="tabpanel" id="vp${i}" aria-labelledby="vt${i}"${i ? ' hidden' : ''}>
             <h3>${esc(b.q)}</h3>
             <div class="vb-opts">${b.opts.map(o => `<button class="copt" aria-pressed="false"><span class="box"></span>${esc(o)}</button>`).join('')}</div>

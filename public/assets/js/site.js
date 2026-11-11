@@ -501,21 +501,32 @@
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
 
-/* brief section: one clip per brief; the open panel plays, the rest rest */
+/* brief section: one clip per brief; the open panel plays, the rest rest.
+   Plays even with reduced motion (slow, ambient, no flashing); a pause button gives control. */
 (function () {
   const w = window, d = document;
   function bind() {
     d.querySelectorAll('[data-vb]:not([data-b])').forEach(root => {
       root.dataset.b = 1;
       const tabs = [...root.querySelectorAll('.vb-tab')], panes = [...root.querySelectorAll('.vb-p')];
-      const still = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const small = w.innerWidth < 900;
-      let seen = false, cur = 0;
+      let seen = false, cur = 0, paused = false;
+      const btn = d.createElement('button');
+      btn.className = 'vb-pause'; btn.type = 'button';
+      const label = () => { btn.setAttribute('aria-label', paused ? 'Play the brief videos' : 'Pause the brief videos'); btn.dataset.state = paused ? 'paused' : 'playing'; };
+      label(); root.appendChild(btn);
       const play = () => panes.forEach((p, j) => {
         const v = p.querySelector('video');
-        if (j === cur && seen && !still) { if (!v.src) v.src = small ? v.dataset.srcSm : v.dataset.src; v.play().catch(() => {}); }
-        else if (v.src) v.pause();
+        v.muted = true; v.defaultMuted = true; v.playsInline = true;
+        if (j === cur && seen && !paused) {
+          if (!v.src) { v.src = small ? v.dataset.srcSm : v.dataset.src; v.load(); }
+          const pr = v.play(); if (pr && pr.catch) pr.catch(() => {
+            const kick = () => { v.play().catch(() => {}); ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(e => w.removeEventListener(e, kick)); };
+            ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(e => w.addEventListener(e, kick, { once: true, passive: true }));
+          });
+        } else if (v.src) v.pause();
       });
+      btn.addEventListener('click', () => { paused = !paused; label(); play(); });
       const select = i => {
         cur = i;
         tabs.forEach((t, j) => { t.setAttribute('aria-selected', i === j); t.tabIndex = i === j ? 0 : -1; });
@@ -534,6 +545,7 @@
       panes.forEach((p, i) => p.addEventListener('click', e => { if (!p.classList.contains('is-on') && !e.target.closest('button')) select(i); }));
       root.querySelectorAll('.copt').forEach(o => o.addEventListener('click', () => o.setAttribute('aria-pressed', o.getAttribute('aria-pressed') !== 'true')));
       if ('IntersectionObserver' in w) new IntersectionObserver(([e]) => { seen = e.isIntersecting; play(); }, { rootMargin: '150px 0px' }).observe(root);
+      else { seen = true; play(); }
     });
   }
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
