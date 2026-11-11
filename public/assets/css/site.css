@@ -1885,3 +1885,9 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
  .hx-briefs p{font-size:17px}
  .hx-tag{font-size:10px}
 }
+
+/* hero: smaller supporting copy, lighter scrim so the photo leads */
+.hx .sub{font-size:15px;line-height:1.55;max-width:420px;color:rgba(243,238,230,.78)}
+.hx::after{background:linear-gradient(90deg,rgba(8,10,16,.72) 0%,rgba(8,10,16,.38) 28%,rgba(8,10,16,0) 46%)}
+.hx-fx{fill:rgba(47,91,234,.2);stroke:#dfe7ff}.hx-scan,.hx-lead{stroke:#dfe7ff}
+@media (max-width:760px){.hx .sub{font-size:15px}}

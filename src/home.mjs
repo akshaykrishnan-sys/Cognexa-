@@ -55,7 +55,7 @@ export function home() {
   const body = `
 <!-- 01 HERO -->
 <section class="hx" aria-labelledby="h1" data-hx>
-  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-uv.webp" alt="A woman in white sunglasses looking up past a steel-and-glass facade, her eye path traced across the frame" width="2600" height="1405" fetchpriority="high">
+  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-real.webp" alt="A woman in white sunglasses looking up past a blue steel-and-glass facade, her eye path traced across the frame" width="2600" height="1405" fetchpriority="high">
     <div class="hx-mk" aria-hidden="true"><div class="hx-mk-in" data-iw="2600" data-ih="1405">
       <svg viewBox="0 0 2600 1405" preserveAspectRatio="none">
         <path class="hx-scan" d="M1890 536 L1656 516 L1560 370 L1390 215" pathLength="1"/>
