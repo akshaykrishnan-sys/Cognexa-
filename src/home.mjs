@@ -55,14 +55,19 @@ export function home() {
   const body = `
 <!-- 01 HERO -->
 <section class="hx" aria-labelledby="h1" data-hx>
-  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A man in a leather jacket lifting his glasses for a closer look" width="2600" height="1405" fetchpriority="high"></div>
+  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A woman in white sunglasses and a structured coat, looking up past a glass facade" width="2600" height="1405" fetchpriority="high"></div>
   <div class="hx-grid" aria-hidden="true">
     ${[4.4, 40, 88].map((x, i) => `<i class="gv" style="left:${x}%;--i:${i}"></i>`).join('')}
     ${[13, 38, 62, 86].map((y, i) => `<i class="gh" style="top:${y}%;--i:${i}"></i>`).join('')}
     ${[4.4, 40, 88].flatMap(x => [13, 38, 62, 86].map(y => `<b class="gd" style="left:${x}%;top:${y}%"></b>`)).join('')}
   </div>
-  ${['“We need more leads.”', '“We need AI.”', '“We need a new website.”', '“We need automation.”'].map((q, i) => `<p class="hx-q" style="top:${[15.5, 40.5, 64.5, 88.5][i]}%;--i:${i}">${q}</p>`).join('')}
   <div class="hx-in">
+    <div class="hx-briefs" aria-label="Typical briefs">
+      <p style="--i:0">“We need more leads.”</p>
+      <p style="--i:1;margin-left:72px">“We need AI.”</p>
+      <p style="--i:2;margin-left:28px">“We need a new website.”</p>
+      <p style="--i:3;margin-left:112px">“We need automation.”</p>
+    </div>
     <h1 id="h1"><span class="k">Those sound like solutions.</span><span class="t" data-mask>What’s the <em>problem?</em></span></h1>
     <p class="sub">Cognexa is a behavioural insights agency for e&#8209;commerce, B2B and SaaS, healthcare, education and fintech teams. We find what is really driving a business outcome, then design, build and market the change.</p>
     <div class="hx-ctas"><a class="btn-amber" href="/contact/">${CTA} ${arr}</a><button class="hx-film" type="button" data-film="/assets/video/cognexa-film.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:33</span></button></div>
@@ -73,7 +78,7 @@ export function home() {
 
 <!-- 01b BRIEF CHOOSER -->
 <section class="chooser-sec cx2" aria-labelledby="cx-h">
-  
+  <div class="cx-media" aria-hidden="true"><video class="cx-vid" muted loop playsinline preload="metadata" poster="/assets/img/brief-crowd.webp" data-src="/assets/video/brief-crowd.mp4" data-src-sm="/assets/video/brief-crowd-sm.mp4"></video></div>
   <div class="wrap">
     <div class="cx-head">
       <h2 id="cx-h" class="cx-title" data-words>Every brief is a guess about the problem.</h2>

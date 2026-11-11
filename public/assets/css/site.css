@@ -1779,3 +1779,33 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
  .hx h1 .t{font-size:clamp(48px,13vw,64px)}
 }
 @media (max-width:760px){.hx-grid{display:none}.hx-media{height:52%}}
+
+/* ---------- hero: original brief quotes restored ---------- */
+.hx-briefs{margin-bottom:30px}
+.hx-briefs p{font-family:var(--serif);font-size:clamp(20px,1.6vw,26px);line-height:1.25;color:rgba(243,238,230,.62);opacity:0;animation:hxQ .8s var(--ease) both;animation-delay:calc(.5s + var(--i) * .18s)}
+@keyframes hxQ{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hx-in{top:12%}
+@media (max-width:760px){.hx-briefs{margin-bottom:22px}.hx-briefs p{font-size:19px}.hx-briefs p[style*="112px"]{margin-left:64px!important}}
+@media (prefers-reduced-motion:reduce){.hx-briefs p{animation:none;opacity:1}}
+
+/* ---------- second fold v5: footage with text overlay ---------- */
+.cx2{background:#0a0b0f;color:#f3eee6;overflow:hidden;isolation:isolate;padding:150px 0 140px}
+.cx-media{position:absolute;inset:0;z-index:-1}
+.cx-vid{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.cx-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,15,.72) 0%,rgba(10,11,15,.42) 30%,rgba(10,11,15,.62) 58%,rgba(10,11,15,.92) 100%)}
+.cx2 .cx-title{color:#f3eee6;font-size:clamp(44px,6vw,96px);line-height:.95}
+.cx2 .cx-sub{color:rgba(243,238,230,.78)}
+.cx2 .chooser{border-top-color:rgba(243,238,230,.6)}
+.cx2 .chooser-tabs{border-right-color:rgba(243,238,230,.2)}
+.cx2 .ctab{color:rgba(243,238,230,.45);border-bottom-color:rgba(243,238,230,.2)}
+.cx2 .ctab::before{background:#fecd00}
+.cx2 .ctab:hover,.cx2 .ctab[aria-selected="true"]{color:#f3eee6}
+.cx2 .cq h3{color:#f3eee6}
+.cx2 .copt{color:#f3eee6;border-color:rgba(243,238,230,.2)!important}
+.cx2 .copt .box{border-color:rgba(243,238,230,.7)}
+.cx2 .copt[aria-pressed="true"] .box{background:#fecd00;border-color:#fecd00}
+.cx2 .cfind p{color:rgba(243,238,230,.68)}
+.cx2 .cfind p.strong{color:#f3eee6}
+@media (max-width:760px){.cx2{padding:96px 0 96px}.cx2 .chooser-tabs{border-bottom-color:rgba(243,238,230,.2)}}
+.cx-media::after{background:linear-gradient(180deg,rgba(10,11,15,.5) 0%,rgba(10,11,15,.12) 26%,rgba(10,11,15,.38) 48%,rgba(10,11,15,.78) 78%,rgba(10,11,15,.9) 100%),linear-gradient(90deg,rgba(10,11,15,.45),rgba(10,11,15,0) 60%)}
+.cx2 .cx-title,.cx2 .ctab,.cx2 .cq h3{text-shadow:0 1px 24px rgba(0,0,0,.35)}

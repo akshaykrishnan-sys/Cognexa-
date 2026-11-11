@@ -500,3 +500,20 @@
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* second fold: background footage, loaded near view, plays only while visible */
+(function () {
+  const w = window, d = document;
+  function bind() {
+    d.querySelectorAll('video.cx-vid:not([data-b])').forEach(v => {
+      v.dataset.b = 1;
+      if (w.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in w)) return;
+      const src = w.innerWidth < 900 ? v.dataset.srcSm : v.dataset.src;
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { if (!v.src) v.src = src; v.play().catch(() => {}); } else if (v.src) v.pause();
+      }, { rootMargin: '200px 0px' }).observe(v);
+    });
+  }
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();

@@ -45,7 +45,7 @@ for dp, _, fs in os.walk(SRC):
         html = open(full).read()
         title = re.search(r'<title>(.*?)</title>', html, re.S).group(1)
         body = re.search(r'<body>(.*)</body>', html, re.S).group(1)
-        body = re.sub(r'(href|src|poster)="(/[^"]*)"', fix_url, body)
+        body = re.sub(r'(href|src|poster|data-src|data-src-sm)="(/[^"]*)"', fix_url, body)
         r = rid(url); routes[r] = title
         open(os.path.join(OUT, 'p', r + '.txt'), 'w').write(title + '\n' + body)
 
