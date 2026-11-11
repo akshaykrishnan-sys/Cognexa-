@@ -16,9 +16,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css?v=1b68eca7">
+<link rel="stylesheet" href="/assets/css/site.css?v=f3cc9760">
 <script defer src="/assets/js/vendor/lenis.min.js"></script>
-<script defer src="/assets/js/site.js?v=9d3de767"></script>
+<script defer src="/assets/js/site.js?v=5b57644b"></script>
 
 </head>
 <body>
@@ -80,31 +80,45 @@
 </section>
 
 <!-- 01b BRIEF CHOOSER -->
-<section class="chooser-sec cx2" aria-labelledby="cx-h">
-  <div class="cx-media" aria-hidden="true"><video class="cx-vid" muted loop playsinline preload="metadata" poster="/assets/img/brief-crowd.webp" data-src="/assets/video/brief-crowd.mp4" data-src-sm="/assets/video/brief-crowd-sm.mp4"></video></div>
+<section class="vbs" aria-labelledby="cx-h">
   <div class="wrap">
-    <div class="cx-head">
-      <h2 id="cx-h" class="cx-title" data-words>Every brief is a guess about the problem.</h2>
-      <p class="cx-sub">Pick the one that sounds like yours. We’ll show you the questions we ask before anything gets built.</p>
+    <div class="vb-head">
+      <h2 id="cx-h" class="vb-title" data-words>Every brief is a guess about the problem.</h2>
+      <p class="vb-sub">Pick the one that sounds like yours. We’ll show you the questions we ask before anything gets built.</p>
     </div>
-    <div class="chooser" data-chooser>
-      <div class="chooser-tabs" role="tablist" aria-orientation="vertical" aria-label="Choose a brief">
-        <p class="chooser-prompt" aria-hidden="true"><span class="it">Choose a brief.</span></p>
-        <button class="ctab" role="tab" id="bt0" aria-controls="bp0" aria-selected="true" tabindex="0">“We need more leads.”</button><button class="ctab" role="tab" id="bt1" aria-controls="bp1" aria-selected="false" tabindex="-1">“We need AI.”</button><button class="ctab" role="tab" id="bt2" aria-controls="bp2" aria-selected="false" tabindex="-1">“We need a new website.”</button><button class="ctab" role="tab" id="bt3" aria-controls="bp3" aria-selected="false" tabindex="-1">“We need automation.”</button>
+    <div class="vb" data-vb>
+      <div class="vb-tabs" role="tablist" aria-label="Choose a brief">
+        <button class="vb-tab" role="tab" id="vt0" aria-controls="vp0" aria-selected="true" tabindex="0">“We need more leads.”</button><button class="vb-tab" role="tab" id="vt1" aria-controls="vp1" aria-selected="false" tabindex="-1">“We need AI.”</button><button class="vb-tab" role="tab" id="vt2" aria-controls="vp2" aria-selected="false" tabindex="-1">“We need a new website.”</button><button class="vb-tab" role="tab" id="vt3" aria-controls="vp3" aria-selected="false" tabindex="-1">“We need automation.”</button>
       </div>
-      <div class="cpanel">
-        <div class="cview is-active" role="tabpanel" id="bp0" aria-labelledby="bt0">
-          <div class="cq"><h3><span class="it">What makes acquisition the constraint?</span></h3><div><button class="copt" aria-pressed="false"><span class="box"></span>Not enough people arriving?</button><button class="copt" aria-pressed="false"><span class="box"></span>The wrong people arriving?</button><button class="copt" aria-pressed="false"><span class="box"></span>Enough people arriving, but too few deciding?</button></div></div>
-          <div class="cfind"><p>More leads may be the answer.</p><p class="strong"><span class="hl">Or they may simply make the existing problem bigger.</span></p></div>
-        </div><div class="cview" role="tabpanel" id="bp1" aria-labelledby="bt1" aria-hidden="true">
-          <div class="cq"><h3><span class="it">What needs to become better?</span></h3><div><button class="copt" aria-pressed="false"><span class="box"></span>Speed?</button><button class="copt" aria-pressed="false"><span class="box"></span>Cost?</button><button class="copt" aria-pressed="false"><span class="box"></span>Decision quality?</button><button class="copt" aria-pressed="false"><span class="box"></span>Customer experience?</button><button class="copt" aria-pressed="false"><span class="box"></span>Capability?</button></div></div>
-          <div class="cfind"><p>AI is a capability.</p><p class="strong"><span class="hl">The business outcome is the brief.</span></p></div>
-        </div><div class="cview" role="tabpanel" id="bp2" aria-labelledby="bt2" aria-hidden="true">
-          <div class="cq"><h3><span class="it">What needs to change because of it?</span></h3><div><button class="copt" aria-pressed="false"><span class="box"></span>Perception?</button><button class="copt" aria-pressed="false"><span class="box"></span>Understanding?</button><button class="copt" aria-pressed="false"><span class="box"></span>Trust?</button><button class="copt" aria-pressed="false"><span class="box"></span>Navigation?</button><button class="copt" aria-pressed="false"><span class="box"></span>Conversion?</button></div></div>
-          <div class="cfind"><p class="strong"><span class="hl">A new interface matters when it changes the right outcome.</span></p></div>
-        </div><div class="cview" role="tabpanel" id="bp3" aria-labelledby="bt3" aria-hidden="true">
-          <div class="cq"><h3><span class="it">What should become automatic?</span></h3><div><button class="copt" aria-pressed="false"><span class="box"></span><span class="it">And what should not?</span></button></div></div>
-          <div class="cfind"><p>Faster isn’t always better.</p><p class="strong"><span class="hl">Better is better.</span></p></div>
+      <div class="vb-row">
+        <div class="vb-p is-on" data-i="0">
+          <video class="vb-v" muted loop playsinline preload="none" poster="/assets/img/brief-1.webp" data-src="/assets/video/brief-1.mp4" data-src-sm="/assets/video/brief-1-sm.mp4" aria-hidden="true"></video>
+          <div class="vb-body" role="tabpanel" id="vp0" aria-labelledby="vt0">
+            <h3><span class="it">What makes acquisition the constraint?</span></h3>
+            <div class="vb-opts"><button class="copt" aria-pressed="false"><span class="box"></span>Not enough people arriving?</button><button class="copt" aria-pressed="false"><span class="box"></span>The wrong people arriving?</button><button class="copt" aria-pressed="false"><span class="box"></span>Enough people arriving, but too few deciding?</button></div>
+            <div class="vb-find"><p>More leads may be the answer.</p><p class="strong">Or they may simply make the existing problem bigger.</p></div>
+          </div>
+        </div><div class="vb-p" data-i="1">
+          <video class="vb-v" muted loop playsinline preload="none" poster="/assets/img/brief-2.webp" data-src="/assets/video/brief-2.mp4" data-src-sm="/assets/video/brief-2-sm.mp4" aria-hidden="true"></video>
+          <div class="vb-body" role="tabpanel" id="vp1" aria-labelledby="vt1" hidden>
+            <h3><span class="it">What needs to become better?</span></h3>
+            <div class="vb-opts"><button class="copt" aria-pressed="false"><span class="box"></span>Speed?</button><button class="copt" aria-pressed="false"><span class="box"></span>Cost?</button><button class="copt" aria-pressed="false"><span class="box"></span>Decision quality?</button><button class="copt" aria-pressed="false"><span class="box"></span>Customer experience?</button><button class="copt" aria-pressed="false"><span class="box"></span>Capability?</button></div>
+            <div class="vb-find"><p>AI is a capability.</p><p class="strong">The business outcome is the brief.</p></div>
+          </div>
+        </div><div class="vb-p" data-i="2">
+          <video class="vb-v" muted loop playsinline preload="none" poster="/assets/img/brief-3.webp" data-src="/assets/video/brief-3.mp4" data-src-sm="/assets/video/brief-3-sm.mp4" aria-hidden="true"></video>
+          <div class="vb-body" role="tabpanel" id="vp2" aria-labelledby="vt2" hidden>
+            <h3><span class="it">What needs to change because of it?</span></h3>
+            <div class="vb-opts"><button class="copt" aria-pressed="false"><span class="box"></span>Perception?</button><button class="copt" aria-pressed="false"><span class="box"></span>Understanding?</button><button class="copt" aria-pressed="false"><span class="box"></span>Trust?</button><button class="copt" aria-pressed="false"><span class="box"></span>Navigation?</button><button class="copt" aria-pressed="false"><span class="box"></span>Conversion?</button></div>
+            <div class="vb-find"><p class="strong">A new interface matters when it changes the right outcome.</p></div>
+          </div>
+        </div><div class="vb-p" data-i="3">
+          <video class="vb-v" muted loop playsinline preload="none" poster="/assets/img/brief-4.webp" data-src="/assets/video/brief-4.mp4" data-src-sm="/assets/video/brief-4-sm.mp4" aria-hidden="true"></video>
+          <div class="vb-body" role="tabpanel" id="vp3" aria-labelledby="vt3" hidden>
+            <h3><span class="it">What should become automatic?</span></h3>
+            <div class="vb-opts"><button class="copt" aria-pressed="false"><span class="box"></span><span class="it">And what should not?</span></button></div>
+            <div class="vb-find"><p>Faster isn’t always better.</p><p class="strong">Better is better.</p></div>
+          </div>
         </div>
       </div>
     </div>

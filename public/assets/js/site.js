@@ -501,17 +501,39 @@
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
 
-/* second fold: background footage, loaded near view, plays only while visible */
+/* brief section: one clip per brief; the open panel plays, the rest rest */
 (function () {
   const w = window, d = document;
   function bind() {
-    d.querySelectorAll('video.cx-vid:not([data-b])').forEach(v => {
-      v.dataset.b = 1;
-      if (w.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in w)) return;
-      const src = w.innerWidth < 900 ? v.dataset.srcSm : v.dataset.src;
-      new IntersectionObserver(([e]) => {
-        if (e.isIntersecting) { if (!v.src) v.src = src; v.play().catch(() => {}); } else if (v.src) v.pause();
-      }, { rootMargin: '200px 0px' }).observe(v);
+    d.querySelectorAll('[data-vb]:not([data-b])').forEach(root => {
+      root.dataset.b = 1;
+      const tabs = [...root.querySelectorAll('.vb-tab')], panes = [...root.querySelectorAll('.vb-p')];
+      const still = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const small = w.innerWidth < 900;
+      let seen = false, cur = 0;
+      const play = () => panes.forEach((p, j) => {
+        const v = p.querySelector('video');
+        if (j === cur && seen && !still) { if (!v.src) v.src = small ? v.dataset.srcSm : v.dataset.src; v.play().catch(() => {}); }
+        else if (v.src) v.pause();
+      });
+      const select = i => {
+        cur = i;
+        tabs.forEach((t, j) => { t.setAttribute('aria-selected', i === j); t.tabIndex = i === j ? 0 : -1; });
+        panes.forEach((p, j) => { p.classList.toggle('is-on', i === j); p.querySelector('.vb-body').hidden = i !== j; });
+        play();
+      };
+      tabs.forEach((t, i) => {
+        t.addEventListener('click', () => select(i));
+        t.addEventListener('keydown', e => {
+          if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(e.key)) return;
+          e.preventDefault();
+          const n = (i + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1) + tabs.length) % tabs.length;
+          tabs[n].focus(); select(n);
+        });
+      });
+      panes.forEach((p, i) => p.addEventListener('click', e => { if (!p.classList.contains('is-on') && !e.target.closest('button')) select(i); }));
+      root.querySelectorAll('.copt').forEach(o => o.addEventListener('click', () => o.setAttribute('aria-pressed', o.getAttribute('aria-pressed') !== 'true')));
+      if ('IntersectionObserver' in w) new IntersectionObserver(([e]) => { seen = e.isIntersecting; play(); }, { rootMargin: '150px 0px' }).observe(root);
     });
   }
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };

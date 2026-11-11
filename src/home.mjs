@@ -77,22 +77,24 @@ export function home() {
 </section>
 
 <!-- 01b BRIEF CHOOSER -->
-<section class="chooser-sec cx2" aria-labelledby="cx-h">
-  <div class="cx-media" aria-hidden="true"><video class="cx-vid" muted loop playsinline preload="metadata" poster="/assets/img/brief-crowd.webp" data-src="/assets/video/brief-crowd.mp4" data-src-sm="/assets/video/brief-crowd-sm.mp4"></video></div>
+<section class="vbs" aria-labelledby="cx-h">
   <div class="wrap">
-    <div class="cx-head">
-      <h2 id="cx-h" class="cx-title" data-words>Every brief is a guess about the problem.</h2>
-      <p class="cx-sub">Pick the one that sounds like yours. We’ll show you the questions we ask before anything gets built.</p>
+    <div class="vb-head">
+      <h2 id="cx-h" class="vb-title" data-words>Every brief is a guess about the problem.</h2>
+      <p class="vb-sub">Pick the one that sounds like yours. We’ll show you the questions we ask before anything gets built.</p>
     </div>
-    <div class="chooser" data-chooser>
-      <div class="chooser-tabs" role="tablist" aria-orientation="vertical" aria-label="Choose a brief">
-        <p class="chooser-prompt" aria-hidden="true">Choose a brief.</p>
-        ${briefs.map((b, i) => `<button class="ctab" role="tab" id="bt${i}" aria-controls="bp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`).join('')}
+    <div class="vb" data-vb>
+      <div class="vb-tabs" role="tablist" aria-label="Choose a brief">
+        ${briefs.map((b, i) => `<button class="vb-tab" role="tab" id="vt${i}" aria-controls="vp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`).join('')}
       </div>
-      <div class="cpanel">
-        ${briefs.map((b, i) => `<div class="cview${i === 0 ? ' is-active' : ''}" role="tabpanel" id="bp${i}" aria-labelledby="bt${i}"${i ? ' aria-hidden="true"' : ''}>
-          <div class="cq"><h3>${esc(b.q)}</h3><div>${b.opts.map(o => `<button class="copt" aria-pressed="false"><span class="box"></span>${esc(o)}</button>`).join('')}</div></div>
-          <div class="cfind">${b.a ? `<p>${esc(b.a)}</p>` : ''}<p class="strong"><span class="hl">${esc(b.b)}</span></p></div>
+      <div class="vb-row">
+        ${briefs.map((b, i) => `<div class="vb-p${i === 0 ? ' is-on' : ''}" data-i="${i}">
+          <video class="vb-v" muted loop playsinline preload="none" poster="/assets/img/brief-${i + 1}.webp" data-src="/assets/video/brief-${i + 1}.mp4" data-src-sm="/assets/video/brief-${i + 1}-sm.mp4" aria-hidden="true"></video>
+          <div class="vb-body" role="tabpanel" id="vp${i}" aria-labelledby="vt${i}"${i ? ' hidden' : ''}>
+            <h3>${esc(b.q)}</h3>
+            <div class="vb-opts">${b.opts.map(o => `<button class="copt" aria-pressed="false"><span class="box"></span>${esc(o)}</button>`).join('')}</div>
+            <div class="vb-find">${b.a ? `<p>${esc(b.a)}</p>` : ''}<p class="strong">${esc(b.b)}</p></div>
+          </div>
         </div>`).join('')}
       </div>
     </div>
