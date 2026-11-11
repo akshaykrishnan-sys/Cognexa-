@@ -411,11 +411,9 @@
     if (reduce.matches) return;
     const desk = innerWidth > 760;
     d.querySelectorAll('[data-words]').forEach(el => { splitWords(el); const ws = [...el.querySelectorAll('.w')]; items.push(() => { const p = clamp((innerHeight * .92 - el.getBoundingClientRect().top) / (innerHeight * .5)); ws.forEach((s, i) => s.style.setProperty('--o', (.16 + .84 * clamp(p * ws.length - i)).toFixed(3))); }); });
-    const ww = d.querySelector('.wherewhy');
-    if (ww && desk) { ww.classList.add('xp'); items.push(() => { const p = ease(clamp((innerHeight - ww.getBoundingClientRect().top) / (innerHeight * .75))); ww.style.setProperty('--xi', ((1 - p) * Math.min(120, innerWidth * .08)).toFixed(1) + 'px'); ww.style.setProperty('--xr', ((1 - p) * 36).toFixed(1) + 'px'); }); }
     const tp = d.querySelector('[data-ribbon]');
-    if (tp) items.push(() => { const r = tp.closest('.ribbon').getBoundingClientRect(); const p = (innerHeight - r.top) / (innerHeight + r.height); tp.setAttribute('startOffset', (-30 * p).toFixed(2) + '%'); });
-    d.querySelectorAll('.itile, .ocell').forEach((el, i) => { el.classList.add('settle'); const dir = i % 2 ? 1 : -1, rot = dir * (3 + (i % 3) * 1.5), off = 70 + (i % 3) * 30; items.push(() => { const p = ease(clamp((innerHeight * 1.02 - el.getBoundingClientRect().top) / (innerHeight * .55))); el.style.setProperty('--sy', ((1 - p) * off).toFixed(1) + 'px'); el.style.setProperty('--sr', ((1 - p) * rot).toFixed(2) + 'deg'); }); });
+    if (tp) items.push(() => { const r = tp.closest('.ribbon').getBoundingClientRect(); const p = (innerHeight - r.top) / (innerHeight + r.height); tp.setAttribute('startOffset', (8 - 70 * p).toFixed(2) + '%'); });
+    d.querySelectorAll('.itile, .ocell').forEach((el, i) => { el.classList.add('settle'); const dir = i % 2 ? 1 : -1, rot = dir * (7 + (i % 3) * 3), off = 160 + (i % 3) * 70, sx = dir * (30 + (i % 4) * 20); items.push(() => { const p = ease(clamp((innerHeight * 1.02 - el.getBoundingClientRect().top) / (innerHeight * .55))); el.style.setProperty('--sy', ((1 - p) * off).toFixed(1) + 'px'); el.style.setProperty('--sx', ((1 - p) * sx).toFixed(1) + 'px'); el.style.setProperty('--sr', ((1 - p) * rot).toFixed(2) + 'deg'); }); });
     const mk = d.querySelector('[data-mark]');
     if (mk) { const ls = [...mk.children]; items.push(() => { const p = clamp((innerHeight - mk.getBoundingClientRect().top) / (mk.offsetHeight * 1.6)); ls.forEach((s, i) => s.style.setProperty('--my', ((1 - ease(clamp(p * 1.6 - i * .09))) * 100).toFixed(1) + '%')); }); }
     tick();
@@ -425,5 +423,44 @@
   w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', () => { bind(); });
   const orig = w.CX && w.CX.init;
   if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();
+
+/* ================= bolder scroll scenes: smooth scroll, hero shrink, pinned expand ================= */
+(function () {
+  const w = window, d = document;
+  const reduce = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const ease = (t) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  if (reduce) return;
+  let lenis = null;
+  if (w.Lenis && w.matchMedia('(pointer: fine)').matches && !w.CX_MANUAL) {
+    lenis = new w.Lenis({ lerp: 0.085, smoothWheel: true, anchors: true });
+    const loop = (t) => { lenis.raf(t); requestAnimationFrame(loop); }; requestAnimationFrame(loop);
+    d.documentElement.classList.add('smooth');
+  }
+  let fns = [];
+  function bind() {
+    fns = [];
+    const desk = innerWidth > 1024;
+    const hp = d.querySelector('.h-hero-photo');
+    if (hp && desk) fns.push(() => { const p = ease(clamp(scrollY / (innerHeight * .8))); hp.style.setProperty('--hs', (1 - .08 * p).toFixed(4)); hp.style.setProperty('--hr', (p * 36).toFixed(1) + 'px'); hp.classList.add('shrink'); });
+    const px = d.querySelector('.pin-x');
+    if (px && desk) {
+      px.classList.add('on'); const ww = px.querySelector('.wherewhy'), im = ww.querySelector('img'), st = ww.querySelector('.stmt'), mk = ww.querySelectorAll('.mk, .mk-g');
+      fns.push(() => {
+        const r = px.getBoundingClientRect(); const p = clamp(-r.top / (r.height - innerHeight));
+        const e = ease(clamp(p / .62));
+        ww.style.clipPath = `inset(${(24 * (1 - e)).toFixed(2)}% ${(31 * (1 - e)).toFixed(2)}% round ${(32 * (1 - e)).toFixed(1)}px)`;
+        im.style.transform = `scale(${(1.28 - .28 * e).toFixed(4)})`;
+        const t = clamp((p - .5) / .25); st.style.opacity = t; st.style.transform = `translateY(${(40 * (1 - t)).toFixed(1)}px)`;
+        mk.forEach(m => { m.style.opacity = clamp((p - .62) / .15); });
+      });
+    }
+    tick();
+  }
+  let raf = 0; const tick = () => { raf = 0; fns.forEach(f => f()); }; const req = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  if (lenis) lenis.on('scroll', req); w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', bind);
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();

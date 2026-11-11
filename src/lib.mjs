@@ -137,6 +137,7 @@ ${ldTag}<meta name="theme-color" content="#f3eee6">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css?v=${V_CSS}">
+<script defer src="/assets/js/vendor/lenis.min.js"></script>
 <script defer src="/assets/js/site.js?v=${V_JS}"></script>
 ${S.analytics?.plausibleDomain ? `<script defer data-domain="${esc(S.analytics.plausibleDomain)}" src="https://plausible.io/js/script.outbound-links.js"></script>` : ''}${S.analytics?.ga4Id ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(S.analytics.ga4Id)}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${esc(S.analytics.ga4Id)}',{anonymize_ip:true});</script>` : ''}
 </head>
