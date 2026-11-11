@@ -443,6 +443,8 @@
   function bind() {
     fns = [];
     const desk = innerWidth > 1024;
+    const hx = d.querySelector('.hx-bg');
+    if (hx) fns.push(() => { const p = clamp(scrollY / innerHeight); hx.style.setProperty('--hz', (1.06 + .1 * p).toFixed(4)); hx.style.setProperty('--hy', (p * 90).toFixed(1) + 'px'); });
     const hp = d.querySelector('.h-hero-photo');
     if (hp && desk) fns.push(() => { const p = ease(clamp(scrollY / (innerHeight * .8))); hp.style.setProperty('--hs', (1 - .08 * p).toFixed(4)); hp.style.setProperty('--hr', (p * 36).toFixed(1) + 'px'); hp.classList.add('shrink'); });
     const px = d.querySelector('.pin-x');

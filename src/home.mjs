@@ -54,56 +54,24 @@ const botAnn = [['Trust?', 56], ['Decision effort?', 216], ['Sales follow-up?', 
 export function home() {
   const body = `
 <!-- 01 HERO -->
-<section class="h-hero" aria-labelledby="h1">
-<div class="h-top">
-  <div class="h-hero-photo">
-    <div class="h-box">
-      <img src="${img('22:17')}" style="${fpos('22:17')}" alt="A shopper in a boutique weighing two garments, her eyes on the orange top" width="840" height="1000" fetchpriority="high">
-      ${mark('22:17', 'Choice?', 'tag-blue')}
-    </div>
-    <div class="hs" data-hero-slides aria-roledescription="carousel" aria-label="Where people pause, by industry">
-      ${HS.map(([slug, name, im, q, tag, tc, x, y], i) => `<a class="hs-s" href="/industries/${slug}/" aria-hidden="true" tabindex="-1" style="--x:${x}%;--y:${y}%"><span class="hs-ph" style="background-image:url(${img(im)})"></span><span class="hs-tone"></span><span class="hs-ring"></span><span class="tag hs-tag ${tc}">${esc(tag)}</span><span class="hs-cap"><span class="mono-s">0${i + 1} / 05 · ${esc(name)}</span><b>${esc(q)}</b></span></a>`).join('')}
-      <div class="hs-ctl">
-        <div class="hs-dots" role="tablist" aria-label="Choose a slide">${['Opening', ...HS.map(h => h[1])].map((n, i) => `<button role="tab" aria-label="${esc(n)}" aria-selected="${i === 0}"><i></i></button>`).join('')}</div>
-        <button class="hs-pause" type="button" aria-label="Pause the slideshow" aria-pressed="false"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="pz" d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/><path class="pl" d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg></button>
-        <button class="hs-film" type="button" data-film="/assets/video/cognexa-film.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:33</span></button>
-      </div>
-    </div>
+<section class="hx" aria-labelledby="h1">
+  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A man in low light reading his phone, deciding what to do next" width="2400" height="1297" fetchpriority="high"></div>
+  <div class="hx-grid" aria-hidden="true">
+    ${[4.4, 40, 70, 86].map((x, i) => `<i class="gv" style="left:${x}%;--i:${i}"></i>`).join('')}
+    ${[13, 38, 62, 86].map((y, i) => `<i class="gh" style="top:${y}%;--i:${i}"></i>`).join('')}
+    ${[4.4, 40, 70, 86].flatMap(x => [13, 38, 62, 86].map(y => `<b class="gd" style="left:${x}%;top:${y}%"></b>`)).join('')}
+  </div>
+  <p class="hx-l hx-l1 mono" aria-hidden="true">Observe</p>
+  <p class="hx-l hx-word" aria-hidden="true">cognexa</p>
+  <p class="hx-l hx-l2" aria-hidden="true">Behavioural insight for teams who need the real answer</p>
+  <p class="hx-l hx-l3 mono" aria-hidden="true">Founder&#8209;led</p>
+  <p class="hx-l hx-l4 mono" aria-hidden="true">London<br>Bangalore</p>
+  <div class="hx-in">
+    <h1 id="h1"><span class="k">Those sound like solutions.</span><span class="t">What’s the real problem?</span></h1>
+    <p class="sub">We find what is really driving a business outcome, then design, build and market the change.</p>
+    <div class="hx-ctas"><a class="btn-amber" href="/contact/">${CTA} ${arr}</a><button class="hx-film" type="button" data-film="/assets/video/cognexa-film.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:33</span></button></div>
   </div>
   <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/film-poster.webp"><source src="/assets/video/cognexa-film.mp4" type="video/mp4"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video></dialog>
-  <div class="wrap">
-    <div class="h-hero-copy">
-      <div class="briefs" aria-label="Typical briefs">
-        <p class="speech" style="animation-delay:.15s">“We need more leads.”</p>
-        <p class="speech" style="margin-left:72px;animation-delay:.35s">“We need AI.”</p>
-        <p class="speech" style="margin-left:28px;animation-delay:.55s">“We need a new website.”</p>
-        <p class="speech" style="margin-left:112px;animation-delay:.75s">“We need automation.”</p>
-      </div>
-      <h1 id="h1" class="io"><span class="kicker rv" style="--d:6">Those sound like solutions.</span><span class="big rv" style="--d:7">What’s the <span class="hl">problem?</span></span></h1>
-      <p class="sub rv" style="--d:8">Cognexa is a behavioural insights agency for e&#8209;commerce, B2B and SaaS, healthcare, education and fintech teams. We find what is really driving a business outcome, then design, build and market the change.</p>
-      <div class="ctas rv" style="--d:9"><a class="btn" href="/contact/">${CTA} ${arr}</a></div>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- 01b BRIEF CHOOSER -->
-<section class="chooser-sec" aria-label="Choose a brief">
-  <div class="ribbon" aria-hidden="true"><svg viewBox="0 0 1440 220" preserveAspectRatio="none"><path id="rb-p" d="M-40 170 C 260 40, 520 40, 760 120 S 1240 210, 1480 70" fill="none"/><path class="rb-line" d="M-40 170 C 260 40, 520 40, 760 120 S 1240 210, 1480 70" fill="none"/><text><textPath href="#rb-p" startOffset="0%" data-ribbon>${Array(3).fill('“We need more leads.”  ·  “We need AI.”  ·  “We need a new website.”  ·  “We need automation.”  ·  What’s the real problem?  ·  ').join('')}</textPath></text></svg></div>
-  <div class="wrap">
-    <div class="chooser rv" data-chooser>
-      <div class="chooser-tabs" role="tablist" aria-label="Choose a brief">
-        <p class="chooser-prompt" aria-hidden="true">Choose a brief.</p>
-        ${briefs.map((b, i) => `<button class="ctab" role="tab" id="bt${i}" aria-controls="bp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`).join('')}
-      </div>
-      <div class="cpanel">
-        ${briefs.map((b, i) => `<div class="cview${i === 0 ? ' is-active' : ''}" role="tabpanel" id="bp${i}" aria-labelledby="bt${i}"${i ? ' aria-hidden="true"' : ''}>
-          <div class="cq"><h3>${esc(b.q)}</h3><div>${b.opts.map(o => `<button class="copt" aria-pressed="false"><span class="box"></span>${esc(o)}</button>`).join('')}</div></div>
-          <div class="cfind">${b.a ? `<p>${esc(b.a)}</p>` : ''}<p class="strong"><span class="hl">${esc(b.b)}</span></p></div>
-        </div>`).join('')}
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- 02 SIGNAL ≠ DIAGNOSIS -->
