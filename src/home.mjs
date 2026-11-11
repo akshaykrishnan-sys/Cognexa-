@@ -55,7 +55,15 @@ export function home() {
   const body = `
 <!-- 01 HERO -->
 <section class="hx" aria-labelledby="h1" data-hx>
-  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A woman in white sunglasses and a structured coat, looking up past a glass facade" width="2600" height="1405" fetchpriority="high"></div>
+  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A woman in white sunglasses looking up past a steel-and-glass facade, her eye path traced across the frame" width="2600" height="1405" fetchpriority="high">
+    <div class="hx-mk" aria-hidden="true"><div class="hx-mk-in" data-iw="2600" data-ih="1405">
+      <svg viewBox="0 0 2600 1405" preserveAspectRatio="none">
+        <path class="hx-scan" d="M1890 536 L1656 516 L1560 370 L1390 215" pathLength="1"/>
+        ${[[1890, 536, 26, 0], [1656, 516, 36, 1], [1560, 370, 15, 2], [1390, 215, 22, 3]].map(([x, y, r, i]) => `<circle class="hx-fx" cx="${x}" cy="${y}" r="${r}" style="--i:${i}"/><circle class="hx-fd" cx="${x}" cy="${y}" r="4" style="--i:${i}"/>`).join('')}
+        <path class="hx-lead" d="M1374 200 L1290 118" pathLength="1"/>
+      </svg>
+      <span class="tag hx-tag" style="left:49.6%;top:8.4%">Attention?</span>
+    </div></div></div>
   <div class="hx-grid" aria-hidden="true">
     ${[4.4, 40, 88].map((x, i) => `<i class="gv" style="left:${x}%;--i:${i}"></i>`).join('')}
     ${[13, 38, 62, 86].map((y, i) => `<i class="gh" style="top:${y}%;--i:${i}"></i>`).join('')}

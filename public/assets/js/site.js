@@ -539,3 +539,22 @@
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* hero markers: keep the scan-path pinned to the photo however object-fit crops it */
+(function () {
+  const w = window, d = document;
+  function fit() {
+    d.querySelectorAll('.hx-mk-in').forEach(el => {
+      const img = el.closest('.hx-media').querySelector('img'); if (!img) return;
+      const cw = img.clientWidth, ch = img.clientHeight, iw = +el.dataset.iw, ih = +el.dataset.ih;
+      const s = Math.max(cw / iw, ch / ih), rw = iw * s, rh = ih * s;
+      const pos = getComputedStyle(img).objectPosition.split(' ').map(v => parseFloat(v) / 100);
+      Object.assign(el.style, { width: rw + 'px', height: rh + 'px', left: (cw - rw) * (pos[0] || .5) + 'px', top: (ch - rh) * (pos[1] || .5) + 'px' });
+    });
+  }
+  function bind() { fit(); }
+  w.addEventListener('resize', fit);
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+  w.addEventListener('load', fit);
+})();
