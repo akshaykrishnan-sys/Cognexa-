@@ -1597,3 +1597,31 @@ body{font-size:17px;letter-spacing:.003em}
  background:radial-gradient(ellipse at 50% 40%,rgba(20,22,26,0) 55%,rgba(20,22,26,.28) 100%);mix-blend-mode:multiply}
 @media (max-width:760px){.crop-marks{inset:10px;background-size:14px 1.5px,1.5px 14px,14px 1.5px,1.5px 14px,14px 1.5px,1.5px 14px,14px 1.5px,1.5px 14px}}
 .h-box::before{inset:0;width:auto;mix-blend-mode:normal;background:linear-gradient(90deg,rgba(243,238,230,.35) 0%,rgba(243,238,230,0) 18%)}
+
+/* ================= scroll motion (inspired by editorial scroll storytelling) ================= */
+/* stacked sheets: dark sections slide over with rounded tops */
+@media (min-width:761px){
+ .signal,.sec.adv,.outcomes,.cb-film,.clients,.sec.audit{position:relative;z-index:2;border-radius:44px 44px 0 0;margin-top:-44px}
+ .clients,.sec.audit{z-index:3}
+}
+/* curved text ribbon */
+.ribbon{position:relative;height:200px;margin:-40px 0 8px;pointer-events:none;overflow:hidden}
+.ribbon svg{width:100%;height:100%;overflow:visible}
+.ribbon .rb-line{stroke:var(--line);stroke-width:1;stroke-dasharray:2 6}
+.ribbon text{font-family:var(--sans);font-size:21px;fill:var(--muted);letter-spacing:.01em}
+@media (max-width:760px){.ribbon{height:120px;margin:-20px 0 0}.ribbon text{font-size:30px}}
+/* expand-to-full-bleed card */
+.wherewhy.xp{clip-path:inset(0 var(--xi,0px) round var(--xr,0px));will-change:clip-path}
+/* word reveal */
+[data-words] .w{opacity:var(--o,.16);transition:opacity .25s linear}
+[data-words].rv{opacity:1!important;transform:none!important}
+/* settle cards */
+.settle{transform:translate3d(0,var(--sy,0px),0) rotate(var(--sr,0deg));will-change:transform}
+/* giant wordmark */
+.ftr-mark{display:flex;justify-content:space-between;font-family:var(--display);font-weight:500;font-size:clamp(80px,20.5vw,300px);line-height:.8;letter-spacing:-.05em;color:var(--paper);margin:72px 0 40px;overflow:hidden;padding-bottom:.06em}
+.ftr-mark span{display:block;transform:translateY(var(--my,100%));will-change:transform}
+.ftr-mark span:nth-child(n+4){color:var(--rust)}
+@media (prefers-reduced-motion:reduce){.ftr-mark span{transform:none}.settle{transform:none}.wherewhy.xp{clip-path:none}[data-words] .w{opacity:1}}
+.ftr-mark{justify-content:flex-start;font-size:clamp(72px,18.6vw,280px);letter-spacing:-.045em;margin-left:-.04em}
+.ftr-mark{font-size:min(26.2vw,370px);padding-bottom:.2em;margin:56px 0 8px -.05em}
+@media (max-width:760px){.ftr-mark{font-size:23.6vw;margin-top:36px}}

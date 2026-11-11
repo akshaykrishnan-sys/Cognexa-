@@ -392,3 +392,38 @@
   if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* ================= scroll motion engine (one rAF loop, scrubbed by scroll position) ================= */
+(function () {
+  const w = window, d = document;
+  const reduce = w.matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  let items = [];
+  function prog(el, start, end) { const r = el.getBoundingClientRect(), h = innerHeight; return clamp((h * start - r.top) / (h * (start - end) + r.height * 0)); }
+  function splitWords(el) {
+    if (el.dataset.split) return; el.dataset.split = 1;
+    const walk = (n) => { [...n.childNodes].forEach(c => { if (c.nodeType === 3) { const f = d.createDocumentFragment(); c.textContent.split(/(\s+)/).forEach(t => { if (!t) return; if (/^\s+$/.test(t)) f.append(t); else { const s = d.createElement('span'); s.className = 'w'; s.textContent = t; f.append(s); } }); c.replaceWith(f); } else if (c.nodeType === 1 && c.tagName !== 'BR') walk(c); }); };
+    walk(el);
+  }
+  function bind() {
+    items = [];
+    if (reduce.matches) return;
+    const desk = innerWidth > 760;
+    d.querySelectorAll('[data-words]').forEach(el => { splitWords(el); const ws = [...el.querySelectorAll('.w')]; items.push(() => { const p = clamp((innerHeight * .92 - el.getBoundingClientRect().top) / (innerHeight * .5)); ws.forEach((s, i) => s.style.setProperty('--o', (.16 + .84 * clamp(p * ws.length - i)).toFixed(3))); }); });
+    const ww = d.querySelector('.wherewhy');
+    if (ww && desk) { ww.classList.add('xp'); items.push(() => { const p = ease(clamp((innerHeight - ww.getBoundingClientRect().top) / (innerHeight * .75))); ww.style.setProperty('--xi', ((1 - p) * Math.min(120, innerWidth * .08)).toFixed(1) + 'px'); ww.style.setProperty('--xr', ((1 - p) * 36).toFixed(1) + 'px'); }); }
+    const tp = d.querySelector('[data-ribbon]');
+    if (tp) items.push(() => { const r = tp.closest('.ribbon').getBoundingClientRect(); const p = (innerHeight - r.top) / (innerHeight + r.height); tp.setAttribute('startOffset', (-30 * p).toFixed(2) + '%'); });
+    d.querySelectorAll('.itile, .ocell').forEach((el, i) => { el.classList.add('settle'); const dir = i % 2 ? 1 : -1, rot = dir * (3 + (i % 3) * 1.5), off = 70 + (i % 3) * 30; items.push(() => { const p = ease(clamp((innerHeight * 1.02 - el.getBoundingClientRect().top) / (innerHeight * .55))); el.style.setProperty('--sy', ((1 - p) * off).toFixed(1) + 'px'); el.style.setProperty('--sr', ((1 - p) * rot).toFixed(2) + 'deg'); }); });
+    const mk = d.querySelector('[data-mark]');
+    if (mk) { const ls = [...mk.children]; items.push(() => { const p = clamp((innerHeight - mk.getBoundingClientRect().top) / (mk.offsetHeight * 1.6)); ls.forEach((s, i) => s.style.setProperty('--my', ((1 - ease(clamp(p * 1.6 - i * .09))) * 100).toFixed(1) + '%')); }); }
+    tick();
+  }
+  let raf = 0; function tick() { raf = 0; items.forEach(f => f()); }
+  const req = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', () => { bind(); });
+  const orig = w.CX && w.CX.init;
+  if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();

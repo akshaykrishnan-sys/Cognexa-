@@ -89,6 +89,7 @@ export function home() {
 
 <!-- 01b BRIEF CHOOSER -->
 <section class="chooser-sec" aria-label="Choose a brief">
+  <div class="ribbon" aria-hidden="true"><svg viewBox="0 0 1440 220" preserveAspectRatio="none"><path id="rb-p" d="M-40 170 C 260 40, 520 40, 760 120 S 1240 210, 1480 70" fill="none"/><path class="rb-line" d="M-40 170 C 260 40, 520 40, 760 120 S 1240 210, 1480 70" fill="none"/><text><textPath href="#rb-p" startOffset="0%" data-ribbon>${Array(3).fill('“We need more leads.”  ·  “We need AI.”  ·  “We need a new website.”  ·  “We need automation.”  ·  What’s the real problem?  ·  ').join('')}</textPath></text></svg></div>
   <div class="wrap">
     <div class="chooser rv" data-chooser>
       <div class="chooser-tabs" role="tablist" aria-label="Choose a brief">
@@ -147,7 +148,7 @@ export function home() {
 <section class="itiles" aria-labelledby="it-h">
   <div class="wrap">
     <div class="it-head"><div><p class="mono c-muted rv">Start with your industry</p>
-    <h2 id="it-h" class="rv" style="--d:1">Same behavioural science.<br><span style="color:var(--muted-2)">Different pause.</span></h2></div>
+    <h2 id="it-h" class="rv" style="--d:1" data-words>Same behavioural science.<br><span style="color:var(--muted-2)">Different pause.</span></h2></div>
     <a class="link rv" href="/industries/">Compare all five industries ${arr}</a></div>
     <div class="it-grid mscroll">
       ${IND.map(([s, n, im, , q, pause, change], i) => `<a class="itile rv" style="--d:${i}" href="/industries/${s}/"><div class="im"><img src="${img(im)}" alt="" loading="lazy"></div><div class="bd"><p class="k">${esc(n)}</p><h3>${esc(q)}</h3><dl><dt>Typical pause</dt><dd>${esc(pause)}</dd><dt>What we change</dt><dd>${esc(change)}</dd></dl><span class="go">See the playbook ${arr}</span></div></a>`).join('')}
@@ -188,7 +189,7 @@ export function home() {
       </div>
     </div>
     <div class="principle">
-      <div class="rv"><p>The goal is a clear diagnosis.</p><p class="serif">Understanding what’s actually driving the outcome.</p></div>
+      <div class="rv"><p>The goal is a clear diagnosis.</p><p class="serif" data-words>Understanding what’s actually driving the outcome.</p></div>
       
     </div>
   </div>
@@ -226,7 +227,7 @@ export function home() {
 <section class="sec bg-ink" aria-labelledby="rc-h">
   <div class="wrap">
     <div class="rec-top">
-      <h2 id="rc-h" class="rv">Sometimes the right answer is <span class="c-amberl">smaller than the brief.</span></h2>
+      <h2 id="rc-h" class="rv" data-words>Sometimes the right answer is <span class="c-amberl">smaller than the brief.</span></h2>
       <div class="scope io">${scope}</div>
     </div>
     <div class="recon mscroll">
@@ -316,7 +317,7 @@ export function home() {
   <img class="par" data-par="0.06" src="${img('26:253')}" alt="" loading="lazy">
   <div class="wrap in">
     <div class="dissolve" aria-hidden="true"><span>“We need more leads.”</span><span>“We need AI.”</span><span>“We need automation.”</span><span>“We need a new website.”</span></div>
-    <h2 id="fc-h" class="rv">What are you really trying to <span class="c-bluel">change?</span></h2>
+    <h2 id="fc-h" class="rv" data-words>What are you really trying to <span class="c-bluel">change?</span></h2>
     <p class="s1 rv">Bring us the business problem as you currently see it.</p>
     <p class="s2 rv" style="--d:1">We’ll start with the questions the brief may have missed.</p>
     <a class="btn rv" style="--d:2" href="/contact/">${CTA} ${arr}</a>
