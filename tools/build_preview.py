@@ -54,12 +54,14 @@ head = re.search(r'<head>(.*?)</head>', home, re.S).group(1)
 head = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', '', head, flags=re.S)
 head = re.sub(r'(href|src)="/(assets/[^"]*|favicon\.svg)"', r'\1="\2"', head)
 head = re.sub(r'<script defer src="assets/js/site\.js(\?v=\w+)?"></script>', '', head)
-head = re.sub(r'assets/css/site\.css(\?v=\w+)?', 'assets/css/site-desktop.css', head)
+import hashlib, time
+VER = hashlib.sha1((open(os.path.join(OUT, 'assets/css/site-desktop.css')).read() + open(os.path.join(SRC, 'assets/js/site.js')).read() + str(time.time())).encode()).hexdigest()[:8]
+head = re.sub(r'assets/css/site\.css(\?v=\w+)?', 'assets/css/site-desktop.css?v=' + VER, head)
 shell = f'''<!doctype html>
 <html lang="en">
 <head>{head}
 <script>window.CX_MANUAL = true;</script>
-<script src="assets/js/site.js"></script>
+<script src="assets/js/site.js?v={VER}"></script>
 </head>
 <body>
 <style>html{{overflow-x:hidden}}</style>
@@ -80,7 +82,7 @@ shell = f'''<!doctype html>
   }}
   function show(id, anchor) {{
     if (id === current) {{ scrollToAnchor(anchor); return; }}
-    var get = cache[id] ? Promise.resolve(cache[id]) : fetch('p/' + id + '.txt').then(function (r) {{ return r.text(); }});
+    var get = cache[id] ? Promise.resolve(cache[id]) : fetch('p/' + id + '.txt?v={VER}').then(function (r) {{ return r.text(); }});
     get.then(function (txt) {{
       cache[id] = txt;
       var nl = txt.indexOf('\\n');
