@@ -1896,3 +1896,32 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .vb-pause::before{content:"";width:10px;height:12px;border-left:3px solid currentColor;border-right:3px solid currentColor;box-sizing:border-box}
 .vb-pause[data-state="paused"]::before{width:0;height:0;border:0;border-left:11px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
 @media (max-width:760px){.vb-pause{right:10px;bottom:10px}}
+
+/* ---------- brand film under the hero: grows from inset card to full bleed, plays muted in view ---------- */
+.bf{position:relative;z-index:2;background:#0c0d10;height:190vh}
+.bf-pin{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.bf-head{position:absolute;top:calc(4vh + 8px);left:0;right:0;z-index:2;opacity:calc(1 - var(--p,0) * 2.2);color:#f3eee6}
+.bf-k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,238,230,.7)}
+.bf-frame{position:relative;margin:0 auto;width:100%;aspect-ratio:16/9;max-height:100vh;
+ transform:scale(calc(.62 + .38 * var(--p,0)));border-radius:calc(22px * (1 - var(--p,0)));overflow:hidden;background:#000;
+ box-shadow:0 40px 120px -30px rgba(0,0,0,.6);will-change:transform}
+.bf-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.bf-ui{position:absolute;right:24px;bottom:28px;display:flex;gap:10px;z-index:2}
+.bf-sound{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 18px;background:#fecd00;color:#14161a;border:0;font:inherit;font-size:15px;cursor:pointer}
+.bf-sound .w{opacity:0}.bf.is-sound .bf-sound .w{opacity:1}
+.bf-pause{width:46px;height:46px;border:1px solid rgba(243,238,230,.5);background:rgba(8,9,12,.45);color:#f3eee6;display:grid;place-items:center;cursor:pointer}
+.bf-pause::before{content:"";width:10px;height:12px;border-left:3px solid currentColor;border-right:3px solid currentColor;box-sizing:border-box}
+.bf.is-paused .bf-pause::before{width:0;height:0;border:0;border-left:11px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.bf-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(243,238,230,.18);z-index:2}
+.bf-bar i{display:block;height:100%;width:var(--vp,0%);background:#fecd00}
+.bf-v::cue{font-family:Outfit,sans-serif;font-size:22px;background:rgba(14,17,26,.72);color:#f3eee6}
+@media (max-width:760px){.bf{height:150vh}.bf-frame{transform:scale(calc(.9 + .1 * var(--p,0)));border-radius:calc(14px * (1 - var(--p,0)))}.bf-ui{right:12px;bottom:14px}.bf-sound{height:40px;font-size:13px;padding:0 12px}.bf-pause{width:40px;height:40px}}
+@media (prefers-reduced-motion:reduce){.bf{height:auto}.bf-pin{position:relative;height:auto;padding:80px 0}.bf-frame{transform:none;border-radius:0}}
+@media (max-width:760px){
+ .bf{height:auto;padding:56px 0 88px}
+ .bf-pin{position:relative;height:auto;display:block;overflow:visible}
+ .bf-head{position:static;opacity:1;margin-bottom:16px}
+ .bf-frame{transform:none;border-radius:0;overflow:visible;margin-bottom:62px}
+ .bf-v{border-radius:0}
+ .bf-ui{left:16px;right:16px;bottom:-58px;justify-content:space-between}
+}

@@ -16,9 +16,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css?v=65406256">
+<link rel="stylesheet" href="/assets/css/site.css?v=94a50014">
 <script defer src="/assets/js/vendor/lenis.min.js"></script>
-<script defer src="/assets/js/site.js?v=874563a5"></script>
+<script defer src="/assets/js/site.js?v=7e7e6fae"></script>
 
 </head>
 <body>
@@ -81,10 +81,24 @@
     </div>
     <h1 id="h1"><span class="k">Those sound like solutions.</span><span class="t" data-mask><span class="it">What’s the </span><em><span class="it">problem?</span></em></span></h1>
     <p class="sub">Cognexa is a behavioural insights agency for e&#8209;commerce, B2B and SaaS, healthcare, education and fintech teams. We find what is really driving a business outcome, then design, build and market the change.</p>
-    <div class="hx-ctas"><a class="btn-amber" href="/contact/">Book a 15-min fit call <span class="arr" aria-hidden="true">→</span></a><button class="hx-film" type="button" data-film="/assets/video/cognexa-film.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:33</span></button></div>
+    <div class="hx-ctas"><a class="btn-amber" href="/contact/">Book a 15-min fit call <span class="arr" aria-hidden="true">→</span></a></div>
   </div>
   <p class="hx-scroll mono" aria-hidden="true"><i></i>Scroll</p>
-  <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/film-poster.webp"><source src="/assets/video/cognexa-film.mp4" type="video/mp4"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video></dialog>
+</section>
+
+<!-- BRAND FILM: plays muted as it scrolls into view, grows to full width -->
+<section class="bf" aria-labelledby="bf-h" data-bf>
+  <div class="bf-pin">
+    <div class="bf-head wrap"><p class="mono bf-k" id="bf-h">The film&nbsp;&nbsp;·&nbsp;&nbsp;0:33</p></div>
+    <div class="bf-frame">
+      <video class="bf-v" muted playsinline loop preload="none" poster="/assets/img/film-v10-poster.webp" data-src="/assets/video/cognexa-film-v10.mp4" data-src-sm="/assets/video/cognexa-film-v10-720.mp4" aria-label="Cognexa brand film"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video>
+      <div class="bf-ui">
+        <button class="bf-sound" type="button"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path class="w" d="M11 5.5c1 .7 1.5 1.6 1.5 2.5s-.5 1.8-1.5 2.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg><span>Watch with sound</span></button>
+        <button class="bf-pause" type="button" aria-label="Pause the film"></button>
+      </div>
+      <div class="bf-bar" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
 </section>
 
 <!-- 01b BRIEF CHOOSER -->

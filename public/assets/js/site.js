@@ -570,3 +570,34 @@
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
   w.addEventListener('load', fit);
 })();
+
+/* brand film under the hero: grows with scroll, plays muted while in view, sound on request */
+(function () {
+  const w = window, d = document;
+  function bind() {
+    d.querySelectorAll('[data-bf]:not([data-b])').forEach(sec => {
+      sec.dataset.b = 1;
+      const v = sec.querySelector('video'), snd = sec.querySelector('.bf-sound'), pz = sec.querySelector('.bf-pause'), bar = sec.querySelector('.bf-bar');
+      const small = w.innerWidth < 900; let inView = false, userPaused = false;
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      const load = () => { if (!v.src) { v.src = small ? v.dataset.srcSm : v.dataset.src; v.load(); } };
+      const go = () => { if (inView && !userPaused) { load(); const pr = v.play(); if (pr && pr.catch) pr.catch(() => { const k = () => { v.play().catch(() => {}); }; ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(e => w.addEventListener(e, k, { once: true, passive: true })); }); } else if (v.src) v.pause(); };
+      if ('IntersectionObserver' in w) new IntersectionObserver(([e]) => { inView = e.isIntersecting; go(); }, { threshold: .2 }).observe(sec.querySelector('.bf-frame')); else { inView = true; go(); }
+      const still = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const onScroll = () => { if (still) return; const r = sec.getBoundingClientRect(); const span = r.height - w.innerHeight; const p = Math.min(1, Math.max(0, -r.top / (span * .55 || 1))); sec.style.setProperty('--p', p.toFixed(4)); };
+      w.addEventListener('scroll', onScroll, { passive: true }); w.addEventListener('resize', onScroll); onScroll();
+      (function tick() { if (v.duration) bar.style.setProperty('--vp', (v.currentTime / v.duration * 100).toFixed(2) + '%'); w.requestAnimationFrame(tick); })();
+      snd.addEventListener('click', () => {
+        const on = v.muted;
+        load(); userPaused = false; sec.classList.remove('is-paused');
+        if (on) { v.currentTime = 0; v.muted = false; v.loop = false; sec.classList.add('is-sound'); snd.querySelector('span').textContent = 'Mute'; }
+        else { v.muted = true; v.loop = true; sec.classList.remove('is-sound'); snd.querySelector('span').textContent = 'Watch with sound'; }
+        v.play().catch(() => {});
+      });
+      v.addEventListener('ended', () => { v.muted = true; v.loop = true; sec.classList.remove('is-sound'); snd.querySelector('span').textContent = 'Watch with sound'; v.currentTime = 0; go(); });
+      pz.addEventListener('click', () => { userPaused = !userPaused; sec.classList.toggle('is-paused', userPaused); pz.setAttribute('aria-label', userPaused ? 'Play the film' : 'Pause the film'); go(); });
+    });
+  }
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();
