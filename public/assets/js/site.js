@@ -122,8 +122,9 @@
     tabs.forEach((t, i) => {
       t.addEventListener('click', () => select(i));
       t.addEventListener('keydown', e => {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          const n = (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+        if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(e.key)) {
+          e.preventDefault();
+          const n = (i + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1) + tabs.length) % tabs.length;
           tabs[n].focus(); select(n);
         }
       });
@@ -492,7 +493,7 @@
     d.querySelectorAll('[data-spot]:not([data-sb])').forEach(el => { el.dataset.sb = 1; el.addEventListener('mousemove', (e) => { const r = el.getBoundingClientRect(); el.style.setProperty('--sx', (e.clientX - r.left) + 'px'); el.style.setProperty('--sy', (e.clientY - r.top) + 'px'); }); });
     const ch = d.querySelector('.cx2 .chooser');
     if (ch && !reduce) {
-      const f = () => { const r = ch.getBoundingClientRect(); const p = clamp((innerHeight - r.top) / (innerHeight * .7)); const e = 1 - Math.pow(1 - p, 3); ch.style.setProperty('--tx', ((1 - e) * 16).toFixed(2) + 'deg'); ch.style.setProperty('--ty', ((1 - e) * 90).toFixed(1) + 'px'); ch.style.setProperty('--ts', (.94 + .06 * e).toFixed(4)); };
+      const f = () => { const r = ch.getBoundingClientRect(); const p = clamp((innerHeight - r.top) / (innerHeight * .7)); const e = 1 - Math.pow(1 - p, 3); ch.style.setProperty('--tx', '0deg'); ch.style.setProperty('--ty', ((1 - e) * 60).toFixed(1) + 'px'); ch.style.setProperty('--ts', '1'); ch.style.opacity = (0.2 + 0.8 * e).toFixed(3); };
       w.addEventListener('scroll', () => requestAnimationFrame(f), { passive: true }); f();
     }
   }

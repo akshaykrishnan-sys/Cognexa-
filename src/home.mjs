@@ -55,7 +55,7 @@ export function home() {
   const body = `
 <!-- 01 HERO -->
 <section class="hx" aria-labelledby="h1" data-hx>
-  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A man in a leather jacket lifting his glasses for a closer look" width="2600" height="1405" fetchpriority="high"><span class="hx-shine" aria-hidden="true"></span></div>
+  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A man in a leather jacket lifting his glasses for a closer look" width="2600" height="1405" fetchpriority="high"></div>
   <div class="hx-grid" aria-hidden="true">
     ${[4.4, 40, 88].map((x, i) => `<i class="gv" style="left:${x}%;--i:${i}"></i>`).join('')}
     ${[13, 38, 62, 86].map((y, i) => `<i class="gh" style="top:${y}%;--i:${i}"></i>`).join('')}
@@ -73,15 +73,14 @@ export function home() {
 
 <!-- 01b BRIEF CHOOSER -->
 <section class="chooser-sec cx2" aria-labelledby="cx-h">
-  <div class="cx-grid" aria-hidden="true"></div><div class="cx-orb" aria-hidden="true"></div>
+  
   <div class="wrap">
     <div class="cx-head">
-      <p class="mono cx-eye">02 &nbsp;/&nbsp; Start with the brief</p>
-      <h2 id="cx-h" class="cx-title" data-words>Every brief is a guess about the <span class="c-amberx">problem.</span></h2>
+      <h2 id="cx-h" class="cx-title" data-words>Every brief is a guess about the problem.</h2>
       <p class="cx-sub">Pick the one that sounds like yours. We’ll show you the questions we ask before anything gets built.</p>
     </div>
-    <div class="chooser" data-chooser data-spot>
-      <div class="chooser-tabs" role="tablist" aria-label="Choose a brief">
+    <div class="chooser" data-chooser>
+      <div class="chooser-tabs" role="tablist" aria-orientation="vertical" aria-label="Choose a brief">
         <p class="chooser-prompt" aria-hidden="true">Choose a brief.</p>
         ${briefs.map((b, i) => `<button class="ctab" role="tab" id="bt${i}" aria-controls="bp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`).join('')}
       </div>
