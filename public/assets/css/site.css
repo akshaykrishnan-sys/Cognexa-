@@ -1752,4 +1752,4 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .hx h1 .t,.hx h1 .t i,.hx h1 .t em{font-family:var(--sans);font-style:normal;font-weight:400}
 .cx2 .cq h3{font-family:var(--sans);font-style:normal;font-weight:400;letter-spacing:-.03em}
 .cx2 .chooser-prompt{font-family:var(--mono);font-style:normal}
-.cx2 .cq h3 .it,.cx2 .chooser-prompt .it{font-family:inherit;font-style:normal;font-weight:inherit;letter-spacing:inherit}
+.cx2 .cq h3 .it,.cx2 .chooser-prompt .it{font-family:var(--sans)!important;font-style:normal!important;font-weight:400!important;letter-spacing:-.03em!important}
