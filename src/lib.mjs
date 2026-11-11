@@ -5,6 +5,14 @@ import { createHash } from 'node:crypto';
 // cache-busting version for CSS and JS, so a new deploy is picked up straight away
 const ver = (f) => createHash('sha1').update(_rf(`${ROOT}/public/assets/${f}`)).digest('hex').slice(0, 8);
 const V_CSS = ver('css/site.css'), V_JS = ver('js/site.js');
+/** One precise marker per photo: a ring on the subject plus one short tag. Position comes from content/settings/focus.json (image path -> [x%, y%]). */
+let _focus; const focusOf = (src) => { _focus ??= readJSON('settings/focus.json'); return _focus[src] || [50, 38]; };
+/** object-position that keeps the marked point fixed whatever the crop (cover) */
+export const fpos = (src) => { const [x, y] = focusOf(img(src)); return `object-position:${x}% ${y}%`; };
+export function mark(src, tag, tagCls = 'tag-amber') {
+  const [x, y] = focusOf(img(src)); const left = x > 58;
+  return `<span class="mk${left ? ' mk-l' : ''}" style="--mx:${x}%;--my:${y}%" aria-hidden="true"><i class="mk-r"></i>${tag ? `<span class="tag mk-t ${tagCls}">${esc(tag)}</span>` : ''}</span>`;
+}
 export const img = (id) => (String(id).startsWith('/') || /^https?:/.test(id) ? id : `/assets/img/n${id.replace(':', '-')}.webp`);
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const arr = '<span class="arr" aria-hidden="true">→</span>';

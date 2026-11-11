@@ -1,4 +1,4 @@
-img[width][height]{height:auto}
+:where(img[width][height]){height:auto}
 /* Cognexa — site styles */
 :root{
   --paper:#f3eee6;--paper-2:#f8f5ef;--paper-3:#ece7dd;--card:#fffcf7;--card-2:#fffdf9;--sand:#e6dccb;
@@ -1566,3 +1566,17 @@ body{font-size:17px;letter-spacing:.003em}
 @media (max-width:760px){.cb-film{padding:64px 0 72px}.cbf-play{width:76px;height:76px;margin:-38px 0 0 -38px}.cbf-lbl{left:16px;right:72px;bottom:14px;font-size:13px}.cbf-dur{right:14px;bottom:14px;font-size:12px}}
 @media (prefers-reduced-motion:reduce){.cbf-play::after{animation:none}}
 @media (max-width:760px){.h-hero{display:block}.h-top{display:flex;flex-direction:column}}
+
+/* ---------- single precise marker (replaces gaze paths, heat blobs, extra tags) ---------- */
+.mk{position:absolute;left:var(--mx);top:var(--my);z-index:3;width:0;height:0;pointer-events:none}
+.mk-r{position:absolute;left:-44px;top:-44px;width:88px;height:88px;border:2px solid var(--amber-2);border-radius:50%;box-shadow:0 0 0 1px rgba(20,22,26,.18);opacity:0;transform:scale(1.4);transition:opacity .8s var(--ease) .3s,transform .8s var(--ease) .3s}
+.mk-t{position:absolute;left:58px;top:-16px;white-space:nowrap;opacity:0;transform:translateY(8px);transition:opacity .7s var(--ease) .7s,transform .7s var(--ease) .7s}
+.mk-l .mk-t{left:auto;right:58px}
+.is-in .mk-r,.rv-img.on .mk-r,.mk.on .mk-r{opacity:1;transform:none}
+.is-in .mk-t,.rv-img.on .mk-t,.mk.on .mk-t{opacity:1;transform:none}
+@media (max-width:760px){.mk-r{left:-30px;top:-30px;width:60px;height:60px}.mk-t{left:40px;font-size:11px}.mk-l .mk-t{right:40px}}
+@media (prefers-reduced-motion:reduce){.mk-r,.mk-t{opacity:1;transform:none;transition:none}}
+
+.panel::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(14,17,26,.82) 0%,rgba(14,17,26,.35) 38%,rgba(14,17,26,0) 60%);pointer-events:none}
+@media (max-width:760px){.mk-t,.mk-l .mk-t{left:50%;right:auto;top:38px;translate:-50% 0;max-width:46vw;overflow:hidden;text-overflow:ellipsis}}
+@media (max-width:760px){.h-box .mk-t{top:-74px}}

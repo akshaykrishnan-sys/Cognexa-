@@ -1,9 +1,7 @@
-import { img, esc, arr, page , CTA, CTA_SUB, IND } from './lib.mjs';
+import { img, esc, arr, page , CTA, CTA_SUB, IND, mark, fpos } from './lib.mjs';
 import { readFileSync } from 'node:fs';
 import { readJSON } from './content.mjs';
 
-const gaze = readFileSync(new URL('../public/assets/svg/gaze-hero.svg', import.meta.url), 'utf8')
-  .replace('<svg ', '<svg class="h-hero-motif" aria-hidden="true" preserveAspectRatio="xMidYMid slice" ');
 const scope = readFileSync(new URL('../public/assets/svg/nested-scope.svg', import.meta.url), 'utf8')
   .replace('<svg ', '<svg aria-hidden="true" ');
 
@@ -45,7 +43,7 @@ const pairs = [
 const outcomes = [[23, 'Revenue', 'E-commerce. Checkout conversion.'], [31, 'Conversion', 'B2B and SaaS. Demo bookings.'], [18, 'Customer value', 'Healthcare. Return visits.'], [37, 'Efficiency', 'Education. Forms completed.'], [19, 'Adoption', 'B2B and SaaS. Trial activation.'], [29, 'Decision quality', 'Fintech. First deposits.']];
 
 // hero slideshow: slug, name, photo, question, tag, tag colour, ring/tag position (% of the photo)
-const HS = IND.map(([slug, name, im, , q], i) => [slug, name, im, q, ['Doubt? returns', 'Risk? internal blame', 'Effort? next step', 'Belonging?', 'Trust? security signals'][i], ['tag-amber', 'tag-rust', 'tag-blue', 'tag-amber', 'tag-blue'][i], [52, 44, 56, 50, 46][i], [34, 30, 26, 34, 30][i]]);
+const HS = IND.map(([slug, name, im, , q], i) => [slug, name, im, q, ['Doubt? returns', 'Risk? internal blame', 'Effort? next step', 'Belonging?', 'Trust? security signals'][i], ['tag-amber', 'tag-rust', 'tag-blue', 'tag-amber', 'tag-blue'][i], [62, 50, 62, 50, 40][i], [43, 45, 43, 45, 42][i]]);
 const verticals = [['e-commerce', 'E-commerce', 'Why do shoppers hesitate at the last step?'], ['b2b-saas', 'B2B & SaaS', 'Why do buying committees stall?'], ['healthcare', 'Healthcare', 'Why do patients delay the next step?'], ['education', 'Education', 'Why do learners drop off?'], ['fintech', 'Fintech', 'Why does a good product still not feel trusted?']];
 
 const topics = ['AI & Transformation', 'Growth & Marketing', 'Consumer Decision-Making', 'Digital Experience', 'Technology Adoption', 'Business Systems', 'Behavioural Science'];
@@ -60,13 +58,8 @@ export function home() {
 <div class="h-top">
   <div class="h-hero-photo">
     <div class="h-box">
-      <img src="${img('22:17')}" alt="A shopper in a supermarket aisle weighing up a carton, annotated with an eye-tracking gaze path" width="840" height="1000" fetchpriority="high">
-      <span class="heat" style="left:23%;top:46%;width:17%;height:14%"></span>
-      <span class="heat" style="left:51%;top:27.6%;width:8%;height:6.8%;animation-delay:1.2s"></span>
-      ${gaze}
-      <span class="anno tag-blue" style="left:48%;top:65.6%;animation-delay:1.4s">Trust?</span>
-      <span class="anno tag-rust" style="left:66%;top:16.6%;animation-delay:1.7s;color:var(--ink)">Decision effort?</span>
-      <span class="anno tag-amber" style="left:86%;top:45.6%;animation-delay:2s">Price?</span>
+      <img src="${img('22:17')}" style="${fpos('22:17')}" alt="A shopper in a supermarket aisle reading the label on a bottle before choosing" width="840" height="1000" fetchpriority="high">
+      ${mark('22:17', 'Trust?', 'tag-blue')}
     </div>
     <div class="hs" data-hero-slides aria-roledescription="carousel" aria-label="Where people pause, by industry">
       ${HS.map(([slug, name, im, q, tag, tc, x, y], i) => `<a class="hs-s" href="/industries/${slug}/" aria-hidden="true" tabindex="-1" style="--x:${x}%;--y:${y}%"><span class="hs-ph" style="background-image:url(${img(im)})"></span><span class="hs-tone"></span><span class="hs-ring"></span><span class="tag hs-tag ${tc}">${esc(tag)}</span><span class="hs-cap"><span class="mono-s">0${i + 1} / 05 · ${esc(name)}</span><b>${esc(q)}</b></span></a>`).join('')}
@@ -127,10 +120,9 @@ export function home() {
     </div>
   </div>
   <div class="wherewhy">
-    <img class="par" data-par="0.06" src="${img('23:1234')}" alt="A man reviewing an online checkout on a laptop at night" loading="lazy" width="1440" height="680">
-    <svg class="marks" viewBox="0 0 1440 680" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none"><path d="M888 739.7L1014 627" stroke="#2F5BEA"/><path d="M566 556.5H586M576 545.5V567.5" stroke="#2F5BEA" stroke-width="2"/><path d="M586 567.5L840 744" stroke="#2F5BEA" stroke-dasharray="4 4"/><path d="M28 54.8V30.5H50M1412 54.8V30.5H1390M28 650V672H50M1412 650V672H1390" stroke="#F3EEE6" stroke-opacity=".7" stroke-width="1.5"/></svg>
-    <span class="heat"></span>
-    <span class="anno tag-blue">Decision effort?</span>
+    <img class="par" data-par="0.06" src="${img('23:1234')}" style="${fpos('23:1234')}" alt="A man reviewing an online checkout on a laptop at night" loading="lazy" width="1440" height="680">
+    <svg class="marks" viewBox="0 0 1440 680" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none"><path d="M28 54.8V30.5H50M1412 54.8V30.5H1390M28 650V672H50M1412 650V672H1390" stroke="#F3EEE6" stroke-opacity=".7" stroke-width="1.5"/></svg>
+    ${mark('23:1234', 'Decision effort?', 'tag-blue')}
     <div class="stmt">
       <p class="s1 rv">A metric tells us where something is happening.</p>
       <h2 class="rv" style="--d:1">Why it happens needs a closer look.</h2>
@@ -224,7 +216,7 @@ export function home() {
       <div class="pairs" data-mcollapse="2" data-mc-sel=".pair">
         ${pairs.map(([q, a], i) => `${i ? '<div class="sep" aria-hidden="true">/</div>' : ''}<div class="pair rv"><p class="q">${esc(q)}</p><span class="chip">We also ask:</span><p class="a">${esc(a)}</p></div>`).join('')}
       </div>
-      <div class="observer rv-img"><img src="${img('25:155')}" alt="A man looking thoughtfully out of a window, with an eye-tracking cue" loading="lazy"></div>
+      <div class="observer rv-img"><img src="${img('25:155')}" alt="A man pausing to think, hand on chin" loading="lazy"></div>
     </div>
     <div class="adv-pay rv"><p>Behavioural science changes the questions.</p><p class="serif">Better questions can change the intervention.</p></div>
   </div>
@@ -322,8 +314,6 @@ export function home() {
 <!-- 12 FINAL CTA -->
 <section class="fcta io" aria-labelledby="fc-h">
   <img class="par" data-par="0.06" src="${img('26:253')}" alt="" loading="lazy">
-  <span class="heat"></span>
-  <svg class="ring" viewBox="0 0 200 200" fill="none" aria-hidden="true"><circle cx="100" cy="100" r="44" stroke="#D2693C" stroke-width="2.5"/><circle class="r1" cx="100" cy="100" r="70" stroke="#D2693C" stroke-opacity=".4" stroke-dasharray="4 6"/></svg>
   <div class="wrap in">
     <div class="dissolve" aria-hidden="true"><span>“We need more leads.”</span><span>“We need AI.”</span><span>“We need automation.”</span><span>“We need a new website.”</span></div>
     <h2 id="fc-h" class="rv">What are you really trying to <span class="c-bluel">change?</span></h2>

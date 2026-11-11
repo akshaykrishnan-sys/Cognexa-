@@ -1,4 +1,4 @@
-import { img, esc, arr, withArr, page, SITE , CTA, CTA_SUB, IND, SETTINGS, videoBlock } from './lib.mjs';
+import { img, esc, arr, withArr, page, SITE , CTA, CTA_SUB, IND, SETTINGS, videoBlock, mark, fpos } from './lib.mjs';
 import { ARTICLES, relatedCards } from './articles.mjs';
 
 const pad2 = (n) => String(n).padStart(2, '0');
@@ -31,9 +31,8 @@ export function hub() {
       <div class="ctas rv" style="--d:3"><a class="btn" href="/contact/">${CTA} ${arr}</a><a class="link" href="#questions">How we investigate</a></div>
     </div>
     <div class="ophoto io">
-      <img class="par" data-par="0.05" src="${img('177:44')}" alt="A shopper with a trolley studying a supermarket shelf" fetchpriority="high">
-      <svg class="atn" viewBox="0 0 160 160" aria-hidden="true" style="left:48%;top:38%"><circle class="o" cx="80" cy="80" r="70" stroke-width="1.2"/><circle cx="80" cy="80" r="40" stroke-width="1.2"/><circle cx="80" cy="80" r="4" style="fill:var(--amber-2)"/><line x1="0" y1="80" x2="160" y2="80" stroke-opacity=".8"/><line x1="80" y1="0" x2="80" y2="160" stroke-opacity=".8"/></svg>
-      ${['Price? shelf-edge label', 'Social proof? bright packs', 'Habit? the usual pack', 'Risk? unfamiliar brand', 'Effort? wall of options'].map((t, i) => `<span class="tag tg h${i + 1} ${tagCls[i]}">${t}</span>`).join('')}
+      <img class="par" data-par="0.05" src="${img('177:44')}" style="${fpos('177:44')}" alt="A shopper with a trolley studying a supermarket shelf" fetchpriority="high">
+      ${mark('177:44', 'Price? shelf-edge label', 'tag-amber')}
     </div>
     <div class="opath io" style="--n:5;--pw:640px">
       <div class="track">${[['01  /  TRIGGER', 'what prompts the moment'], ['02  /  CONTEXT', 'where & who with'], ['03  /  BIAS', 'what tips the weight'], ['04  /  FRICTION', 'what slows it'], ['05  /  CHOICE', 'what they do']].map(([b, s], i) => `<div class="node${i === 4 ? ' end' : ''}" style="--i:${i}"><b>${b}</b><small>${s}</small></div>`).join('')}</div>
@@ -104,7 +103,7 @@ export function hub() {
   <p class="note" style="color:var(--muted-2)">Indicative ranges. Scope and price are confirmed in writing after the fit call.</p>
 </div></section>`;
 
-  const cta = `<section class="empty-cta"><img class="par" data-par="0.06" src="${img('140:172')}" alt="" loading="lazy"><span class="heat"></span><span class="anno">Where do we start?</span>
+  const cta = `<section class="empty-cta"><img class="par" data-par="0.06" src="${img('140:172')}" alt="" loading="lazy"><span class="anno">Where do we start?</span>
   <div class="wrap in"><p class="mono c-grey rv">Begin here</p><h2 class="rv" style="--d:1">Not sure what<br><span class="c-bluel">you need?</span></h2><p class="s1 rv" style="--d:2">Good. That usually means the brief needs a second look.</p><p class="s2 rv" style="--d:3">Bring us the problem as you see it. We’ll start with the questions it may have missed.</p><a class="btn rv" style="--d:4" href="/contact/">${CTA} ${arr}</a></div></section>`;
 
   return page({ title: 'Services', desc: 'Strategy, design, technology and film, each shaped by how people actually decide. Three systems, eight disciplines, 64 services.', path: '/services/', active: 'services', body: [hero, framing, systems, questions, scale, angles, cases, pricing, cta].join('\n') });

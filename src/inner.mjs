@@ -1,4 +1,4 @@
-import { img, esc, arr, withArr, page, SERVICES, CTA, CTA_SUB, IND, videoBlock } from './lib.mjs';
+import { img, esc, arr, withArr, page, SERVICES, CTA, CTA_SUB, IND, videoBlock, mark, fpos } from './lib.mjs';
 import { VERTS } from './data-verticals.mjs';
 import { SVCS } from './data-services.mjs';
 import { collection, readJSON } from './content.mjs';
@@ -18,9 +18,8 @@ function oHero({ crumb, h, pathNodes, legend = true, foot = 'SAME DECISION. DIFF
       <div class="ctas rv" style="--d:3"><a class="btn" href="${ctaHref}">${withArr(CTA)}</a>${secondary ? `<a class="link" href="${secondary[1]}">${esc(secondary[0])}</a>` : ''}</div>
     </div>
     <div class="ophoto io">
-      <img class="par" data-par="0.05" src="${img(h.img)}" alt="${esc(`A person mid-decision, annotated with the questions behind it: ${h.tags.join(', ')}`)}" fetchpriority="high">
-      <svg class="atn" viewBox="0 0 160 160" aria-hidden="true"><circle class="o" cx="80" cy="80" r="63" stroke-width="1.2"/><circle cx="80" cy="80" r="36" stroke-width="1.2"/><circle cx="80" cy="80" r="4" style="fill:var(--amber-2)"/><line x1="0" y1="80" x2="160" y2="80" stroke-opacity=".8"/><line x1="80" y1="0" x2="80" y2="160" stroke-opacity=".8"/></svg>
-      ${h.tags.map((t, i) => `<span class="tag tg t${i + 1} ${tagCls[i]}">${esc(t)}</span>`).join('')}
+      <img class="par" data-par="0.05" src="${img(h.img)}" style="${fpos(h.img)}" alt="${esc(`A person mid-decision. The question behind it: ${h.tags[0]}`)}" fetchpriority="high">
+      ${mark(h.img, h.tags[0], 'tag-blue')}
     </div>
     <div class="opath io" style="--n:${pathNodes.length};--pw:${pw || (pathNodes.length > 5 ? '1204px' : '640px')}">
       <div class="track">${pathNodes.map((n, i) => `<div class="node${n.cls ? ' ' + n.cls : ''}" style="--i:${i}"><b>${esc(n.b)}</b>${n.s ? `<small>${esc(n.s)}</small>` : ''}</div>`).join('')}</div>
@@ -162,7 +161,7 @@ export function serviceDetail(s, i) {
       <p class="sd-lede rv" style="--d:2">${esc(desc)}.</p>
       <div class="ctas rv" style="--d:3"><a class="btn" href="/contact/?service=${encodeURIComponent(name)}">Get a proposal for ${esc(name)} ${arr}</a><a class="link c-paper" href="/services/${s.slug}/">All ${esc(s.name)} services</a></div>
     </div>
-    <div class="sd-photo rv-img"><img src="${img(s.hero.img)}" alt="${esc(s.name)}: ${esc(s.hero.k)}" fetchpriority="high"><svg class="atn" viewBox="0 0 160 160" aria-hidden="true"><circle class="o" cx="80" cy="80" r="63" stroke-width="1.2"/><circle cx="80" cy="80" r="36" stroke-width="1.2"/><circle cx="80" cy="80" r="4" style="fill:var(--amber-2)"/></svg><span class="tag tag-amber sd-tag">${esc(why)}</span></div>
+    <div class="sd-photo rv-img"><img src="${img(s.hero.img)}" style="${fpos(s.hero.img)}" alt="${esc(s.name)}: ${esc(s.hero.k)}" fetchpriority="high">${mark(s.hero.img, why, 'tag-amber')}</div>
   </div>
   <div class="sd-flow io" aria-label="${esc(s.name)} services">${s.svcs.map(([h], j) => `<a href="/services/${s.slug}/${subSlug(h)}/" class="${j === i ? 'on' : ''}" style="--i:${j}"${j === i ? ' aria-current="page"' : ''}><b>${pad2(j + 1)}</b>${esc(h)}</a>`).join('')}</div>
 </div></section>

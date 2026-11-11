@@ -379,3 +379,16 @@
   if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* ---------- precise markers: reveal when in view ---------- */
+(function () {
+  const d = document, w = window;
+  function bind() {
+    const ms = d.querySelectorAll('.mk:not([data-b])'); if (!ms.length) return;
+    const io = 'IntersectionObserver' in w ? new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: 0, rootMargin: '0px 0px -15% 0px' }) : null;
+    ms.forEach(m => { m.dataset.b = 1; io ? io.observe(m) : m.classList.add('on'); });
+  }
+  const orig = w.CX && w.CX.init;
+  if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();
