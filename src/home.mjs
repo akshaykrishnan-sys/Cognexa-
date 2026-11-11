@@ -54,24 +54,45 @@ const botAnn = [['Trust?', 56], ['Decision effort?', 216], ['Sales follow-up?', 
 export function home() {
   const body = `
 <!-- 01 HERO -->
-<section class="hx" aria-labelledby="h1">
-  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A man in low light reading his phone, deciding what to do next" width="2400" height="1297" fetchpriority="high"></div>
+<section class="hx" aria-labelledby="h1" data-hx>
+  <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-cobalt.webp" alt="A man in a leather jacket lifting his glasses for a closer look" width="2600" height="1405" fetchpriority="high"><span class="hx-shine" aria-hidden="true"></span></div>
   <div class="hx-grid" aria-hidden="true">
-    ${[4.4, 40, 70, 86].map((x, i) => `<i class="gv" style="left:${x}%;--i:${i}"></i>`).join('')}
+    ${[4.4, 40, 88].map((x, i) => `<i class="gv" style="left:${x}%;--i:${i}"></i>`).join('')}
     ${[13, 38, 62, 86].map((y, i) => `<i class="gh" style="top:${y}%;--i:${i}"></i>`).join('')}
-    ${[4.4, 40, 70, 86].flatMap(x => [13, 38, 62, 86].map(y => `<b class="gd" style="left:${x}%;top:${y}%"></b>`)).join('')}
+    ${[4.4, 40, 88].flatMap(x => [13, 38, 62, 86].map(y => `<b class="gd" style="left:${x}%;top:${y}%"></b>`)).join('')}
   </div>
-  <p class="hx-l hx-l1 mono" aria-hidden="true">Observe</p>
-  <p class="hx-l hx-word" aria-hidden="true">cognexa</p>
-  <p class="hx-l hx-l2" aria-hidden="true">Behavioural insight for teams who need the real answer</p>
-  <p class="hx-l hx-l3 mono" aria-hidden="true">Founder&#8209;led</p>
-  <p class="hx-l hx-l4 mono" aria-hidden="true">London<br>Bangalore</p>
+  ${['“We need more leads.”', '“We need AI.”', '“We need a new website.”', '“We need automation.”'].map((q, i) => `<p class="hx-q" style="top:${[15.5, 40.5, 64.5, 88.5][i]}%;--i:${i}">${q}</p>`).join('')}
   <div class="hx-in">
-    <h1 id="h1"><span class="k">Those sound like solutions.</span><span class="t">What’s the real problem?</span></h1>
-    <p class="sub">We find what is really driving a business outcome, then design, build and market the change.</p>
+    <h1 id="h1"><span class="k">Those sound like solutions.</span><span class="t" data-mask>What’s the <em>problem?</em></span></h1>
+    <p class="sub">Cognexa is a behavioural insights agency for e&#8209;commerce, B2B and SaaS, healthcare, education and fintech teams. We find what is really driving a business outcome, then design, build and market the change.</p>
     <div class="hx-ctas"><a class="btn-amber" href="/contact/">${CTA} ${arr}</a><button class="hx-film" type="button" data-film="/assets/video/cognexa-film.mp4"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Watch the film <span>0:33</span></button></div>
   </div>
+  <p class="hx-scroll mono" aria-hidden="true"><i></i>Scroll</p>
   <dialog class="film-dlg" aria-label="Cognexa brand film"><button class="film-x" type="button" aria-label="Close the film">×</button><video controls playsinline preload="none" poster="/assets/video/film-poster.webp"><source src="/assets/video/cognexa-film.mp4" type="video/mp4"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video></dialog>
+</section>
+
+<!-- 01b BRIEF CHOOSER -->
+<section class="chooser-sec cx2" aria-labelledby="cx-h">
+  <div class="cx-grid" aria-hidden="true"></div><div class="cx-orb" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="cx-head">
+      <p class="mono cx-eye">02 &nbsp;/&nbsp; Start with the brief</p>
+      <h2 id="cx-h" class="cx-title" data-words>Every brief is a guess about the <span class="c-amberx">problem.</span></h2>
+      <p class="cx-sub">Pick the one that sounds like yours. We’ll show you the questions we ask before anything gets built.</p>
+    </div>
+    <div class="chooser" data-chooser data-spot>
+      <div class="chooser-tabs" role="tablist" aria-label="Choose a brief">
+        <p class="chooser-prompt" aria-hidden="true">Choose a brief.</p>
+        ${briefs.map((b, i) => `<button class="ctab" role="tab" id="bt${i}" aria-controls="bp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`).join('')}
+      </div>
+      <div class="cpanel">
+        ${briefs.map((b, i) => `<div class="cview${i === 0 ? ' is-active' : ''}" role="tabpanel" id="bp${i}" aria-labelledby="bt${i}"${i ? ' aria-hidden="true"' : ''}>
+          <div class="cq"><h3>${esc(b.q)}</h3><div>${b.opts.map(o => `<button class="copt" aria-pressed="false"><span class="box"></span>${esc(o)}</button>`).join('')}</div></div>
+          <div class="cfind">${b.a ? `<p>${esc(b.a)}</p>` : ''}<p class="strong"><span class="hl">${esc(b.b)}</span></p></div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- 02 SIGNAL ≠ DIAGNOSIS -->

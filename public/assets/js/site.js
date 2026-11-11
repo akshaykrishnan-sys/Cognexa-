@@ -466,3 +466,36 @@
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* ================= hero v3 + second-fold interactions ================= */
+(function () {
+  const w = window, d = document;
+  const reduce = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  function maskWords(el) {
+    if (el.dataset.mk) return; el.dataset.mk = 1; let n = 0;
+    const walk = (node) => [...node.childNodes].forEach(c => {
+      if (c.nodeType === 3) { const f = d.createDocumentFragment(); c.textContent.split(/(\s+)/).forEach(t => { if (!t) return; if (/^\s+$/.test(t)) { f.append(t); return; } const s = d.createElement('span'); s.className = 'mw'; const i = d.createElement('i'); i.textContent = t; i.style.setProperty('--w', n++); s.append(i); f.append(s); }); c.replaceWith(f); }
+      else if (c.nodeType === 1) walk(c);
+    });
+    walk(el);
+  }
+  function bind() {
+    d.querySelectorAll('[data-mask]').forEach(maskWords);
+    const hx = d.querySelector('[data-hx]:not([data-b])');
+    if (hx && !reduce && w.matchMedia('(pointer: fine)').matches) {
+      hx.dataset.b = 1; const bg = hx.querySelector('.hx-bg'), gr = hx.querySelector('.hx-grid'); let tx = 0, ty = 0, cx = 0, cy = 0, run = false;
+      const loop = () => { cx += (tx - cx) * .07; cy += (ty - cy) * .07; bg.style.setProperty('--px', (cx * -18).toFixed(2) + 'px'); bg.style.setProperty('--py', (cy * -12).toFixed(2) + 'px'); gr.style.setProperty('--gx', (cx * 6).toFixed(2) + 'px'); gr.style.setProperty('--gy', (cy * 4).toFixed(2) + 'px'); if (Math.abs(tx - cx) + Math.abs(ty - cy) > .001) requestAnimationFrame(loop); else run = false; };
+      hx.addEventListener('mousemove', (e) => { const r = hx.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - .5; ty = (e.clientY - r.top) / r.height - .5; if (!run) { run = true; requestAnimationFrame(loop); } });
+      hx.addEventListener('mouseleave', () => { tx = 0; ty = 0; if (!run) { run = true; requestAnimationFrame(loop); } });
+    }
+    d.querySelectorAll('[data-spot]:not([data-sb])').forEach(el => { el.dataset.sb = 1; el.addEventListener('mousemove', (e) => { const r = el.getBoundingClientRect(); el.style.setProperty('--sx', (e.clientX - r.left) + 'px'); el.style.setProperty('--sy', (e.clientY - r.top) + 'px'); }); });
+    const ch = d.querySelector('.cx2 .chooser');
+    if (ch && !reduce) {
+      const f = () => { const r = ch.getBoundingClientRect(); const p = clamp((innerHeight - r.top) / (innerHeight * .7)); const e = 1 - Math.pow(1 - p, 3); ch.style.setProperty('--tx', ((1 - e) * 16).toFixed(2) + 'deg'); ch.style.setProperty('--ty', ((1 - e) * 90).toFixed(1) + 'px'); ch.style.setProperty('--ts', (.94 + .06 * e).toFixed(4)); };
+      w.addEventListener('scroll', () => requestAnimationFrame(f), { passive: true }); f();
+    }
+  }
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();
