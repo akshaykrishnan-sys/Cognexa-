@@ -509,7 +509,7 @@
     d.querySelectorAll('[data-vb]:not([data-b])').forEach(root => {
       root.dataset.b = 1;
       const tabs = [...root.querySelectorAll('.vb-tab')], panes = [...root.querySelectorAll('.vb-p')];
-      const small = w.innerWidth < 900;
+      const small = w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) < 1400;
       let seen = false, cur = 0, paused = false;
       const btn = d.createElement('button');
       btn.className = 'vb-pause'; btn.type = 'button';
@@ -578,7 +578,7 @@
     d.querySelectorAll('[data-bf]:not([data-b])').forEach(sec => {
       sec.dataset.b = 1;
       const v = sec.querySelector('video'), snd = sec.querySelector('.bf-sound'), pz = sec.querySelector('.bf-pause'), bar = sec.querySelector('.bf-bar');
-      const small = w.innerWidth < 900; let inView = false, userPaused = false;
+      const small = w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) < 1400; let inView = false, userPaused = false;
       v.muted = true; v.defaultMuted = true; v.playsInline = true;
       const load = () => { if (!v.src) { v.src = small ? v.dataset.srcSm : v.dataset.src; v.load(); } };
       const go = () => { if (inView && !userPaused) { load(); const pr = v.play(); if (pr && pr.catch) pr.catch(() => { const k = () => { v.play().catch(() => {}); }; ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(e => w.addEventListener(e, k, { once: true, passive: true })); }); } else if (v.src) v.pause(); };
@@ -600,4 +600,34 @@
   }
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();
+
+/* device adaptation: odd card counts on tablets, sticky call button that stays out of the way */
+(function () {
+  const w = window, d = document;
+  function grids() {
+    d.querySelectorAll('.g-span').forEach(e => e.classList.remove('g-span'));
+    d.querySelectorAll('.g-three').forEach(e => e.classList.remove('g-three'));
+    if (w.innerWidth < 600 || w.innerWidth > 1024) return;
+    d.querySelectorAll('main *, #app *').forEach(g => {
+      if (g.closest('footer,header,.ftr,.hdr,.mmenu')) return;
+      const cs = getComputedStyle(g); if (cs.display !== 'grid' && cs.display !== 'inline-grid') return;
+      const kids = [...g.children].filter(k => getComputedStyle(k).display !== 'none' && getComputedStyle(k).position !== 'absolute');
+      const cols = cs.gridTemplateColumns.split(' ').filter(Boolean).length;
+      if (cols !== 2 || kids.length < 3 || kids.length % 2 === 0) return;
+      if (kids.length === 3 && g.clientWidth >= 700 && kids.every(k => k.scrollHeight < 520)) g.classList.add('g-three');
+      else kids[kids.length - 1].classList.add('g-span');
+    });
+  }
+  function cta() {
+    const m = d.querySelector('.mcta'); if (!m || !('IntersectionObserver' in w)) return;
+    if (m.dataset.cb) return; m.dataset.cb = 1;
+    const seen = new Set();
+    const io = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)); m.classList.toggle('mcta-hide', seen.size > 0); }, { threshold: 0 });
+    d.querySelectorAll('.hx, .bf, form, a.btn[href*="contact"], .btn-amber, .btn-blue').forEach(e => { if (!e.closest('.mmenu,.hdr,.ftr,footer')) io.observe(e); });
+  }
+  let t; const run = () => { clearTimeout(t); t = setTimeout(() => { grids(); cta(); }, 120); };
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); run(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', run); else run();
+  w.addEventListener('resize', run); w.addEventListener('load', run);
 })();

@@ -8,18 +8,8 @@ shutil.rmtree(OUT, ignore_errors=True)
 os.makedirs(os.path.join(OUT, 'p'))
 shutil.copytree(os.path.join(SRC, 'assets'), os.path.join(OUT, 'assets'))
 shutil.copy(os.path.join(SRC, 'favicon.svg'), OUT)
-css = open(os.path.join(SRC, 'assets/css/site.css')).read()
-out, i = [], 0
-while True:
-    j = css.find('@media (max-width', i)
-    if j < 0: out.append(css[i:]); break
-    out.append(css[i:j]); k = css.index('{', j); depth = 1; k += 1
-    while depth:
-        if css[k] == '{': depth += 1
-        elif css[k] == '}': depth -= 1
-        k += 1
-    i = k
-open(os.path.join(OUT, 'assets/css/site-desktop.css'), 'w').write(''.join(out))
+# full responsive stylesheet (phones and tablets included)
+shutil.copy(os.path.join(SRC, 'assets/css/site.css'), os.path.join(OUT, 'assets/css/site-desktop.css'))
 
 def rid(path):
     path = path.strip('/')
@@ -97,11 +87,6 @@ shell = f'''<!doctype html>
       if (anchor) setTimeout(function () {{ scrollToAnchor(anchor); }}, 60);
     }});
   }}
-  function fit() {{
-    var z = Math.min(1, window.innerWidth / 1440);
-    document.documentElement.style.zoom = z;
-  }}
-  fit(); window.addEventListener('resize', fit);
   function go(id, anchor) {{
     show(id, anchor);
     try {{ history.replaceState(null, '', '#p-' + id + (anchor ? '--' + anchor : '')); }} catch (e) {{}}
