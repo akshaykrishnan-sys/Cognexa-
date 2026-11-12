@@ -2,7 +2,7 @@
 # Editors sign in at /admin. Every save is a commit to the GitHub repo, and Netlify rebuilds the site.
 backend:
   name: github
-  repo: OWNER/REPO            # set by tools/setup-cms.mjs, e.g. cognexa/cognexa-site
+  repo: akshaykrishnan-sys/Cognexa-            # set by tools/setup-cms.mjs, e.g. cognexa/cognexa-site
   branch: main
   base_url: https://api.netlify.com   # Netlify's GitHub OAuth provider
   auth_endpoint: auth
