@@ -631,3 +631,19 @@
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', run); else run();
   w.addEventListener('resize', run); w.addEventListener('load', run);
 })();
+
+/* showreel hero: keep it under the sticky header, and start the photo hero's entrance when it comes into view */
+(function () {
+  const w = window, d = document;
+  function bind() {
+    const hdr = d.querySelector('.hdr'), sr = d.querySelector('.bf-hero');
+    if (sr && hdr) { const set = () => sr.style.setProperty('--hh', hdr.offsetHeight + 'px'); set(); if (!sr.dataset.hh) { sr.dataset.hh = 1; w.addEventListener('resize', set); } }
+    d.querySelectorAll('.hx.hx-wait').forEach(hx => {
+      if (!sr || !('IntersectionObserver' in w)) { hx.classList.remove('hx-wait'); return; }
+      const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { hx.classList.remove('hx-wait'); io.disconnect(); } }, { threshold: .3 });
+      io.observe(hx);
+    });
+  }
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();

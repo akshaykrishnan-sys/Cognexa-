@@ -2038,3 +2038,22 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 @media (max-width:1300px){.hub-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.hub-stats b{font-size:clamp(56px,7vw,120px)}}
 @media (max-width:400px){.fq{grid-template-columns:1fr!important}.fq h3{overflow-wrap:anywhere}}
 @media (max-width:360px){.mk-t{max-width:calc(100vw - 40px);white-space:normal}}
+
+/* ---------- showreel as the opening hero: full screen, shrinks on scroll, then the photo hero animates in ---------- */
+.bf-hero{height:185vh;background:#08090c}
+.bf-hero .bf-pin{height:calc(100vh - var(--hh,0px));top:var(--hh,0px)}
+.bf-hero .bf-frame{width:100%;height:100%;max-height:none;aspect-ratio:auto;box-shadow:none;
+ transform:scale(calc(1 - .30 * var(--p,0)));border-radius:calc(26px * var(--p,0));transition:transform .18s linear,border-radius .18s linear}
+.bf-hero .bf-v{opacity:calc(1 - .25 * var(--p,0))}
+.bf-hero .bf-ui{opacity:calc(1 - var(--p,0) * 1.6)}
+/* the photo hero holds its entrance until it scrolls into view */
+.hx.hx-wait,.hx.hx-wait *,.hx.hx-wait *::before,.hx.hx-wait *::after{animation-play-state:paused!important}
+@media (max-width:1199px),(pointer:coarse){
+ .bf-hero{height:auto;padding:0 0 72px}
+ .bf-hero .bf-pin{height:auto;top:auto}
+ .bf-hero .bf-frame{height:auto;aspect-ratio:16/9;width:100%;max-width:none;transform:none;border-radius:0;margin:0 auto 62px;transition:none}
+ .bf-hero .bf-v,.bf-hero .bf-ui{opacity:1}
+ .bf-hero .bf-ui{left:var(--pad,16px);right:var(--pad,16px)}
+}
+@media (orientation:landscape) and (max-height:560px){.bf-hero .bf-frame{height:calc(100svh - 120px)!important;width:auto!important;aspect-ratio:16/9}}
+@media (prefers-reduced-motion:reduce){.bf-hero{height:auto}.bf-hero .bf-pin{height:auto}.bf-hero .bf-frame{height:auto;aspect-ratio:16/9;transform:none;border-radius:0;transition:none}}
