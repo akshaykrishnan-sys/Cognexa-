@@ -36,6 +36,8 @@ for dp, _, fs in os.walk(SRC):
         title = re.search(r'<title>(.*?)</title>', html, re.S).group(1)
         body = re.search(r'<body>(.*)</body>', html, re.S).group(1)
         body = re.sub(r'(href|src|poster|data-src|data-src-sm)="(/[^"]*)"', fix_url, body)
+        # the preview host caps files at 15 MB, so it plays the 720p showreel; the live site uses 1080p
+        body = body.replace('cognexa-showreel-1080.mp4', 'cognexa-showreel.mp4')
         r = rid(url); routes[r] = title
         open(os.path.join(OUT, 'p', r + '.txt'), 'w').write(title + '\n' + body)
 

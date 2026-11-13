@@ -86,7 +86,7 @@ export function home() {
 </section>
   <div class="sh-reel">
     <div class="bf-frame">
-      <video class="bf-v" muted playsinline loop preload="none" poster="/assets/img/showreel-poster.webp" data-src="/assets/video/cognexa-showreel.mp4" data-src-sm="/assets/video/cognexa-showreel-sm.mp4" aria-label="Cognexa showreel"></video>
+      <video class="bf-v" muted playsinline loop preload="none" poster="/assets/img/showreel-poster.webp" data-src="/assets/video/cognexa-showreel-1080.mp4" data-src-sm="/assets/video/cognexa-showreel-sm.mp4" aria-label="Cognexa showreel"></video>
       <div class="bf-ui">
         <button class="bf-sound" type="button"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path class="w" d="M11 5.5c1 .7 1.5 1.6 1.5 2.5s-.5 1.8-1.5 2.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg><span>Sound on</span></button>
         <button class="bf-pause" type="button" aria-label="Pause the video"></button>
