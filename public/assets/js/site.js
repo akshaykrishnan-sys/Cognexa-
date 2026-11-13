@@ -648,25 +648,52 @@
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
 
-/* scroll hero: drives the photo-to-showreel hand-over */
+/* scroll hero: one pinned stage, photo -> video card with three text slides */
 (function () {
-  const w = window, d = document;
+  const w = window, d = document, N = 3;
+  const cl = (x, a, b) => Math.min(b, Math.max(a, x)), ez = x => x * x * (3 - 2 * x);
   function bind() {
     d.querySelectorAll('[data-sh]:not([data-b])').forEach(sh => {
       sh.dataset.b = 1;
-      const hdr = d.querySelector('.hdr'), hx = sh.querySelector('.hx');
-      const pinned = () => w.matchMedia('(min-width:1200px) and (pointer:fine)').matches;
+      const hdr = d.querySelector('.hdr'), stage = sh.querySelector('.sh-stage'), hx = sh.querySelector('.hx'), reel = sh.querySelector('.sh-reel');
+      const slides = [...sh.querySelectorAll('.sh-s')], count = sh.querySelector('.sh-count'), cb = count.querySelector('b');
+      const v = reel.querySelector('video'), snd = reel.querySelector('.bf-sound'), pz = reel.querySelector('.bf-pause'), bar = reel.querySelector('.bf-bar');
+      const mq = w.matchMedia('(prefers-reduced-motion:reduce),(orientation:landscape) and (max-height:560px)');
+      let userPaused = false, ticking = false;
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      const load = () => { if (!v.src) { v.src = (w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) < 1400) ? v.dataset.srcSm : v.dataset.src; v.load(); } };
+      const play = on => { if (on && !userPaused) { load(); const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); } else if (v.src && !v.paused) v.pause(); };
       const upd = () => {
+        ticking = false;
         const hh = hdr ? hdr.offsetHeight : 0; sh.style.setProperty('--hh', hh + 'px');
-        let p;
-        if (pinned()) { const r = sh.getBoundingClientRect(); const span = Math.max(1, r.height - hx.offsetHeight); p = (hh - r.top) / (span * .62); }
-        else p = (w.scrollY - 40) / 240;
-        p = Math.min(1, Math.max(0, p));
-        const e = p < .12 ? 0 : Math.min(1, (p - .12) / .88); const se = e * e * (3 - 2 * e);
-        sh.style.setProperty('--sp', p.toFixed(4)); sh.style.setProperty('--se', se.toFixed(4));
-        sh.classList.toggle('is-reel', p > .9);
+        if (mq.matches) {
+          sh.style.height = ''; [hx, reel, count, ...slides].forEach(e => { e.style.opacity = ''; e.style.transform = ''; e.style.visibility = ''; e.style.pointerEvents = ''; });
+          const r = reel.getBoundingClientRect(); play(r.bottom > 0 && r.top < w.innerHeight); return;
+        }
+        const sH = w.innerHeight - hh; sh.style.height = Math.round(sH * (N + 1.3)) + 'px';
+        const r = sh.getBoundingClientRect(); const ph = cl((hh - r.top) / sH, 0, N);
+        const a = cl(1 - ph * 1.5, 0, 1);
+        hx.style.opacity = a; hx.style.transform = 'scale(' + (1 - .06 * Math.min(1, ph)).toFixed(4) + ')'; hx.style.visibility = a <= 0 ? 'hidden' : '';
+        const ra = ez(cl((ph - .2) / .7, 0, 1));
+        reel.style.opacity = ra; reel.style.transform = 'translateY(' + ((1 - ra) * 50 - (ph - 1) * 10).toFixed(1) + 'px) scale(' + (1.14 - .14 * ra).toFixed(4) + ')';
+        reel.style.pointerEvents = ra > .8 ? 'auto' : 'none';
+        slides.forEach((el, i) => {
+          let dlt = ph - (i + 1); if (i === N - 1 && dlt > 0) dlt = 0;
+          const o = cl(1 - Math.abs(dlt) * 2.3, 0, 1);
+          el.style.opacity = o; el.style.transform = 'translateY(' + (-dlt * 70).toFixed(1) + 'px)'; el.style.pointerEvents = o > .6 ? 'auto' : 'none';
+        });
+        count.style.opacity = ra; cb.textContent = '0' + cl(Math.round(ph), 1, N);
+        play(ph > .15 && r.bottom > hh + 80);
       };
-      w.addEventListener('scroll', upd, { passive: true }); w.addEventListener('resize', upd); upd();
+      const req = () => { if (!ticking) { ticking = true; w.requestAnimationFrame(upd); } };
+      w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', req); upd();
+      (function tick() { if (v.duration) bar.style.setProperty('--vp', (v.currentTime / v.duration * 100).toFixed(2) + '%'); w.requestAnimationFrame(tick); })();
+      snd.addEventListener('click', () => {
+        const on = v.muted; load(); userPaused = false; reel.classList.remove('is-paused');
+        v.muted = !on; reel.classList.toggle('is-sound', on); snd.querySelector('span').textContent = on ? 'Mute' : 'Sound on';
+        v.play().catch(() => {});
+      });
+      pz.addEventListener('click', () => { userPaused = !userPaused; reel.classList.toggle('is-paused', userPaused); pz.setAttribute('aria-label', userPaused ? 'Play the video' : 'Pause the video'); if (userPaused) v.pause(); else upd(); });
     });
   }
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };

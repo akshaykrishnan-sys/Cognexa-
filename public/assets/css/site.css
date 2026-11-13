@@ -2058,39 +2058,53 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 @media (orientation:landscape) and (max-height:560px){.bf-hero .bf-frame{height:calc(100svh - 120px)!important;width:auto!important;aspect-ratio:16/9}}
 @media (prefers-reduced-motion:reduce){.bf-hero{height:auto}.bf-hero .bf-pin{height:auto}.bf-hero .bf-frame{height:auto;aspect-ratio:16/9;transform:none;border-radius:0;transition:none}}
 
-/* ---------- one scroll hero: photo and headline first; on scroll the same screen stays put,
-   the photo shrinks away and the showreel grows in and plays ---------- */
-.hx-reel{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0}
-.hx-reel .bf-frame{position:absolute;inset:0;width:auto;height:auto;max-height:none;aspect-ratio:auto;margin:0;box-shadow:none;background:#000;overflow:hidden;transform:none;border-radius:0}
-.hx-reel .bf-ui{left:auto;right:24px;bottom:28px;justify-content:flex-end}
-@media (min-width:1200px) and (pointer:fine){
- .sh{height:240vh;background:#08090c}
- .sh>.hx{position:sticky;top:var(--hh,106px)}
- .sh .hx-media,.sh .hx-mk,.sh .hx-grid{transform-origin:68% 40%;scale:calc(1 - .22 * var(--sp,0));opacity:calc(1 - var(--sp,0) * 1.5);transition:scale .2s linear,opacity .2s linear}
- .sh .hx-in{opacity:calc(1 - var(--sp,0) * 3);translate:0 calc(-60px * var(--sp,0));transition:opacity .2s linear,translate .2s linear}
- .sh .hx::after{opacity:calc(1 - var(--sp,0) * 1.5)}
- .sh .hx-scroll{opacity:calc(.6 - var(--sp,0) * 4)!important}
- .sh .hx-reel{opacity:calc((var(--sp,0) - .12) * 2.6);pointer-events:none}
- .sh .hx-reel .bf-frame{inset:calc(11% * (1 - var(--se,0))) calc(13% * (1 - var(--se,0)));border-radius:calc(26px * (1 - var(--se,0)));transition:inset .2s linear,border-radius .2s linear}
- .sh.is-reel .hx-reel{pointer-events:auto}
- .sh .hx-reel .bf-ui{opacity:calc((var(--sp,0) - .85) * 8)}
-}
-/* phones, tablets and touch: no pinning; the showreel fades in over the photo as you start to scroll */
-@media (max-width:1199px),(pointer:coarse){
- .hx-reel{inset:0 0 auto 0;height:min(64vh,620px);opacity:calc(var(--sp,0) * 1.4);transition:opacity .25s linear}
- .hx-reel .bf-frame{background:#06070a}
- .hx-reel .bf-v{object-fit:contain}
- .hx-reel .bf-ui{left:16px;right:16px;bottom:14px;justify-content:space-between;opacity:calc((var(--sp,0) - .7) * 4)}
- .sh.is-reel .hx-reel{pointer-events:auto}
- .sh .hx-mk{opacity:calc(1 - var(--sp,0) * 2)}
-}
-@media (min-width:761px) and (max-width:1024px){.hx-reel{height:min(58vh,640px)}}
-@media (min-width:900px) and (max-width:1024px) and (orientation:landscape) and (min-height:600px){.hx-reel{height:100%}}
-@media (min-width:1025px) and (max-width:1199px),(min-width:1025px) and (pointer:coarse){.hx-reel{height:100%}.hx-reel .bf-v{object-fit:cover}.sh .hx-in{opacity:calc(1 - var(--sp,0) * 2.5)}}
-@media (prefers-reduced-motion:reduce){.sh{height:auto!important}.sh>.hx{position:relative!important;top:auto!important}.hx-reel{display:none}}
+/* ---------- scroll hero: one pinned stage. Photo and headline first; on scroll the video settles into a card
+   and three short text slides change beside it. Works at every size; static when motion is reduced. ---------- */
+.sh{position:relative;background:#08090c}
+.sh-stage{position:sticky;top:var(--hh,88px);height:calc(100svh - var(--hh,88px));overflow:hidden;background:#08090c}
+.sh .hx{position:absolute;inset:0;height:auto;min-height:0;max-height:none;transform-origin:62% 40%;will-change:opacity,transform}
+.sh-reel{position:absolute;z-index:4;right:5.6%;top:50%;width:min(52%,calc((100svh - var(--hh,88px) - 140px) * 16 / 9));translate:0 -50%;opacity:0;will-change:opacity,transform}
+.sh-reel .bf-frame{position:relative;width:100%;aspect-ratio:16/9;height:auto;max-height:none;margin:0;transform:none;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 40px 120px -30px rgba(0,0,0,.75)}
+.sh-reel .bf-ui{left:auto;right:14px;bottom:16px;justify-content:flex-end;opacity:1}
+.sh-reel .bf-sound{height:38px;font-size:13px;padding:0 12px}.sh-reel .bf-pause{width:38px;height:38px}
+.sh-slides{position:absolute;z-index:5;left:5.6%;top:0;bottom:0;width:33%;pointer-events:none}
+.sh-s{position:absolute;left:0;right:0;top:50%;translate:0 -50%;opacity:0;color:#f3eee6;will-change:opacity,transform}
+.sh-s .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#fecd00}
+.sh-s h2{font-family:var(--display)!important;font-style:normal!important;font-weight:300!important;font-size:clamp(34px,3.5vw,58px);line-height:1.05;letter-spacing:-.02em;margin:16px 0 18px;color:#f3eee6;text-wrap:balance}
+.sh-s h2 em{font-family:var(--serif);font-style:italic;color:#fecd00;letter-spacing:0}
+.sh-s>p:not(.k){font-size:18px;line-height:1.5;color:rgba(243,238,230,.78);max-width:420px}
+.sh-s .btn-amber{margin-top:26px}
+.sh-count{position:absolute;z-index:5;left:5.6%;bottom:30px;margin:0;font-size:12px;letter-spacing:.14em;color:rgba(243,238,230,.55);opacity:0}
+.sh-count b{color:#fecd00;font-weight:500}
 @media (max-width:1024px){
- .hx-reel .bf-frame{inset:0 0 auto 0;height:auto;aspect-ratio:16/9}
- .hx-reel .bf-ui{bottom:auto;top:calc(56.25vw + 14px)}
- .sh .hx-media{opacity:calc(1 - var(--sp,0) * .92);transition:opacity .25s linear}
- .sh .hx-briefs{opacity:calc(1 - var(--sp,0) * 1.6);transition:opacity .25s linear}
+ .sh .hx{display:block;background:#080a10}
+ .sh .hx-media{position:absolute;inset:0;height:auto}
+ .sh .hx-media::before{display:none}
+ .sh .hx::after{display:block;content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(0deg,rgba(8,10,16,.96) 0%,rgba(8,10,16,.7) 38%,rgba(8,10,16,0) 68%)}
+ .sh .hx-in{position:absolute;left:20px;right:20px;top:auto;bottom:34px;width:auto;max-width:640px;margin:0;padding:0;translate:none}
+ .sh .hx-bg{object-position:70% 18%}
+ .sh-reel{left:16px;right:16px;top:18px;width:auto;translate:none}
+ .sh-reel .bf-frame{border-radius:12px}
+ .sh-slides{left:20px;right:20px;width:auto;top:calc(18px + (100vw - 32px) * .5625 + 30px);bottom:56px}
+ .sh-s{top:0;translate:none}
+ .sh-s h2{font-size:clamp(28px,7.2vw,46px);margin:12px 0 14px}
+ .sh-s>p:not(.k){font-size:16px}
+ .sh-s .btn-amber{margin-top:18px}
+ .sh-count{left:20px;bottom:20px}
 }
+@media (min-width:761px) and (max-width:1024px){.sh .hx-in{left:40px;bottom:56px}.sh-reel{left:40px;right:40px;top:36px}.sh-slides{left:40px;right:40px;top:calc(36px + (100vw - 80px) * .5625 + 44px)}.sh-count{left:40px}}
+@media (max-width:1024px) and (max-height:700px){.sh .hx-briefs{display:none}.sh-reel{left:22%;right:22%}.sh-slides{top:calc(18px + 56vw * .5625 + 18px)}.sh-s>p:not(.k){display:none}}
+/* no pinning when motion is reduced or the screen is very short (phones held sideways) */
+@media (prefers-reduced-motion:reduce),(orientation:landscape) and (max-height:560px){
+ .sh{height:auto!important}
+ .sh-stage{position:relative;top:auto;height:auto;overflow:visible}
+ .sh .hx{position:relative;inset:auto;height:calc(100svh - 60px);min-height:420px;opacity:1!important;transform:none!important;visibility:visible!important}
+ .sh-reel{position:relative;left:auto;right:auto;top:auto;translate:none;width:min(92%,900px);margin:40px auto 0;opacity:1!important;transform:none!important}
+ .sh-slides{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:auto;padding:28px 5.6% 56px;display:grid;gap:36px;pointer-events:auto}
+ .sh-s{position:relative;top:auto;translate:none;opacity:1!important;transform:none!important}
+ .sh-s>p:not(.k){display:block}
+ .sh-count{display:none}
+}
+.sh-reel.is-sound .bf-sound .w{opacity:1}
+.sh-reel.is-paused .bf-pause::before{width:0;height:0;border:0;border-left:11px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+@media (max-width:760px){.sh .hx-bg{object-position:60% 18%}}
