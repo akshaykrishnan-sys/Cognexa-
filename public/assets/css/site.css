@@ -2293,3 +2293,8 @@ body:not(.menu-open) .hdr.on-hero.scrolled:not(.dd-open){background:rgba(8,10,16
   .gx-p{font-size:15.5px}
   .gx-stats{gap:28px}.gx-stats dt{font-size:28px}
 }
+/* brief chooser: tab labels sized exactly like the panels beneath (padding moved inside), so text never spills into the next card */
+.vb-tab{padding:26px 0 40px}
+.vb-tab>span{display:block;padding:0 24px;overflow:hidden}
+.vb-tab[aria-selected="false"]{font-size:clamp(18px,1.55vw,26px)}
+@media (max-width:760px){.vb-tab,.vb-tab[aria-selected]{padding:14px 0;font-size:22px}.vb-tab>span{padding:0}}

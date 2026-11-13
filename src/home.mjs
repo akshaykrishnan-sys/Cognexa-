@@ -184,7 +184,7 @@ export function home() {
     </div>
     <div class="vb" data-vb>
       <div class="vb-tabs" role="tablist" aria-label="Choose a brief">
-        ${briefs.map((b, i) => `<button class="vb-tab" role="tab" id="vt${i}" aria-controls="vp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`).join('')}
+        ${briefs.map((b, i) => `<button class="vb-tab" role="tab" id="vt${i}" aria-controls="vp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><span>${b.tab}</span></button>`).join('')}
       </div>
       <div class="vb-row">
         ${briefs.map((b, i) => `<div class="vb-p${i === 0 ? ' is-on' : ''}" data-i="${i}">
