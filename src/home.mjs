@@ -159,17 +159,12 @@ export function home() {
   <div class="wrap">
     <p class="fine">${esc(CL.note)}</p>
     ${PT ? `<div class="gx io">
-      <a class="gx-stage" href="${esc(PT.url)}" target="_blank" rel="noopener" aria-label="${esc(PT.name)}: visit ${esc(PT.url.replace(/^https?:\/\/|\/$/g, ''))}">
+      <div class="gx-stage">
         <span class="gx-mark"><span class="gx-flow"><img src="${img(PT.logo)}" alt="${esc(PT.name)} logo" loading="lazy"><i></i><i></i></span></span>
-        <span class="gx-tag">${esc(PT.tagline)}</span>
-      </a>
+      </div>
       <div class="gx-body">
         <p class="mono">${esc(PT.role)}</p>
-        <h3><a href="${esc(PT.url)}" target="_blank" rel="noopener">${esc(PT.name)}</a></h3>
-        <p class="gx-h">${esc(PT.headline)}</p>
         <p class="gx-p">${esc(PT.brief)}</p>
-        <dl class="gx-stats">${PT.stats.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join('')}</dl>
-        <a class="gx-link" href="${esc(PT.url)}" target="_blank" rel="noopener">Visit ${esc(PT.url.replace(/^https?:\/\/|\/$/g, ''))} <span class="arr" aria-hidden="true">↗</span></a>
       </div>
     </div>` : ''}
   </div>
