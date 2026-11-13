@@ -92,6 +92,7 @@ export function home() {
         <button class="bf-pause" type="button" aria-label="Pause the video"></button>
       </div>
       <div class="bf-bar" aria-hidden="true"><i></i></div>
+      <p class="sh-tag mono" aria-hidden="true"><i></i>Showreel &nbsp;·&nbsp; 1:13</p>
     </div>
   </div>
   <div class="sh-slides">

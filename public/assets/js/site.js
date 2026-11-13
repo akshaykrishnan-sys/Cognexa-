@@ -648,46 +648,57 @@
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
 
-/* scroll hero: one pinned stage, photo -> video card with three text slides */
+/* scroll hero: the video sits in the first fold as a small card and grows to its maximum fit as you scroll;
+   three caption slides then play over it */
 (function () {
   const w = window, d = document, N = 3;
-  const cl = (x, a, b) => Math.min(b, Math.max(a, x)), ez = x => x * x * (3 - 2 * x);
+  const cl = (x, a, b) => Math.min(b, Math.max(a, x)), ez = x => x * x * (3 - 2 * x), lerp = (a, b, t) => a + (b - a) * t;
   function bind() {
     d.querySelectorAll('[data-sh]:not([data-b])').forEach(sh => {
       sh.dataset.b = 1;
-      const hdr = d.querySelector('.hdr'), stage = sh.querySelector('.sh-stage'), hx = sh.querySelector('.hx'), reel = sh.querySelector('.sh-reel');
-      const slides = [...sh.querySelectorAll('.sh-s')], count = sh.querySelector('.sh-count'), cb = count.querySelector('b');
+      const hdr = d.querySelector('.hdr'), stage = sh.querySelector('.sh-stage'), hx = sh.querySelector('.hx'), hin = sh.querySelector('.hx-in'), reel = sh.querySelector('.sh-reel');
+      const slides = [...sh.querySelectorAll('.sh-s')], wrap = sh.querySelector('.sh-slides'), count = sh.querySelector('.sh-count'), cb = count.querySelector('b');
       const v = reel.querySelector('video'), snd = reel.querySelector('.bf-sound'), pz = reel.querySelector('.bf-pause'), bar = reel.querySelector('.bf-bar');
       const mq = w.matchMedia('(prefers-reduced-motion:reduce),(orientation:landscape) and (max-height:560px)');
       let userPaused = false, ticking = false;
       v.muted = true; v.defaultMuted = true; v.playsInline = true;
       const load = () => { if (!v.src) { v.src = (w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) < 1400) ? v.dataset.srcSm : v.dataset.src; v.load(); } };
-      const play = on => { if (on && !userPaused) { load(); const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); } else if (v.src && !v.paused) v.pause(); };
+      const play = on => { if (on && !userPaused) { load(); const pr = v.play(); if (pr && pr.catch) pr.catch(() => { const k = () => v.play().catch(() => {}); ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(e => w.addEventListener(e, k, { once: true, passive: true })); }); } else if (v.src && !v.paused) v.pause(); };
       const upd = () => {
         ticking = false;
         const hh = hdr ? hdr.offsetHeight : 0; sh.style.setProperty('--hh', hh + 'px');
         if (mq.matches) {
-          sh.style.height = ''; [hx, reel, count, ...slides].forEach(e => { e.style.opacity = ''; e.style.transform = ''; e.style.visibility = ''; e.style.pointerEvents = ''; });
+          sh.style.height = ''; sh.classList.remove('is-over', 'is-max');
+          [hx, hin, reel, wrap, count, ...slides].forEach(e => e.removeAttribute('style'));
           const r = reel.getBoundingClientRect(); play(r.bottom > 0 && r.top < w.innerHeight); return;
         }
-        const sH = w.innerHeight - hh; sh.style.height = Math.round(sH * (N + 1.3)) + 'px';
-        const r = sh.getBoundingClientRect(); const ph = cl((hh - r.top) / sH, 0, N);
-        const a = cl(1 - ph * 1.5, 0, 1);
-        hx.style.opacity = a; hx.style.transform = 'scale(' + (1 - .06 * Math.min(1, ph)).toFixed(4) + ')'; hx.style.visibility = a <= 0 ? 'hidden' : '';
-        const ra = ez(cl((ph - .2) / .7, 0, 1));
-        reel.style.opacity = ra; reel.style.transform = 'translateY(' + ((1 - ra) * 50 - (ph - 1) * 10).toFixed(1) + 'px) scale(' + (1.14 - .14 * ra).toFixed(4) + ')';
-        reel.style.pointerEvents = ra > .8 ? 'auto' : 'none';
+        const W = stage.clientWidth, H = w.innerHeight - hh; sh.style.height = Math.round(H * (N + 1.3)) + 'px';
+        const r = sh.getBoundingClientRect(); const ph = cl((hh - r.top) / H, 0, N); const e = ez(cl(ph / .85, 0, 1));
+        // resting card (bottom right of the first fold) -> maximum fit
+        const small = W < 761, w0 = small ? W * .34 : cl(W * .25, 280, 440), h0 = w0 * 9 / 16;
+        const x0 = W - w0 - (small ? 16 : W * .056), y0 = H - h0 - (small ? 22 : H * .09);
+        const fitH = W * 9 / 16, over = H - fitH < 210;            // wide screens: fill the fold; tall screens: full width, captions below
+        const w1 = W, h1 = over ? H : fitH, y1 = over ? 0 : Math.max(16, H * .05);
+        sh.classList.toggle('is-over', over); sh.classList.toggle('is-max', e > .92);
+        reel.style.left = lerp(x0, 0, e).toFixed(1) + 'px'; reel.style.top = lerp(y0, y1, e).toFixed(1) + 'px';
+        reel.style.width = lerp(w0, w1, e).toFixed(1) + 'px'; reel.style.height = lerp(h0, h1, e).toFixed(1) + 'px';
+        reel.style.setProperty('--rr', (14 * (1 - e)).toFixed(1) + 'px'); reel.style.setProperty('--e', e.toFixed(3));
+        hin.style.opacity = cl(1 - ph * 2.4, 0, 1); hin.style.transform = 'translateY(' + (-ph * 50).toFixed(1) + 'px)'; hin.style.pointerEvents = ph > .3 ? 'none' : '';
+        hx.style.opacity = over ? 1 : cl(1 - e * 1.1, 0, 1);
+        if (!over) wrap.style.top = (y1 + h1 + 26).toFixed(0) + 'px'; else wrap.style.top = '';
         slides.forEach((el, i) => {
           let dlt = ph - (i + 1); if (i === N - 1 && dlt > 0) dlt = 0;
           const o = cl(1 - Math.abs(dlt) * 2.3, 0, 1);
-          el.style.opacity = o; el.style.transform = 'translateY(' + (-dlt * 70).toFixed(1) + 'px)'; el.style.pointerEvents = o > .6 ? 'auto' : 'none';
+          el.style.opacity = o; el.style.transform = 'translateY(' + (-dlt * 60).toFixed(1) + 'px)'; el.style.pointerEvents = o > .6 ? 'auto' : 'none';
         });
-        count.style.opacity = ra; cb.textContent = '0' + cl(Math.round(ph), 1, N);
-        play(ph > .15 && r.bottom > hh + 80);
+        count.style.opacity = cl((ph - .7) * 3, 0, 1); cb.textContent = '0' + cl(Math.round(ph), 1, N);
+        play(r.bottom > hh + 80 && r.top < w.innerHeight);
       };
       const req = () => { if (!ticking) { ticking = true; w.requestAnimationFrame(upd); } };
-      w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', req); upd();
+      w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', req); upd(); w.addEventListener('load', upd);
       (function tick() { if (v.duration) bar.style.setProperty('--vp', (v.currentTime / v.duration * 100).toFixed(2) + '%'); w.requestAnimationFrame(tick); })();
+      // tapping the small card scrolls it up to full size
+      reel.addEventListener('click', ev => { if (sh.classList.contains('is-max') || ev.target.closest('button')) return; const hh = hdr ? hdr.offsetHeight : 0; w.scrollTo({ top: sh.getBoundingClientRect().top + w.scrollY - hh + (w.innerHeight - hh) * 1.0, behavior: 'smooth' }); });
       snd.addEventListener('click', () => {
         const on = v.muted; load(); userPaused = false; reel.classList.remove('is-paused');
         v.muted = !on; reel.classList.toggle('is-sound', on); snd.querySelector('span').textContent = on ? 'Mute' : 'Sound on';
