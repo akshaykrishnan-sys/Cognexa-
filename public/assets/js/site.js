@@ -509,7 +509,7 @@
     d.querySelectorAll('[data-vb]:not([data-b])').forEach(root => {
       root.dataset.b = 1;
       const tabs = [...root.querySelectorAll('.vb-tab')], panes = [...root.querySelectorAll('.vb-p')];
-      const small = w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) < 1400;
+      const small = w.innerWidth < 761;   // only phones get the small file
       let seen = false, cur = 0, paused = false;
       const btn = d.createElement('button');
       btn.className = 'vb-pause'; btn.type = 'button';
@@ -578,7 +578,7 @@
     d.querySelectorAll('[data-bf]:not([data-b])').forEach(sec => {
       sec.dataset.b = 1;
       const v = sec.querySelector('video'), snd = sec.querySelector('.bf-sound'), pz = sec.querySelector('.bf-pause'), bar = sec.querySelector('.bf-bar');
-      const small = w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) < 1400; let inView = false, userPaused = false;
+      const small = w.innerWidth < 761;   // only phones get the small file let inView = false, userPaused = false;
       v.muted = true; v.defaultMuted = true; v.playsInline = true;
       const load = () => { if (!v.src) { v.src = small ? v.dataset.srcSm : v.dataset.src; v.load(); } };
       const go = () => { if (inView && !userPaused) { load(); const pr = v.play(); if (pr && pr.catch) pr.catch(() => { const k = () => { v.play().catch(() => {}); }; ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(e => w.addEventListener(e, k, { once: true, passive: true })); }); } else if (v.src) v.pause(); };
@@ -661,7 +661,7 @@
       let cur = 0, timer = null, userPaused = false, inView = true, first = true;
       const setH = () => sh.style.setProperty('--hh', (hdr ? hdr.offsetHeight : 0) + 'px'); setH(); w.addEventListener('resize', setH);
       v.muted = true; v.defaultMuted = true; v.playsInline = true;
-      const load = () => { if (!v.src) { v.src = (w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) < 1400) ? v.dataset.srcSm : v.dataset.src; v.load(); } };
+      const load = () => { if (!v.src) { v.src = (w.innerWidth < 761) ? v.dataset.srcSm : v.dataset.src; v.load(); } };
       const play = on => { if (on && !userPaused) { load(); const pr = v.play(); if (pr && pr.catch) pr.catch(() => { const k = () => { if (cur > 0 && !userPaused) v.play().catch(() => {}); }; ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(e => w.addEventListener(e, k, { once: true, passive: true })); }); } else if (v.src && !v.paused) v.pause(); };
       const dur = i => (i === 0 ? (first ? 7000 : 5000) : 5200);
       const show = (i, user) => {
