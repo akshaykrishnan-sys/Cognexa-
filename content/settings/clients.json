@@ -60,6 +60,31 @@
       "name": "BraveLabs",
       "logo": "/assets/img/n250-100.webp",
       "context": ""
+    },
+    {
+      "name": "Auto Hangar",
+      "logo": "/assets/img/client-autohangar.webp",
+      "context": ""
+    },
+    {
+      "name": "HotCar",
+      "logo": "/assets/img/client-hotcar.webp",
+      "context": ""
+    },
+    {
+      "name": "Blockmate",
+      "logo": "/assets/img/client-blockmate.webp",
+      "context": ""
+    },
+    {
+      "name": "Challenger Gold",
+      "logo": "/assets/img/client-challenger-gold.webp",
+      "context": ""
+    },
+    {
+      "name": "XXKK",
+      "logo": "/assets/img/client-xxkk.webp",
+      "context": ""
     }
   ]
 }
