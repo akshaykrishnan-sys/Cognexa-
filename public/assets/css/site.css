@@ -2299,7 +2299,7 @@ body:not(.menu-open) .hdr.on-hero.scrolled:not(.dd-open){background:rgba(8,10,16
 .vb-tab[aria-selected="false"]{font-size:clamp(18px,1.55vw,26px)}
 @media (max-width:760px){.vb-tab,.vb-tab[aria-selected]{padding:14px 0;font-size:22px}.vb-tab>span{padding:0}}
 /* GoodUX partner: compact strip, animated mark + two sentences, no links */
-.gx{margin-top:48px;grid-template-columns:minmax(0,300px) minmax(0,1fr);align-items:center;border-radius:24px;max-width:900px}
+.gx{margin-top:48px;grid-template-columns:minmax(0,300px) minmax(0,1fr);align-items:center;border-radius:24px}
 .gx-stage{min-height:0;padding:34px 12px 34px 40px;gap:0}
 .gx-mark{width:100%;max-width:260px}
 .gx-body{padding:32px 44px 32px 28px}
@@ -2307,3 +2307,9 @@ body:not(.menu-open) .hdr.on-hero.scrolled:not(.dd-open){background:rgba(8,10,16
 @media (max-width:760px){.gx{grid-template-columns:1fr;margin-top:40px}.gx-stage{min-height:0;padding:34px 28px 6px}.gx-mark{max-width:220px}.gx-body{padding:16px 24px 30px}.gx-p{font-size:15.5px}}
 /* client logos: all black and white */
 .lw-c img{filter:grayscale(1)}
+/* GoodUX partner: full width of the section */
+.gx{max-width:none;width:100%;grid-template-columns:minmax(0,380px) minmax(0,1fr)}
+.gx-mark{max-width:320px}
+.gx-body{padding:36px 56px 36px 32px}
+.gx-p{font-size:clamp(17px,1.35vw,21px);max-width:62ch}
+@media (max-width:760px){.gx{grid-template-columns:1fr}.gx-mark{max-width:220px}.gx-body{padding:16px 24px 30px}.gx-p{font-size:15.5px}}
