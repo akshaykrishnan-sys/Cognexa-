@@ -48,8 +48,8 @@ const verticals = [['e-commerce', 'E-commerce', 'Why do shoppers hesitate at the
 
 const topics = ['AI & Transformation', 'Growth & Marketing', 'Consumer Decision-Making', 'Digital Experience', 'Technology Adoption', 'Business Systems', 'Behavioural Science'];
 
-const topAnn = [['The offer?', 26], ['The audience?', 166], ['Price?', 326], ['Competition?', 446], ['Technology?', 586], ['Experience?', 716]];
-const botAnn = [['Trust?', 56], ['Decision effort?', 216], ['Sales follow-up?', 376], ['Timing?', 536], ['Context?', 696]];
+const topAnn = [['The offer?', 26, 'Is the offer clear in the first five seconds?'], ['The audience?', 166, 'Are the right people arriving?'], ['Price?', 326, 'Is the price read in context, or on its own?'], ['Competition?', 446, 'What are they comparing you with?'], ['Technology?', 586, 'Does anything break or slow down at the moment of choice?'], ['Experience?', 716, 'Where does the path ask for more effort than it gives back?']];
+const botAnn = [['Trust?', 56, 'What happens if something goes wrong, and can they see it?'], ['Decision effort?', 216, 'How many choices stand between intent and action?'], ['Sales follow-up?', 376, 'What happens after the first yes?'], ['Timing?', 536, 'Are we asking at the moment they are ready?'], ['Context?', 696, 'Where are they, and what else is competing for attention?']];
 
 export function home() {
   const body = `
@@ -110,11 +110,17 @@ export function home() {
       <p class="big-num rv" aria-label="2.8 percent" data-count="2.8" data-dec="1" data-suf="%">2.8%</p>
       <p class="conv rv" style="--d:1" id="sig-h">Conversion.</p>
       <div class="verdict rv" style="--d:2"><p class="mono-n">Useful signal.</p><p class="serif">Incomplete diagnosis.</p></div>
+      <div class="sig-q" aria-live="polite"><p class="sig-qk mono">Pick a question</p><p class="sig-qt">Eleven things could sit behind this number. Each one points somewhere different.</p></div>
     </div>
-    <div class="unit io" role="img" aria-label="Unit chart: 1,000 visitors, 28 converted. Many possible causes sit around the number.">
-      ${topAnn.map(([t, x], i) => `<span class="anno tag-paper" style="left:${(x / 808 * 100).toFixed(2)}%;top:66px;transition-delay:${0.6 + i * 0.08}s">${t}</span><span class="probe" style="left:${((x + 12) / 808 * 100).toFixed(2)}%;top:96px;height:30px;transition-delay:${0.8 + i * 0.08}s"></span>`).join('')}
+    <div class="unit io" data-sig aria-label="Unit chart: 1,000 visitors, 28 converted. Pick a possible cause to see where we would look.">
+      <div class="sig-tags">
+      ${topAnn.map(([t, x, q], i) => `<button type="button" class="anno tag-paper" data-q="${q}" style="left:${(x / 808 * 100).toFixed(2)}%;top:66px;transition-delay:${0.6 + i * 0.08}s">${t}</button>`).join('')}
+      ${botAnn.map(([t, x, q], i) => `<button type="button" class="anno tag-paper" data-q="${q}" style="left:${(x / 808 * 100).toFixed(2)}%;top:490px;transition-delay:${1.1 + i * 0.08}s">${t}</button>`).join('')}
+      </div>
+      ${topAnn.map(([t, x], i) => `<span class="probe" style="left:${((x + 12) / 808 * 100).toFixed(2)}%;top:96px;height:30px;transition-delay:${0.8 + i * 0.08}s"></span>`).join('')}
       <div class="unit-dots" data-n="1000" data-hits="28"></div>
-      ${botAnn.map(([t, x], i) => `<span class="probe" style="left:${((x + 12) / 808 * 100).toFixed(2)}%;top:446px;height:44px;transition-delay:${1.2 + i * 0.08}s"></span><span class="anno tag-paper" style="left:${(x / 808 * 100).toFixed(2)}%;top:490px;transition-delay:${1.1 + i * 0.08}s">${t}</span>`).join('')}
+      ${botAnn.map(([t, x], i) => `<span class="probe" style="left:${((x + 12) / 808 * 100).toFixed(2)}%;top:446px;height:44px;transition-delay:${1.2 + i * 0.08}s"></span>`).join('')}
+      <p class="sig-note mono" aria-hidden="true"><i></i>Illustration: where we would look first</p>
     </div>
   </div>
   <div class="pin-x"><div class="pin-s">

@@ -707,3 +707,58 @@
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* second fold: interactive unit chart. Pick a possible cause -> the grid shows where we would look first. */
+(function () {
+  const w = window, d = document;
+  function bind() {
+    d.querySelectorAll('[data-sig]:not([data-b])').forEach(unit => {
+      const box = unit.querySelector('.unit-dots'), tags = [...unit.querySelectorAll('button.anno')], sec = unit.closest('.signal'), q = sec && sec.querySelector('.sig-q');
+      if (!box || !tags.length || !q) return;
+      const dots = [...box.children]; if (!dots.length) return;                   // dots are built by the base script first
+      unit.dataset.b = 1;
+      const qk = q.querySelector('.sig-qk'), qt = q.querySelector('.sig-qt');
+      let cur = -1, auto = null, touched = false, inView = false, cleared = false;
+      const cols = () => getComputedStyle(box).gridTemplateColumns.split(' ').filter(Boolean).length || 50;
+      const vis = () => dots.filter(e => e.offsetParent !== null).length;
+      const rnd = s => { let x = Math.sin(s * 127.1) * 43758.5453; return x - Math.floor(x); };
+      const select = (i, user) => {
+        if (user) { touched = true; clearInterval(auto); }
+        if (!cleared) { dots.forEach(e => { e.style.transitionDelay = '0ms'; }); cleared = true; }
+        cur = i; unit.classList.add('has-sel');
+        tags.forEach((b, k) => { b.classList.toggle('on', k === i); b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+        qk.textContent = tags[i].textContent.trim(); qt.textContent = tags[i].dataset.q;
+        q.classList.remove('sw'); void q.offsetWidth; q.classList.add('sw');
+        // a soft-edged region of the grid, different for each cause
+        const C = cols(), n = vis(), R = Math.ceil(n / C);
+        const cx = (.14 + .72 * rnd(i + 1)) * C, cy = (.2 + .6 * rnd(i + 11)) * R, rx = C * (.2 + .1 * rnd(i + 21)), ry = R * (.3 + .16 * rnd(i + 31));
+        dots.forEach((e, k) => {
+          const c = k % C, r = Math.floor(k / C);
+          const dd = Math.hypot((c - cx) / rx, (r - cy) / ry) + (rnd(k * 3.3 + i * 17) - .5) * .5;
+          e.classList.toggle('look', k < n && dd < 1);
+        });
+        const row = tags[i].parentElement; if (row && row.scrollWidth > row.clientWidth + 4) row.scrollTo({ left: tags[i].offsetLeft - row.offsetLeft - (row.clientWidth - tags[i].offsetWidth) / 2, behavior: 'smooth' });
+      };
+      tags.forEach((b, i) => {
+        b.addEventListener('click', () => select(i, true));
+        b.addEventListener('pointerenter', ev => { if (ev.pointerType === 'mouse') select(i, true); });
+      });
+      const run = () => { clearInterval(auto); if (touched || !inView) return; auto = setInterval(() => select((cur + 1) % tags.length), 2600); };
+      if ('IntersectionObserver' in w) new IntersectionObserver(([e]) => { inView = e.isIntersecting; if (inView && cur < 0 && !touched) setTimeout(() => { if (cur < 0) select(0); }, 1600); run(); }, { threshold: .12 }).observe(unit);
+      // the dots lean towards the pointer
+      let near = [];
+      box.addEventListener('pointermove', ev => {
+        if (ev.pointerType !== 'mouse') return;
+        const r = box.getBoundingClientRect(), C = cols(), n = vis(), R = Math.ceil(n / C);
+        const c = (ev.clientX - r.left) / r.width * C - .5, rr = (ev.clientY - r.top) / r.height * R - .5;
+        near.forEach(e => e.classList.remove('near')); near = [];
+        for (let y = Math.max(0, Math.floor(rr - 2)); y <= Math.min(R - 1, Math.ceil(rr + 2)); y++) for (let x = Math.max(0, Math.floor(c - 2)); x <= Math.min(C - 1, Math.ceil(c + 2)); x++) {
+          if (Math.hypot(x - c, y - rr) < 2.1) { const e = dots[y * C + x]; if (e) { e.classList.add('near'); near.push(e); } }
+        }
+      });
+      box.addEventListener('pointerleave', () => { near.forEach(e => e.classList.remove('near')); near = []; });
+    });
+  }
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', () => setTimeout(bind, 0)); else setTimeout(bind, 0);
+})();
