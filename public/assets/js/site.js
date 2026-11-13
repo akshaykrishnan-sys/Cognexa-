@@ -657,7 +657,7 @@
       sh.dataset.b = 1;
       const hdr = d.querySelector('.hdr'), reel = sh.querySelector('.sh-reel'), slides = [...sh.querySelectorAll('.sh-s')], dots = [...sh.querySelectorAll('.sh-dots button')];
       const v = reel.querySelector('video'), snd = reel.querySelector('.bf-sound'), pz = reel.querySelector('.bf-pause'), bar = reel.querySelector('.bf-bar');
-      const still = w.matchMedia('(prefers-reduced-motion:reduce)').matches, N = slides.length + 1;
+      const still = false, N = slides.length + 1;   // slides run for everyone; the pause button stops them
       let cur = 0, timer = null, userPaused = false, inView = true, first = true;
       const setH = () => sh.style.setProperty('--hh', (hdr ? hdr.offsetHeight : 0) + 'px'); setH(); w.addEventListener('resize', setH);
       v.muted = true; v.defaultMuted = true; v.playsInline = true;

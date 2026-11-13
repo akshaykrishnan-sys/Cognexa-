@@ -2095,16 +2095,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 @media (min-width:761px) and (max-width:1024px){.sh .hx-in{left:40px;bottom:56px}.sh-reel{left:40px;right:40px;top:36px}.sh-slides{left:40px;right:40px;top:calc(36px + (100vw - 80px) * .5625 + 44px)}.sh-count{left:40px}}
 @media (max-width:1024px) and (max-height:700px){.sh .hx-briefs{display:none}.sh-reel{left:22%;right:22%}.sh-slides{top:calc(18px + 56vw * .5625 + 18px)}.sh-s>p:not(.k){display:none}}
 /* no pinning when motion is reduced or the screen is very short (phones held sideways) */
-@media (prefers-reduced-motion:reduce),(orientation:landscape) and (max-height:560px){
- .sh{height:auto!important}
- .sh-stage{position:relative;top:auto;height:auto;overflow:visible}
- .sh .hx{position:relative;inset:auto;height:calc(100svh - 60px);min-height:420px;opacity:1!important;transform:none!important;visibility:visible!important}
- .sh-reel{position:relative;left:auto;right:auto;top:auto;translate:none;width:min(92%,900px);margin:40px auto 0;opacity:1!important;transform:none!important}
- .sh-slides{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:auto;padding:28px 5.6% 56px;display:grid;gap:36px;pointer-events:auto}
- .sh-s{position:relative;top:auto;translate:none;opacity:1!important;transform:none!important}
- .sh-s>p:not(.k){display:block}
- .sh-count{display:none}
-}
+
 .sh-reel.is-sound .bf-sound .w{opacity:1}
 .sh-reel.is-paused .bf-pause::before{width:0;height:0;border:0;border-left:11px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
 @media (max-width:760px){.sh .hx-bg{object-position:60% 18%}}
@@ -2131,12 +2122,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .sh:not(.is-over) .sh-s{top:0;bottom:auto;translate:none}
 @media (min-width:761px){.sh:not(.is-over) .sh-slides{left:40px;right:40px}}
 @media (max-width:760px){.sh-tag{font-size:9px;left:8px;bottom:7px;gap:6px}.sh .hx .sub{max-width:58%}.sh .hx-ctas{max-width:58%}}
-@media (prefers-reduced-motion:reduce),(orientation:landscape) and (max-height:560px){
- .sh-reel{animation:none;cursor:default;aspect-ratio:16/9;height:auto}
- .sh-reel .bf-ui{opacity:1;pointer-events:auto}.sh-tag{display:none}
- .sh .sh-slides{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:auto}
- .sh .sh-s{position:relative;top:auto;bottom:auto}
-}
+
 @media (max-width:760px){.sh .hx-ctas{max-width:none}.sh .hx-ctas .btn-amber{white-space:nowrap}}
 .sh-tag{white-space:nowrap}
 @media (max-width:760px){.sh-tag{font-size:8px;letter-spacing:.08em}}
