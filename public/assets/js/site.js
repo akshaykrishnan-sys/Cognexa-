@@ -647,3 +647,28 @@
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* scroll hero: drives the photo-to-showreel hand-over */
+(function () {
+  const w = window, d = document;
+  function bind() {
+    d.querySelectorAll('[data-sh]:not([data-b])').forEach(sh => {
+      sh.dataset.b = 1;
+      const hdr = d.querySelector('.hdr'), hx = sh.querySelector('.hx');
+      const pinned = () => w.matchMedia('(min-width:1200px) and (pointer:fine)').matches;
+      const upd = () => {
+        const hh = hdr ? hdr.offsetHeight : 0; sh.style.setProperty('--hh', hh + 'px');
+        let p;
+        if (pinned()) { const r = sh.getBoundingClientRect(); const span = Math.max(1, r.height - hx.offsetHeight); p = (hh - r.top) / (span * .62); }
+        else p = (w.scrollY - 40) / 240;
+        p = Math.min(1, Math.max(0, p));
+        const e = p < .12 ? 0 : Math.min(1, (p - .12) / .88); const se = e * e * (3 - 2 * e);
+        sh.style.setProperty('--sp', p.toFixed(4)); sh.style.setProperty('--se', se.toFixed(4));
+        sh.classList.toggle('is-reel', p > .9);
+      };
+      w.addEventListener('scroll', upd, { passive: true }); w.addEventListener('resize', upd); upd();
+    });
+  }
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();

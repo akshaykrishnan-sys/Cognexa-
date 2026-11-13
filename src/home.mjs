@@ -54,19 +54,8 @@ const botAnn = [['Trust?', 56], ['Decision effort?', 216], ['Sales follow-up?', 
 export function home() {
   const body = `
 <!-- 01 HERO -->
-<section class="bf bf-hero" aria-label="Cognexa showreel" data-bf>
-  <div class="bf-pin">
-    <div class="bf-frame">
-      <video class="bf-v" muted playsinline loop preload="none" poster="/assets/img/showreel-poster.webp" data-src="/assets/video/cognexa-showreel.mp4" data-src-sm="/assets/video/cognexa-showreel-sm.mp4" aria-label="Cognexa showreel"></video>
-      <div class="bf-ui">
-        <button class="bf-sound" type="button"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path class="w" d="M11 5.5c1 .7 1.5 1.6 1.5 2.5s-.5 1.8-1.5 2.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg><span>Watch with sound</span></button>
-        <button class="bf-pause" type="button" aria-label="Pause the showreel"></button>
-      </div>
-      <div class="bf-bar" aria-hidden="true"><i></i></div>
-    </div>
-  </div>
-</section>
-<section class="hx hx-wait" aria-labelledby="h1" data-hx>
+<div class="sh" data-sh>
+<section class="hx" aria-labelledby="h1" data-hx>
   <div class="hx-media"><img class="hx-bg" src="/assets/img/hero-motion.webp" alt="A woman in white sunglasses, face in sharp focus as the blue city behind her streaks past, her eye path traced across the frame" width="2600" height="1405" fetchpriority="high">
     <div class="hx-mk" aria-hidden="true"><div class="hx-mk-in" data-iw="2600" data-ih="1405">
       <svg viewBox="0 0 2600 1405" preserveAspectRatio="none">
@@ -93,7 +82,19 @@ export function home() {
     <div class="hx-ctas"><a class="btn-amber" href="/contact/">${CTA} ${arr}</a></div>
   </div>
   <p class="hx-scroll mono" aria-hidden="true"><i></i>Scroll</p>
+
+  <div class="hx-reel" data-bf>
+    <div class="bf-frame">
+      <video class="bf-v" muted playsinline loop preload="none" poster="/assets/img/showreel-poster.webp" data-src="/assets/video/cognexa-showreel.mp4" data-src-sm="/assets/video/cognexa-showreel-sm.mp4" aria-label="Cognexa showreel"></video>
+      <div class="bf-ui">
+        <button class="bf-sound" type="button"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path class="w" d="M11 5.5c1 .7 1.5 1.6 1.5 2.5s-.5 1.8-1.5 2.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg><span>Watch with sound</span></button>
+        <button class="bf-pause" type="button" aria-label="Pause the showreel"></button>
+      </div>
+      <div class="bf-bar" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
 </section>
+</div>
 
 <!-- BRAND FILM: plays muted as it scrolls into view, grows to full width -->
 <section class="bf" aria-labelledby="bf-h" data-bf>

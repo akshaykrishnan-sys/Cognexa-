@@ -2057,3 +2057,40 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 }
 @media (orientation:landscape) and (max-height:560px){.bf-hero .bf-frame{height:calc(100svh - 120px)!important;width:auto!important;aspect-ratio:16/9}}
 @media (prefers-reduced-motion:reduce){.bf-hero{height:auto}.bf-hero .bf-pin{height:auto}.bf-hero .bf-frame{height:auto;aspect-ratio:16/9;transform:none;border-radius:0;transition:none}}
+
+/* ---------- one scroll hero: photo and headline first; on scroll the same screen stays put,
+   the photo shrinks away and the showreel grows in and plays ---------- */
+.hx-reel{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0}
+.hx-reel .bf-frame{position:absolute;inset:0;width:auto;height:auto;max-height:none;aspect-ratio:auto;margin:0;box-shadow:none;background:#000;overflow:hidden;transform:none;border-radius:0}
+.hx-reel .bf-ui{left:auto;right:24px;bottom:28px;justify-content:flex-end}
+@media (min-width:1200px) and (pointer:fine){
+ .sh{height:240vh;background:#08090c}
+ .sh>.hx{position:sticky;top:var(--hh,106px)}
+ .sh .hx-media,.sh .hx-mk,.sh .hx-grid{transform-origin:68% 40%;scale:calc(1 - .22 * var(--sp,0));opacity:calc(1 - var(--sp,0) * 1.5);transition:scale .2s linear,opacity .2s linear}
+ .sh .hx-in{opacity:calc(1 - var(--sp,0) * 3);translate:0 calc(-60px * var(--sp,0));transition:opacity .2s linear,translate .2s linear}
+ .sh .hx::after{opacity:calc(1 - var(--sp,0) * 1.5)}
+ .sh .hx-scroll{opacity:calc(.6 - var(--sp,0) * 4)!important}
+ .sh .hx-reel{opacity:calc((var(--sp,0) - .12) * 2.6);pointer-events:none}
+ .sh .hx-reel .bf-frame{inset:calc(11% * (1 - var(--se,0))) calc(13% * (1 - var(--se,0)));border-radius:calc(26px * (1 - var(--se,0)));transition:inset .2s linear,border-radius .2s linear}
+ .sh.is-reel .hx-reel{pointer-events:auto}
+ .sh .hx-reel .bf-ui{opacity:calc((var(--sp,0) - .85) * 8)}
+}
+/* phones, tablets and touch: no pinning; the showreel fades in over the photo as you start to scroll */
+@media (max-width:1199px),(pointer:coarse){
+ .hx-reel{inset:0 0 auto 0;height:min(64vh,620px);opacity:calc(var(--sp,0) * 1.4);transition:opacity .25s linear}
+ .hx-reel .bf-frame{background:#06070a}
+ .hx-reel .bf-v{object-fit:contain}
+ .hx-reel .bf-ui{left:16px;right:16px;bottom:14px;justify-content:space-between;opacity:calc((var(--sp,0) - .7) * 4)}
+ .sh.is-reel .hx-reel{pointer-events:auto}
+ .sh .hx-mk{opacity:calc(1 - var(--sp,0) * 2)}
+}
+@media (min-width:761px) and (max-width:1024px){.hx-reel{height:min(58vh,640px)}}
+@media (min-width:900px) and (max-width:1024px) and (orientation:landscape) and (min-height:600px){.hx-reel{height:100%}}
+@media (min-width:1025px) and (max-width:1199px),(min-width:1025px) and (pointer:coarse){.hx-reel{height:100%}.hx-reel .bf-v{object-fit:cover}.sh .hx-in{opacity:calc(1 - var(--sp,0) * 2.5)}}
+@media (prefers-reduced-motion:reduce){.sh{height:auto!important}.sh>.hx{position:relative!important;top:auto!important}.hx-reel{display:none}}
+@media (max-width:1024px){
+ .hx-reel .bf-frame{inset:0 0 auto 0;height:auto;aspect-ratio:16/9}
+ .hx-reel .bf-ui{bottom:auto;top:calc(56.25vw + 14px)}
+ .sh .hx-media{opacity:calc(1 - var(--sp,0) * .92);transition:opacity .25s linear}
+ .sh .hx-briefs{opacity:calc(1 - var(--sp,0) * 1.6);transition:opacity .25s linear}
+}
