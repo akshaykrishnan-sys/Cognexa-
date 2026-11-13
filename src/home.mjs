@@ -103,47 +103,6 @@ export function home() {
 </div>
 </div>
 
-<section class="bf" aria-labelledby="bf-h" data-bf>
-  <div class="bf-pin">
-    <div class="bf-head wrap"><p class="mono bf-k" id="bf-h">The film&nbsp;&nbsp;·&nbsp;&nbsp;0:33</p></div>
-    <div class="bf-frame">
-      <video class="bf-v" muted playsinline loop preload="none" poster="/assets/img/film-v10-poster.webp" data-src="/assets/video/cognexa-film-v10.mp4" data-src-sm="/assets/video/cognexa-film-v10-720.mp4" aria-label="Cognexa brand film"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video>
-      <div class="bf-ui">
-        <button class="bf-sound" type="button"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path class="w" d="M11 5.5c1 .7 1.5 1.6 1.5 2.5s-.5 1.8-1.5 2.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg><span>Watch with sound</span></button>
-        <button class="bf-pause" type="button" aria-label="Pause the film"></button>
-      </div>
-      <div class="bf-bar" aria-hidden="true"><i></i></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- BRAND FILM: plays muted as it scrolls into view, grows to full width -->
-<!-- 01b BRIEF CHOOSER -->
-<section class="vbs" aria-labelledby="cx-h">
-  <div class="wrap">
-    <div class="vb-head">
-      <h2 id="cx-h" class="vb-title" data-words>Every brief is a guess about the problem.</h2>
-      <p class="vb-sub">Pick the one that sounds like yours. We’ll show you the questions we ask before anything gets built.</p>
-    </div>
-    <div class="vb" data-vb>
-      <div class="vb-tabs" role="tablist" aria-label="Choose a brief">
-        ${briefs.map((b, i) => `<button class="vb-tab" role="tab" id="vt${i}" aria-controls="vp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`).join('')}
-      </div>
-      <div class="vb-row">
-        ${briefs.map((b, i) => `<div class="vb-p${i === 0 ? ' is-on' : ''}" data-i="${i}">
-          <video class="vb-v" muted autoplay loop playsinline preload="none" poster="/assets/img/brief-${i + 1}.webp" data-src="/assets/video/brief-${i + 1}.mp4" data-src-sm="/assets/video/brief-${i + 1}-sm.mp4" aria-hidden="true"></video>
-          <div class="vb-body" role="tabpanel" id="vp${i}" aria-labelledby="vt${i}"${i ? ' hidden' : ''}>
-            <h3>${esc(b.q)}</h3>
-            <div class="vb-opts">${b.opts.map(o => `<button class="copt" aria-pressed="false"><span class="box"></span>${esc(o)}</button>`).join('')}</div>
-            <div class="vb-find">${b.a ? `<p>${esc(b.a)}</p>` : ''}<p class="strong">${esc(b.b)}</p></div>
-          </div>
-        </div>`).join('')}
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- 02 SIGNAL ≠ DIAGNOSIS -->
 <section class="signal" aria-labelledby="sig-h">
   <div class="wrap signal-top">
@@ -181,6 +140,31 @@ export function home() {
       ${clients.map(([id, n, ctx], i) => `<div class="client rv" style="--d:${i % 4}"><span class="n">${String(i + 1).padStart(2, '0')}</span><div class="lh"><img src="${img(id)}" alt="${esc(n)} logo" loading="lazy"></div><span class="nm">${esc(n.toUpperCase())}</span>${ctx ? `<span class="ctx">${esc(ctx)}</span>` : ''}</div>`).join('')}
     </div>
     <p class="fine">${esc(CL.note)}</p>
+  </div>
+</section>
+
+<!-- 01b BRIEF CHOOSER -->
+<section class="vbs" aria-labelledby="cx-h">
+  <div class="wrap">
+    <div class="vb-head">
+      <h2 id="cx-h" class="vb-title" data-words>Every brief is a guess about the problem.</h2>
+      <p class="vb-sub">Pick the one that sounds like yours. We’ll show you the questions we ask before anything gets built.</p>
+    </div>
+    <div class="vb" data-vb>
+      <div class="vb-tabs" role="tablist" aria-label="Choose a brief">
+        ${briefs.map((b, i) => `<button class="vb-tab" role="tab" id="vt${i}" aria-controls="vp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${b.tab}</button>`).join('')}
+      </div>
+      <div class="vb-row">
+        ${briefs.map((b, i) => `<div class="vb-p${i === 0 ? ' is-on' : ''}" data-i="${i}">
+          <video class="vb-v" muted autoplay loop playsinline preload="none" poster="/assets/img/brief-${i + 1}.webp" data-src="/assets/video/brief-${i + 1}.mp4" data-src-sm="/assets/video/brief-${i + 1}-sm.mp4" aria-hidden="true"></video>
+          <div class="vb-body" role="tabpanel" id="vp${i}" aria-labelledby="vt${i}"${i ? ' hidden' : ''}>
+            <h3>${esc(b.q)}</h3>
+            <div class="vb-opts">${b.opts.map(o => `<button class="copt" aria-pressed="false"><span class="box"></span>${esc(o)}</button>`).join('')}</div>
+            <div class="vb-find">${b.a ? `<p>${esc(b.a)}</p>` : ''}<p class="strong">${esc(b.b)}</p></div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
   </div>
 </section>
 
@@ -245,6 +229,21 @@ export function home() {
     <div class="layer rv"><i></i>Behavioural science runs across all three as an additional way of seeing the problem.</div>
     <div class="caps mobile-hide">
       ${systems.map(([, t, , list, href], i) => `<div class="rv" style="--d:${i}"><ul>${list.map(l => `<li>${esc(l)}</li>`).join('')}</ul><a class="link" href="${href}">Explore ${t} ${arr}</a></div>`).join('')}
+    </div>
+  </div>
+</section>
+
+<!-- BRAND FILM: plays muted as it scrolls into view, grows to full width -->
+<section class="bf" aria-labelledby="bf-h" data-bf>
+  <div class="bf-pin">
+    <div class="bf-head wrap"><p class="mono bf-k" id="bf-h">The film&nbsp;&nbsp;·&nbsp;&nbsp;0:33</p></div>
+    <div class="bf-frame">
+      <video class="bf-v" muted playsinline loop preload="none" poster="/assets/img/film-v10-poster.webp" data-src="/assets/video/cognexa-film-v10.mp4" data-src-sm="/assets/video/cognexa-film-v10-720.mp4" aria-label="Cognexa brand film"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video>
+      <div class="bf-ui">
+        <button class="bf-sound" type="button"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path class="w" d="M11 5.5c1 .7 1.5 1.6 1.5 2.5s-.5 1.8-1.5 2.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg><span>Watch with sound</span></button>
+        <button class="bf-pause" type="button" aria-label="Pause the film"></button>
+      </div>
+      <div class="bf-bar" aria-hidden="true"><i></i></div>
     </div>
   </div>
 </section>
