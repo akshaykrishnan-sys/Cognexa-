@@ -92,7 +92,6 @@ export function home() {
         <button class="bf-pause" type="button" aria-label="Pause the video"></button>
       </div>
       <div class="bf-bar" aria-hidden="true"><i></i></div>
-      <p class="sh-tag mono" aria-hidden="true"><i></i>Showreel &nbsp;·&nbsp; 1:13</p>
     </div>
   </div>
   <div class="sh-slides">
@@ -100,7 +99,7 @@ export function home() {
     <article class="sh-s"><p class="k mono">02 &nbsp;/&nbsp; The behaviour</p><h2>So we start with behaviour, <em>not the brief.</em></h2><p>We observe how people really decide, and find the moment they hesitate.</p></article>
     <article class="sh-s"><p class="k mono">03 &nbsp;/&nbsp; The change</p><h2>Then we design the change <em>that moves them.</em></h2><p>Strategy, design, technology and film, shaped by behavioural science.</p><a class="btn-amber" href="/contact/">Book a 15-min fit call <span class="arr" aria-hidden="true">→</span></a></article>
   </div>
-  <p class="sh-count mono" aria-hidden="true"><b>01</b> / 03</p>
+  <div class="sh-dots" role="group" aria-label="Hero slides"><button type="button" aria-label="Slide 1: hero image"><i></i></button><button type="button" aria-label="Slide 2"><i></i></button><button type="button" aria-label="Slide 3"><i></i></button><button type="button" aria-label="Slide 4"><i></i></button></div>
 </div>
 </div>
 

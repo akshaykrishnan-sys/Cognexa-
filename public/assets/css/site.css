@@ -2141,3 +2141,46 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .sh-tag{white-space:nowrap}
 @media (max-width:760px){.sh-tag{font-size:8px;letter-spacing:.08em}}
 @media (min-width:761px) and (max-width:1024px){.sh .hx .sub{max-width:50%}}
+
+/* ---------- hero slides v4: one fold. Slide 1 = hero photo; then the video fills the hero exactly like the photo,
+   with a caption per slide. No pinning, no extra scroll. ---------- */
+.sh[data-sh]{height:auto!important;background:#08090c}
+.sh[data-sh] .sh-stage{position:relative;top:auto;height:calc(100svh - var(--hh,88px));min-height:560px;max-height:1000px;overflow:hidden}
+.sh[data-sh] .hx{position:absolute;inset:0;height:auto;min-height:0;max-height:none;opacity:1!important;transform:none!important;visibility:visible!important}
+.sh[data-sh] .hx-in{transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.sh[data-sh].is-video .hx-in{opacity:0!important;transform:translateY(-18px);pointer-events:none}
+.sh[data-sh].is-video .hx-mk,.sh[data-sh].is-video .hx-grid,.sh[data-sh].is-video .hx-scroll{opacity:0;transition:opacity .5s}
+.sh[data-sh] .hx-mk,.sh[data-sh] .hx-grid{transition:opacity .6s .3s}
+.sh[data-sh] .sh-reel{position:absolute;inset:0;left:0;top:0;right:0;bottom:0;width:auto;height:auto;margin:0;translate:none;z-index:4;cursor:default;animation:none;
+ opacity:0;transform:scale(1.05);pointer-events:none;transition:opacity 1s var(--ease),transform 1.6s var(--ease)}
+.sh[data-sh].is-video .sh-reel{opacity:1;transform:none;pointer-events:auto}
+.sh[data-sh] .sh-reel .bf-frame{position:absolute;inset:0;width:auto;height:auto;aspect-ratio:auto;border-radius:0;box-shadow:none}
+.sh[data-sh] .sh-reel .bf-v{object-fit:cover;object-position:50% 50%}
+.sh[data-sh] .sh-reel .bf-frame::after{opacity:1;background:linear-gradient(90deg,rgba(6,7,10,.84) 0%,rgba(6,7,10,.5) 32%,rgba(6,7,10,0) 60%),linear-gradient(0deg,rgba(6,7,10,.55),rgba(6,7,10,0) 36%)}
+.sh[data-sh] .sh-reel .bf-ui{opacity:1;pointer-events:auto;right:24px;bottom:26px;left:auto;top:auto}
+.sh[data-sh] .sh-reel .bf-bar{display:none}
+.sh[data-sh] .sh-slides{position:absolute;z-index:5;left:5.6%;right:auto;top:50%;bottom:auto;translate:0 -50%;width:min(42%,620px);height:auto;padding:0;display:grid;pointer-events:none}
+.sh[data-sh] .sh-s{position:relative;grid-area:1/1;top:auto;bottom:auto;left:auto;right:auto;translate:none;opacity:0;transform:translateY(26px);transition:opacity .55s var(--ease),transform .7s var(--ease);pointer-events:none;text-shadow:0 2px 24px rgba(0,0,0,.5)}
+.sh[data-sh] .sh-s.on{opacity:1;transform:none;pointer-events:auto;transition-delay:.25s}
+.sh[data-sh] .sh-s h2{font-size:clamp(36px,4.3vw,72px)}
+.sh[data-sh] .sh-s>p:not(.k){display:block;font-size:18px}
+.sh-dots{position:absolute;z-index:6;left:5.6%;bottom:30px;display:flex;gap:8px}
+.sh-dots button{width:44px;height:28px;padding:12px 0;border:0;background:none;cursor:pointer}
+.sh-dots i{display:block;height:3px;background:rgba(243,238,230,.28);position:relative;overflow:hidden}
+.sh-dots i::after{content:"";position:absolute;inset:0;background:#fecd00;transform:scaleX(0);transform-origin:left}
+.sh-dots button.on i::after{transform:scaleX(1)}
+.sh.is-auto .sh-dots button.on i::after{animation:shDot var(--d,5s) linear both}
+@keyframes shDot{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (max-width:1024px){
+ .sh[data-sh] .sh-slides{left:20px;right:20px;width:auto;top:auto;bottom:84px;translate:none}
+ .sh[data-sh] .sh-s h2{font-size:clamp(30px,8vw,52px)}
+ .sh[data-sh] .sh-s>p:not(.k){font-size:16px}
+ .sh[data-sh] .sh-reel .bf-frame::after{background:linear-gradient(0deg,rgba(6,7,10,.94) 0%,rgba(6,7,10,.62) 40%,rgba(6,7,10,0) 70%)}
+ .sh[data-sh] .sh-reel .bf-ui{right:16px;bottom:18px}
+ .sh[data-sh] .hx .sub,.sh[data-sh] .hx-ctas{max-width:none}
+ .sh[data-sh] .hx-in{bottom:84px}
+ .sh-dots{left:20px;bottom:18px}
+}
+@media (min-width:761px) and (max-width:1024px){.sh[data-sh] .sh-slides{left:40px;right:40px;bottom:110px;max-width:640px}.sh[data-sh] .hx-in{left:40px;bottom:110px}.sh[data-sh] .hx .sub{max-width:540px}.sh-dots{left:40px;bottom:36px}}
+@media (orientation:landscape) and (max-height:560px){.sh[data-sh] .sh-stage{min-height:340px;height:calc(100svh - var(--hh,60px))}.sh[data-sh] .sh-s>p:not(.k),.sh[data-sh] .hx-briefs{display:none}.sh[data-sh] .sh-slides{bottom:56px}.sh[data-sh] .hx-in{bottom:56px}}
+@media (prefers-reduced-motion:reduce){.sh[data-sh] .sh-reel,.sh[data-sh] .sh-s{transition:opacity .2s}.sh[data-sh] .sh-reel{transform:none}}
