@@ -85,6 +85,50 @@
       "name": "XXKK",
       "logo": "/assets/img/client-xxkk.webp",
       "context": ""
+    },
+    {
+      "name": "HFI",
+      "logo": "/assets/img/client-hfi.webp",
+      "context": ""
+    },
+    {
+      "name": "Enhancesys",
+      "logo": "/assets/img/client-enhancesys.webp",
+      "context": ""
+    },
+    {
+      "name": "Saint-Gobain",
+      "logo": "/assets/img/client-saint-gobain.webp",
+      "context": ""
+    },
+    {
+      "name": "Sumeru Global",
+      "logo": "/assets/img/client-sumeru-global.webp",
+      "context": ""
+    },
+    {
+      "name": "Synthite",
+      "logo": "/assets/img/client-synthite.webp",
+      "context": ""
     }
-  ]
+  ],
+  "partner": {
+    "role": "UI/UX partner",
+    "name": "GoodUX",
+    "url": "https://goodux.in/",
+    "logo": "/assets/img/partner-goodux.webp",
+    "tagline": "UX · Branding · Apps",
+    "headline": "Pioneers of the Indian UI/UX scene.",
+    "brief": "GoodUX has been shaping how Indian products look, read and behave since 2012, with more than 2,000 clients served across UX and CX research, branding and app development. They are our partner for interface and experience design: we find where people hesitate, and they design what removes it.",
+    "stats": [
+      [
+        "2,000+",
+        "clients served"
+      ],
+      [
+        "Since 2012",
+        "in UX, branding and apps"
+      ]
+    ]
+  }
 }

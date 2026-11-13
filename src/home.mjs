@@ -1,6 +1,7 @@
 import { img, esc, arr, page , CTA, CTA_SUB, IND, mark, fpos } from './lib.mjs';
 import { readFileSync } from 'node:fs';
 import { readJSON } from './content.mjs';
+import { dims } from './imgsize.mjs';
 
 const scope = readFileSync(new URL('../public/assets/svg/nested-scope.svg', import.meta.url), 'utf8')
   .replace('<svg ', '<svg aria-hidden="true" ');
@@ -14,6 +15,15 @@ const briefs = [
 
 const CL = readJSON('settings/clients.json');
 const clients = CL.logos.map(l => [l.logo, l.name, l.context]);
+const PT = CL.partner;
+// every logo gets the same optical area, whatever its shape
+const logoTile = ([id, n], dup) => {
+  const [w, h] = dims(id) || [3, 1], ar = w / h;
+  let lw = Math.sqrt(7600 * ar), lh = lw / ar;
+  if (lw > 168) { lw = 168; lh = lw / ar; }
+  if (lh > 70) { lh = 70; lw = lh * ar; }
+  return `<li class="lw-c"${dup ? ' aria-hidden="true"' : ''}><img src="${img(id)}" alt="${dup ? '' : esc(n) + ' logo'}" style="--w:${Math.round(lw)}px;--h:${Math.round(lh)}px" loading="lazy"></li>`;
+};
 
 const lenses = [['24:43', 'Technology', 'What becomes possible?'], ['24:47', 'Experience', 'What does someone encounter?'], ['24:51', 'Context', 'What shapes the decision?'], ['24:55', 'Behaviour', 'What happens in practice?', true], ['24:59', 'Business', 'What outcome follows?']];
 
@@ -140,12 +150,28 @@ export function home() {
 <!-- CLIENTS -->
 <section class="clients" aria-labelledby="cl-h">
   <div class="wrap">
-    <p class="mono c-muted rv">Worked with</p>
+    <p class="mono c-muted rv">Worked with · ${clients.length} organisations</p>
     <h2 id="cl-h" class="rv" style="--d:1">Organisations our team<br><span style="color:var(--muted-2)">has worked with.</span></h2>
-    <div class="cgrid" data-mcollapse="6">
-      ${clients.map(([id, n, ctx], i) => `<div class="client rv" style="--d:${i % 4}"><span class="n">${String(i + 1).padStart(2, '0')}</span><div class="lh"><img src="${img(id)}" alt="${esc(n)} logo" loading="lazy"></div><span class="nm">${esc(n.toUpperCase())}</span>${ctx ? `<span class="ctx">${esc(ctx)}</span>` : ''}</div>`).join('')}
-    </div>
+  </div>
+  <div class="lw rv" style="--d:2">
+    ${[0, 1].map(r => { const row = clients.filter((_, i) => i % 2 === r); return `<div class="lw-row" style="--n:${row.length}"><ul class="lw-track">${[0, 1].map(k => row.map(c => logoTile(c, k)).join('')).join('')}</ul></div>`; }).join('\n    ')}
+  </div>
+  <div class="wrap">
     <p class="fine">${esc(CL.note)}</p>
+    ${PT ? `<div class="gx io">
+      <a class="gx-stage" href="${esc(PT.url)}" target="_blank" rel="noopener" aria-label="${esc(PT.name)}: visit ${esc(PT.url.replace(/^https?:\/\/|\/$/g, ''))}">
+        <span class="gx-mark"><span class="gx-flow"><img src="${img(PT.logo)}" alt="${esc(PT.name)} logo" loading="lazy"><i></i><i></i></span></span>
+        <span class="gx-tag">${esc(PT.tagline)}</span>
+      </a>
+      <div class="gx-body">
+        <p class="mono">${esc(PT.role)}</p>
+        <h3><a href="${esc(PT.url)}" target="_blank" rel="noopener">${esc(PT.name)}</a></h3>
+        <p class="gx-h">${esc(PT.headline)}</p>
+        <p class="gx-p">${esc(PT.brief)}</p>
+        <dl class="gx-stats">${PT.stats.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join('')}</dl>
+        <a class="gx-link" href="${esc(PT.url)}" target="_blank" rel="noopener">Visit ${esc(PT.url.replace(/^https?:\/\/|\/$/g, ''))} <span class="arr" aria-hidden="true">↗</span></a>
+      </div>
+    </div>` : ''}
   </div>
 </section>
 
