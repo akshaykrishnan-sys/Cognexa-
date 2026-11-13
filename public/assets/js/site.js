@@ -688,3 +688,21 @@
   const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
 })();
+
+/* homepage: header floats over the hero and returns to the normal bar once the hero is scrolled past */
+(function () {
+  const w = window, d = document;
+  let bound = false;
+  function upd() {
+    const hdr = d.querySelector('.hdr'); if (!hdr) return;
+    const sh = d.querySelector('[data-sh]');
+    if (!sh) { hdr.classList.remove('on-hero'); return; }
+    const logo = hdr.querySelector('.logo'), img = logo && logo.querySelector('img:not(.logo-l)');
+    if (img && !logo.querySelector('.logo-l')) { const l = d.createElement('img'); l.className = 'logo-l'; l.alt = ''; l.setAttribute('aria-hidden', 'true'); l.src = img.getAttribute('src').replace(/[^\/]+$/, 'logo-light.webp'); logo.appendChild(l); }
+    if (!sh.classList.contains('is-under')) { sh.style.setProperty('--hh', hdr.offsetHeight + 'px'); sh.classList.add('is-under'); w.dispatchEvent(new Event('resize')); }
+    hdr.classList.toggle('on-hero', sh.getBoundingClientRect().bottom > hdr.offsetHeight + 4);
+  }
+  function bind() { upd(); if (bound) return; bound = true; w.addEventListener('scroll', upd, { passive: true }); w.addEventListener('resize', () => { const hdr = d.querySelector('.hdr'), sh = d.querySelector('[data-sh]'); if (hdr && sh && !hdr.classList.contains('on-hero')) return; upd(); }); }
+  const orig = w.CX && w.CX.init; if (w.CX) w.CX.init = function () { orig && orig(); bind(); };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', bind); else bind();
+})();

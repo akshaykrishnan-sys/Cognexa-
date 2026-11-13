@@ -2170,3 +2170,30 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 @media (min-width:761px) and (max-width:1024px){.sh[data-sh] .sh-slides{left:40px;right:40px;bottom:110px;max-width:640px}.sh[data-sh] .hx-in{left:40px;bottom:110px}.sh[data-sh] .hx .sub{max-width:540px}.sh-dots{left:40px;bottom:36px}}
 @media (orientation:landscape) and (max-height:560px){.sh[data-sh] .sh-stage{min-height:340px;height:calc(100svh - var(--hh,60px))}.sh[data-sh] .sh-s>p:not(.k),.sh[data-sh] .hx-briefs{display:none}.sh[data-sh] .sh-slides{bottom:56px}.sh[data-sh] .hx-in{bottom:56px}}
 @media (prefers-reduced-motion:reduce){.sh[data-sh] .sh-reel,.sh[data-sh] .sh-s{transition:opacity .2s}.sh[data-sh] .sh-reel{transform:none}}
+
+/* ---------- homepage: header floats over the hero (transparent, light logo and menu), normal bar once past it ---------- */
+.logo{position:relative}
+.logo .logo-l{position:absolute;left:0;top:0;width:100%;height:auto;opacity:0;transition:opacity .35s,width .3s;pointer-events:none}
+.hdr{transition:transform .45s var(--ease),box-shadow .3s,background-color .35s}
+.sh[data-sh].is-under{margin-top:calc(-1 * var(--hh,88px))}
+.sh[data-sh].is-under .sh-stage{height:100svh;max-height:1100px}
+.sh[data-sh].is-under .sh-stage::before{content:"";position:absolute;left:0;right:0;top:0;height:190px;z-index:5;pointer-events:none;background:linear-gradient(180deg,rgba(6,7,10,.62),rgba(6,7,10,0))}
+body:not(.menu-open) .hdr.on-hero:not(.dd-open){background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+body:not(.menu-open) .hdr.on-hero:not(.dd-open) .logo>img:not(.logo-l){opacity:0}
+body:not(.menu-open) .hdr.on-hero:not(.dd-open) .logo .logo-l{opacity:1}
+body:not(.menu-open) .hdr.on-hero:not(.dd-open) .nav{color:rgba(243,238,230,.86)}
+body:not(.menu-open) .hdr.on-hero:not(.dd-open) .nav a:hover,body:not(.menu-open) .hdr.on-hero:not(.dd-open) .nav a[aria-current="page"]{color:#fff}
+body:not(.menu-open) .hdr.on-hero:not(.dd-open) .hdr-cta{background:rgba(243,238,230,.1);color:#f3eee6;border:1px solid rgba(243,238,230,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+body:not(.menu-open) .hdr.on-hero:not(.dd-open) .hdr-cta:hover{background:#fecd00;color:#14161a;border-color:#fecd00}
+body:not(.menu-open) .hdr.on-hero:not(.dd-open) .burger span{background:#f3eee6}
+.logo>img{transition:opacity .35s,width .3s}
+@media (min-width:1025px){.sh[data-sh].is-under .hx-in{top:calc(12% + var(--hh,88px) * .55)}}
+.sh[data-sh].is-under .hx-bg{object-position:68% 6%}
+@media (max-width:1024px){.sh[data-sh].is-under .hx-bg{object-position:66% 0%}.sh[data-sh].is-under .hx-media{top:calc(var(--hh,88px) * .55)}}
+@media (max-width:760px){.sh[data-sh].is-under .hx-bg{object-position:60% 0%}}
+@media (min-width:1025px){.sh[data-sh].is-under .hx-media{top:calc(var(--hh,106px) * .62)}}
+.sh-dots button{height:44px;padding:20px 0}
+.sh-dots{bottom:22px}
+@media (max-width:1024px){.sh-dots{bottom:10px}}
+@media (min-width:761px) and (max-width:1024px){.sh-dots{bottom:28px}}
+@media (pointer:coarse){.sh[data-sh] .sh-reel .bf-sound{height:44px}.sh[data-sh] .sh-reel .bf-pause{width:44px;height:44px}}
