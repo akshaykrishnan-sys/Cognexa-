@@ -696,7 +696,8 @@
   function upd() {
     const hdr = d.querySelector('.hdr'); if (!hdr) return;
     const sh = d.querySelector('[data-sh]');
-    if (!sh) { hdr.classList.remove('on-hero'); return; }
+    if (!sh) { hdr.classList.remove('on-hero', 'is-float'); return; }
+    hdr.classList.add('is-float');
     const logo = hdr.querySelector('.logo'), img = logo && logo.querySelector('img:not(.logo-l)');
     if (img && !logo.querySelector('.logo-l')) { const l = d.createElement('img'); l.className = 'logo-l'; l.alt = ''; l.setAttribute('aria-hidden', 'true'); l.src = img.getAttribute('src').replace(/[^\/]+$/, 'logo-light.webp'); logo.appendChild(l); }
     if (!sh.classList.contains('is-under')) { sh.style.setProperty('--hh', hdr.offsetHeight + 'px'); sh.classList.add('is-under'); w.dispatchEvent(new Event('resize')); }
