@@ -103,6 +103,21 @@ export function home() {
 </div>
 </div>
 
+<section class="bf" aria-labelledby="bf-h" data-bf>
+  <div class="bf-pin">
+    <div class="bf-head wrap"><p class="mono bf-k" id="bf-h">The film&nbsp;&nbsp;·&nbsp;&nbsp;0:33</p></div>
+    <div class="bf-frame">
+      <video class="bf-v" muted playsinline loop preload="none" poster="/assets/img/film-v10-poster.webp" data-src="/assets/video/cognexa-film-v10.mp4" data-src-sm="/assets/video/cognexa-film-v10-720.mp4" aria-label="Cognexa brand film"><track kind="captions" src="/assets/video/cognexa-film.en.vtt" srclang="en" label="English"></video>
+      <div class="bf-ui">
+        <button class="bf-sound" type="button"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z" fill="currentColor"/><path class="w" d="M11 5.5c1 .7 1.5 1.6 1.5 2.5s-.5 1.8-1.5 2.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg><span>Watch with sound</span></button>
+        <button class="bf-pause" type="button" aria-label="Pause the film"></button>
+      </div>
+      <div class="bf-bar" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
+</section>
+
+
 <!-- BRAND FILM: plays muted as it scrolls into view, grows to full width -->
 <!-- 01b BRIEF CHOOSER -->
 <section class="vbs" aria-labelledby="cx-h">
