@@ -2305,3 +2305,5 @@ body:not(.menu-open) .hdr.on-hero.scrolled:not(.dd-open){background:rgba(8,10,16
 .gx-body{padding:32px 44px 32px 28px}
 .gx-p{font-size:17px;line-height:1.55;color:#e3ddd2;margin-top:10px;max-width:none}
 @media (max-width:760px){.gx{grid-template-columns:1fr;margin-top:40px}.gx-stage{min-height:0;padding:34px 28px 6px}.gx-mark{max-width:220px}.gx-body{padding:16px 24px 30px}.gx-p{font-size:15.5px}}
+/* client logos: all black and white */
+.lw-c img{filter:grayscale(1)}
