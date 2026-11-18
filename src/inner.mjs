@@ -243,7 +243,7 @@ ${oHero({ crumb: 'INDUSTRIES', h, pathNodes: nodes, secondary: ['Explore the fiv
 ${closingCta({ a: 'Find the pause.', b: 'Ease it.', p: 'A 15-minute fit call. We bring a first read of where your buyers hesitate.' }, 'Book your industry review')}
 `;
   return page({ title: 'Industries', desc: h.s, path: '/industries/', active: 'industries', body, crumbs: [['Industries', '/industries/']],
-    schema: [faqLd(faqs), { '@type': 'CollectionPage', name: 'Behavioural insights by industry' }, { '@type': 'ItemList', itemListElement: cards.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://cognexa-digital.netlify.app/industries/${c[1]}/`, name: c[5] })) }] });
+    schema: [faqLd(faqs), { '@type': 'CollectionPage', name: 'Behavioural insights by industry' }, { '@type': 'ItemList', itemListElement: cards.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://cognexadigital.com/industries/${c[1]}/`, name: c[5] })) }] });
 }
 
 /* ================= CASE STUDIES (Figma 371:2, 372:2) ================= */
