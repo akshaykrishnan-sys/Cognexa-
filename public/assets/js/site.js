@@ -578,7 +578,8 @@
     d.querySelectorAll('[data-bf]:not([data-b])').forEach(sec => {
       sec.dataset.b = 1;
       const v = sec.querySelector('video'), snd = sec.querySelector('.bf-sound'), pz = sec.querySelector('.bf-pause'), bar = sec.querySelector('.bf-bar');
-      const small = w.innerWidth < 761;   // only phones get the small file let inView = false, userPaused = false;
+      const small = w.innerWidth < 761;   // only phones get the small file
+      let inView = false, userPaused = false;
       v.muted = true; v.defaultMuted = true; v.playsInline = true;
       const load = () => { if (!v.src) { v.src = small ? v.dataset.srcSm : v.dataset.src; v.load(); } };
       const go = () => { if (inView && !userPaused) { load(); const pr = v.play(); if (pr && pr.catch) pr.catch(() => { const k = () => { v.play().catch(() => {}); }; ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(e => w.addEventListener(e, k, { once: true, passive: true })); }); } else if (v.src) v.pause(); };
