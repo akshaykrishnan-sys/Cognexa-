@@ -315,6 +315,7 @@ collections:
           - { label: 'Footer tagline', name: tagline, widget: string }
           - { label: 'Domain shown in footer', name: domainLabel, widget: string }
           - { label: 'Booking calendar link (Cal.com, Calendly or HubSpot)', name: bookingUrl, widget: string, required: false, hint: 'When set, the contact and thank-you pages offer instant booking.' }
+          - { label: 'Form endpoint (Formspree)', name: formEndpoint, widget: string, required: false, hint: 'e.g. https://formspree.io/f/abcdwxyz. When set, every form on the site sends there, so forms work on any host. Leave empty to use Netlify Forms.' }
           - label: 'Founders film (About page)'
             name: foundersVideo
             widget: object

@@ -193,14 +193,17 @@
     map.forEach((_, id) => { const s = d.getElementById(id); s && tio.observe(s); });
   }
 
-  /* ---------- booking form (Netlify Forms via fetch) ---------- */
-  d.querySelectorAll('form[data-netlify]').forEach(f => {
+  /* ---------- forms: a form service (data-form, e.g. Formspree) or Netlify Forms (data-netlify), via fetch ---------- */
+  d.querySelectorAll('form[data-netlify], form[data-form]').forEach(f => {
     f.addEventListener('submit', e => {
       e.preventDefault();
       const ok = f.parentElement.querySelector('.form-ok');
       const btn = f.querySelector('[type="submit"]');
       btn && (btn.disabled = true);
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() })
+      const req = f.hasAttribute('data-form')
+        ? fetch(f.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(f) })
+        : fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() });
+      req
         .then(r => { if (!r.ok) throw 0; f.style.display = 'none'; ok && ok.classList.add('on'); })
         .catch(() => { btn && (btn.disabled = false); let m = f.querySelector('.form-err'); if (!m) { m = d.createElement('p'); m.className = 'form-err'; m.setAttribute('role', 'alert'); f.appendChild(m); } m.textContent = 'That did not send. Check your connection and try again, or call us on the number below.'; });
     });
