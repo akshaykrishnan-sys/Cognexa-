@@ -2,6 +2,7 @@ import { img, esc, arr, withArr, page, SERVICES, CTA, CTA_SUB, IND, videoBlock, 
 import { VERTS } from './data-verticals.mjs';
 import { SVCS } from './data-services.mjs';
 import { collection, readJSON } from './content.mjs';
+const SITE_URL = readJSON('settings/site.json').url;
 
 const pad2 = (n) => String(n).padStart(2, '0');
 export const subSlug = (n) => n.toLowerCase().replace(/&/g, 'and').replace(/[()]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -243,7 +244,7 @@ ${oHero({ crumb: 'INDUSTRIES', h, pathNodes: nodes, secondary: ['Explore the fiv
 ${closingCta({ a: 'Find the pause.', b: 'Ease it.', p: 'A 15-minute fit call. We bring a first read of where your buyers hesitate.' }, 'Book your industry review')}
 `;
   return page({ title: 'Industries', desc: h.s, path: '/industries/', active: 'industries', body, crumbs: [['Industries', '/industries/']],
-    schema: [faqLd(faqs), { '@type': 'CollectionPage', name: 'Behavioural insights by industry' }, { '@type': 'ItemList', itemListElement: cards.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://cognexa-digital.netlify.app/industries/${c[1]}/`, name: c[5] })) }] });
+    schema: [faqLd(faqs), { '@type': 'CollectionPage', name: 'Behavioural insights by industry' }, { '@type': 'ItemList', itemListElement: cards.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE_URL}/industries/${c[1]}/`, name: c[5] })) }] });
 }
 
 /* ================= CASE STUDIES (Figma 371:2, 372:2) ================= */

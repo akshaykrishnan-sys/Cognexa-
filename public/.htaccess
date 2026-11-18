@@ -1,0 +1,29 @@
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+# one address: https, no www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://cognexadigital.com%{REQUEST_URI} [R=301,L]
+
+# old URLs
+RewriteRule ^services/ads-paid-media/?(.*)$ /services/paid-media/$1 [R=301,L]
+RewriteRule ^services/web-design-ux/?(.*)$ /services/ux-design/$1 [R=301,L]
+RewriteRule ^industries/ecommerce/?(.*)$ /industries/e-commerce/$1 [R=301,L]
+RewriteRule ^(principles|approach)(/.*)?$ /about/ [R=301,L]
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/xml text/plain
+</IfModule>

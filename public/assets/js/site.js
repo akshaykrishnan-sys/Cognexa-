@@ -200,7 +200,7 @@
       const ok = f.parentElement.querySelector('.form-ok');
       const btn = f.querySelector('[type="submit"]');
       btn && (btn.disabled = true);
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() })
+      fetch('/form.php', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() })
         .then(r => { if (!r.ok) throw 0; f.style.display = 'none'; ok && ok.classList.add('on'); })
         .catch(() => { btn && (btn.disabled = false); let m = f.querySelector('.form-err'); if (!m) { m = d.createElement('p'); m.className = 'form-err'; m.setAttribute('role', 'alert'); f.appendChild(m); } m.textContent = 'That did not send. Check your connection and try again, or call us on the number below.'; });
     });
