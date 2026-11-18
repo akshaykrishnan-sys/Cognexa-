@@ -32,6 +32,13 @@ export const VERTICALS = [
   ['e-commerce', 'E-commerce'], ['b2b-saas', 'B2B & SaaS'], ['healthcare', 'Healthcare'], ['education', 'Education'], ['fintech', 'Fintech'],
 ];
 
+/** Opening <form> tag plus hidden fields. With settings.formEndpoint set (e.g. a Formspree URL) forms post there, so they work on any host; otherwise they use Netlify Forms. */
+export const FORM_ENDPOINT = String(S.formEndpoint || '').trim();
+export function formOpen(name, cls, { action = '/thanks/', style = '', subject = '' } = {}) {
+  const st = style ? ` style="${style}"` : '';
+  if (FORM_ENDPOINT) return `<form class="${cls}"${st} name="${name}" method="POST" action="${esc(FORM_ENDPOINT)}" data-form="${name}"><input type="hidden" name="form-name" value="${name}">${subject ? `<input type="hidden" name="_subject" value="${esc(subject)}">` : ''}<p hidden><label>Leave empty <input name="_gotcha" tabindex="-1" autocomplete="off"></label></p>`;
+  return `<form class="${cls}"${st} name="${name}" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="${action}"><input type="hidden" name="form-name" value="${name}"><p hidden><label>Leave empty <input name="bot-field"></label></p>`;
+}
 export const CTA = S.cta;
 export const CTA_SUB = S.ctaSub;
 // slug, name, card image, headline, question, typical pause, what we change (from each industry's "card" fields)
@@ -98,7 +105,7 @@ export function footer({ fit = false } = {}) {
       <div><p class="mono-s">Company</p><a href="/about/">About us</a><a href="/case-studies/">Case studies</a><a href="/thinking/">Thinking</a><a href="/contact/">Contact</a></div>
       <div><p class="mono-s">Start here</p><a href="/contact/">${CTA}</a><a href="/check/">2-minute hesitation check</a><a href="/thinking/why-shoppers-hesitate/">Read: Why shoppers hesitate</a><p class="ftr-note">${CTA_SUB}</p></div>
     </nav>
-    ${S.newsletter ? `<div class="ftr-news-w"><form class="ftr-news" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/?n=1"><input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave empty <input name="bot-field"></label></p><div><p class="mono-s">Thinking, by email</p><p class="ftr-note">One short note a month on how people decide. No spam, unsubscribe any time.</p></div><label class="sr" for="nl-email">Work email</label><input id="nl-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email"><button class="btn" type="submit">Subscribe</button></form><p class="form-ok ftr-ok" role="status">You are subscribed. The next note arrives at the start of the month.</p></div>` : ''}
+    ${S.newsletter ? `<div class="ftr-news-w">${formOpen('newsletter', 'ftr-news', { action: '/thanks/?n=1', subject: 'Newsletter sign-up' })}<div><p class="mono-s">Thinking, by email</p><p class="ftr-note">One short note a month on how people decide. No spam, unsubscribe any time.</p></div><label class="sr" for="nl-email">Work email</label><input id="nl-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email"><button class="btn" type="submit">Subscribe</button></form><p class="form-ok ftr-ok" role="status">You are subscribed. The next note arrives at the start of the month.</p></div>` : ''}
     <div class="ftr-mark" aria-hidden="true" data-mark>${'Cognexa'.split('').map((c, i) => `<span style="--i:${i}">${c}</span>`).join('')}</div>
     <div class="ftr-base">
       <p class="tl">${SITE.tagline}</p>
