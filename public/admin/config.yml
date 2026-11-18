@@ -19,8 +19,8 @@ local_backend: true
 # Drafts, review and publish: each change opens as a draft and only goes live when someone publishes it.
 publish_mode: editorial_workflow
 
-site_url: https://cognexa-digital.netlify.app
-display_url: https://cognexa-digital.netlify.app
+site_url: https://cognexadigital.com
+display_url: https://cognexadigital.com
 logo_url: /assets/img/n28-32.webp
 
 media_folder: public/assets/img/uploads
